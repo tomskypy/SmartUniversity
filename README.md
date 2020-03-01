@@ -1,1 +1,1 @@
-# Smart-University
+# Smart University

@@ -107,6 +107,7 @@
 			buildConfigurationList = 3503C951240C5A53002F2457 /* Build configuration list for PBXNativeTarget "SmartUniversity" */;
 			buildPhases = (
 				3503C92E240C5A52002F2457 /* Sources */,
+				357EC615240DBD610030B6A3 /* Run Script - SwiftLint check */,
 				3503C92F240C5A52002F2457 /* Frameworks */,
 				3503C930240C5A52002F2457 /* Resources */,
 			);
@@ -194,6 +195,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		357EC615240DBD610030B6A3 /* Run Script - SwiftLint check */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - SwiftLint check";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3503C92E240C5A52002F2457 /* Sources */ = {

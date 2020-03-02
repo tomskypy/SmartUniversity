@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 private final class ARSceneConfiguration: UISceneConfiguration {
 
     private static let configName = "AR Scene Configuration"
-    private static let delegateClass = SceneDelegate.self
+    private static let delegateClass = SceneDelegate<ARSceneDependencyProvider>.self
 
     init(sceneSession: UISceneSession) {
         super.init(name: Self.configName, sessionRole: sceneSession.role)

@@ -13,6 +13,7 @@
 		3503C93F240C5A53002F2457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3503C93E240C5A53002F2457 /* Assets.xcassets */; };
 		3503C942240C5A53002F2457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3503C940240C5A53002F2457 /* LaunchScreen.storyboard */; };
 		3503C94D240C5A53002F2457 /* SmartUniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C94C240C5A53002F2457 /* SmartUniversityTests.swift */; };
+		357EC61B240DCFA50030B6A3 /* ARSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		3503C948240C5A53002F2457 /* SmartUniversityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUniversityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503C94C240C5A53002F2457 /* SmartUniversityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUniversityTests.swift; sourceTree = "<group>"; };
 		3503C94E240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneDependencyProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		3503C934240C5A52002F2457 /* SmartUniversity */ = {
 			isa = PBXGroup;
 			children = (
+				357EC619240DCF890030B6A3 /* Dependency Providers */,
 				3503C935240C5A52002F2457 /* AppDelegate.swift */,
 				3503C937240C5A52002F2457 /* SceneDelegate.swift */,
 				3503C939240C5A52002F2457 /* ViewController.swift */,
@@ -94,6 +97,14 @@
 				3503C94E240C5A53002F2457 /* Info.plist */,
 			);
 			path = SmartUniversityTests;
+			sourceTree = "<group>";
+		};
+		357EC619240DCF890030B6A3 /* Dependency Providers */ = {
+			isa = PBXGroup;
+			children = (
+				357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */,
+			);
+			path = "Dependency Providers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3503C93A240C5A52002F2457 /* ViewController.swift in Sources */,
+				357EC61B240DCFA50030B6A3 /* ARSceneDependencyProvider.swift in Sources */,
 				3503C936240C5A52002F2457 /* AppDelegate.swift in Sources */,
 				3503C938240C5A52002F2457 /* SceneDelegate.swift in Sources */,
 			);

@@ -14,6 +14,7 @@
 		3503C942240C5A53002F2457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3503C940240C5A53002F2457 /* LaunchScreen.storyboard */; };
 		3503C94D240C5A53002F2457 /* SmartUniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C94C240C5A53002F2457 /* SmartUniversityTests.swift */; };
 		357EC61B240DCFA50030B6A3 /* ARSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */; };
+		357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC623240DD90F0030B6A3 /* BaseScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		3503C94C240C5A53002F2457 /* SmartUniversityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUniversityTests.swift; sourceTree = "<group>"; };
 		3503C94E240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneDependencyProvider.swift; sourceTree = "<group>"; };
+		357EC623240DD90F0030B6A3 /* BaseScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,13 @@
 				357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */,
 			);
 			path = "Dependency Providers";
+			sourceTree = "<group>";
+		};
+		357EC620240DD8E70030B6A3 /* Screen Views */ = {
+			isa = PBXGroup;
+			children = (
+				357EC623240DD90F0030B6A3 /* BaseScreenView.swift */,
+			path = "Screen Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +242,7 @@
 				357EC61B240DCFA50030B6A3 /* ARSceneDependencyProvider.swift in Sources */,
 				3503C936240C5A52002F2457 /* AppDelegate.swift in Sources */,
 				3503C938240C5A52002F2457 /* SceneDelegate.swift in Sources */,
+				357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

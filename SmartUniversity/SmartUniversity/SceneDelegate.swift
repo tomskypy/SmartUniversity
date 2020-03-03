@@ -24,7 +24,7 @@ protocol WindowSceneHandling {
     func windowDidBecomeVisible(_ window: UIWindow)
 }
 
-class SceneDelegate<DependencyProvider: SceneDependencyProviding>: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate<DependencyProvider: SceneDependencyProviding>: UIResponder, UIWindowSceneDelegate {
 
     let dependencyProvider = DependencyProvider()
 

@@ -16,5 +16,6 @@ class BaseViewController<ScreenView: BaseScreenView>: UIViewController {
 
     override func loadView() {
         view = ScreenView()
+        screenView?.setupSubviews()
     }
 }

@@ -17,6 +17,7 @@
 		357EC622240DD8FB0030B6A3 /* ARScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC621240DD8FB0030B6A3 /* ARScreenView.swift */; };
 		357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC623240DD90F0030B6A3 /* BaseScreenView.swift */; };
 		357EC628240DDD620030B6A3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC627240DDD620030B6A3 /* BaseViewController.swift */; };
+		357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC629240DDEC00030B6A3 /* ARViewController.swift */; };
 		357EC62D240DE10D0030B6A3 /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */; };
 		357EC631240DE74A0030B6A3 /* UIEdgeInsets+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+init.swift */; };
 		35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
@@ -47,6 +48,7 @@
 		357EC621240DD8FB0030B6A3 /* ARScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScreenView.swift; sourceTree = "<group>"; };
 		357EC623240DD90F0030B6A3 /* BaseScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenView.swift; sourceTree = "<group>"; };
 		357EC627240DDD620030B6A3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		357EC629240DDEC00030B6A3 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedView.swift; sourceTree = "<group>"; };
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+init.swift"; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				357EC627240DDD620030B6A3 /* BaseViewController.swift */,
+				357EC629240DDEC00030B6A3 /* ARViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				357EC62D240DE10D0030B6A3 /* FrameBasedView.swift in Sources */,
 				3503C936240C5A52002F2457 /* AppDelegate.swift in Sources */,
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+init.swift in Sources */,
+				357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */,
 				357EC61F240DD8370030B6A3 /* ARSceneConfiguration.swift in Sources */,
 				3503C938240C5A52002F2457 /* SceneDelegate.swift in Sources */,
 				357EC628240DDD620030B6A3 /* BaseViewController.swift in Sources */,

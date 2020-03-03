@@ -13,7 +13,7 @@ final class ARSceneDependencyProvider: SceneDependencyProviding {
     var sceneHandler: WindowSceneHandling?
 
     func makeRootViewController() -> UIViewController {
-        fatalError("not implemented")
+        return ARViewController()
     }
 
 }

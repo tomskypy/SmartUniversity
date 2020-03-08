@@ -17,6 +17,20 @@
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
 		354329C224159A100065614A /* ARSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329C124159A100065614A /* ARSceneDependencyProviderTests.swift */; };
+		354329C52415A78B0065614A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C935240C5A52002F2457 /* AppDelegate.swift */; };
+		354329C62415A7940065614A /* ARSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */; };
+		354329C72415A7960065614A /* SceneDependencyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329AD24157D670065614A /* SceneDependencyProviding.swift */; };
+		354329C82415A7980065614A /* WindowSceneHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B024157DAF0065614A /* WindowSceneHandling.swift */; };
+		354329C92415A79B0065614A /* ARScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC621240DD8FB0030B6A3 /* ARScreenView.swift */; };
+		354329CA2415A79E0065614A /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC623240DD90F0030B6A3 /* BaseScreenView.swift */; };
+		354329CB2415A8C40065614A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC629240DDEC00030B6A3 /* ARViewController.swift */; };
+		354329CC2415A8C80065614A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC627240DDD620030B6A3 /* BaseViewController.swift */; };
+		354329CD2415A8CB0065614A /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */; };
+		354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C937240C5A52002F2457 /* SceneDelegate.swift */; };
+		354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
+		354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
+		354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
+		354329D22415A8DA0065614A /* UIEdgeInsets+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+init.swift */; };
 		357EC61B240DCFA50030B6A3 /* ARSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */; };
 		357EC622240DD8FB0030B6A3 /* ARScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC621240DD8FB0030B6A3 /* ARScreenView.swift */; };
 		357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC623240DD90F0030B6A3 /* BaseScreenView.swift */; };
@@ -355,8 +369,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				354329C52415A78B0065614A /* AppDelegate.swift in Sources */,
 				354329C224159A100065614A /* ARSceneDependencyProviderTests.swift in Sources */,
+				354329C92415A79B0065614A /* ARScreenView.swift in Sources */,
+				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,
+				354329CC2415A8C80065614A /* BaseViewController.swift in Sources */,
+				354329C82415A7980065614A /* WindowSceneHandling.swift in Sources */,
+				354329C72415A7960065614A /* SceneDependencyProviding.swift in Sources */,
+				354329C62415A7940065614A /* ARSceneDependencyProvider.swift in Sources */,
+				354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */,
+				354329D22415A8DA0065614A /* UIEdgeInsets+init.swift in Sources */,
+				354329CA2415A79E0065614A /* BaseScreenView.swift in Sources */,
+				354329CD2415A8CB0065614A /* FrameBasedView.swift in Sources */,
+				354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */,
+				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,
+				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

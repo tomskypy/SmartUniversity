@@ -17,6 +17,7 @@
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
+		354329C224159A100065614A /* ARSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329C124159A100065614A /* ARSceneDependencyProviderTests.swift */; };
 		357EC61B240DCFA50030B6A3 /* ARSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */; };
 		357EC622240DD8FB0030B6A3 /* ARScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC621240DD8FB0030B6A3 /* ARScreenView.swift */; };
 		357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC623240DD90F0030B6A3 /* BaseScreenView.swift */; };
@@ -52,6 +53,7 @@
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
+		354329C124159A100065614A /* ARSceneDependencyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneDependencyProviderTests.swift; sourceTree = "<group>"; };
 		357EC61A240DCFA50030B6A3 /* ARSceneDependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARSceneDependencyProvider.swift; path = ../ARSceneDependencyProvider.swift; sourceTree = "<group>"; };
 		357EC621240DD8FB0030B6A3 /* ARScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScreenView.swift; sourceTree = "<group>"; };
 		357EC623240DD90F0030B6A3 /* BaseScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		3503C94B240C5A53002F2457 /* SmartUniversityTests */ = {
 			isa = PBXGroup;
 			children = (
+				354329C0241599EF0065614A /* Dependencies Tests */,
 				354329B724157FD40065614A /* Model Tests */,
 				3503C94C240C5A53002F2457 /* SmartUniversityTests.swift */,
 				3503C94E240C5A53002F2457 /* Info.plist */,
@@ -147,6 +150,14 @@
 				354329BA24157FFB0065614A /* SceneDelegateTests.swift */,
 			);
 			path = "Model Tests";
+			sourceTree = "<group>";
+		};
+		354329C0241599EF0065614A /* Dependencies Tests */ = {
+			isa = PBXGroup;
+			children = (
+				354329C124159A100065614A /* ARSceneDependencyProviderTests.swift */,
+			);
+			path = "Dependencies Tests";
 			sourceTree = "<group>";
 		};
 		357EC619240DCF890030B6A3 /* Dependencies */ = {
@@ -348,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3503C94D240C5A53002F2457 /* SmartUniversityTests.swift in Sources */,
+				354329C224159A100065614A /* ARSceneDependencyProviderTests.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

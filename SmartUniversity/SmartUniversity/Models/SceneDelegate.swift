@@ -8,21 +8,13 @@
 
 import UIKit
 
-final class SceneDelegate<DependencyProvider: SceneDependencyProviding>: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate<DependencyProvider: SceneDependencyProviding>: BaseSceneDelegate {
 
     let dependencyProvider = DependencyProvider()
 
-    var window: UIWindow?
+    override func windowDidLoad(_ window: UIWindow) {
+        super.windowDidLoad(window)
 
-    func scene(
-        _ scene: UIScene,
-        willConnectTo session: UISceneSession,
-        options connectionOptions: UIScene.ConnectionOptions
-    ) {
-        guard let windowScene = scene as? UIWindowScene else { return }
-
-        let window = UIWindow(windowScene: windowScene)
-        self.window = window
         window.rootViewController = dependencyProvider.makeRootViewController()
 
         dependencyProvider.sceneHandler?.windowWillBecomeVisible(window)

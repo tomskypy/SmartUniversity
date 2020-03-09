@@ -8,7 +8,7 @@
 
 import XCTest
 
-class UIEdgeInsetsInitTests: XCTestCase {
+final class UIEdgeInsetsInitTests: XCTestCase {
 
     func testInitAllDoesInitiateAllValuesCorrectly() {
         let expectedInsetSize: CGFloat = 13

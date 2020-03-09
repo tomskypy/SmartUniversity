@@ -8,7 +8,7 @@
 
 import XCTest
 
-class TestableScreenView: UIView, BaseScreenView {
+private final class TestableScreenView: UIView, BaseScreenView {
 
     var didReceiveSetupSubviews: Bool = false
 
@@ -18,13 +18,13 @@ class TestableScreenView: UIView, BaseScreenView {
 
 }
 
-class TestableBaseViewController: BaseViewController<TestableScreenView> {
+private final class TestableBaseViewController: BaseViewController<TestableScreenView> {
 
 }
 
 class BaseViewControllerTests: XCTestCase {
 
-    var baseViewController: TestableBaseViewController!
+    private var baseViewController: TestableBaseViewController!
 
     override func setUp() {
         baseViewController = TestableBaseViewController()

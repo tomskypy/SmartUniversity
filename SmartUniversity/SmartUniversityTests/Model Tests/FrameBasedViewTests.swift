@@ -9,7 +9,7 @@
 import XCTest
 @testable import SmartUniversity
 
-private class TestableFrameBasedViewSubclass: FrameBasedView {
+private final class TestableFrameBasedViewSubclass: FrameBasedView {
 
     static let expectedMargins = UIEdgeInsets(top: 3, left: 16, bottom: 11, right: 19)
 

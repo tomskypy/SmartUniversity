@@ -8,7 +8,7 @@
 
 import XCTest
 
-class TestableUIView: UIView {
+private final class TestableUIView: UIView {
 
     static let sizeThatFitsHeightReturnValue: CGFloat = 10
 
@@ -22,9 +22,9 @@ class TestableUIView: UIView {
 
 }
 
-class UIViewSizingTests: XCTestCase {
+final class UIViewSizingTests: XCTestCase {
 
-    var uiView: TestableUIView!
+    private var uiView: TestableUIView!
 
     override func setUp() {
         uiView = TestableUIView()

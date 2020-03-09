@@ -12,11 +12,3 @@ protocol BaseScreenView: UIView {
 
     func setupSubviews()
 }
-
-extension BaseScreenView {
-
-    init() {
-        self.init()
-        setupSubviews()
-    }
-}

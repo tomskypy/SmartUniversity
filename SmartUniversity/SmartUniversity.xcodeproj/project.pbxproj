@@ -14,6 +14,7 @@
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
+		3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */; };
 		3516B3712416FCF0009C5D36 /* UIView+subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+subviews.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
@@ -67,6 +68,7 @@
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
+		3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedViewTests.swift; sourceTree = "<group>"; };
 		3516B3702416FCF0009C5D36 /* UIView+subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+subviews.swift"; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				354329BA24157FFB0065614A /* SceneDelegateTests.swift */,
+				3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				354329C224159A100065614A /* ARSceneDependencyProviderTests.swift in Sources */,
 				354329C92415A79B0065614A /* ARScreenView.swift in Sources */,
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,
+				3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,
 				354329CC2415A8C80065614A /* BaseViewController.swift in Sources */,
 				3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */,

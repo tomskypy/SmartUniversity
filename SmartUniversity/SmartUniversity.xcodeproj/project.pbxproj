@@ -13,6 +13,7 @@
 		3503C942240C5A53002F2457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3503C940240C5A53002F2457 /* LaunchScreen.storyboard */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
+		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
@@ -64,6 +65,7 @@
 		3503C94E240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
+		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */,
+				3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */,
 			);
 			path = "Extensions Tests";
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */,
 				354329CA2415A79E0065614A /* BaseScreenView.swift in Sources */,
 				354329CD2415A8CB0065614A /* FrameBasedView.swift in Sources */,
+				3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */,
 				354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */,
 				354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */,
 				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,

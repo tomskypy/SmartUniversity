@@ -7,11 +7,10 @@
 //
 
 import XCTest
-@testable import SmartUniversity
 
-class ARSceneDependencyProviderTests: XCTestCase {
+final class ARSceneDependencyProviderTests: XCTestCase {
 
-    var provider: ARSceneDependencyProvider!
+    private var provider: ARSceneDependencyProvider!
 
     override func setUp() {
         provider = ARSceneDependencyProvider()

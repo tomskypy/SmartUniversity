@@ -13,8 +13,6 @@ class FrameBasedView: UIView {
     open var margins: UIEdgeInsets { UIEdgeInsets(all: 0) }
 
     override func layoutSubviews() {
-        super.layoutSubviews()
-
         frames(forWidth: bounds.width).forEach({ $0.view.frame = $0.frame })
     }
 

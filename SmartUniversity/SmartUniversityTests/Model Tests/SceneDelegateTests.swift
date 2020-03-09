@@ -7,9 +7,8 @@
 //
 
 import XCTest
-@testable import SmartUniversity
 
-class IdentifiableWindow: UIWindow, Identifiable {
+private final class IdentifiableWindow: UIWindow, Identifiable {
 
     let id = UUID()
 
@@ -22,7 +21,7 @@ class IdentifiableWindow: UIWindow, Identifiable {
     }
 }
 
-class IdentifiableViewController: UIViewController, Identifiable {
+private final class IdentifiableViewController: UIViewController, Identifiable {
 
     let id = UUID()
 }
@@ -55,7 +54,7 @@ class TestableSceneHandler: WindowSceneHandling {
 
 }
 
-struct FakeSceneDependencyProvider: SceneDependencyProviding {
+private struct FakeSceneDependencyProvider: SceneDependencyProviding {
 
     let rootViewController = IdentifiableViewController()
     var sceneHandler: WindowSceneHandling? = TestableSceneHandler()
@@ -68,7 +67,7 @@ struct FakeSceneDependencyProvider: SceneDependencyProviding {
 
 class SceneDelegateTests: XCTestCase {
 
-    var delegate: SceneDelegate<FakeSceneDependencyProvider>!
+    private var delegate: SceneDelegate<FakeSceneDependencyProvider>!
 
     override func setUp() {
         delegate = SceneDelegate()

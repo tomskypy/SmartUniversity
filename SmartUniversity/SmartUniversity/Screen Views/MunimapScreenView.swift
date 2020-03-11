@@ -15,7 +15,11 @@ class MunimapScreenView: FrameBasedScreenView {
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
-        return [(view: webView, frame: bounds)]
+        let webViewFrame = CGRect(
+            origin: CGPoint(x: 0, y: -safeAreaInsets.top),
+            size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom))
+
+        return [(view: webView, frame: webViewFrame)]
     }
 }
 

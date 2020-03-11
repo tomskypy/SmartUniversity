@@ -22,6 +22,12 @@
 		3524E03B24187553007A344E /* MunimapSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03A24187553007A344E /* MunimapSceneDependencyProvider.swift */; };
 		3524E03D24187729007A344E /* WebViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03C24187729007A344E /* WebViewHandler.swift */; };
 		3524E03F24187A4C007A344E /* MunimapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03E24187A4C007A344E /* MunimapViewController.swift */; };
+		3524E04024188335007A344E /* MunimapSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03A24187553007A344E /* MunimapSceneDependencyProvider.swift */; };
+		3524E0412418833A007A344E /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E036241873DE007A344E /* MunimapScreenView.swift */; };
+		3524E04224188342007A344E /* WebViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03C24187729007A344E /* WebViewHandler.swift */; };
+		3524E04324188347007A344E /* MunimapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03E24187A4C007A344E /* MunimapViewController.swift */; };
+		3524E04424188353007A344E /* FrameBasedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedScreenView.swift */; };
+		3524E0452418835B007A344E /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
@@ -430,20 +436,26 @@
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,
 				3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,
+				3524E04424188353007A344E /* FrameBasedScreenView.swift in Sources */,
 				354329CC2415A8C80065614A /* BaseViewController.swift in Sources */,
+				3524E0452418835B007A344E /* UIView+AddSubviews.swift in Sources */,
 				3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */,
 				354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */,
 				354329D22415A8DA0065614A /* UIEdgeInsets+Init.swift in Sources */,
 				354329DB2415ABFD0065614A /* SceneDependencyProviding.swift in Sources */,
 				3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */,
+				3524E0412418833A007A344E /* MunimapScreenView.swift in Sources */,
 				354329CA2415A79E0065614A /* BaseScreenView.swift in Sources */,
+				3524E04224188342007A344E /* WebViewHandler.swift in Sources */,
 				354329CD2415A8CB0065614A /* FrameBasedView.swift in Sources */,
 				3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */,
 				354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */,
 				354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */,
 				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,
+				3524E04324188347007A344E /* MunimapViewController.swift in Sources */,
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
 				3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */,
+				3524E04024188335007A344E /* MunimapSceneDependencyProvider.swift in Sources */,
 				354329DA2415ABFB0065614A /* ARSceneDependencyProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

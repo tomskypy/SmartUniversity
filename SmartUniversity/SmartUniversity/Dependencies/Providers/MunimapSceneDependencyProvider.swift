@@ -13,7 +13,7 @@ final class MunimapSceneDependencyProvider: SceneDependencyProviding {
     var sceneHandler: WindowSceneHandling?
 
     private lazy var munimapServerURL: URL = {
-        guard let url = URL(string: "08668375-551f-4033-a3b8-f1f6715dfb79.htmlpasta.com/") else {
+        guard let url = URL(string: "https://08668375-551f-4033-a3b8-f1f6715dfb79.htmlpasta.com") else {
             fatalError("Failed to create munimap server url.")
         }
         return url

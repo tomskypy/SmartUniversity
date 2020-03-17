@@ -8,46 +8,15 @@
 
 import UIKit
 
-class MainNavigationViewController: UIPageViewController {
+class MainNavigationViewController: UITabBarController {
 
-    override var viewControllers: [UIViewController] {
-        [
-            ARViewController()
-        ]
+    init(controllers: [UIViewController]) {
+        super.init(nibName: nil, bundle: nil)
+
+        viewControllers = controllers
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.delegate = self
-        self.dataSource = self
-    }
-}
-
-extension MainNavigationViewController: UIPageViewControllerDelegate {
-
-}
-
-extension MainNavigationViewController: UIPageViewControllerDataSource {
-
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        viewControllerBefore viewController: UIViewController
-    ) -> UIViewController? {
-        getNextViewController(after: false, currentViewController: viewController)
-    }
-
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        viewControllerAfter viewController: UIViewController
-    ) -> UIViewController? {
-        getNextViewController(after: true, currentViewController: viewController)
-    }
-
-    private func getNextViewController(after: Bool, currentViewController: UIViewController) -> UIViewController {
-        let indexChange = after ? 1 : -1
-        let currentVCIndex = viewControllers.firstIndex(of: currentViewController) ?? 0
-        let nextVCIndex = (currentVCIndex + indexChange) % viewControllers.count
-        return viewControllers[nextVCIndex]
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

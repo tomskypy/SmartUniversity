@@ -11,7 +11,6 @@
 		3503C938240C5A52002F2457 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C937240C5A52002F2457 /* SceneDelegate.swift */; };
 		3503C93F240C5A53002F2457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3503C93E240C5A53002F2457 /* Assets.xcassets */; };
 		3503C942240C5A53002F2457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3503C940240C5A53002F2457 /* LaunchScreen.storyboard */; };
-		350A659724203C1C0072125D /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350A659624203C1C0072125D /* MainNavigationViewController.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
@@ -56,6 +55,9 @@
 		357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC629240DDEC00030B6A3 /* ARViewController.swift */; };
 		357EC62D240DE10D0030B6A3 /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */; };
 		357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */; };
+		35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AA24219008005E65AE /* MainNavigationViewController.swift */; };
+		35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */; };
+		35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */; };
 		35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +80,6 @@
 		3503C943240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3503C948240C5A53002F2457 /* SmartUniversityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUniversityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503C94E240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		350A659624203C1C0072125D /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
@@ -103,6 +104,8 @@
 		357EC629240DDEC00030B6A3 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedView.swift; sourceTree = "<group>"; };
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Init.swift"; sourceTree = "<group>"; };
+		35B209AA24219008005E65AE /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
+		35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProvider.swift; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,9 +194,10 @@
 		354329AC24157D550065614A /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				354329D32415ABC80065614A /* SceneDependencyProviding.swift */,
 				354329D52415ABDE0065614A /* ARSceneDependencyProvider.swift */,
 				3524E03A24187553007A344E /* MunimapSceneDependencyProvider.swift */,
-				354329D32415ABC80065614A /* SceneDependencyProviding.swift */,
+				35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -246,10 +250,10 @@
 		357EC626240DDD510030B6A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				35B209AA24219008005E65AE /* MainNavigationViewController.swift */,
 				357EC627240DDD620030B6A3 /* BaseViewController.swift */,
 				357EC629240DDEC00030B6A3 /* ARViewController.swift */,
 				3524E03E24187A4C007A344E /* MunimapViewController.swift */,
-				350A659624203C1C0072125D /* MainNavigationViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -413,8 +417,9 @@
 				3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */,
 				3503C936240C5A52002F2457 /* AppDelegate.swift in Sources */,
 				3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */,
-				350A659724203C1C0072125D /* MainNavigationViewController.swift in Sources */,
+				35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */,
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */,
+				35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				354329D62415ABDE0065614A /* ARSceneDependencyProvider.swift in Sources */,
 				354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */,
 				357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */,
@@ -457,6 +462,7 @@
 				354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */,
 				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,
 				3524E04324188347007A344E /* MunimapViewController.swift in Sources */,
+				35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
 				3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */,
 				3524E04024188335007A344E /* MunimapSceneDependencyProvider.swift in Sources */,

@@ -27,11 +27,10 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
         super.viewDidLoad()
 
         webViewHandler.webView = screenView?.webView
+        webViewHandler.loadURL(munimapServerURL)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        webViewHandler.loadURL(munimapServerURL)
     }
 }

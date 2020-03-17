@@ -13,7 +13,8 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     var sceneHandler: WindowSceneHandling?
 
     private lazy var munimapServerURL: URL = {
-        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap") else {
+        let webWindowZoom = munimapWebWindowZoomValue()
+        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?windowZoom=\(webWindowZoom)") else {
             fatalError("Failed to create munimap server url.")
         }
         return url
@@ -41,5 +42,9 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
         controller.tabBarItem = UITabBarItem(title: "AR View", image: UIImage(systemName: "qrcode.viewfinder"), tag: 1)
 
         return controller
+    }
+
+    private func munimapWebWindowZoomValue(for screen: UIScreen = UIScreen.main) -> Int {
+        screen.scale <= 2 ? 100 : 200
     }
 }

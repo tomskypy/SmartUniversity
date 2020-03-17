@@ -26,7 +26,7 @@ private final class IdentifiableViewController: UIViewController, Identifiable {
     let id = UUID()
 }
 
-class TestableSceneHandler: WindowSceneHandling {
+private final class TestableSceneHandler: WindowSceneHandling {
 
     var didReceiveWindowWillBecomeVisible: Bool? = nil
     var wasWindowMadeKeyAndVisibleOnWillBecomeVisible: Bool? = nil
@@ -65,7 +65,7 @@ private struct FakeSceneDependencyProvider: SceneDependencyProviding {
 
 }
 
-class SceneDelegateTests: XCTestCase {
+final class SceneDelegateTests: XCTestCase {
 
     private var delegate: SceneDelegate<FakeSceneDependencyProvider>!
 

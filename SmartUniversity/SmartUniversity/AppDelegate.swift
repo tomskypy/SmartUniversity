@@ -28,7 +28,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
-        return SceneConfiguration<MunimapSceneDependencyProvider>(sceneSession: connectingSceneSession)
+        return SceneConfiguration<MainNavigationSceneDependencyProvider>(sceneSession: connectingSceneSession)
     }
 
 }

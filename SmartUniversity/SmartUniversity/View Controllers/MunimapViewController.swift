@@ -6,9 +6,11 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class MunimapViewController: BaseViewController<MunimapScreenView> {
+
+    override var preferredStatusBarStyle: UIStatusBarStyle { .darkContent }
 
     let munimapServerURL: URL
     var webViewHandler: WebViewHandling

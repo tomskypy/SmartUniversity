@@ -8,9 +8,9 @@
 
 import XCTest
 
-class MainNavigationSceneDependencyProviderTests: XCTestCase {
+final class MainNavigationSceneDependencyProviderTests: XCTestCase {
 
-    var provider: MainNavigationSceneDependencyProvider!
+    private var provider: MainNavigationSceneDependencyProvider!
 
     override func setUp() {
         provider = MainNavigationSceneDependencyProvider()

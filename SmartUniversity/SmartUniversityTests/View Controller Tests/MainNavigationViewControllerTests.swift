@@ -8,7 +8,7 @@
 
 import XCTest
 
-class MainNavigationViewControllerTests: XCTestCase {
+final class MainNavigationViewControllerTests: XCTestCase {
 
     func testInitSetsUpTabBarViewControllersCorrectly() {
         let expectedViewControllers = [

@@ -84,7 +84,7 @@ final class FrameBasedViewSubclassTests: XCTestCase {
 
 final class FrameBasedViewTests: XCTestCase {
 
-    var frameBasedView: FrameBasedView!
+    private var frameBasedView: FrameBasedView!
 
     override func setUp() {
         frameBasedView = FrameBasedView()

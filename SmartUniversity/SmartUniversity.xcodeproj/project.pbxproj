@@ -56,6 +56,7 @@
 		35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AA24219008005E65AE /* MainNavigationViewController.swift */; };
 		35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */; };
 		35B209B82421A0A5005E65AE /* MainNavigationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B72421A0A5005E65AE /* MainNavigationViewControllerTests.swift */; };
+		35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B92421A376005E65AE /* WebViewHandlerTests.swift */; };
 		35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProvider.swift; sourceTree = "<group>"; };
 		35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProviderTests.swift; sourceTree = "<group>"; };
 		35B209B72421A0A5005E65AE /* MainNavigationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewControllerTests.swift; sourceTree = "<group>"; };
+		35B209B92421A376005E65AE /* WebViewHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandlerTests.swift; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */,
+				35B209B92421A376005E65AE /* WebViewHandlerTests.swift */,
 			);
 			path = "Dependencies Tests";
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */,
 				354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */,
 				354329D22415A8DA0065614A /* UIEdgeInsets+Init.swift in Sources */,
+				35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */,
 				354329DB2415ABFD0065614A /* SceneDependencyProviding.swift in Sources */,
 				3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */,
 				35B209B82421A0A5005E65AE /* MainNavigationViewControllerTests.swift in Sources */,

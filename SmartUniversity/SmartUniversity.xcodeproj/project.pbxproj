@@ -54,6 +54,7 @@
 		35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */; };
 		35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */; };
 		35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AA24219008005E65AE /* MainNavigationViewController.swift */; };
+		35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */; };
 		35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Init.swift"; sourceTree = "<group>"; };
 		35B209AA24219008005E65AE /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProvider.swift; sourceTree = "<group>"; };
+		35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProviderTests.swift; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +216,7 @@
 		354329C0241599EF0065614A /* Dependencies Tests */ = {
 			isa = PBXGroup;
 			children = (
+				35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */,
 			);
 			path = "Dependencies Tests";
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				3524E04324188347007A344E /* MunimapViewController.swift in Sources */,
 				35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
+				35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */,
 				35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */,
 				3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */,
 			);

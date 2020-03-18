@@ -22,7 +22,7 @@ private final class TestableBaseViewController: BaseViewController<TestableScree
 
 }
 
-class BaseViewControllerTests: XCTestCase {
+final class BaseViewControllerTests: XCTestCase {
 
     private var baseViewController: TestableBaseViewController!
 

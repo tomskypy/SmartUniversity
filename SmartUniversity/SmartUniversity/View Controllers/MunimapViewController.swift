@@ -6,9 +6,11 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class MunimapViewController: BaseViewController<MunimapScreenView> {
+
+    override var preferredStatusBarStyle: UIStatusBarStyle { .darkContent }
 
     let munimapServerURL: URL
     var webViewHandler: WebViewHandling
@@ -27,11 +29,6 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
         super.viewDidLoad()
 
         webViewHandler.webView = screenView?.webView
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
         webViewHandler.loadURL(munimapServerURL)
     }
 }

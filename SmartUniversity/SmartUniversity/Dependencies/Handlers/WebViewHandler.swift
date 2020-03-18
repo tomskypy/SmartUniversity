@@ -19,7 +19,7 @@ class WebViewHandler: WebViewHandling {
 
     static var shared = WebViewHandler()
 
-    var webView: WKWebView?
+    weak var webView: WKWebView?
 
     func loadURL(_ url: URL) {
         webView?.load(URLRequest(url: url))

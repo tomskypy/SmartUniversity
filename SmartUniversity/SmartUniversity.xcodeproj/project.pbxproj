@@ -57,6 +57,7 @@
 		35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */; };
 		35B209B82421A0A5005E65AE /* MainNavigationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B72421A0A5005E65AE /* MainNavigationViewControllerTests.swift */; };
 		35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B92421A376005E65AE /* WebViewHandlerTests.swift */; };
+		35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */; };
 		35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProviderTests.swift; sourceTree = "<group>"; };
 		35B209B72421A0A5005E65AE /* MainNavigationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewControllerTests.swift; sourceTree = "<group>"; };
 		35B209B92421A376005E65AE /* WebViewHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandlerTests.swift; sourceTree = "<group>"; };
+		35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapViewControllerTests.swift; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 			children = (
 				3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */,
 				35B209B72421A0A5005E65AE /* MainNavigationViewControllerTests.swift */,
+				35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */,
 			);
 			path = "View Controller Tests";
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
 				35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */,
 				35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */,
+				35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */,
 				3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

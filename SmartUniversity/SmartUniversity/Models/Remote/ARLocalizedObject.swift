@@ -14,7 +14,7 @@ struct ARLocalizedObject: Decodable {
     let dimensions: ARDimensions
     let position: ARPosition
 
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case label
         case dimensions = "dimen"
         case position = "pos"
@@ -27,7 +27,7 @@ struct ARPosition: Decodable {
     let up: CGFloat?
     let front: CGFloat?
 
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case right = "r"
         case up = "u"
         case front = "f"
@@ -41,7 +41,7 @@ struct ARDimensions: Decodable {
     let height: CGFloat
     let length: CGFloat
 
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case width = "w"
         case height = "h"
         case length = "l"

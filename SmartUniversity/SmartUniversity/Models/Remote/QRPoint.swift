@@ -16,7 +16,7 @@ struct QRPoint: Decodable {
 
     let rooms: [ARLocalizedObject]
 
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case uuidString = "id"
         case label
         case muniMapPlaceID = "munimap"

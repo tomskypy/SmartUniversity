@@ -12,13 +12,13 @@ enum QRPointsProvidingError {
 
 protocol QRPointsProviding: RemoteJSONDataProviding {
 
-    func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> ())
+    func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void)
 }
 
 extension QRPointsProviding {
 
-    func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> ()) {
-        
+    func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void) {
+
         fetchJSONData(withDataInfo: .qrPoints) { (data: [QRPoint]?, error: DataFetchError?) in
             if let error = error { return completion(data, .fetch(error: error)) }
 

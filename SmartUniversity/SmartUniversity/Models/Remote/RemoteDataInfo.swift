@@ -13,7 +13,7 @@ enum RemoteJSONDataInfo {
 
     var jsonURLString: String {
         switch self {
-            case .qrPoints: return "https://smart-uni-be.herokuapp.com/get/qrpoints"
+        case .qrPoints: return "https://smart-uni-be.herokuapp.com/get/qrpoints"
         }
     }
 }

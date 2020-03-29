@@ -20,7 +20,7 @@ final class RemoteDataProvider {
 
     func fetchJSONData<JSONData: Decodable>(
         withDataInfo info: RemoteJSONDataInfo,
-        completion: @escaping (JSONData?, DataFetchError?) -> ()
+        completion: @escaping (JSONData?, DataFetchError?) -> Void
     ) {
         guard let url = URL(string: info.jsonURLString) else { return completion(nil, .invalidURLString) }
 

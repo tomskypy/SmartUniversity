@@ -18,6 +18,6 @@ protocol RemoteJSONDataProviding {
 
     func fetchJSONData<JSONData: Decodable>(
         withDataInfo info: RemoteJSONDataInfo,
-        completion: @escaping (JSONData?, DataFetchError?) -> ()
+        completion: @escaping (JSONData?, DataFetchError?) -> Void
     )
 }

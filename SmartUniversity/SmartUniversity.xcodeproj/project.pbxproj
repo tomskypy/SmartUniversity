@@ -53,6 +53,8 @@
 		35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */; };
 		35AC87CD24314910009C0E9D /* RemoteDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CC24314910009C0E9D /* RemoteDataProviding.swift */; };
 		35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
+		35AC87D124314BBA009C0E9D /* QRPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D024314BBA009C0E9D /* QRPoint.swift */; };
+		35AC87D424314CE2009C0E9D /* ARLocalizedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */; };
 		35AC87D824316262009C0E9D /* RemoteDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D724316262009C0E9D /* RemoteDataInfo.swift */; };
 		35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AA24219008005E65AE /* MainNavigationViewController.swift */; };
 		35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */; };
@@ -108,6 +110,8 @@
 		35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProviding.swift; sourceTree = "<group>"; };
 		35AC87CC24314910009C0E9D /* RemoteDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProviding.swift; sourceTree = "<group>"; };
 		35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProvider.swift; sourceTree = "<group>"; };
+		35AC87D024314BBA009C0E9D /* QRPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPoint.swift; sourceTree = "<group>"; };
+		35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARLocalizedObject.swift; sourceTree = "<group>"; };
 		35AC87D724316262009C0E9D /* RemoteDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataInfo.swift; sourceTree = "<group>"; };
 		35B209AA24219008005E65AE /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProvider.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 		35AC87D224314C77009C0E9D /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				35AC87D024314BBA009C0E9D /* QRPoint.swift */,
+				35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */,
 				35AC87D724316262009C0E9D /* RemoteDataInfo.swift */,
 			);
 			path = Remote;
@@ -445,9 +451,11 @@
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */,
 				35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */,
+				35AC87D124314BBA009C0E9D /* QRPoint.swift in Sources */,
 				357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */,
 				3516B3712416FCF0009C5D36 /* UIView+AddSubviews.swift in Sources */,
 				3503C938240C5A52002F2457 /* SceneDelegate.swift in Sources */,
+				35AC87D424314CE2009C0E9D /* ARLocalizedObject.swift in Sources */,
 				3524E03D24187729007A344E /* WebViewHandler.swift in Sources */,
 				354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */,
 				357EC628240DDD620030B6A3 /* BaseViewController.swift in Sources */,

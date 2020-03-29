@@ -50,7 +50,9 @@
 		357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC629240DDEC00030B6A3 /* ARViewController.swift */; };
 		357EC62D240DE10D0030B6A3 /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */; };
 		357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */; };
+		35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */; };
 		35AC87CD24314910009C0E9D /* RemoteDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CC24314910009C0E9D /* RemoteDataProviding.swift */; };
+		35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
 		35AC87D824316262009C0E9D /* RemoteDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D724316262009C0E9D /* RemoteDataInfo.swift */; };
 		35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AA24219008005E65AE /* MainNavigationViewController.swift */; };
 		35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */; };
@@ -103,7 +105,9 @@
 		357EC629240DDEC00030B6A3 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedView.swift; sourceTree = "<group>"; };
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Init.swift"; sourceTree = "<group>"; };
+		35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProviding.swift; sourceTree = "<group>"; };
 		35AC87CC24314910009C0E9D /* RemoteDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProviding.swift; sourceTree = "<group>"; };
+		35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProvider.swift; sourceTree = "<group>"; };
 		35AC87D724316262009C0E9D /* RemoteDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataInfo.swift; sourceTree = "<group>"; };
 		35B209AA24219008005E65AE /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProvider.swift; sourceTree = "<group>"; };
@@ -203,7 +207,9 @@
 			children = (
 				354329D32415ABC80065614A /* SceneDependencyProviding.swift */,
 				35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */,
+				35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */,
 				35AC87CC24314910009C0E9D /* RemoteDataProviding.swift */,
+				35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				35AC87CD24314910009C0E9D /* RemoteDataProviding.swift in Sources */,
 				3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */,
 				3503C936240C5A52002F2457 /* AppDelegate.swift in Sources */,
+				35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */,
 				3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */,
 				35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */,
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */,
@@ -445,6 +452,7 @@
 				354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */,
 				357EC628240DDD620030B6A3 /* BaseViewController.swift in Sources */,
 				354329D82415ABF60065614A /* WindowSceneHandling.swift in Sources */,
+				35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */,
 				35AC87D824316262009C0E9D /* RemoteDataInfo.swift in Sources */,
 				357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */,
 				35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */,

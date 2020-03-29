@@ -17,4 +17,24 @@ final class RemoteDataProvider {
     init(urlSessionProvider: URLSessionProviding = URLSession.shared) {
         self.urlSessionProvider = urlSessionProvider
     }
+
+    func fetchJSONData<JSONData: Decodable>(
+        withDataInfo info: RemoteJSONDataInfo,
+        completion: @escaping (JSONData?, DataFetchError?) -> ()
+    ) {
+        guard let url = URL(string: info.jsonURLString) else { return completion(nil, .invalidURLString) }
+
+        urlSessionProvider.dataTask(with: url) { data, _, _ in // FIXME: Implement URLResponse and Error
+            guard let data = data else { return completion(nil, .noData)}
+            do {
+                let response = try JSONDecoder().decode(JSONData.self, from: data)
+                completion(response, nil)
+            } catch let error {
+                completion(nil, .parsingError(error: error))
+            }
+        }.resume()
+    }
+}
+
+extension RemoteDataProvider: QRPointsProviding {
 }

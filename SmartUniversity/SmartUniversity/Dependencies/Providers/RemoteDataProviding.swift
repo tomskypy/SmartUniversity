@@ -8,11 +8,16 @@
 
 import Foundation
 
-enum RemoteDataError {
+enum DataFetchError {
     case invalidURLString
+    case noData
+    case parsingError(error: Error)
 }
 
 protocol RemoteJSONDataProviding {
 
-    func getAllData(withDataInfo info: RemoteJSONDataInfo, completion: @escaping (Decodable?, RemoteDataError?) -> ())
+    func fetchJSONData<JSONData: Decodable>(
+        withDataInfo info: RemoteJSONDataInfo,
+        completion: @escaping (JSONData?, DataFetchError?) -> ()
+    )
 }

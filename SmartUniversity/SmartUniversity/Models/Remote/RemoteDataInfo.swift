@@ -9,4 +9,11 @@
 import Foundation
 
 enum RemoteJSONDataInfo {
+    case qrPoints
+
+    var jsonURLString: String {
+        switch self {
+            case .qrPoints: return "https://smart-uni-be.herokuapp.com/get/qrpoints"
+        }
+    }
 }

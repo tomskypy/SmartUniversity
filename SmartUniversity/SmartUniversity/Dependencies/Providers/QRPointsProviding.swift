@@ -10,6 +10,14 @@ enum QRPointsProvidingError {
     case fetch(error: DataFetchError)
 }
 
+struct QRPointRemoteArray: Decodable {
+    let points: [QRPoint]
+
+    private enum CodingKeys: String, CodingKey {
+        case points = "qrPoints"
+    }
+}
+
 protocol QRPointsProviding: RemoteJSONDataProviding {
 
     func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void)
@@ -19,10 +27,10 @@ extension QRPointsProviding {
 
     func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void) {
 
-        fetchJSONData(withDataInfo: .qrPoints) { (data: [QRPoint]?, error: DataFetchError?) in
-            if let error = error { return completion(data, .fetch(error: error)) }
+        fetchJSONData(withDataInfo: .qrPoints) { (data: QRPointRemoteArray?, error: DataFetchError?) in
+            if let error = error { return completion(data?.points, .fetch(error: error)) }
 
-            completion(data, nil)
+            completion(data?.points, nil)
         }
     }
 }

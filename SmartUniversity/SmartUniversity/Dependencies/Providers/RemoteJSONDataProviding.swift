@@ -1,5 +1,5 @@
 //
-//  RemoteDataProviding.swift
+//  RemoteJSONDataProviding.swift
 //  SmartUniversity
 //
 //  Created by Tomas Skypala on 29/03/2020.

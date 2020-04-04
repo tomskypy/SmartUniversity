@@ -11,7 +11,7 @@ import Foundation
 enum DataFetchError {
     case invalidURLString
     case noData
-    case parsingError(error: Error)
+    case parsingError
 }
 
 protocol RemoteJSONDataProviding {

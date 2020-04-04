@@ -29,8 +29,8 @@ final class RemoteDataProvider {
             do {
                 let response = try JSONDecoder().decode(JSONData.self, from: data)
                 completion(response, nil)
-            } catch let error {
-                completion(nil, .parsingError(error: error))
+            } catch {
+                completion(nil, .parsingError)
             }
         }.resume()
     }

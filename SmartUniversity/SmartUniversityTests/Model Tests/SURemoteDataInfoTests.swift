@@ -1,5 +1,5 @@
 //
-//  RemoteJSONDataInfoTests.swift
+//  SURemoteDataInfoTests.swift
 //  SmartUniversityTests
 //
 //  Created by Tomas Skypala on 30/03/2020.
@@ -9,10 +9,10 @@
 import XCTest
 import SmartUniversity
 
-class RemoteJSONDataInfoTests: XCTestCase {
+class SURemoteDataInfoTests: XCTestCase {
 
     func testAllURLStringAreValidURLs() {
-        for remoteDataInfo in RemoteJSONDataInfo.allCases {
+        for remoteDataInfo in SURemoteDataInfo.allCases {
             XCTAssertNotNil(URL(string: remoteDataInfo.jsonURLString))
         }
     }

@@ -8,7 +8,12 @@
 
 import Foundation
 
-enum RemoteJSONDataInfo: CaseIterable {
+protocol RemoteJSONDataInfo {
+
+    var jsonURLString: String { get }
+}
+
+enum SURemoteDataInfo: CaseIterable, RemoteJSONDataInfo {
     case qrPoints
 
     var jsonURLString: String {

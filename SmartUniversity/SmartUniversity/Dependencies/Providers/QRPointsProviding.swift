@@ -27,7 +27,7 @@ extension QRPointsProviding {
 
     func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void) {
 
-        fetchJSONData(withDataInfo: .qrPoints) { (data: QRPointRemoteArray?, error: DataFetchError?) in
+        fetchJSONData(withDataInfo: SURemoteDataInfo.qrPoints) { (data: QRPointRemoteArray?, error: DataFetchError?) in
             if let error = error { return completion(data?.points, .fetch(error: error)) }
 
             completion(data?.points, nil)

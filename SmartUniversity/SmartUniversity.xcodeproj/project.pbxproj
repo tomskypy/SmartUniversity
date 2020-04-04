@@ -66,7 +66,7 @@
 		35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B92421A376005E65AE /* WebViewHandlerTests.swift */; };
 		35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */; };
 		35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
-		35E746D224317220003BDA00 /* RemoteJSONDataInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746D124317220003BDA00 /* RemoteJSONDataInfoTests.swift */; };
+		35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */; };
 		35E746D3243172F4003BDA00 /* RemoteJSONDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D724316262009C0E9D /* RemoteJSONDataInfo.swift */; };
 		35E746D42431765E003BDA00 /* QRPointsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D5243161BC009C0E9D /* QRPointsProviding.swift */; };
 		35E746D524317662003BDA00 /* URLSessionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */; };
@@ -130,7 +130,7 @@
 		35B209B92421A376005E65AE /* WebViewHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandlerTests.swift; sourceTree = "<group>"; };
 		35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapViewControllerTests.swift; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
-		35E746D124317220003BDA00 /* RemoteJSONDataInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataInfoTests.swift; sourceTree = "<group>"; };
+		35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURemoteDataInfoTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +244,7 @@
 			children = (
 				354329BA24157FFB0065614A /* SceneDelegateTests.swift */,
 				3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */,
-				35E746D124317220003BDA00 /* RemoteJSONDataInfoTests.swift */,
+				35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */,
 			);
 			path = "Model Tests";
 			sourceTree = "<group>";
@@ -517,7 +517,7 @@
 				35E746D924317676003BDA00 /* ARLocalizedObject.swift in Sources */,
 				35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
-				35E746D224317220003BDA00 /* RemoteJSONDataInfoTests.swift in Sources */,
+				35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */,
 				35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */,
 				35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */,
 				35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */,

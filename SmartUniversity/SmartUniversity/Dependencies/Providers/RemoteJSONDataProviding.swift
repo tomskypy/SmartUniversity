@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DataFetchError {
+enum DataFetchError: Equatable {
     case invalidURLString
     case noData
     case parsingError

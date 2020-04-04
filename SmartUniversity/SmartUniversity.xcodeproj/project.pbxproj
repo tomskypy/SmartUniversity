@@ -74,6 +74,7 @@
 		35E746D72431766C003BDA00 /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
 		35E746D824317674003BDA00 /* QRPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D024314BBA009C0E9D /* QRPoint.swift */; };
 		35E746D924317676003BDA00 /* ARLocalizedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */; };
+		35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapViewControllerTests.swift; sourceTree = "<group>"; };
 		35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Sizing.swift"; sourceTree = "<group>"; };
 		35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURemoteDataInfoTests.swift; sourceTree = "<group>"; };
+		35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProviderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			children = (
 				35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */,
 				35B209B92421A376005E65AE /* WebViewHandlerTests.swift */,
+				35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */,
 			);
 			path = "Dependencies Tests";
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				354329C52415A78B0065614A /* AppDelegate.swift in Sources */,
+				35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */,
 				35E746D624317664003BDA00 /* RemoteJSONDataProviding.swift in Sources */,
 				354329C92415A79B0065614A /* ARScreenView.swift in Sources */,
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,

@@ -3,6 +3,7 @@ identifier_name:
     - id
     - x
     - y
+    - up
 
 excluded: 
   - SmartUniversityTests

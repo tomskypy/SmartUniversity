@@ -12,12 +12,6 @@ class QRScannerScreenView: FrameBasedScreenView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) // FIXME: Consider .regular
 
-    private(set) lazy var label: UILabel = {
-        let label = UILabel()
-        label.text = "blah blah"
-        return label
-    }()
-
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let blurredOverlayFrame = CGRect(
@@ -25,14 +19,7 @@ class QRScannerScreenView: FrameBasedScreenView {
             size: bounds.size
         )
 
-        let labelFrame = CGRect(
-            x: 40,
-            y: 150,
-            width: 100,
-            height: 20
-        )
-
-        return [(view: blurredOverlayView, frame: blurredOverlayFrame), (label, labelFrame)]
+        return [(view: blurredOverlayView, frame: blurredOverlayFrame)]
     }
 
     func hideBlurOverlay() {

@@ -15,12 +15,14 @@
 		350DE447243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DE446243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift */; };
 		350DE449243BE6B4003D2FE1 /* CaptureDeviceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DE448243BE6B4003D2FE1 /* CaptureDeviceProvider.swift */; };
 		350DE44B243BE985003D2FE1 /* CaptureSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DE44A243BE985003D2FE1 /* CaptureSessionProvider.swift */; };
+		350DE44D243C03B2003D2FE1 /* QRScannerScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DE44C243C03B2003D2FE1 /* QRScannerScreenView.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
 		3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */; };
 		3516B3712416FCF0009C5D36 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */; };
 		3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */; };
+		351AC8B1243A9CF7009360D4 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */; };
 		3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedScreenView.swift */; };
 		3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E036241873DE007A344E /* MunimapScreenView.swift */; };
 		3524E03D24187729007A344E /* WebViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03C24187729007A344E /* WebViewHandler.swift */; };
@@ -104,12 +106,14 @@
 		350DE446243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionHandlerDelegate.swift; sourceTree = "<group>"; };
 		350DE448243BE6B4003D2FE1 /* CaptureDeviceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureDeviceProvider.swift; sourceTree = "<group>"; };
 		350DE44A243BE985003D2FE1 /* CaptureSessionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionProvider.swift; sourceTree = "<group>"; };
+		350DE44C243C03B2003D2FE1 /* QRScannerScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerScreenView.swift; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
 		3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedViewTests.swift; sourceTree = "<group>"; };
 		3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAddSubviewsTests.swift; sourceTree = "<group>"; };
+		351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		3524E032241872D9007A344E /* FrameBasedScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedScreenView.swift; sourceTree = "<group>"; };
 		3524E036241873DE007A344E /* MunimapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapScreenView.swift; sourceTree = "<group>"; };
 		3524E03C24187729007A344E /* WebViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandler.swift; sourceTree = "<group>"; };
@@ -287,6 +291,7 @@
 				357EC623240DD90F0030B6A3 /* BaseScreenView.swift */,
 				357EC621240DD8FB0030B6A3 /* ARScreenView.swift */,
 				3524E036241873DE007A344E /* MunimapScreenView.swift */,
+				350DE44C243C03B2003D2FE1 /* QRScannerScreenView.swift */,
 			);
 			path = "Screen Views";
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				35B209AA24219008005E65AE /* MainNavigationViewController.swift */,
 				357EC629240DDEC00030B6A3 /* ARViewController.swift */,
 				3524E03E24187A4C007A344E /* MunimapViewController.swift */,
+				351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -489,9 +495,11 @@
 				35AC87D424314CE2009C0E9D /* ARLocalizedObject.swift in Sources */,
 				350DE447243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3524E03D24187729007A344E /* WebViewHandler.swift in Sources */,
+				351AC8B1243A9CF7009360D4 /* QRScannerViewController.swift in Sources */,
 				354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */,
 				357EC628240DDD620030B6A3 /* BaseViewController.swift in Sources */,
 				350DE44B243BE985003D2FE1 /* CaptureSessionProvider.swift in Sources */,
+				350DE44D243C03B2003D2FE1 /* QRScannerScreenView.swift in Sources */,
 				354329D82415ABF60065614A /* WindowSceneHandling.swift in Sources */,
 				35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */,
 				35AC87D824316262009C0E9D /* RemoteJSONDataInfo.swift in Sources */,

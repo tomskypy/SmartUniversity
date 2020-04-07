@@ -14,10 +14,7 @@ class QRScannerScreenView: FrameBasedScreenView {
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
-        let blurredOverlayFrame = CGRect(
-            origin: .zero,
-            size: bounds.size
-        )
+        let blurredOverlayFrame = CGRect(origin: .zero, size: bounds.size)
 
         return [(view: blurredOverlayView, frame: blurredOverlayFrame)]
     }
@@ -39,15 +36,15 @@ class QRScannerScreenView: FrameBasedScreenView {
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         maskLayer.fillColor = UIColor.black.cgColor
 
-        let maskPath = UIBezierPath(rect: bounds)
+        let maskPath = UIBezierPath(rect: innerBounds)
         maskPath.usesEvenOddFillRule = true
 
         let outerPath = UIBezierPath.init(
             rect: CGRect(
-                x: max(0, bounds.minX - width),
-                y: max(0, bounds.minY - width),
-                width: bounds.width + width * 2,
-                height: bounds.height + width * 2
+                x: max(0, innerBounds.minX - width),
+                y: max(0, innerBounds.minY - width),
+                width: innerBounds.width + width * 2,
+                height: innerBounds.height + width * 2
             )
         )
         maskPath.append(outerPath)

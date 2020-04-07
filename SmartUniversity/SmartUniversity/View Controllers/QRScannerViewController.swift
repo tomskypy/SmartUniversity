@@ -31,7 +31,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        screenView?.blurredOverlayView.isHidden = true
+        screenView?.hideBlurOverlay()
+        
         captureSessionHandler.handleViewDidLoad(view)
     }
 
@@ -72,40 +73,10 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     ) {
-        guard let blurredOverlayView = screenView?.blurredOverlayView else { return }
-
-        blurredOverlayView.layer.mask = createShapeMask(bounds: objectBounds)
-
-        if blurredOverlayView.isHidden {
-            blurredOverlayView.isHidden = false
-        }
+        screenView?.showBlurOverlay(maskBounds: objectBounds)
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandler, didTriggerError error: CaptureSessionError) {
         handleSessionFailed()
-    }
-
-    private func createShapeMask(bounds: CGRect) -> CALayer { // TODO refactor elsewhere
-        let shapeLineWidth: CGFloat = 10
-
-        let scanLayer = CAShapeLayer()
-
-        let outerPath = UIBezierPath(rect: bounds)
-
-        let superlayerPath = UIBezierPath.init(rect:
-            CGRect(
-                x: max(0, bounds.minX - shapeLineWidth),
-                y: max(0, bounds.minY - shapeLineWidth),
-                width: bounds.width + shapeLineWidth * 2,
-                height: bounds.height + shapeLineWidth * 2
-            )
-        )
-        outerPath.usesEvenOddFillRule = true
-        outerPath.append(superlayerPath)
-        scanLayer.path = outerPath.cgPath
-        scanLayer.fillRule = CAShapeLayerFillRule.evenOdd
-        scanLayer.fillColor = UIColor.black.cgColor
-
-        return scanLayer
     }
 }

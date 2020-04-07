@@ -12,7 +12,7 @@ class QRScannerScreenView: FrameBasedScreenView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) // FIXME: Consider .regular
 
-    lazy var label: UILabel = {
+    private(set) lazy var label: UILabel = {
         let label = UILabel()
         label.text = "blah blah"
         return label
@@ -33,6 +33,41 @@ class QRScannerScreenView: FrameBasedScreenView {
         )
 
         return [(view: blurredOverlayView, frame: blurredOverlayFrame), (label, labelFrame)]
+    }
+
+    func hideBlurOverlay() {
+        blurredOverlayView.isHidden = true
+    }
+
+    func showBlurOverlay(maskBounds: CGRect) {
+        blurredOverlayView.layer.mask = createRectangularMask(innerBounds: maskBounds)
+
+        if blurredOverlayView.isHidden {
+            blurredOverlayView.isHidden = false
+        }
+    }
+
+    private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {
+        let maskLayer = CAShapeLayer()
+        maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
+        maskLayer.fillColor = UIColor.black.cgColor
+
+        let maskPath = UIBezierPath(rect: bounds)
+        maskPath.usesEvenOddFillRule = true
+
+        let outerPath = UIBezierPath.init(
+            rect: CGRect(
+                x: max(0, bounds.minX - width),
+                y: max(0, bounds.minY - width),
+                width: bounds.width + width * 2,
+                height: bounds.height + width * 2
+            )
+        )
+        maskPath.append(outerPath)
+
+        maskLayer.path = maskPath.cgPath
+
+        return maskLayer
     }
 }
 

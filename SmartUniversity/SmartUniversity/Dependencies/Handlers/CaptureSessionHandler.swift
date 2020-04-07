@@ -11,12 +11,13 @@ import UIKit
 
 protocol CaptureSessionHandling {
 
+    func setDelegate(_ delegate: CaptureSessionHandlerDelegate)
     func handleViewDidLoad(_ view: UIView)
+    func handleViewWillAppear(_ view: UIView)
+    func handleViewWillDisappear(_ view: UIView)
 }
 
 final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
-
-    static let shared = CaptureSessionHandler()
 
     weak var delegate: CaptureSessionHandlerDelegate?
 
@@ -34,44 +35,74 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
         self.sessionProvider = sessionProvider
     }
 
+    // MARK: - CaptureSessionHandling
+
+    func setDelegate(_ delegate: CaptureSessionHandlerDelegate) {
+        self.delegate = delegate
+    }
+
     func handleViewDidLoad(_ view: UIView) {
         let captureSession = sessionProvider.makeCaptureSession()
 
         guard let sessionInput = makeVideoDeviceInput(for: captureSession) else {
-            delegate?.captureSessionHandler(self, didTriggerError: .videoInputUnavailable)
-            return
+            return handleSessionError(.videoInputUnavailable)
         }
         captureSession.addInput(sessionInput)
 
         guard let sessionOutput = makeSessionMetadataOutput(for: captureSession) else {
-            delegate?.captureSessionHandler(self, didTriggerError: .metadataOutputUnavailable)
-            return
+            return handleSessionError(.metadataOutputUnavailable)
         }
         captureSession.addOutput(sessionOutput)
 
-        self.previewLayer = makeVideoPreviewLayer(for: captureSession, captureView: view)
+        if sessionOutput.availableMetadataObjectTypes.contains(.qr) {
+            sessionOutput.metadataObjectTypes = [.qr]
+            sessionOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        } else {
+            return handleSessionError(.metadataOutputUnavailable)
+        }
+
+        let previewLayer = makeVideoPreviewLayer(for: captureSession, captureView: view)
+
+        self.previewLayer = previewLayer
         self.captureSession = captureSession
+
+        delegate?.captureSessionHandler(self, didLoadPreviewLayer: previewLayer)
     }
+
+    func handleViewWillAppear(_ view: UIView) {
+        guard let captureSession = captureSession else { return }
+
+        if captureSession.isRunning == false {
+            captureSession.startRunning()
+        }
+    }
+
+    func handleViewWillDisappear(_ view: UIView) {
+        guard let captureSession = captureSession else { return }
+
+        if captureSession.isRunning {
+            captureSession.stopRunning()
+        }
+    }
+
+    // MARK: - Capture Session Component Factories
 
     private func makeVideoDeviceInput(for session: AVCaptureSession) -> AVCaptureDeviceInput? {
 
         guard let videoCaptureDevice = deviceProvider.videoCaptureDevice else { return nil }
 
         let captureDeviceInput: AVCaptureDeviceInput?
-        do { captureDeviceInput = try AVCaptureDeviceInput(device: videoCaptureDevice) }
-        catch { return nil }
+        do { captureDeviceInput = try AVCaptureDeviceInput(device: videoCaptureDevice) } catch { return nil }
 
-        if let videoInput = captureDeviceInput, session.canAddInput(videoInput) { return videoInput }
-        else { return nil }
+        if let videoInput = captureDeviceInput, session.canAddInput(videoInput) {
+            return videoInput
+        } else { return nil }
     }
 
     private func makeSessionMetadataOutput(for session: AVCaptureSession) -> AVCaptureMetadataOutput? {
-
         let metadataOutput = AVCaptureMetadataOutput()
-        guard session.canAddOutput(metadataOutput) else { return nil }
 
-        metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        metadataOutput.metadataObjectTypes = [.qr]
+        guard session.canAddOutput(metadataOutput) else { return nil }
         return metadataOutput
     }
 
@@ -85,11 +116,40 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
 
         return previewLayer
     }
+
+    // MARK: - Helpers
+
+    private func handleSessionError(_ error: CaptureSessionError) {
+        captureSession = nil
+
+        delegate?.captureSessionHandler(self, didTriggerError: error)
+    }
 }
 
 extension CaptureSessionHandler: AVCaptureMetadataOutputObjectsDelegate {
 
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        // TODO implement
+    // MARK: - AVCaptureMetadataOutputObjectsDelegate
+
+    func metadataOutput(
+        _ output: AVCaptureMetadataOutput,
+        didOutput metadataObjects: [AVMetadataObject],
+        from connection: AVCaptureConnection
+    ) {
+        guard
+            let metadataObject = metadataObjects.first,
+            let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
+            let stringValue = readableObject.stringValue
+        else { return }
+
+        guard
+            let previewLayer = previewLayer,
+            let codeObject = previewLayer.transformedMetadataObject(for: metadataObject)
+        else { return }
+
+        delegate?.captureSessionHandler(
+            self,
+            didReceiveValidOutput: stringValue,
+            fromObjectWithBounds: codeObject.bounds
+        )
     }
 }

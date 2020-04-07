@@ -20,5 +20,11 @@ protocol CaptureSessionHandlerDelegate: AnyObject {
         didLoadPreviewLayer previewLayer: AVCaptureVideoPreviewLayer
     )
 
+    func captureSessionHandler(
+        _ handler: CaptureSessionHandler,
+        didReceiveValidOutput outputString: String,
+        fromObjectWithBounds objectBounds: CGRect
+    )
+
     func captureSessionHandler(_ handler: CaptureSessionHandler, didTriggerError error: CaptureSessionError)
 }

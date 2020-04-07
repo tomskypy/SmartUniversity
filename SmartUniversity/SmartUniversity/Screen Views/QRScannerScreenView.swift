@@ -7,10 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 class QRScannerScreenView: FrameBasedScreenView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) // FIXME: Consider .regular
+
+    var scannerPreviewLayer: AVCaptureVideoPreviewLayer? {
+        didSet {
+            guard let scannerPreviewLayer = scannerPreviewLayer else { return }
+
+            layer.sublayers?.insert(scannerPreviewLayer, at: 0)
+        }
+    }
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 

@@ -11,9 +11,7 @@ import UIKit
 
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
 
     let captureSessionHandler: CaptureSessionHandling
 
@@ -65,7 +63,7 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         _ handler: CaptureSessionHandler,
         didLoadPreviewLayer previewLayer: AVCaptureVideoPreviewLayer
     ) {
-        view.layer.sublayers?.insert(previewLayer, at: 0)
+        screenView?.scannerPreviewLayer = previewLayer
     }
 
     func captureSessionHandler(

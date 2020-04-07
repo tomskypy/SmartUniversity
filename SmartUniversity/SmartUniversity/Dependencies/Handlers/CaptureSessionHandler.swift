@@ -61,12 +61,7 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
             return handleSessionError(.metadataOutputUnavailable)
         }
 
-        let previewLayer = makeVideoPreviewLayer(for: captureSession, captureView: view)
-
-        self.previewLayer = previewLayer
         self.captureSession = captureSession
-
-        delegate?.captureSessionHandler(self, didLoadPreviewLayer: previewLayer)
     }
 
     func handleViewWillAppear(_ view: UIView) {
@@ -75,6 +70,11 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
         if captureSession.isRunning == false {
             captureSession.startRunning()
         }
+
+        let previewLayer = makeVideoPreviewLayer(for: captureSession, captureView: view)
+        self.previewLayer = previewLayer
+
+        delegate?.captureSessionHandler(self, didLoadPreviewLayer: previewLayer)
     }
 
     func handleViewWillDisappear(_ view: UIView) {

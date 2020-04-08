@@ -10,7 +10,7 @@ import UIKit
 
 protocol QRPointScanningHandling {
 
-    func setDelegate(_ delegate: QRPointScanningHandlerDelegate)
+    var delegate: QRPointScanningHandlerDelegate? { get set }
 
     func handleViewDidLoad(_ view: UIView)
     func qrCodeValueScanned(_ value: String)
@@ -18,15 +18,24 @@ protocol QRPointScanningHandling {
 
 final class QRPointScanningHandler: QRPointScanningHandling {
 
-    func setDelegate(_ delegate: QRPointScanningHandlerDelegate) {
-        fatalError("not implemented")
-    }
+    weak var delegate: QRPointScanningHandlerDelegate?
+
+    private(set) var qrPoints: [QRPoint] = []
 
     func handleViewDidLoad(_ view: UIView) {
-        fatalError("not implemented")
+        prefetchAllQRPoints()
     }
 
     func qrCodeValueScanned(_ value: String) {
+
+        if let detectedQRPoint = qrPoints.first(where: { $0.uuidString == value}) {
+            delegate?.qrPointScanningHandler(self, didFetchQRPoint: detectedQRPoint, forScannedValue: value)
+        } else {
+            delegate?.qrPointScanningHandler(self, couldNotFetchQRPointForScannedValue: value)
+        }
+    }
+
+    private func prefetchAllQRPoints() {
         fatalError("not implemented")
     }
 }

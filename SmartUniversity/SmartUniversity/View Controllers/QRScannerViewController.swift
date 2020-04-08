@@ -14,9 +14,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
 
     let captureSessionHandler: CaptureSessionHandling
+    let qrPointScanningHandler: QRPointScanningHandling
 
-    init(captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler()) {
+    init(
+        captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler(),
+        qrPointScanningHandler: QRPointScanningHandling = QRPointScanningHandler()
+    ) {
         self.captureSessionHandler = captureSessionHandler
+        self.qrPointScanningHandler = qrPointScanningHandler
         super.init(nibName: nil, bundle: nil)
 
         captureSessionHandler.setDelegate(self)
@@ -30,8 +35,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         super.viewDidLoad()
 
         screenView?.hideBlurOverlay()
-        
+
         captureSessionHandler.handleViewDidLoad(view)
+        qrPointScanningHandler.handleViewDidLoad(view)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +78,8 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         fromObjectWithBounds objectBounds: CGRect
     ) {
         screenView?.showBlurOverlay(maskBounds: objectBounds)
+
+        qrPointScanningHandler.qrCodeValueScanned(outputString)
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandler, didTriggerError error: CaptureSessionError) {

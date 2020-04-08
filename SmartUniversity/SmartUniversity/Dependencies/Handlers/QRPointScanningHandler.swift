@@ -22,6 +22,12 @@ final class QRPointScanningHandler: QRPointScanningHandling {
 
     private(set) var qrPoints: [QRPoint] = []
 
+    private let qrPointsProvider: QRPointsProviding
+
+    init(qrPointsProvider: QRPointsProviding = RemoteDataProvider.shared) {
+        self.qrPointsProvider = qrPointsProvider
+    }
+
     func handleViewDidLoad(_ view: UIView) {
         prefetchAllQRPoints()
     }
@@ -31,11 +37,14 @@ final class QRPointScanningHandler: QRPointScanningHandling {
         if let detectedQRPoint = qrPoints.first(where: { $0.uuidString == value}) {
             delegate?.qrPointScanningHandler(self, didFetchQRPoint: detectedQRPoint, forScannedValue: value)
         } else {
+            // FIXME: Add refetch before sending "could not"
             delegate?.qrPointScanningHandler(self, couldNotFetchQRPointForScannedValue: value)
         }
     }
 
     private func prefetchAllQRPoints() {
-        fatalError("not implemented")
+        qrPointsProvider.getAllQRPoints { points, _ in // FIXME: Implement the error handling
+            self.qrPoints = points ?? []
+        }
     }
 }

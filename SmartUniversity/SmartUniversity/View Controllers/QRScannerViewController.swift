@@ -16,6 +16,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     let captureSessionHandler: CaptureSessionHandling
     let qrPointScanningHandler: QRPointScanningHandling
 
+    private var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
+
     init(
         captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler(),
         qrPointScanningHandler: QRPointScanningHandling = QRPointScanningHandler()
@@ -25,6 +27,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         super.init(nibName: nil, bundle: nil)
 
         captureSessionHandler.setDelegate(self)
+        qrPointScanningHandler.setDelegate(self)
     }
 
     required init?(coder: NSCoder) {
@@ -77,12 +80,34 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     ) {
-        screenView?.showBlurOverlay(maskBounds: objectBounds)
-
+        scannedValueCodeObjectBounds = (outputString, objectBounds)
         qrPointScanningHandler.qrCodeValueScanned(outputString)
+
+        screenView?.showBlurOverlay(maskBounds: objectBounds)
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandler, didTriggerError error: CaptureSessionError) {
         handleSessionFailed()
+    }
+}
+
+extension QRScannerViewController: QRPointScanningHandlerDelegate {
+
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandler,
+        didFetchQRPoint qrPoint: QRPoint,
+        forScannedValue value: String
+    ) {
+        guard
+            let scannedValueCodeObjectBounds = scannedValueCodeObjectBounds,
+            value == scannedValueCodeObjectBounds.scannedValue
+        else { return }
+
+        // TODO enhance/differentiate the UX
+        screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
+    }
+
+    func qrPointScanningHandler(_ handler: QRPointScanningHandler, couldNotFetchQRPointForScannedValue value: String) {
+        screenView?.hideBlurOverlay()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  QRScannerViewControllerExtTests.swift
+//  QRScannerViewControllerCaptureExtTests.swift
 //  SmartUniversityTests
 //
 //  Created by Tomas Skypala on 21/04/2020.

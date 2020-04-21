@@ -43,7 +43,7 @@
 		3524E04424188353007A344E /* FrameBasedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedScreenView.swift */; };
 		3524E0452418835B007A344E /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */; };
 		352B3D32244F7AEC00B422CF /* QRScannerViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D31244F7AEC00B422CF /* QRScannerViewControllerTests.swift */; };
-		352B3D34244FA02400B422CF /* QRScannerViewControllerExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D33244FA02400B422CF /* QRScannerViewControllerExtTests.swift */; };
+		352B3D34244FA02400B422CF /* QRScannerViewControllerCaptureSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D33244FA02400B422CF /* QRScannerViewControllerCaptureSessionTests.swift */; };
 		352B3D36244FA26500B422CF /* PresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D35244FA26500B422CF /* PresentationHandling.swift */; };
 		352B3D37244FA6BC00B422CF /* PresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D35244FA26500B422CF /* PresentationHandling.swift */; };
 		352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */; };
@@ -136,7 +136,7 @@
 		3524E03C24187729007A344E /* WebViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandler.swift; sourceTree = "<group>"; };
 		3524E03E24187A4C007A344E /* MunimapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapViewController.swift; sourceTree = "<group>"; };
 		352B3D31244F7AEC00B422CF /* QRScannerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerTests.swift; sourceTree = "<group>"; };
-		352B3D33244FA02400B422CF /* QRScannerViewControllerExtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerExtTests.swift; sourceTree = "<group>"; };
+		352B3D33244FA02400B422CF /* QRScannerViewControllerCaptureSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerCaptureSessionTests.swift; sourceTree = "<group>"; };
 		352B3D35244FA26500B422CF /* PresentationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandling.swift; sourceTree = "<group>"; };
 		352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandlerTests.swift; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				35B209B72421A0A5005E65AE /* MainNavigationViewControllerTests.swift */,
 				35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */,
 				352B3D31244F7AEC00B422CF /* QRScannerViewControllerTests.swift */,
-				352B3D33244FA02400B422CF /* QRScannerViewControllerExtTests.swift */,
+				352B3D33244FA02400B422CF /* QRScannerViewControllerCaptureSessionTests.swift */,
 			);
 			path = "View Controller Tests";
 			sourceTree = "<group>";
@@ -589,7 +589,7 @@
 				35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */,
 				35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */,
 				352B3D32244F7AEC00B422CF /* QRScannerViewControllerTests.swift in Sources */,
-				352B3D34244FA02400B422CF /* QRScannerViewControllerExtTests.swift in Sources */,
+				352B3D34244FA02400B422CF /* QRScannerViewControllerCaptureSessionTests.swift in Sources */,
 				350CF6FF243D5A0A00282A64 /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */,
 				35E746D3243172F4003BDA00 /* RemoteJSONDataInfo.swift in Sources */,

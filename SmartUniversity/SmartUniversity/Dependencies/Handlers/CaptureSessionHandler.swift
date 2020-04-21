@@ -11,7 +11,8 @@ import UIKit
 
 protocol CaptureSessionHandling {
 
-    func setDelegate(_ delegate: CaptureSessionHandlerDelegate)
+    var delegate: CaptureSessionHandlerDelegate? { get set }
+
     func handleViewDidLoad(_ view: UIView)
     func handleViewWillAppear(_ view: UIView)
     func handleViewWillDisappear(_ view: UIView)
@@ -36,10 +37,6 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     }
 
     // MARK: - CaptureSessionHandling
-
-    func setDelegate(_ delegate: CaptureSessionHandlerDelegate) {
-        self.delegate = delegate
-    }
 
     func handleViewDidLoad(_ view: UIView) {
         let captureSession = sessionProvider.makeCaptureSession()

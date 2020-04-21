@@ -10,7 +10,8 @@ import UIKit
 
 protocol QRPointScanningHandling {
 
-    func setDelegate(_ delegate: QRPointScanningHandlerDelegate?)
+    var delegate: QRPointScanningHandlerDelegate? { get set }
+
     func handleViewDidLoad(_ view: UIView)
     func qrCodeValueScanned(_ value: String)
 }
@@ -25,10 +26,6 @@ final class QRPointScanningHandler: QRPointScanningHandling {
 
     init(qrPointsProvider: QRPointsProviding = RemoteDataProvider.shared) {
         self.qrPointsProvider = qrPointsProvider
-    }
-
-    func setDelegate(_ delegate: QRPointScanningHandlerDelegate?) {
-        self.delegate = delegate
     }
 
     func handleViewDidLoad(_ view: UIView) {

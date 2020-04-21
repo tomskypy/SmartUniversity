@@ -16,15 +16,15 @@ enum CaptureSessionError: Error {
 protocol CaptureSessionHandlerDelegate: AnyObject {
 
     func captureSessionHandler(
-        _ handler: CaptureSessionHandler,
+        _ handler: CaptureSessionHandling,
         didLoadPreviewLayer previewLayer: AVCaptureVideoPreviewLayer
     )
 
     func captureSessionHandler(
-        _ handler: CaptureSessionHandler,
+        _ handler: CaptureSessionHandling,
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     )
 
-    func captureSessionHandler(_ handler: CaptureSessionHandler, didTriggerError error: CaptureSessionError)
+    func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError)
 }

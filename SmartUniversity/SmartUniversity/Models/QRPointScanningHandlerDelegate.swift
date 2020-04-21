@@ -11,10 +11,10 @@ import Foundation
 protocol QRPointScanningHandlerDelegate: AnyObject {
 
     func qrPointScanningHandler(
-        _ handler: QRPointScanningHandler,
+        _ handler: QRPointScanningHandling,
         didFetchQRPoint qrPoint: QRPoint,
         forScannedValue value: String
     )
 
-    func qrPointScanningHandler(_ handler: QRPointScanningHandler, couldNotFetchQRPointForScannedValue value: String)
+    func qrPointScanningHandler(_ handler: QRPointScanningHandling, couldNotFetchQRPointForScannedValue value: String)
 }

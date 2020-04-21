@@ -13,8 +13,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
 
-    let captureSessionHandler: CaptureSessionHandling
-    let qrPointScanningHandler: QRPointScanningHandling
+    private var captureSessionHandler: CaptureSessionHandling
+    private var qrPointScanningHandler: QRPointScanningHandling
 
     private var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
 
@@ -26,8 +26,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         self.qrPointScanningHandler = qrPointScanningHandler
         super.init(nibName: nil, bundle: nil)
 
-        captureSessionHandler.setDelegate(self)
-        qrPointScanningHandler.setDelegate(self)
+        self.captureSessionHandler.delegate = self
+        self.qrPointScanningHandler.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -69,14 +69,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 extension QRScannerViewController: CaptureSessionHandlerDelegate {
 
     func captureSessionHandler(
-        _ handler: CaptureSessionHandler,
+        _ handler: CaptureSessionHandling,
         didLoadPreviewLayer previewLayer: AVCaptureVideoPreviewLayer
     ) {
         screenView?.scannerPreviewLayer = previewLayer
     }
 
     func captureSessionHandler(
-        _ handler: CaptureSessionHandler,
+        _ handler: CaptureSessionHandling,
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     ) {
@@ -86,7 +86,7 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         screenView?.showBlurOverlay(maskBounds: objectBounds)
     }
 
-    func captureSessionHandler(_ handler: CaptureSessionHandler, didTriggerError error: CaptureSessionError) {
+    func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
         handleSessionFailed()
     }
 }
@@ -94,7 +94,7 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
 extension QRScannerViewController: QRPointScanningHandlerDelegate {
 
     func qrPointScanningHandler(
-        _ handler: QRPointScanningHandler,
+        _ handler: QRPointScanningHandling,
         didFetchQRPoint qrPoint: QRPoint,
         forScannedValue value: String
     ) {
@@ -107,7 +107,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
     }
 
-    func qrPointScanningHandler(_ handler: QRPointScanningHandler, couldNotFetchQRPointForScannedValue value: String) {
+    func qrPointScanningHandler(_ handler: QRPointScanningHandling, couldNotFetchQRPointForScannedValue value: String) {
         screenView?.hideBlurOverlay()
     }
 }

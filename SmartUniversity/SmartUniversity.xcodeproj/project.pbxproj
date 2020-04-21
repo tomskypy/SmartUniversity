@@ -43,6 +43,7 @@
 		3524E04424188353007A344E /* FrameBasedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedScreenView.swift */; };
 		3524E0452418835B007A344E /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */; };
 		352B3D32244F7AEC00B422CF /* QRScannerViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D31244F7AEC00B422CF /* QRScannerViewControllerTests.swift */; };
+		352B3D36244FA26500B422CF /* PresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D35244FA26500B422CF /* PresentationHandling.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
@@ -132,6 +133,7 @@
 		3524E03C24187729007A344E /* WebViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandler.swift; sourceTree = "<group>"; };
 		3524E03E24187A4C007A344E /* MunimapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapViewController.swift; sourceTree = "<group>"; };
 		352B3D31244F7AEC00B422CF /* QRScannerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerTests.swift; sourceTree = "<group>"; };
+		352B3D35244FA26500B422CF /* PresentationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandling.swift; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				3524E03C24187729007A344E /* WebViewHandler.swift */,
 				350DE444243BD997003D2FE1 /* CaptureSessionHandler.swift */,
 				350CF6F4243D4C7500282A64 /* QRPointScanningHandler.swift */,
+				352B3D35244FA26500B422CF /* PresentationHandling.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */,
 				35AC87D824316262009C0E9D /* RemoteJSONDataInfo.swift in Sources */,
 				357EC624240DD90F0030B6A3 /* BaseScreenView.swift in Sources */,
+				352B3D36244FA26500B422CF /* PresentationHandling.swift in Sources */,
 				35DAB2BE240DEA4B00D60590 /* UIView+Sizing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

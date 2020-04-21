@@ -16,15 +16,19 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
 
+    private var presentationHandler: PresentationHandling
+
     /// Tuple containg scanned object's `String` value and its detected bounds within the scanning view.
     private(set) var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
 
     init(
         captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler(),
-        qrPointScanningHandler: QRPointScanningHandling = QRPointScanningHandler()
+        qrPointScanningHandler: QRPointScanningHandling = QRPointScanningHandler(),
+        presentationHandler: PresentationHandling = PresentationHandler.shared
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler
+        self.presentationHandler = presentationHandler
         super.init(nibName: nil, bundle: nil)
 
         self.captureSessionHandler.delegate = self
@@ -63,7 +67,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             preferredStyle: .alert
         )
         controller.addAction(UIAlertAction(title: "OK", style: .default))
-        present(controller, animated: true)
+        presentationHandler.present(controller, onViewController: self, animated: true)
     }
 }
 

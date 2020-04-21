@@ -46,6 +46,7 @@
 		352B3D34244FA02400B422CF /* QRScannerViewControllerExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D33244FA02400B422CF /* QRScannerViewControllerExtTests.swift */; };
 		352B3D36244FA26500B422CF /* PresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D35244FA26500B422CF /* PresentationHandling.swift */; };
 		352B3D37244FA6BC00B422CF /* PresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D35244FA26500B422CF /* PresentationHandling.swift */; };
+		352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
@@ -137,6 +138,7 @@
 		352B3D31244F7AEC00B422CF /* QRScannerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerTests.swift; sourceTree = "<group>"; };
 		352B3D33244FA02400B422CF /* QRScannerViewControllerExtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerExtTests.swift; sourceTree = "<group>"; };
 		352B3D35244FA26500B422CF /* PresentationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandling.swift; sourceTree = "<group>"; };
+		352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandlerTests.swift; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */,
 				35B209B92421A376005E65AE /* WebViewHandlerTests.swift */,
 				35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */,
+				352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */,
 			);
 			path = "Dependencies Tests";
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				35E746D824317674003BDA00 /* QRPoint.swift in Sources */,
 				3524E04224188342007A344E /* WebViewHandler.swift in Sources */,
 				354329CD2415A8CB0065614A /* FrameBasedView.swift in Sources */,
+				352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */,
 				3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */,
 				354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */,
 				354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */,

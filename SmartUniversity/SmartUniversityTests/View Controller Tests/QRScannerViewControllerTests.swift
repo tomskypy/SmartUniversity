@@ -9,7 +9,7 @@
 import XCTest
 import AVFoundation
 
-private final class TestableCaptureSessionHandler: CaptureSessionHandling {
+final class TestableCaptureSessionHandler: CaptureSessionHandling {
 
     var delegate: CaptureSessionHandlerDelegate? {
         didSet {
@@ -37,7 +37,7 @@ private final class TestableCaptureSessionHandler: CaptureSessionHandling {
 
 }
 
-private final class TestableQRPointScanningHandler: QRPointScanningHandling {
+final class TestableQRPointScanningHandler: QRPointScanningHandling {
 
     var delegate: QRPointScanningHandlerDelegate? {
         didSet {
@@ -60,29 +60,47 @@ private final class TestableQRPointScanningHandler: QRPointScanningHandling {
 
 }
 
-private final class TestableQRScannerScreenView: QRScannerScreenView {
+final class TestableQRScannerScreenView: QRScannerScreenView {
 
     var didCallHideBlurOverlay: Bool? = nil
+    var boundsReceivedInShowBlurOverlay: CGRect? = nil
 
     override func hideBlurOverlay() {
         didCallHideBlurOverlay = true
     }
+
+    override func showBlurOverlay(maskBounds: CGRect) {
+        boundsReceivedInShowBlurOverlay = maskBounds
+    }
+}
+
+final class TestablePresentationHandler: PresentationHandling {
+
+    var viewControllerReceivedInPresent: UIViewController? = nil
+
+    func present(_ viewController: UIViewController, onViewController: UIViewController, animated: Bool) {
+        viewControllerReceivedInPresent = viewController
+    }
+
 }
 
 final class QRScannerViewControllerTests: XCTestCase {
 
-    private var captureSessionHandler: TestableCaptureSessionHandler!
-    private var qrPointScanningHandler: TestableQRPointScanningHandler!
+    var captureSessionHandler: TestableCaptureSessionHandler!
+    var qrPointScanningHandler: TestableQRPointScanningHandler!
+    var presentationHandler: TestablePresentationHandler!
 
-    private var viewController: QRScannerViewController!
+    var viewController: QRScannerViewController!
 
     override func setUp() {
         captureSessionHandler = TestableCaptureSessionHandler()
         qrPointScanningHandler = TestableQRPointScanningHandler()
+        presentationHandler = TestablePresentationHandler()
 
         viewController = QRScannerViewController(
             captureSessionHandler: captureSessionHandler,
-            qrPointScanningHandler: qrPointScanningHandler
+            qrPointScanningHandler: qrPointScanningHandler,
+            presentationHandler: presentationHandler
         )
     }
 

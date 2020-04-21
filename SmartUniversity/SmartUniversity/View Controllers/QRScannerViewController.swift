@@ -19,7 +19,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private var presentationHandler: PresentationHandling
 
     /// Tuple containg scanned object's `String` value and its detected bounds within the scanning view.
-    private(set) var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
+    var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
 
     init(
         captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler(),
@@ -108,7 +108,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
 
-        // TODO enhance/differentiate the UX
+        // TODO enable segue to map/AR view controllers
         screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
     }
 

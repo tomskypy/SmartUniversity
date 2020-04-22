@@ -18,6 +18,21 @@ protocol RemoteJSONDataProviding {
 
     func fetchJSONData<JSONData: Decodable>(
         withDataInfo info: RemoteJSONDataInfo,
-        completion: @escaping (JSONData?, DataFetchError?) -> Void
+        completion: @escaping (JSONData?, DataFetchError?) -> Void,
+        onQueue queue: DispatchQueue
     )
+}
+
+extension RemoteJSONDataProviding {
+
+    func fetchJSONData<JSONData: Decodable>(
+        withDataInfo info: RemoteJSONDataInfo,
+        completion: @escaping (JSONData?, DataFetchError?) -> Void
+    ) {
+        fetchJSONData(
+            withDataInfo: info,
+            completion: completion,
+            onQueue: DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated)
+        )
+    }
 }

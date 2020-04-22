@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class RemoteDataProvider {
+final class RemoteDataProvider: RemoteJSONDataProviding {
 
     static let shared = RemoteDataProvider()
 
@@ -20,19 +20,22 @@ final class RemoteDataProvider {
 
     func fetchJSONData<JSONData: Decodable>(
         withDataInfo info: RemoteJSONDataInfo,
-        completion: @escaping (JSONData?, DataFetchError?) -> Void
+        completion: @escaping (JSONData?, DataFetchError?) -> Void,
+        onQueue queue: DispatchQueue
     ) {
         guard let url = URL(string: info.jsonURLString) else { return completion(nil, .invalidURLString) }
 
-        urlSessionProvider.dataTask(with: url) { data, _, _ in // FIXME: Implement URLResponse and Error
-            guard let data = data else { return completion(nil, .noData)}
-            do {
-                let response = try JSONDecoder().decode(JSONData.self, from: data)
-                completion(response, nil)
-            } catch {
-                completion(nil, .parsingError)
-            }
-        }.resume()
+        queue.async {
+            self.urlSessionProvider.dataTask(with: url) { data, _, _ in // FIXME: Implement URLResponse and Error
+                guard let data = data else { return completion(nil, .noData)}
+                do {
+                    let response = try JSONDecoder().decode(JSONData.self, from: data)
+                    completion(response, nil)
+                } catch {
+                    completion(nil, .parsingError)
+                }
+            }.resume()
+        }
     }
 }
 

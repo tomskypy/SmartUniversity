@@ -21,7 +21,7 @@ private final class TestableURLSessionDataTask: URLSessionDataTask {
     }
 }
 
-private class TestableURLSessionProvider: URLSessionProviding {
+private final class TestableURLSessionProvider: URLSessionProviding {
 
     private let dataTaskResponse: String
 
@@ -36,7 +36,7 @@ private class TestableURLSessionProvider: URLSessionProviding {
     } 
 }
 
-private struct TestableDecodable: Decodable {
+private struct EmptyDecodable: Decodable {
 
 }
 
@@ -64,7 +64,7 @@ final class RemoteDataProviderTests: XCTestCase {
 
         dataProvider.fetchJSONData(
             withDataInfo: dataInfoWithInvalidURL
-        ) { (_: TestableDecodable?, error: DataFetchError?) in
+        ) { (_: EmptyDecodable?, error: DataFetchError?) in
             expectation.fulfill()
 
             XCTAssertNotNil(error)
@@ -82,7 +82,7 @@ final class RemoteDataProviderTests: XCTestCase {
 
         dataProvider.fetchJSONData(
             withDataInfo: TestableJSONDataInfo(urlString: "www.sme.sk")
-        ){ (_: TestableDecodable?, error: DataFetchError?) in
+        ){ (_: EmptyDecodable?, error: DataFetchError?) in
             expectation.fulfill()
 
             XCTAssertNotNil(error)
@@ -94,7 +94,7 @@ final class RemoteDataProviderTests: XCTestCase {
 
 extension RemoteDataProviderTests {
 
-    // MARK: - QRPointsProviding tests
+    // MARK: - QRPointsProviding implementation tests
 
     func testGetAllQRPoints() {
         let expectation = XCTestExpectation(description: "Wait for get.")

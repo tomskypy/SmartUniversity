@@ -19,7 +19,8 @@ private class TestableQRPointsProvider: QRPointsProviding {
 
     func fetchJSONData<JSONData>(
         withDataInfo info: RemoteJSONDataInfo,
-        completion: @escaping (JSONData?, DataFetchError?) -> Void
+        completion: @escaping (JSONData?, DataFetchError?) -> Void,
+        onQueue queue: DispatchQueue
     ) where JSONData : Decodable {
         fatalError("not implemented")
     }

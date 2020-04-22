@@ -20,7 +20,7 @@ final class QRPointScanningHandler: QRPointScanningHandling {
 
     weak var delegate: QRPointScanningHandlerDelegate?
 
-    private(set) var qrPoints: [QRPoint] = []
+    var qrPoints: [QRPoint] = []
 
     private let qrPointsProvider: QRPointsProviding
 
@@ -37,7 +37,6 @@ final class QRPointScanningHandler: QRPointScanningHandling {
         if let detectedQRPoint = qrPoints.first(where: { $0.uuidString == value}) {
             delegate?.qrPointScanningHandler(self, didFetchQRPoint: detectedQRPoint, forScannedValue: value)
         } else {
-            // FIXME: Add refetch before sending "could not"
             delegate?.qrPointScanningHandler(self, couldNotFetchQRPointForScannedValue: value)
         }
     }

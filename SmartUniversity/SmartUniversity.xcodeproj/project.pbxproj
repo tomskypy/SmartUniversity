@@ -48,6 +48,7 @@
 		352B3D37244FA6BC00B422CF /* PresentationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D35244FA26500B422CF /* PresentationHandling.swift */; };
 		352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */; };
 		352B3D3C244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3B244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift */; };
+		352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
@@ -141,6 +142,7 @@
 		352B3D35244FA26500B422CF /* PresentationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandling.swift; sourceTree = "<group>"; };
 		352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandlerTests.swift; sourceTree = "<group>"; };
 		352B3D3B244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerQRPointScanningTests.swift; sourceTree = "<group>"; };
+		352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointScanningHandlerTests.swift; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				35B209B92421A376005E65AE /* WebViewHandlerTests.swift */,
 				35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */,
 				352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */,
+				352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */,
 			);
 			path = "Dependencies Tests";
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,
 				3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */,
 				352B3D37244FA6BC00B422CF /* PresentationHandling.swift in Sources */,
+				352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,
 				3524E04424188353007A344E /* FrameBasedScreenView.swift in Sources */,
 				354329CC2415A8C80065614A /* BaseViewController.swift in Sources */,

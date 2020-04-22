@@ -23,7 +23,7 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     func makeRootViewController() -> UIViewController {
         MainNavigationViewController(controllers: [
             makeTabBarMunimapViewController(),
-            makeTabBarARViewController()
+            makeTabBarQRScannerViewController()
         ])
     }
 
@@ -40,6 +40,13 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     private func makeTabBarARViewController() -> UIViewController {
         let controller = ARViewController()
         controller.tabBarItem = UITabBarItem(title: "AR View", image: UIImage(systemName: "qrcode.viewfinder"), tag: 1)
+
+        return controller
+    }
+
+    private func makeTabBarQRScannerViewController() -> UIViewController {
+        let controller = QRScannerViewController()
+        controller.tabBarItem = UITabBarItem(title: "QR Scan", image: UIImage(systemName: "qrcode.viewfinder"), tag: 1)
 
         return controller
     }

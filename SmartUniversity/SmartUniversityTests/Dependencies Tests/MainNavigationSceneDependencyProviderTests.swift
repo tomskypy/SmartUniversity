@@ -26,7 +26,7 @@ final class MainNavigationSceneDependencyProviderTests: XCTestCase {
         let tabViewControllers = (provider.makeRootViewController() as! UITabBarController).viewControllers!
 
         XCTAssertTrue(MunimapViewController.self == type(of: tabViewControllers[0]))
-        XCTAssertTrue(ARViewController.self == type(of: tabViewControllers[1]))
+        XCTAssertTrue(QRScannerViewController.self == type(of: tabViewControllers[1]))
     }
 
 }

@@ -23,3 +23,10 @@ struct QRPoint: Decodable {
         case rooms = "arObjects"
     }
 }
+
+extension QRPoint: Equatable {
+
+    static func == (lhs: QRPoint, rhs: QRPoint) -> Bool {
+        lhs.uuidString == rhs.uuidString
+    }
+}

@@ -65,7 +65,9 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
         guard let captureSession = captureSession else { return }
 
         if captureSession.isRunning == false {
-            captureSession.startRunning()
+            DispatchQueue.main.async {
+                captureSession.startRunning()
+            }
         }
 
         let previewLayer = makeVideoPreviewLayer(for: captureSession, captureView: view)

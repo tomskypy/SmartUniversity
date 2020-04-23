@@ -6,5 +6,40 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
+import Foundation
+
 final class ARViewController: BaseViewController<ARScreenView> {
+
+    let arSceneViewHandler: ARSceneViewHandling
+
+    convenience init() {
+        self.init(arSceneViewHandler: ARSceneViewHandler()) // TODO add reference images
+    }
+
+    init(arSceneViewHandler: ARSceneViewHandling) {
+        self.arSceneViewHandler = arSceneViewHandler
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        arSceneViewHandler.handleViewDidLoad(view)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        arSceneViewHandler.handleViewWillAppear(view)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        arSceneViewHandler.handleViewWillDisappear(view)
+    }
 }

@@ -12,26 +12,48 @@ final class ARScreenView: FrameBasedView {
 
     override var margins: UIEdgeInsets { UIEdgeInsets(all: 50) }
 
+    var arSceneView: UIView? {
+        willSet {
+            arSceneView?.removeFromSuperview()
+        }
+        didSet {
+            if let arSceneView = arSceneView {
+                addSubview(arSceneView)
+            }
+
+            setNeedsLayout()
+        }
+    }
+
     let testLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello, Smart University developer!"
         label.textColor = .green
-
         return label
     }()
 
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+        var frames: [(UIView, CGRect)] = []
 
-        let availableWidth = width - margins.left - margins.right
+        let contentWidth = width - margins.left - margins.right
 
         let labelFrame =  CGRect(
             x: margins.top,
             y: margins.left,
-            width: availableWidth,
-            height: testLabel.height(constrainedToWidth: availableWidth)
+            width: contentWidth,
+            height: testLabel.height(constrainedToWidth: contentWidth)
         )
+        frames.append((testLabel, labelFrame))
 
-        return [(view: testLabel, frame: labelFrame)]
+        if let arSceneView = arSceneView {
+            let sceneViewFrame = CGRect(
+                origin: CGPoint(x: 0, y: -safeAreaInsets.top),
+                size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom))
+
+            frames.append((arSceneView, sceneViewFrame))
+        }
+
+        return frames
     }
 }
 
@@ -43,3 +65,5 @@ extension ARScreenView: BaseScreenView {
         addSubview(testLabel)
     }
 }
+
+extension ARScreenView: ARSceneContainerView { }

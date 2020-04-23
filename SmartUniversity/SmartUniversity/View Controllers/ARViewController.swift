@@ -13,7 +13,8 @@ final class ARViewController: BaseViewController<ARScreenView> {
     let arSceneViewHandler: ARSceneViewHandling
 
     convenience init() {
-        self.init(arSceneViewHandler: ARSceneViewHandler()) // TODO add reference images
+        let arReferenceImages = PosterReferenceImageProvider.shared.referenceImages
+        self.init(arSceneViewHandler: ARSceneViewHandler(referenceImages: arReferenceImages))
     }
 
     init(arSceneViewHandler: ARSceneViewHandling) {

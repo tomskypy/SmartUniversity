@@ -74,6 +74,10 @@
 		357EC62D240DE10D0030B6A3 /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */; };
 		357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */; };
 		358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */; };
+		358A43472451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */; };
+		358A43482451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */; };
+		358A434A245119D30064D2F8 /* ARSceneContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A4349245119D30064D2F8 /* ARSceneContainerView.swift */; };
+		358A434B245119D30064D2F8 /* ARSceneContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A4349245119D30064D2F8 /* ARSceneContainerView.swift */; };
 		35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */; };
 		35AC87CD24314910009C0E9D /* RemoteJSONDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */; };
 		35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
@@ -156,6 +160,8 @@
 		357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedView.swift; sourceTree = "<group>"; };
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Init.swift"; sourceTree = "<group>"; };
 		358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProvidingTests.swift; sourceTree = "<group>"; };
+		358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneViewHandler.swift; sourceTree = "<group>"; };
+		358A4349245119D30064D2F8 /* ARSceneContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneContainerView.swift; sourceTree = "<group>"; };
 		35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProviding.swift; sourceTree = "<group>"; };
 		35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProviding.swift; sourceTree = "<group>"; };
 		35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProvider.swift; sourceTree = "<group>"; };
@@ -284,6 +290,7 @@
 				350DE444243BD997003D2FE1 /* CaptureSessionHandler.swift */,
 				350CF6F4243D4C7500282A64 /* QRPointScanningHandler.swift */,
 				352B3D35244FA26500B422CF /* PresentationHandling.swift */,
+				358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -354,6 +361,7 @@
 				3524E032241872D9007A344E /* FrameBasedScreenView.swift */,
 				350DE446243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift */,
 				350CF6F6243D4F6300282A64 /* QRPointScanningHandlerDelegate.swift */,
+				358A4349245119D30064D2F8 /* ARSceneContainerView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,10 +519,12 @@
 				357EC622240DD8FB0030B6A3 /* ARScreenView.swift in Sources */,
 				3524E03F24187A4C007A344E /* MunimapViewController.swift in Sources */,
 				354329D42415ABC80065614A /* SceneDependencyProviding.swift in Sources */,
+				358A434A245119D30064D2F8 /* ARSceneContainerView.swift in Sources */,
 				357EC62D240DE10D0030B6A3 /* FrameBasedView.swift in Sources */,
 				35AC87CD24314910009C0E9D /* RemoteJSONDataProviding.swift in Sources */,
 				350CF6F5243D4C7500282A64 /* QRPointScanningHandler.swift in Sources */,
 				3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */,
+				358A43472451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */,
 				3503C936240C5A52002F2457 /* AppDelegate.swift in Sources */,
 				35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */,
 				3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */,
@@ -574,6 +584,7 @@
 				350CF6FC243D59FD00282A64 /* QRScannerScreenView.swift in Sources */,
 				354329D22415A8DA0065614A /* UIEdgeInsets+Init.swift in Sources */,
 				350CF6FA243D59F500282A64 /* CaptureSessionProvider.swift in Sources */,
+				358A434B245119D30064D2F8 /* ARSceneContainerView.swift in Sources */,
 				35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */,
 				354329DB2415ABFD0065614A /* SceneDependencyProviding.swift in Sources */,
 				35E746D42431765E003BDA00 /* QRPointsProviding.swift in Sources */,
@@ -591,6 +602,7 @@
 				3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */,
 				354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */,
 				354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */,
+				358A43482451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */,
 				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,
 				3524E04324188347007A344E /* MunimapViewController.swift in Sources */,
 				35E746D924317676003BDA00 /* ARLocalizedObject.swift in Sources */,

@@ -6,11 +6,11 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
+import ARKit
 
 final class ARViewController: BaseViewController<ARScreenView> {
 
-    let arSceneViewHandler: ARSceneViewHandling
+    private var arSceneViewHandler: ARSceneViewHandling
 
     convenience init() {
         let arReferenceImages = PosterReferenceImageProvider.shared.referenceImages
@@ -20,6 +20,8 @@ final class ARViewController: BaseViewController<ARScreenView> {
     init(arSceneViewHandler: ARSceneViewHandling) {
         self.arSceneViewHandler = arSceneViewHandler
         super.init(nibName: nil, bundle: nil)
+
+        self.arSceneViewHandler.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -42,5 +44,12 @@ final class ARViewController: BaseViewController<ARScreenView> {
         super.viewWillDisappear(animated)
 
         arSceneViewHandler.handleViewWillDisappear(view)
+    }
+}
+
+extension ARViewController: ARSceneViewHandlerDelegate {
+
+    func arSceneViewHandler(_ handler: ARSceneViewHandler, didDetectReferenceImageOnAnchor anchor: ARAnchor) {
+        // TODO implement AR poster drawing and world centering 
     }
 }

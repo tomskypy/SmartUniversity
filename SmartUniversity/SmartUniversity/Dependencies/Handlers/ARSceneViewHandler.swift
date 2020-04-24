@@ -11,6 +11,8 @@ import ARKit
 
 protocol ARSceneViewHandling {
 
+    var delegate: ARSceneViewHandlerDelegate? { get set }
+
     var referenceImages: Set<ARReferenceImage> { get set }
 
     func handleViewDidLoad(_ view: UIView)
@@ -18,7 +20,9 @@ protocol ARSceneViewHandling {
     func handleViewWillDisappear(_ view: UIView)
 }
 
-final class ARSceneViewHandler: ARSceneViewHandling {
+final class ARSceneViewHandler: NSObject, ARSceneViewHandling {
+
+    weak var delegate: ARSceneViewHandlerDelegate?
 
     var referenceImages: Set<ARReferenceImage> {
         didSet {
@@ -42,6 +46,8 @@ final class ARSceneViewHandler: ARSceneViewHandling {
         guard var sceneContainerView = view as? ARSceneContainerView else { return }
 
         let sceneView = ARSCNView()
+        sceneView.delegate = self
+
         sceneContainerView.arSceneView = sceneView
         self.sceneView = sceneView
     }
@@ -66,5 +72,14 @@ final class ARSceneViewHandler: ARSceneViewHandling {
 
     private func pauseSceneSession() {
         sceneView?.session.pause()
+    }
+}
+
+extension ARSceneViewHandler: ARSCNViewDelegate {
+
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let imageAnchor = anchor as? ARImageAnchor else { return }
+
+        delegate?.arSceneViewHandler(self, didDetectReferenceImageOnAnchor: imageAnchor)
     }
 }

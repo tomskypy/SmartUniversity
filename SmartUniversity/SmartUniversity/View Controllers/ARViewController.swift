@@ -10,18 +10,24 @@ import ARKit
 
 final class ARViewController: BaseViewController<ARScreenView> {
 
-    private var arSceneViewHandler: ARSceneViewHandling
+    private var sceneViewHandler: ARSceneViewHandling
+    private let sceneObjectProvider: SceneObjectProviding
 
     convenience init() {
         let arReferenceImages = PosterReferenceImageProvider.shared.referenceImages
-        self.init(arSceneViewHandler: ARSceneViewHandler(referenceImages: arReferenceImages))
+        let posterImage = PosterReferenceImageProvider.shared.image
+        self.init(
+            sceneViewHandler: ARSceneViewHandler(referenceImages: arReferenceImages),
+            sceneObjectProvider: RoomsSceneObjectProvider(posterImage: posterImage)
+        )
     }
 
-    init(arSceneViewHandler: ARSceneViewHandling) {
-        self.arSceneViewHandler = arSceneViewHandler
+    init(sceneViewHandler: ARSceneViewHandling, sceneObjectProvider: SceneObjectProviding) {
+        self.sceneViewHandler = sceneViewHandler
+        self.sceneObjectProvider = sceneObjectProvider
         super.init(nibName: nil, bundle: nil)
 
-        self.arSceneViewHandler.delegate = self
+        self.sceneViewHandler.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -31,25 +37,33 @@ final class ARViewController: BaseViewController<ARScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        arSceneViewHandler.handleViewDidLoad(view)
+        sceneViewHandler.handleViewDidLoad(view)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        arSceneViewHandler.handleViewWillAppear(view)
+        sceneViewHandler.handleViewWillAppear(view)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        arSceneViewHandler.handleViewWillDisappear(view)
+        sceneViewHandler.handleViewWillDisappear(view)
     }
 }
 
 extension ARViewController: ARSceneViewHandlerDelegate {
 
-    func arSceneViewHandler(_ handler: ARSceneViewHandler, didDetectReferenceImageOnAnchor anchor: ARAnchor) {
-        // TODO implement AR poster drawing and world centering 
+    func arSceneViewHandler(
+        _ handler: ARSceneViewHandler,
+        didDetectReferenceImage imageAnchor: ARImageAnchor,
+        onNode node: SCNNode
+    ) {
+        let posterNode = sceneObjectProvider.makeNodeFor(
+            .poster(physicalSize: imageAnchor.referenceImage.physicalSize)
+        )
+
+        node.addChildNode(posterNode)
     }
 }

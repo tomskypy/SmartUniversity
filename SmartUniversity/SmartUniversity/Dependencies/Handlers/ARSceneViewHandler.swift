@@ -80,6 +80,6 @@ extension ARSceneViewHandler: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
 
-        delegate?.arSceneViewHandler(self, didDetectReferenceImageOnAnchor: imageAnchor)
+        delegate?.arSceneViewHandler(self, didDetectReferenceImage: imageAnchor, onNode: node)
     }
 }

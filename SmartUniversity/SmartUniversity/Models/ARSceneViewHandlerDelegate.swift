@@ -10,5 +10,9 @@ import ARKit
 
 protocol ARSceneViewHandlerDelegate: AnyObject {
 
-    func arSceneViewHandler(_ handler: ARSceneViewHandler, didDetectReferenceImageOnAnchor anchor: ARAnchor)
+    func arSceneViewHandler(
+        _ handler: ARSceneViewHandler,
+        didDetectReferenceImage imageAnchor: ARImageAnchor,
+        onNode node: SCNNode
+    )
 }

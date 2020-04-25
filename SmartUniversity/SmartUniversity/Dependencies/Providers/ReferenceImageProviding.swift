@@ -10,5 +10,6 @@ import ARKit
 
 protocol ReferenceImageProviding {
 
+    var image: UIImage { get }
     var referenceImages: Set<ARReferenceImage> { get }
 }

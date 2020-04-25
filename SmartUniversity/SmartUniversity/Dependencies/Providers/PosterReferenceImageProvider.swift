@@ -9,15 +9,20 @@
 import ARKit
 
 struct PosterReferenceImageProvider: ReferenceImageProviding {
-
     static let shared = PosterReferenceImageProvider()
 
-    var referenceImages: Set<ARReferenceImage>
+    let referenceImages: Set<ARReferenceImage>
+    let image: UIImage
 
     private init() {
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Could not load QRPoint poster AR reference image resources.")
         }
+        guard let image = UIImage(named: "qrPointARImage") else {
+            fatalError("Could not load QRPoint poster image.")
+        }
+        
         self.referenceImages = referenceImages
+        self.image = image
     }
 }

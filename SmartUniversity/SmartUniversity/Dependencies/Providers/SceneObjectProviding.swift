@@ -10,6 +10,7 @@ import ARKit
 
 enum SceneObjectType {
     case poster(physicalSize: CGSize)
+    case room(objectData: ARLocalizedObject) // TODO rename ARLocalizedObject to ARLocalizedObjectData
 }
 
 protocol SceneObjectProviding {

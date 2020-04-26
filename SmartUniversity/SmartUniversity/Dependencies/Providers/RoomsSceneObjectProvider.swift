@@ -11,9 +11,11 @@ import ARKit
 struct RoomsSceneObjectProvider: SceneObjectProviding {
 
     let posterImage: UIImage
+    let meshObjectProvider: MeshObjectProviding
 
-    init(posterImage: UIImage) {
+    init(posterImage: UIImage, meshObjectProvider: MeshObjectProviding = MeshObjectProvider.shared) {
         self.posterImage = posterImage
+        self.meshObjectProvider = meshObjectProvider
     }
 
     func makeNodeFor(_ objectType: SceneObjectType) -> SCNNode {
@@ -45,35 +47,14 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
     }
 
     private func makeRoomNode(dimensions: ARDimensions, position: ARPosition) -> SCNNode {
-        let cubeMesh = getMeshBox(dimensions: dimensions, chamferRadius: 0)
+        let cubeMesh = meshObjectProvider.makeMeshBox(fromBox: makeBox(dimensions: dimensions, chamferRadius: 0))
         let cubeNode = SCNNode(geometry: cubeMesh)
         cubeNode.position = SCNVector3(position.right ?? 0, position.up ?? 0, (position.front ?? 0) * -1) // TODO convenience init ?
 //        cubeNode.runAction(self.objectHighlightAction)
         return cubeNode
     }
 
-    private func getMeshBox(dimensions: ARDimensions, chamferRadius: CGFloat) -> SCNBox { // TODO merge with getBox
-
-        let sm = "float u = _surface.diffuseTexcoord.x; \n" +
-            "float v = _surface.diffuseTexcoord.y; \n" +
-            "int u100 = int(u * 100); \n" +
-            "int v100 = int(v * 100); \n" +
-            "if (u100 % 99 == 0 || v100 % 99 == 0) { \n" +
-            "  // do nothing \n" +
-            "} else { \n" +
-            "    discard_fragment(); \n" +
-        "} \n"
-
-        let box = getBox(dimensions: dimensions, chamferRadius: chamferRadius)
-
-        box.firstMaterial?.emission.contents = UIColor.green // TODO what is this color
-        box.firstMaterial?.shaderModifiers = [SCNShaderModifierEntryPoint.surface: sm]
-        box.firstMaterial?.isDoubleSided = true
-
-        return box
-    }
-
-    private func getBox(dimensions: ARDimensions, chamferRadius: CGFloat) -> SCNBox {
+    private func makeBox(dimensions: ARDimensions, chamferRadius: CGFloat) -> SCNBox {
 
         let box = SCNBox( // TODO convenience init(dimensions:)
             width: dimensions.width,

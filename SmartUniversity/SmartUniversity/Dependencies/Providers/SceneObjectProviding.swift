@@ -15,7 +15,5 @@ enum SceneObjectType {
 
 protocol SceneObjectProviding {
 
-    init(posterImage: UIImage)
-
     func makeNodeFor(_ objectType: SceneObjectType) -> SCNNode
 }

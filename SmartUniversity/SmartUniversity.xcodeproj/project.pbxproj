@@ -69,6 +69,7 @@
 		354329D82415ABF60065614A /* WindowSceneHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329D72415ABF60065614A /* WindowSceneHandling.swift */; };
 		354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329D72415ABF60065614A /* WindowSceneHandling.swift */; };
 		354329DB2415ABFD0065614A /* SceneDependencyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329D32415ABC80065614A /* SceneDependencyProviding.swift */; };
+		3565E5EF24564B720059D9E1 /* MeshObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */; };
 		3578A7F9245259D100160793 /* ReferenceImageProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7F8245259D100160793 /* ReferenceImageProviding.swift */; };
 		3578A7FB24525ADE00160793 /* PosterReferenceImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */; };
 		3578A7FD2452612700160793 /* ARSceneViewHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */; };
@@ -160,6 +161,7 @@
 		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
 		354329D32415ABC80065614A /* SceneDependencyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDependencyProviding.swift; sourceTree = "<group>"; };
 		354329D72415ABF60065614A /* WindowSceneHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowSceneHandling.swift; sourceTree = "<group>"; };
+		3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshObjectProvider.swift; sourceTree = "<group>"; };
 		3578A7F8245259D100160793 /* ReferenceImageProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceImageProviding.swift; sourceTree = "<group>"; };
 		3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterReferenceImageProvider.swift; sourceTree = "<group>"; };
 		3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneViewHandlerDelegate.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */,
 				3518743724532B9100053343 /* SceneObjectProviding.swift */,
 				3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */,
+				3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */,
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */,
 				35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
+				3565E5EF24564B720059D9E1 /* MeshObjectProvider.swift in Sources */,
 				354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */,
 				35AC87D124314BBA009C0E9D /* QRPoint.swift in Sources */,
 				350DE449243BE6B4003D2FE1 /* CaptureDeviceProvider.swift in Sources */,

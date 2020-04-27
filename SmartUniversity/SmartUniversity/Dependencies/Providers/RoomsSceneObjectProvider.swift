@@ -29,10 +29,7 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = posterImage
 
-        let plane = SCNPlane(
-            width: posterSize.width,
-            height: posterSize.height
-        )
+        let plane = SCNPlane(size: posterSize)
         plane.materials = [imageMaterial]
 
         let planeNode = SCNNode(geometry: plane)
@@ -55,23 +52,16 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
             fromBox: makeBox(dimensions: dimensions, chamferRadius: 0, color: tint ?? model.defaultTint)
         )
         let cubeNode = SCNNode(geometry: cubeMesh)
-        cubeNode.position = SCNVector3(position.right ?? 0, position.up ?? 0, (position.front ?? 0) * -1) // TODO convenience init ?
-//        cubeNode.runAction(self.objectHighlightAction)
+        cubeNode.position = SCNVector3(position: position)
+
+//        cubeNode.runAction(self.objectHighlightAction) // TODO utilize actions? Either way probably not in provider...
+
         return cubeNode
     }
 
-    private func makeBox(
-        dimensions: ARDimensions,
-        chamferRadius: CGFloat,
-        color: UIColor
-    ) -> SCNBox {
-        let box = SCNBox( // TODO convenience init(dimensions:)
-            width: dimensions.width,
-            height: dimensions.height,
-            length: dimensions.length,
-            chamferRadius: chamferRadius
-        )
+    private func makeBox(dimensions: ARDimensions, chamferRadius: CGFloat, color: UIColor) -> SCNBox {
 
+        let box = SCNBox(dimensions: dimensions, chamferRadius: chamferRadius)
         box.firstMaterial?.diffuse.contents = color
         box.firstMaterial?.transparency = 0.8
 

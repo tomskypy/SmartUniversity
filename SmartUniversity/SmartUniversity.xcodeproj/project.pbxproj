@@ -72,6 +72,7 @@
 		3565E5EF24564B720059D9E1 /* MeshObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */; };
 		3565E5F3245651020059D9E1 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F2245651020059D9E1 /* HexColor.swift */; };
 		3565E5F52456543B0059D9E1 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F42456543B0059D9E1 /* UIColor+HexString.swift */; };
+		3565E5F824565C240059D9E1 /* SCNObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F724565C240059D9E1 /* SCNObject+Init.swift */; };
 		3578A7F9245259D100160793 /* ReferenceImageProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7F8245259D100160793 /* ReferenceImageProviding.swift */; };
 		3578A7FB24525ADE00160793 /* PosterReferenceImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */; };
 		3578A7FD2452612700160793 /* ARSceneViewHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */; };
@@ -166,6 +167,7 @@
 		3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshObjectProvider.swift; sourceTree = "<group>"; };
 		3565E5F2245651020059D9E1 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		3565E5F42456543B0059D9E1 /* UIColor+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
+		3565E5F724565C240059D9E1 /* SCNObject+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNObject+Init.swift"; sourceTree = "<group>"; };
 		3578A7F8245259D100160793 /* ReferenceImageProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceImageProviding.swift; sourceTree = "<group>"; };
 		3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterReferenceImageProvider.swift; sourceTree = "<group>"; };
 		3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneViewHandlerDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +341,14 @@
 			path = "Dependencies Tests";
 			sourceTree = "<group>";
 		};
+		3565E5F624565B8F0059D9E1 /* SceneKit */ = {
+			isa = PBXGroup;
+			children = (
+				3565E5F724565C240059D9E1 /* SCNObject+Init.swift */,
+			);
+			path = SceneKit;
+			sourceTree = "<group>";
+		};
 		357EC619240DCF890030B6A3 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +401,7 @@
 		357EC62E240DE7150030B6A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3565E5F624565B8F0059D9E1 /* SceneKit */,
 				357EC62F240DE71F0030B6A3 /* UI */,
 			);
 			path = Extensions;
@@ -556,6 +567,7 @@
 				3578A7FB24525ADE00160793 /* PosterReferenceImageProvider.swift in Sources */,
 				3578A7F9245259D100160793 /* ReferenceImageProviding.swift in Sources */,
 				3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */,
+				3565E5F824565C240059D9E1 /* SCNObject+Init.swift in Sources */,
 				35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */,
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */,
 				35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,

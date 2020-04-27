@@ -25,9 +25,9 @@ struct ARLocalizedObject: Decodable {
 
 struct ARPosition: Decodable {
 
-    let right: CGFloat?
-    let up: CGFloat?
-    let front: CGFloat?
+    let right: CGFloat
+    let up: CGFloat
+    let front: CGFloat
 
     private enum CodingKeys: String, CodingKey {
         case right = "r"

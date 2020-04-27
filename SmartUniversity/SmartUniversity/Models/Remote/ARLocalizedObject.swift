@@ -13,11 +13,13 @@ struct ARLocalizedObject: Decodable {
     let label: String
     let dimensions: ARDimensions
     let position: ARPosition
+    let tint: HexColor?
 
     private enum CodingKeys: String, CodingKey {
         case label
         case dimensions = "dimen"
         case position = "pos"
+        case tint
     }
 }
 

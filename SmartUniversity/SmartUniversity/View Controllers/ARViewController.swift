@@ -18,7 +18,9 @@ final class ARViewController: BaseViewController<ARScreenView> {
         let posterImage = PosterReferenceImageProvider.shared.image
         self.init(
             sceneViewHandler: ARSceneViewHandler(referenceImages: arReferenceImages),
-            sceneObjectProvider: RoomsSceneObjectProvider(posterImage: posterImage)
+            sceneObjectProvider: RoomsSceneObjectProvider(
+                model: RoomsSceneObjectProvider.Model(posterImage: posterImage, defaultTint: UIColor.red) // FIXME: make a dependency
+            )
         )
     }
 

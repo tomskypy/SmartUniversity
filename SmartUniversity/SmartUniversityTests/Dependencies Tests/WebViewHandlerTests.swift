@@ -11,7 +11,7 @@ import WebKit
 
 private final class TestableWebView: WKWebView {
 
-    var urlRequestReceivedInLoad: URLRequest? = nil
+    var urlRequestReceivedInLoad: URLRequest?
 
     override func load(_ request: URLRequest) -> WKNavigation? {
         urlRequestReceivedInLoad = request

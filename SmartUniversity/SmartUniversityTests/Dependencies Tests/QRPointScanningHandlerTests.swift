@@ -29,10 +29,10 @@ private class TestableQRPointsProvider: QRPointsProviding {
 
 private class TestableQRPointScanningHandlerDelegate: QRPointScanningHandlerDelegate {
 
-    var qrPointReceivedInDidFetchQRPoint: QRPoint? = nil
-    var scannedValueReceivedInDidFetchQRPoint: String? = nil
+    var qrPointReceivedInDidFetchQRPoint: QRPoint?
+    var scannedValueReceivedInDidFetchQRPoint: String?
 
-    var scannedValueReceivedInCouldNotFetchQRPoint: String? = nil
+    var scannedValueReceivedInCouldNotFetchQRPoint: String?
 
     func qrPointScanningHandler(
         _ handler: QRPointScanningHandling,

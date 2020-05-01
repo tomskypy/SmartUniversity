@@ -11,9 +11,9 @@ import WebKit
 
 private final class TestableWebViewHandler: WebViewHandling {
 
-    var webView: WKWebView? = nil
+    var webView: WKWebView?
 
-    var urlReceivedInLoadURL: URL? = nil
+    var urlReceivedInLoadURL: URL?
 
     func loadURL(_ url: URL) {
         urlReceivedInLoadURL = url

@@ -12,7 +12,7 @@ private final class IdentifiableWindow: UIWindow, Identifiable {
 
     let id = UUID()
 
-    var didReceiveMakeKeyAndVisible: Bool? = nil
+    var didReceiveMakeKeyAndVisible: Bool?
 
     override func makeKeyAndVisible() {
         super.makeKeyAndVisible()
@@ -28,11 +28,11 @@ private final class IdentifiableViewController: UIViewController, Identifiable {
 
 private final class TestableSceneHandler: WindowSceneHandling {
 
-    var didReceiveWindowWillBecomeVisible: Bool? = nil
-    var wasWindowMadeKeyAndVisibleOnWillBecomeVisible: Bool? = nil
+    var didReceiveWindowWillBecomeVisible: Bool?
+    var wasWindowMadeKeyAndVisibleOnWillBecomeVisible: Bool?
 
-    var didReceiveWindowDidBecomeVisible: Bool? = nil
-    var wasWindowMadeKeyAndVisibleOnDidBecomeVisible: Bool? = nil
+    var didReceiveWindowDidBecomeVisible: Bool?
+    var wasWindowMadeKeyAndVisibleOnDidBecomeVisible: Bool?
 
     func windowWillBecomeVisible(_ window: UIWindow) {
         didReceiveWindowWillBecomeVisible = true

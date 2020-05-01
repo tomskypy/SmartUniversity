@@ -16,11 +16,11 @@ final class TestableCaptureSessionHandler: CaptureSessionHandling {
         }
     }
 
-    var didSetDelegate: Bool? = nil
+    var didSetDelegate: Bool?
 
-    var viewReceivedInViewDidLoad: UIView? = nil
-    var viewReceivedInViewWillAppear: UIView? = nil
-    var viewReceivedInViewWillDisappear: UIView? = nil
+    var viewReceivedInViewDidLoad: UIView?
+    var viewReceivedInViewWillAppear: UIView?
+    var viewReceivedInViewWillDisappear: UIView?
 
     func handleViewDidLoad(_ view: UIView) {
         viewReceivedInViewDidLoad = view
@@ -44,10 +44,10 @@ final class TestableQRPointScanningHandler: QRPointScanningHandling {
         }
     }
 
-    var didSetDelegate: Bool? = nil
+    var didSetDelegate: Bool?
 
-    var viewReceivedInViewDidLoad: UIView? = nil
-    var qrCodeValueReceived: String? = nil
+    var viewReceivedInViewDidLoad: UIView?
+    var qrCodeValueReceived: String?
 
     func handleViewDidLoad(_ view: UIView) {
         viewReceivedInViewDidLoad = view
@@ -61,8 +61,8 @@ final class TestableQRPointScanningHandler: QRPointScanningHandling {
 
 final class TestableQRScannerScreenView: QRScannerScreenView {
 
-    var didCallHideBlurOverlay: Bool? = nil
-    var boundsReceivedInShowBlurOverlay: CGRect? = nil
+    var didCallHideBlurOverlay: Bool?
+    var boundsReceivedInShowBlurOverlay: CGRect?
 
     override func hideBlurOverlay() {
         didCallHideBlurOverlay = true
@@ -75,7 +75,7 @@ final class TestableQRScannerScreenView: QRScannerScreenView {
 
 final class TestablePresentationHandler: PresentationHandling {
 
-    var viewControllerReceivedInPresent: UIViewController? = nil
+    var viewControllerReceivedInPresent: UIViewController?
 
     func present(_ viewController: UIViewController, onViewController: UIViewController, animated: Bool) {
         viewControllerReceivedInPresent = viewController

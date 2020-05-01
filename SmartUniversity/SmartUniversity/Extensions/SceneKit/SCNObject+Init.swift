@@ -11,7 +11,7 @@ import SceneKit
 extension SCNVector3 {
 
     init(position: ARPosition) {
-        self.init(position.right, position.up, -position.front)
+        self.init(position.right, -position.front, -position.up)
     }
 }
 

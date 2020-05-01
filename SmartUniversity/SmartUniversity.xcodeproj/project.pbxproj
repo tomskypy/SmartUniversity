@@ -360,6 +360,24 @@
 			path = ARKit;
 			sourceTree = "<group>";
 		};
+		351C3ED7245CC494001D1278 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				354329D72415ABF60065614A /* WindowSceneHandling.swift */,
+				352B3D35244FA26500B422CF /* PresentationHandling.swift */,
+				3524E03C24187729007A344E /* WebViewHandler.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		351C3ED8245CC4C4001D1278 /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */,
+			);
+			path = ARKit;
+			sourceTree = "<group>";
+		};
 		354329AC24157D550065614A /* Providers */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,12 +393,10 @@
 		354329AF24157D9D0065614A /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				354329D72415ABF60065614A /* WindowSceneHandling.swift */,
-				3524E03C24187729007A344E /* WebViewHandler.swift */,
+				351C3ED7245CC494001D1278 /* UIKit */,
+				351C3ED8245CC4C4001D1278 /* ARKit */,
 				350DE444243BD997003D2FE1 /* CaptureSessionHandler.swift */,
 				350CF6F4243D4C7500282A64 /* QRPointScanningHandler.swift */,
-				352B3D35244FA26500B422CF /* PresentationHandling.swift */,
-				358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";

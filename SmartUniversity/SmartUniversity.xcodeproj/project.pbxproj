@@ -477,13 +477,13 @@
 		357EC62E240DE7150030B6A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				357EC62F240DE71F0030B6A3 /* UIKit */,
 				3565E5F624565B8F0059D9E1 /* SceneKit */,
-				357EC62F240DE71F0030B6A3 /* UI */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		357EC62F240DE71F0030B6A3 /* UI */ = {
+		357EC62F240DE71F0030B6A3 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
 				357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */,
@@ -491,7 +491,7 @@
 				3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */,
 				3565E5F42456543B0059D9E1 /* UIColor+HexString.swift */,
 			);
-			path = UI;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		35AC87D224314C77009C0E9D /* Remote */ = {

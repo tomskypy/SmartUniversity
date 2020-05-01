@@ -30,10 +30,10 @@ final class ARScreenView: FrameBasedView {
         return label
     }()
 
-    override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+    override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
         var frames: [(UIView, CGRect)] = []
 
-        let contentWidth = width - insets.left - insets.right
+        let contentWidth = bounds.width - insets.left - insets.right
 
         let labelFrame =  CGRect(
             x: insets.top,

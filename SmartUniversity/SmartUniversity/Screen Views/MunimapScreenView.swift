@@ -8,7 +8,7 @@
 
 import WebKit
 
-class MunimapScreenView: FrameBasedScreenView {
+class MunimapScreenView: FrameBasedView {
 
     let webView = WKWebView()
 

@@ -35,9 +35,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         self.qrPointScanningHandler.delegate = self
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { nil }
 
     override func viewDidLoad() {
         super.viewDidLoad()

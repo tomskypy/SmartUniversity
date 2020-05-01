@@ -259,8 +259,8 @@
 			children = (
 				3516B3692416F46F009C5D36 /* Extensions Tests */,
 				3516B3662416F147009C5D36 /* View Controller Tests */,
-				354329C0241599EF0065614A /* Dependencies Tests */,
 				354329B724157FD40065614A /* Model Tests */,
+				354329C0241599EF0065614A /* Dependencies Tests */,
 				3503C94E240C5A53002F2457 /* Info.plist */,
 			);
 			path = SmartUniversityTests;

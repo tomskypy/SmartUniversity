@@ -54,8 +54,6 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
         let cubeNode = SCNNode(geometry: cubeMesh)
         cubeNode.position = SCNVector3(position: position)
 
-//        cubeNode.runAction(self.objectHighlightAction) // TODO utilize actions? Either way probably not in provider...
-
         return cubeNode
     }
 

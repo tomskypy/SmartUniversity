@@ -21,7 +21,7 @@ struct PosterReferenceImageProvider: ReferenceImageProviding {
         guard let image = UIImage(named: "qrPointARImage") else {
             fatalError("Could not load QRPoint poster image.")
         }
-        
+
         self.referenceImages = referenceImages
         self.image = image
     }

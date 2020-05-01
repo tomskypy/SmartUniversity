@@ -34,7 +34,6 @@ struct MeshObjectProvider: MeshObjectProviding {
     private init() { }
 
     func makeMeshBox(fromBox box: SCNBox) -> SCNBox {
-        box.firstMaterial?.emission.contents = UIColor.green // TODO what is this color
         box.firstMaterial?.shaderModifiers = [SCNShaderModifierEntryPoint.surface: Self.meshingShaderModifier]
         box.firstMaterial?.isDoubleSided = true
 

@@ -10,7 +10,7 @@ import UIKit
 
 final class ARScreenView: FrameBasedView {
 
-    override var margins: UIEdgeInsets { .init(all: 50) }
+    override var insets: UIEdgeInsets { .init(all: 50) }
 
     var arSceneView: UIView? {
         willSet { arSceneView?.removeFromSuperview() }
@@ -33,11 +33,11 @@ final class ARScreenView: FrameBasedView {
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
         var frames: [(UIView, CGRect)] = []
 
-        let contentWidth = width - margins.left - margins.right
+        let contentWidth = width - insets.left - insets.right
 
         let labelFrame =  CGRect(
-            x: margins.top,
-            y: margins.left,
+            x: insets.top,
+            y: insets.left,
             width: contentWidth,
             height: testLabel.height(constrainedToWidth: contentWidth)
         )

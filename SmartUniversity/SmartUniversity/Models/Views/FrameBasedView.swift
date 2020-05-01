@@ -10,7 +10,7 @@ import UIKit
 
 class FrameBasedView: UIView {
 
-    open var margins: UIEdgeInsets { .init(all: 0) }
+    open var insets: UIEdgeInsets { .init(all: 0) }
 
     override func layoutSubviews() {
         frames(forWidth: bounds.width).forEach({ $0.view.frame = $0.frame })
@@ -20,7 +20,7 @@ class FrameBasedView: UIView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let bottomMostFrame = frames(forWidth: size.width).max(by: { $0.frame.maxY < $1.frame.maxY })?.frame ?? .zero
 
-        return CGSize(width: size.width, height: bottomMostFrame.maxY + margins.bottom)
+        return CGSize(width: size.width, height: bottomMostFrame.maxY + insets.bottom)
     }
 
     /// Override this function to layout subviews.

@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "smart-uni-point-a4-9f3fafea-05a9-4c85-9270-36eda0176315.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "width" : 21,
+    "unit" : "centimeters"
+  }
+}

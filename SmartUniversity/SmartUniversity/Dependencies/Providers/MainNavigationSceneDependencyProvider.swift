@@ -23,7 +23,8 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     func makeRootViewController() -> UIViewController {
         MainNavigationViewController(controllers: [
             makeTabBarMunimapViewController(),
-            makeTabBarQRScannerViewController()
+            makeTabBarQRScannerViewController(),
+            makeTabBarARViewController()
         ])
     }
 

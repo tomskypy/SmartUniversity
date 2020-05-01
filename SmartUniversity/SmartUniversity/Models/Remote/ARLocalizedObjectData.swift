@@ -8,24 +8,26 @@
 
 import CoreGraphics
 
-struct ARLocalizedObject: Decodable {
+struct ARLocalizedObjectData: Decodable {
 
     let label: String
     let dimensions: ARDimensions
     let position: ARPosition
+    let tint: HexColor?
 
     private enum CodingKeys: String, CodingKey {
         case label
         case dimensions = "dimen"
         case position = "pos"
+        case tint
     }
 }
 
 struct ARPosition: Decodable {
 
-    let right: CGFloat?
-    let up: CGFloat?
-    let front: CGFloat?
+    let right: CGFloat
+    let up: CGFloat
+    let front: CGFloat
 
     private enum CodingKeys: String, CodingKey {
         case right = "r"

@@ -62,8 +62,9 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
     private func makeBox(dimensions: ARDimensions, chamferRadius: CGFloat, color: UIColor) -> SCNBox {
 
         let box = SCNBox(dimensions: dimensions, chamferRadius: chamferRadius)
+        
         box.firstMaterial?.diffuse.contents = color
-        box.firstMaterial?.transparency = 0.8
+        box.firstMaterial?.transparency = CIColor(color: color).alpha
 
         return box
     }

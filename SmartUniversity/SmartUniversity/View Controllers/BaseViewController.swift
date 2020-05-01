@@ -10,9 +10,7 @@ import UIKit
 
 class BaseViewController<ScreenView: BaseScreenView>: UIViewController {
 
-    var screenView: ScreenView? {
-        return view as? ScreenView
-    }
+    var screenView: ScreenView? { view as? ScreenView }
 
     override func loadView() {
         view = ScreenView()

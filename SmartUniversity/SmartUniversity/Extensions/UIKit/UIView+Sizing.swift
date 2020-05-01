@@ -11,10 +11,10 @@ import UIKit
 extension UIView {
 
     func size(constrainedToWidth width: CGFloat) -> CGSize {
-        return self.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
+        self.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
     }
 
     func height(constrainedToWidth width: CGFloat) -> CGFloat {
-        return size(constrainedToWidth: width).height
+        size(constrainedToWidth: width).height
     }
 }

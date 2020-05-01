@@ -25,6 +25,6 @@ class FrameBasedView: UIView {
 
     /// Override this function to layout subviews.
     open func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
-        return subviews.map({ (view: $0, frame: .zero) })
+        subviews.map({ (view: $0, frame: .zero) })
     }
 }

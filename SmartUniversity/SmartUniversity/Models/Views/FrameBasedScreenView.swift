@@ -18,6 +18,6 @@ class FrameBasedScreenView: UIView { // FIXME: Unify implementation with FrameBa
 
     /// Override this function to layout subviews.
     open func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
-        return subviews.map({ (view: $0, frame: .zero) })
+        subviews.map({ (view: $0, frame: .zero) })
     }
 }

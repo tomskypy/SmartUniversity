@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import AVFoundation
 
 final class TestableCaptureSessionHandler: CaptureSessionHandling {
 

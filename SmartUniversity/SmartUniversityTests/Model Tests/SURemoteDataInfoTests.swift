@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import SmartUniversity
 
 class SURemoteDataInfoTests: XCTestCase {
 

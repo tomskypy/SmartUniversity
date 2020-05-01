@@ -29,7 +29,6 @@
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
-		3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */; };
 		3516B3712416FCF0009C5D36 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */; };
 		3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */; };
 		3518743824532B9100053343 /* SceneObjectProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743724532B9100053343 /* SceneObjectProviding.swift */; };
@@ -44,6 +43,7 @@
 		351C3ED1245CBD07001D1278 /* MeshObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */; };
 		351C3ED2245CBE37001D1278 /* SCNObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F724565C240059D9E1 /* SCNObject+Init.swift */; };
 		351C3ED9245CD390001D1278 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F42456543B0059D9E1 /* UIColor+HexString.swift */; };
+		351C3EDD245CDD8F001D1278 /* VerticalFrameBasedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351C3EDC245CDD8F001D1278 /* VerticalFrameBasedViewTests.swift */; };
 		3524E033241872D9007A344E /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedView.swift */; };
 		3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E036241873DE007A344E /* MunimapScreenView.swift */; };
 		3524E03D24187729007A344E /* WebViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03C24187729007A344E /* WebViewHandler.swift */; };
@@ -150,12 +150,12 @@
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
-		3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedViewTests.swift; sourceTree = "<group>"; };
 		3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAddSubviewsTests.swift; sourceTree = "<group>"; };
 		3518743724532B9100053343 /* SceneObjectProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneObjectProviding.swift; sourceTree = "<group>"; };
 		3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsSceneObjectProvider.swift; sourceTree = "<group>"; };
 		351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		351C3EDC245CDD8F001D1278 /* VerticalFrameBasedViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalFrameBasedViewTests.swift; sourceTree = "<group>"; };
 		3524E032241872D9007A344E /* FrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBasedView.swift; sourceTree = "<group>"; };
 		3524E036241873DE007A344E /* MunimapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapScreenView.swift; sourceTree = "<group>"; };
 		3524E03C24187729007A344E /* WebViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandler.swift; sourceTree = "<group>"; };
@@ -405,8 +405,8 @@
 		354329B724157FD40065614A /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
+				351C3EDC245CDD8F001D1278 /* VerticalFrameBasedViewTests.swift */,
 				354329BA24157FFB0065614A /* SceneDelegateTests.swift */,
-				3516B36E2416F8E9009C5D36 /* FrameBasedViewTests.swift */,
 				35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */,
 			);
 			path = "Model Tests";
@@ -690,8 +690,8 @@
 				354329C92415A79B0065614A /* ARScreenView.swift in Sources */,
 				350CF6FD243D5A0300282A64 /* QRScannerViewController.swift in Sources */,
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,
-				3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */,
 				351C3ED2245CBE37001D1278 /* SCNObject+Init.swift in Sources */,
+				351C3EDD245CDD8F001D1278 /* VerticalFrameBasedViewTests.swift in Sources */,
 				352B3D37244FA6BC00B422CF /* PresentationHandling.swift in Sources */,
 				352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,

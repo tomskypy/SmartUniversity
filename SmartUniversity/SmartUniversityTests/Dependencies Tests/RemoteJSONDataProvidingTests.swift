@@ -18,7 +18,7 @@ private struct EmptyRemoteJSONDataInfo: RemoteJSONDataInfo {
 
 private final class TestableRemoteJSONDataProvider: RemoteJSONDataProviding {
 
-    var queueReceivedInFetch: DispatchQueue? = nil
+    var queueReceivedInFetch: DispatchQueue?
 
     func fetchJSONData<JSONData>(
         withDataInfo info: RemoteJSONDataInfo,

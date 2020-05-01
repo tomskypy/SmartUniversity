@@ -17,7 +17,7 @@ struct CaptureDeviceProvider: CaptureDeviceProviding {
 
     static let shared = CaptureDeviceProvider()
 
-    let videoCaptureDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video)
+    let videoCaptureDevice: AVCaptureDevice? = .default(for: .video)
 
     private init() { }
 }

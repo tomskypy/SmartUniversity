@@ -18,19 +18,7 @@ struct QRPointRemoteArray: Decodable {
     }
 }
 
-protocol QRPointsProviding: RemoteJSONDataProviding {
+protocol QRPointsProviding {
 
     func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void)
-}
-
-extension QRPointsProviding {
-
-    func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void) {
-
-        fetchJSONData(withDataInfo: SURemoteDataInfo.qrPoints) { (data: QRPointRemoteArray?, error: DataFetchError?) in
-            if let error = error { return completion(data?.points, .fetch(error: error)) }
-
-            completion(data?.points, nil)
-        }
-    }
 }

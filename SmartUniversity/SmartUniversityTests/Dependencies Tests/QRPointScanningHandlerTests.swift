@@ -29,10 +29,10 @@ private class TestableQRPointsProvider: QRPointsProviding {
 
 private class TestableQRPointScanningHandlerDelegate: QRPointScanningHandlerDelegate {
 
-    var qrPointReceivedInDidFetchQRPoint: QRPoint? = nil
-    var scannedValueReceivedInDidFetchQRPoint: String? = nil
+    var qrPointReceivedInDidFetchQRPoint: QRPoint?
+    var scannedValueReceivedInDidFetchQRPoint: String?
 
-    var scannedValueReceivedInCouldNotFetchQRPoint: String? = nil
+    var scannedValueReceivedInCouldNotFetchQRPoint: String?
 
     func qrPointScanningHandler(
         _ handler: QRPointScanningHandling,
@@ -52,16 +52,16 @@ final class QRPointScanningHandlerTests: XCTestCase {
 
     private var qrPointsProvider: TestableQRPointsProvider!
 
-    var handler: QRPointScanningHandler!
+    var scanningHandler: QRPointScanningHandler!
 
     override func setUp() {
-        qrPointsProvider = TestableQRPointsProvider()
+        qrPointsProvider = .init()
 
-        handler = QRPointScanningHandler(qrPointsProvider: qrPointsProvider)
+        scanningHandler = .init(qrPointsProvider: qrPointsProvider)
     }
 
     func testViewDidLoadFetchesQrPointsFromProvider() {
-        XCTAssertTrue(handler.qrPoints.isEmpty)
+        XCTAssertTrue(scanningHandler.qrPoints.isEmpty)
 
         let expectedQRPoints = [
             QRPoint(uuidString: "123abc", label: "", muniMapPlaceID: "", rooms: []),
@@ -70,9 +70,9 @@ final class QRPointScanningHandlerTests: XCTestCase {
         ]
         qrPointsProvider.providedPoints = expectedQRPoints
 
-        handler.handleViewDidLoad(UIView())
+        scanningHandler.handleViewDidLoad(UIView())
 
-        XCTAssertEqual(expectedQRPoints, handler.qrPoints)
+        XCTAssertEqual(expectedQRPoints, scanningHandler.qrPoints)
     }
 
     func testQrCodeValueScannedCallsDelegateDidFetchQRPointIfValueMatchesSomeQRPoint() {
@@ -88,9 +88,9 @@ final class QRPointScanningHandlerTests: XCTestCase {
         let expectedQRPoint = qrPoints[1]
         let expectedScannedValue = expectedQRPoint.uuidString
 
-        handler.qrPoints = qrPoints
-        handler.delegate = delegate
-        handler.qrCodeValueScanned(expectedScannedValue)
+        scanningHandler.qrPoints = qrPoints
+        scanningHandler.delegate = delegate
+        scanningHandler.qrCodeValueScanned(expectedScannedValue)
 
         XCTAssertEqual(expectedQRPoint, delegate.qrPointReceivedInDidFetchQRPoint)
         XCTAssertEqual(expectedScannedValue, delegate.scannedValueReceivedInDidFetchQRPoint)
@@ -105,9 +105,9 @@ final class QRPointScanningHandlerTests: XCTestCase {
         ]
         let expectedScannedValue = "098zyx"
 
-        handler.qrPoints = qrPoints
-        handler.delegate = delegate
-        handler.qrCodeValueScanned(expectedScannedValue)
+        scanningHandler.qrPoints = qrPoints
+        scanningHandler.delegate = delegate
+        scanningHandler.qrCodeValueScanned(expectedScannedValue)
 
         XCTAssertEqual(expectedScannedValue, delegate.scannedValueReceivedInCouldNotFetchQRPoint)
     }

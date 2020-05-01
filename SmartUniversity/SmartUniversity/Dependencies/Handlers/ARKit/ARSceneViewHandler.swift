@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import UIKit
 import ARKit
 
 protocol ARSceneViewHandling {
@@ -25,9 +24,7 @@ final class ARSceneViewHandler: NSObject, ARSceneViewHandling {
     weak var delegate: ARSceneViewHandlerDelegate?
 
     var referenceImages: Set<ARReferenceImage> {
-        didSet {
-            setupAndRunSceneSession()
-        }
+        didSet { setupAndRunSceneSession() }
     }
 
     private var sceneView: ARSCNView?

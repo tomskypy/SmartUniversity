@@ -12,7 +12,7 @@ private final class TestableViewController: UIViewController {
 
     var viewControllerToPresentReceivedInPresent: UIViewController?
 
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
         viewControllerToPresentReceivedInPresent = viewControllerToPresent
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FrameBasedScreenView.swift
+//  FrameBasedView.swift
 //  SmartUniversity
 //
 //  Created by Tomas Skypala on 11/03/2020.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FrameBasedScreenView: UIView { // FIXME: Unify implementation with FrameBasedView
+class FrameBasedView: UIView {
 
-    open var margins: UIEdgeInsets { UIEdgeInsets(all: 0) }
+    open var insets: UIEdgeInsets { .init(all: 0) }
 
     override func layoutSubviews() {
         frames(forBounds: bounds).forEach({ $0.view.frame = $0.frame })
@@ -18,6 +18,6 @@ class FrameBasedScreenView: UIView { // FIXME: Unify implementation with FrameBa
 
     /// Override this function to layout subviews.
     open func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
-        return subviews.map({ (view: $0, frame: .zero) })
+        subviews.map({ (view: $0, frame: .zero) })
     }
 }

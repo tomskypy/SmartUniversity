@@ -6,8 +6,6 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
-
 protocol RemoteJSONDataInfo {
 
     var jsonURLString: String { get }

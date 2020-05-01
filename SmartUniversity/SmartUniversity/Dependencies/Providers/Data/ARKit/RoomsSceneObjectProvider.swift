@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import ARKit
+import SceneKit
 
 struct RoomsSceneObjectProvider: SceneObjectProviding {
 
@@ -60,7 +60,7 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
     private func makeBox(dimensions: ARDimensions, chamferRadius: CGFloat, color: UIColor) -> SCNBox {
 
         let box = SCNBox(dimensions: dimensions, chamferRadius: chamferRadius)
-        
+
         box.firstMaterial?.diffuse.contents = color
         box.firstMaterial?.transparency = CIColor(color: color).alpha
 

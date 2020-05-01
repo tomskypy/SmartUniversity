@@ -7,15 +7,12 @@
 //
 
 import XCTest
-@testable import SmartUniversity
 
 private final class TestableFrameBasedViewSubclass: FrameBasedView {
 
     static let expectedMargins = UIEdgeInsets(top: 3, left: 16, bottom: 11, right: 19)
 
-    override var margins: UIEdgeInsets {
-        return Self.expectedMargins
-    }
+    override var margins: UIEdgeInsets { Self.expectedMargins }
 
     static let subview1Frame = CGRect(x: 5, y: 5, width: 10, height: 20)
     static let subview2Frame = CGRect(x: 0, y: subview1Frame.maxY + 5, width: 15, height: 20)
@@ -31,15 +28,10 @@ private final class TestableFrameBasedViewSubclass: FrameBasedView {
         addSubviews(subview1, subview2)
     }
 
-    required init?(coder: NSCoder) {
-        return nil
-    }
+    required init?(coder: NSCoder) { nil }
 
     override func frames(forWidth _: CGFloat) -> [(view: UIView, frame: CGRect)] {
-        return [
-            (subview1, Self.subview1Frame),
-            (subview2, Self.subview2Frame)
-        ]
+        [(subview1, Self.subview1Frame), (subview2, Self.subview2Frame)]
     }
 }
 
@@ -87,7 +79,7 @@ final class FrameBasedViewTests: XCTestCase {
     private var frameBasedView: FrameBasedView!
 
     override func setUp() {
-        frameBasedView = FrameBasedView()
+        frameBasedView = .init()
     }
 
     func testBaseMarginsAreAllZero() {

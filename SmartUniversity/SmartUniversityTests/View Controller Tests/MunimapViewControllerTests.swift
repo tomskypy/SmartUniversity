@@ -11,9 +11,9 @@ import WebKit
 
 private final class TestableWebViewHandler: WebViewHandling {
 
-    var webView: WKWebView? = nil
+    var webView: WKWebView?
 
-    var urlReceivedInLoadURL: URL? = nil
+    var urlReceivedInLoadURL: URL?
 
     func loadURL(_ url: URL) {
         urlReceivedInLoadURL = url
@@ -29,9 +29,9 @@ final class MunimapViewControllerTests: XCTestCase {
 
     override func setUp() {
         munimapServerURL = URL(string: "https://www.apple.com")!
-        webViewHandler = TestableWebViewHandler()
+        webViewHandler = .init()
 
-        viewController = MunimapViewController(munimapServerURL: munimapServerURL, webViewHandler: webViewHandler)
+        viewController = .init(munimapServerURL: munimapServerURL, webViewHandler: webViewHandler)
     }
 
     func testViewDidLoadSetsWebViewOnWebViewHandler() {

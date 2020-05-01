@@ -16,7 +16,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         // Override point for customization after application launch.
-        return true
+        true
     }
 
     // MARK: UISceneSession Lifecycle
@@ -28,7 +28,22 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
-        return SceneConfiguration<MainNavigationSceneDependencyProvider>(sceneSession: connectingSceneSession)
+        SceneConfiguration<MainNavigationSceneDependencyProvider>(sceneSession: connectingSceneSession)
     }
 
+}
+
+private final class SceneConfiguration<DependencyProvider: SceneDependencyProviding>: UISceneConfiguration {
+
+    init(sceneSession: UISceneSession) {
+        super.init(name: nil, sessionRole: sceneSession.role)
+
+        self.delegateClass = SceneDelegate<DependencyProvider>.self
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+
+        self.delegateClass = SceneDelegate<DependencyProvider>.self
+    }
 }

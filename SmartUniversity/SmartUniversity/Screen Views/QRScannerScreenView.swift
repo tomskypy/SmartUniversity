@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRScannerScreenView: FrameBasedScreenView {
+class QRScannerScreenView: FrameBasedView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 

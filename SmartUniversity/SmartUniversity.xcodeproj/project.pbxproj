@@ -91,7 +91,7 @@
 		35AC87CD24314910009C0E9D /* RemoteJSONDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */; };
 		35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
 		35AC87D124314BBA009C0E9D /* QRPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D024314BBA009C0E9D /* QRPoint.swift */; };
-		35AC87D424314CE2009C0E9D /* ARLocalizedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */; };
+		35AC87D424314CE2009C0E9D /* ARLocalizedObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D324314CE2009C0E9D /* ARLocalizedObjectData.swift */; };
 		35AC87D6243161BC009C0E9D /* QRPointsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D5243161BC009C0E9D /* QRPointsProviding.swift */; };
 		35AC87D824316262009C0E9D /* RemoteJSONDataInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D724316262009C0E9D /* RemoteJSONDataInfo.swift */; };
 		35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209AA24219008005E65AE /* MainNavigationViewController.swift */; };
@@ -110,7 +110,7 @@
 		35E746D624317664003BDA00 /* RemoteJSONDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */; };
 		35E746D72431766C003BDA00 /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
 		35E746D824317674003BDA00 /* QRPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D024314BBA009C0E9D /* QRPoint.swift */; };
-		35E746D924317676003BDA00 /* ARLocalizedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */; };
+		35E746D924317676003BDA00 /* ARLocalizedObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87D324314CE2009C0E9D /* ARLocalizedObjectData.swift */; };
 		35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -184,7 +184,7 @@
 		35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProviding.swift; sourceTree = "<group>"; };
 		35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProvider.swift; sourceTree = "<group>"; };
 		35AC87D024314BBA009C0E9D /* QRPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPoint.swift; sourceTree = "<group>"; };
-		35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARLocalizedObject.swift; sourceTree = "<group>"; };
+		35AC87D324314CE2009C0E9D /* ARLocalizedObjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARLocalizedObjectData.swift; sourceTree = "<group>"; };
 		35AC87D5243161BC009C0E9D /* QRPointsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointsProviding.swift; sourceTree = "<group>"; };
 		35AC87D724316262009C0E9D /* RemoteJSONDataInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataInfo.swift; sourceTree = "<group>"; };
 		35B209AA24219008005E65AE /* MainNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
@@ -423,7 +423,7 @@
 			children = (
 				3565E5F2245651020059D9E1 /* HexColor.swift */,
 				35AC87D024314BBA009C0E9D /* QRPoint.swift */,
-				35AC87D324314CE2009C0E9D /* ARLocalizedObject.swift */,
+				35AC87D324314CE2009C0E9D /* ARLocalizedObjectData.swift */,
 				35AC87D724316262009C0E9D /* RemoteJSONDataInfo.swift */,
 			);
 			path = Remote;
@@ -581,7 +581,7 @@
 				35AC87D6243161BC009C0E9D /* QRPointsProviding.swift in Sources */,
 				3503C938240C5A52002F2457 /* SceneDelegate.swift in Sources */,
 				3578A7FD2452612700160793 /* ARSceneViewHandlerDelegate.swift in Sources */,
-				35AC87D424314CE2009C0E9D /* ARLocalizedObject.swift in Sources */,
+				35AC87D424314CE2009C0E9D /* ARLocalizedObjectData.swift in Sources */,
 				350DE447243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3524E03D24187729007A344E /* WebViewHandler.swift in Sources */,
 				3565E5F52456543B0059D9E1 /* UIColor+HexString.swift in Sources */,
@@ -649,7 +649,7 @@
 				358A43482451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */,
 				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,
 				3524E04324188347007A344E /* MunimapViewController.swift in Sources */,
-				35E746D924317676003BDA00 /* ARLocalizedObject.swift in Sources */,
+				35E746D924317676003BDA00 /* ARLocalizedObjectData.swift in Sources */,
 				35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
 				35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */,

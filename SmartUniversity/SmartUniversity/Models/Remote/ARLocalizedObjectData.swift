@@ -8,7 +8,7 @@
 
 import CoreGraphics
 
-struct ARLocalizedObject: Decodable {
+struct ARLocalizedObjectData: Decodable {
 
     let label: String
     let dimensions: ARDimensions

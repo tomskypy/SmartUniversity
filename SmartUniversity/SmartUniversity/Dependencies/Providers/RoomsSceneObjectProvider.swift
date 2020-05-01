@@ -39,7 +39,7 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
         return planeNode
     }
 
-    private func makeRoomNode(objectData: ARLocalizedObject) -> SCNNode {
+    private func makeRoomNode(objectData: ARLocalizedObjectData) -> SCNNode {
         makeRoomNode(
             dimensions: objectData.dimensions,
             position: objectData.position,

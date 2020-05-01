@@ -242,11 +242,11 @@
 		3503C934240C5A52002F2457 /* SmartUniversity */ = {
 			isa = PBXGroup;
 			children = (
-				357EC62E240DE7150030B6A3 /* Extensions */,
-				357EC62B240DE0D20030B6A3 /* Models */,
 				357EC626240DDD510030B6A3 /* View Controllers */,
 				357EC620240DD8E70030B6A3 /* Screen Views */,
+				357EC62B240DE0D20030B6A3 /* Models */,
 				357EC619240DCF890030B6A3 /* Dependencies */,
+				357EC62E240DE7150030B6A3 /* Extensions */,
 				3503C93E240C5A53002F2457 /* Assets.xcassets */,
 				3503C940240C5A53002F2457 /* LaunchScreen.storyboard */,
 				3503C943240C5A53002F2457 /* Info.plist */,

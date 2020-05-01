@@ -320,22 +320,54 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		354329AC24157D550065614A /* Providers */ = {
+		351C3ED3245CC003001D1278 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */,
+				35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */,
+				35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		351C3ED4245CC0F1001D1278 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				351C3ED6245CC2AF001D1278 /* ARKit */,
+				35AC87D5243161BC009C0E9D /* QRPointsProviding.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		351C3ED5245CC17B001D1278 /* App Scene */ = {
 			isa = PBXGroup;
 			children = (
 				354329D32415ABC80065614A /* SceneDependencyProviding.swift */,
 				35B209AC24219014005E65AE /* MainNavigationSceneDependencyProvider.swift */,
-				35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */,
-				35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */,
-				35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */,
-				35AC87D5243161BC009C0E9D /* QRPointsProviding.swift */,
-				350DE448243BE6B4003D2FE1 /* CaptureDeviceProvider.swift */,
-				350DE44A243BE985003D2FE1 /* CaptureSessionProvider.swift */,
+			);
+			path = "App Scene";
+			sourceTree = "<group>";
+		};
+		351C3ED6245CC2AF001D1278 /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
 				3578A7F8245259D100160793 /* ReferenceImageProviding.swift */,
 				3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */,
 				3518743724532B9100053343 /* SceneObjectProviding.swift */,
 				3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */,
 				3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */,
+			);
+			path = ARKit;
+			sourceTree = "<group>";
+		};
+		354329AC24157D550065614A /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				351C3ED5245CC17B001D1278 /* App Scene */,
+				351C3ED4245CC0F1001D1278 /* Data */,
+				351C3ED3245CC003001D1278 /* Remote */,
+				350DE448243BE6B4003D2FE1 /* CaptureDeviceProvider.swift */,
+				350DE44A243BE985003D2FE1 /* CaptureSessionProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";

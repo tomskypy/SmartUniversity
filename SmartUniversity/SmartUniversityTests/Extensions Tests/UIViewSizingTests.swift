@@ -27,7 +27,7 @@ final class UIViewSizingTests: XCTestCase {
     private var uiView: TestableUIView!
 
     override func setUp() {
-        uiView = TestableUIView()
+        uiView = .init()
     }
 
     func testSizeConstrainedToWidthCallsSizeThatFitsWithCorrectCGSizeParameter() {

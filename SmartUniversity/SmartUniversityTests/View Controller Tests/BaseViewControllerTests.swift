@@ -25,7 +25,7 @@ final class BaseViewControllerTests: XCTestCase {
     private var baseViewController: TestableBaseViewController!
 
     override func setUp() {
-        baseViewController = TestableBaseViewController()
+        baseViewController = .init()
     }
 
     func testLoadViewInitsScreenViewWithCorrectType() {

@@ -29,9 +29,9 @@ final class MunimapViewControllerTests: XCTestCase {
 
     override func setUp() {
         munimapServerURL = URL(string: "https://www.apple.com")!
-        webViewHandler = TestableWebViewHandler()
+        webViewHandler = .init()
 
-        viewController = MunimapViewController(munimapServerURL: munimapServerURL, webViewHandler: webViewHandler)
+        viewController = .init(munimapServerURL: munimapServerURL, webViewHandler: webViewHandler)
     }
 
     func testViewDidLoadSetsWebViewOnWebViewHandler() {

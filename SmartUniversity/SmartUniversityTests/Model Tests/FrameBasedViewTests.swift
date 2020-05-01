@@ -79,7 +79,7 @@ final class FrameBasedViewTests: XCTestCase {
     private var frameBasedView: FrameBasedView!
 
     override func setUp() {
-        frameBasedView = FrameBasedView()
+        frameBasedView = .init()
     }
 
     func testBaseMarginsAreAllZero() {

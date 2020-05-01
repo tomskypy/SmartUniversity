@@ -65,31 +65,31 @@ private struct FakeSceneDependencyProvider: SceneDependencyProviding {
 
 final class SceneDelegateTests: XCTestCase {
 
-    private var delegate: SceneDelegate<FakeSceneDependencyProvider>!
+    private var sceneDelegate: SceneDelegate<FakeSceneDependencyProvider>!
 
     override func setUp() {
-        delegate = SceneDelegate()
+        sceneDelegate = .init()
     }
 
     func testHasCorrectDependencyProviderType() {
         let expectedDependencyProviderType = FakeSceneDependencyProvider.self
 
-        XCTAssertTrue(expectedDependencyProviderType == type(of: delegate.dependencyProvider))
+        XCTAssertTrue(expectedDependencyProviderType == type(of: sceneDelegate.dependencyProvider))
     }
 
     func testIsWindowEqualWithWindowDidLoadParameter() {
         let expectedWindow = makeWindow()
 
-        delegate.windowDidLoad(expectedWindow)
+        sceneDelegate.windowDidLoad(expectedWindow)
 
-        XCTAssertEqual(expectedWindow, delegate.window)
+        XCTAssertEqual(expectedWindow, sceneDelegate.window)
     }
 
     func testIsWindowViewControllerEqualToDependencyProviderRootViewController() {
         let expectedWindow = makeWindow()
-        let expectedViewContollerID = delegate.dependencyProvider.rootViewController.id
+        let expectedViewContollerID = sceneDelegate.dependencyProvider.rootViewController.id
 
-        delegate.windowDidLoad(expectedWindow)
+        sceneDelegate.windowDidLoad(expectedWindow)
 
         XCTAssertEqual(expectedViewContollerID, (expectedWindow.rootViewController as! IdentifiableViewController).id)
     }
@@ -97,9 +97,9 @@ final class SceneDelegateTests: XCTestCase {
     func testDoesCallWindowSceneHandlerOnWindowDidLoadCorrectly() {
         let expectedWindow = makeWindow()
 
-        delegate.windowDidLoad(expectedWindow)
+        sceneDelegate.windowDidLoad(expectedWindow)
 
-        let sceneHandler = delegate.dependencyProvider.sceneHandler as! TestableSceneHandler
+        let sceneHandler = sceneDelegate.dependencyProvider.sceneHandler as! TestableSceneHandler
 
         XCTAssertTrue(sceneHandler.didReceiveWindowWillBecomeVisible!)
         XCTAssertFalse(sceneHandler.wasWindowMadeKeyAndVisibleOnWillBecomeVisible!)

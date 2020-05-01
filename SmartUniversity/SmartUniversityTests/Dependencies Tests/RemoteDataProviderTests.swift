@@ -55,7 +55,7 @@ final class RemoteDataProviderTests: XCTestCase {
     var dataProvider: RemoteDataProvider!
 
     override func setUp() {
-        dataProvider = RemoteDataProvider()
+        dataProvider = .init()
     }
 
     func testFetchJSONDataFailsWithInvalidURLString() {

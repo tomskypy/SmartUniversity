@@ -25,7 +25,7 @@ final class WebViewHandlerTests: XCTestCase {
     private var webViewHandler: WebViewHandler!
 
     override func setUp() {
-        webViewHandler = WebViewHandler()
+        webViewHandler = .init()
     }
 
     func testLoadURLCallsLoadCorrectlyOnAssignedWebView() {

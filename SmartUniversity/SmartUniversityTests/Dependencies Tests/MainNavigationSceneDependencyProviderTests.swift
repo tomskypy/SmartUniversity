@@ -13,7 +13,7 @@ final class MainNavigationSceneDependencyProviderTests: XCTestCase {
     private var provider: MainNavigationSceneDependencyProvider!
 
     override func setUp() {
-        provider = MainNavigationSceneDependencyProvider()
+        provider = .init()
     }
 
     func testRootViewControllerIsMainNavigationViewController() {

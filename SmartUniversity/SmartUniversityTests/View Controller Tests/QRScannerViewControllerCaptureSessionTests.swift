@@ -14,12 +14,12 @@ extension QRScannerViewControllerTests {
     // MARK: - CaptureSessionHandlerDelegate implementation tests
 
     func testDidLoadPreviewLayerSetsScreenViewScannerPreviewLayer() {
-        viewController.loadView()
-        let controllerScreenView = viewController.view as! QRScannerScreenView
+        scannerViewController.loadView()
+        let controllerScreenView = scannerViewController.view as! QRScannerScreenView
         XCTAssertNil(controllerScreenView.scannerPreviewLayer)
         let expectedPreviewLayer = AVCaptureVideoPreviewLayer()
 
-        viewController.captureSessionHandler(captureSessionHandler, didLoadPreviewLayer: expectedPreviewLayer)
+        scannerViewController.captureSessionHandler(captureSessionHandler, didLoadPreviewLayer: expectedPreviewLayer)
 
         XCTAssertEqual(expectedPreviewLayer, controllerScreenView.scannerPreviewLayer)
     }
@@ -30,22 +30,22 @@ extension QRScannerViewControllerTests {
     }
 
     func testDidReceiveValidOutputSetsScannedValueCodeObjectBounds() {
-        XCTAssertNil(viewController.scannedValueCodeObjectBounds)
+        XCTAssertNil(scannerViewController.scannedValueCodeObjectBounds)
 
-        viewController.captureSessionHandler(
+        scannerViewController.captureSessionHandler(
             captureSessionHandler,
             didReceiveValidOutput: expectedScannedStringValue,
             fromObjectWithBounds: expectedScannedObjectBounds
         )
 
-        XCTAssertEqual(expectedScannedStringValue, viewController.scannedValueCodeObjectBounds?.scannedValue)
-        XCTAssertEqual(expectedScannedObjectBounds, viewController.scannedValueCodeObjectBounds?.objectBounds)
+        XCTAssertEqual(expectedScannedStringValue, scannerViewController.scannedValueCodeObjectBounds?.scannedValue)
+        XCTAssertEqual(expectedScannedObjectBounds, scannerViewController.scannedValueCodeObjectBounds?.objectBounds)
     }
 
     func testDidReceiveValidOutputCallsQRPointScanningHandlingWithValueScanned() {
         XCTAssertNil(qrPointScanningHandler.qrCodeValueReceived)
 
-        viewController.captureSessionHandler(
+        scannerViewController.captureSessionHandler(
             captureSessionHandler,
             didReceiveValidOutput: expectedScannedStringValue,
             fromObjectWithBounds: expectedScannedObjectBounds
@@ -56,10 +56,10 @@ extension QRScannerViewControllerTests {
 
     func testDidReceiveValidOutputCallsScreenViewShowBlurOverlayWithBoundsScanned() {
         let testableScreenView = TestableQRScannerScreenView()
-        viewController.view = testableScreenView
+        scannerViewController.view = testableScreenView
         XCTAssertNil(testableScreenView.boundsReceivedInShowBlurOverlay)
 
-        viewController.captureSessionHandler(
+        scannerViewController.captureSessionHandler(
             captureSessionHandler,
             didReceiveValidOutput: expectedScannedStringValue,
             fromObjectWithBounds: expectedScannedObjectBounds
@@ -81,7 +81,7 @@ extension QRScannerViewControllerTests {
 
     func testDidTriggerErrorWithVideoInputUnavailablePresentsAlertViewController() {
 
-        viewController.captureSessionHandler(captureSessionHandler, didTriggerError: .videoInputUnavailable)
+        scannerViewController.captureSessionHandler(captureSessionHandler, didTriggerError: .videoInputUnavailable)
 
         let alertController = presentationHandler.viewControllerReceivedInPresent as! UIAlertController
         XCTAssertEqual(SessionErrorAlertExpectations.title, alertController.title)
@@ -96,7 +96,7 @@ extension QRScannerViewControllerTests {
 
     func testDidTriggerErrorWithMetadataOutputUnavailablePresentsAlertViewController() {
 
-        viewController.captureSessionHandler(captureSessionHandler, didTriggerError: .metadataOutputUnavailable)
+        scannerViewController.captureSessionHandler(captureSessionHandler, didTriggerError: .metadataOutputUnavailable)
 
         let alertController = presentationHandler.viewControllerReceivedInPresent as! UIAlertController
         XCTAssertEqual(SessionErrorAlertExpectations.title, alertController.title)

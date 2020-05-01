@@ -14,13 +14,13 @@ extension QRScannerViewControllerTests {
 
     func testDidFetchQRPointCallsScreenViewShowBlurOverlayWithSavedBounds() {
         let testableScreenView = TestableQRScannerScreenView()
-        viewController.view = testableScreenView
+        scannerViewController.view = testableScreenView
         XCTAssertNil(testableScreenView.boundsReceivedInShowBlurOverlay)
 
         let expectedScannedObjectBounds = CGRect(origin: .init(x: 8, y: 74), size: .init(width: 53, height: 99))
-        viewController.scannedValueCodeObjectBounds = ("", expectedScannedObjectBounds)
+        scannerViewController.scannedValueCodeObjectBounds = ("", expectedScannedObjectBounds)
 
-        viewController.qrPointScanningHandler(
+        scannerViewController.qrPointScanningHandler(
             qrPointScanningHandler,
             didFetchQRPoint: QRPoint(uuidString: "", label: "", muniMapPlaceID: "", rooms: []),
             forScannedValue: ""
@@ -31,10 +31,10 @@ extension QRScannerViewControllerTests {
 
     func testCouldNotFetchQRPointCallsScreenViewHideBlurOverlay() {
         let testableScreenView = TestableQRScannerScreenView()
-        viewController.view = testableScreenView
+        scannerViewController.view = testableScreenView
         XCTAssertNil(testableScreenView.didCallHideBlurOverlay)
 
-        viewController.qrPointScanningHandler(qrPointScanningHandler, couldNotFetchQRPointForScannedValue: "")
+        scannerViewController.qrPointScanningHandler(qrPointScanningHandler, couldNotFetchQRPointForScannedValue: "")
 
         XCTAssertTrue(testableScreenView.didCallHideBlurOverlay!)
     }

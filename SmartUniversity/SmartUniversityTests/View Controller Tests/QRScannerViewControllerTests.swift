@@ -85,14 +85,14 @@ final class QRScannerViewControllerTests: XCTestCase {
     var qrPointScanningHandler: TestableQRPointScanningHandler!
     var presentationHandler: TestablePresentationHandler!
 
-    var viewController: QRScannerViewController!
+    var scannerViewController: QRScannerViewController!
 
     override func setUp() {
-        captureSessionHandler = TestableCaptureSessionHandler()
-        qrPointScanningHandler = TestableQRPointScanningHandler()
-        presentationHandler = TestablePresentationHandler()
+        captureSessionHandler = .init()
+        qrPointScanningHandler = .init()
+        presentationHandler = .init()
 
-        viewController = QRScannerViewController(
+        scannerViewController = .init(
             captureSessionHandler: captureSessionHandler,
             qrPointScanningHandler: qrPointScanningHandler,
             presentationHandler: presentationHandler
@@ -109,49 +109,49 @@ final class QRScannerViewControllerTests: XCTestCase {
 
     func testViewDidLoadCallsScreenViewHideBlurOverlay() {
         let testableScreenView = TestableQRScannerScreenView()
-        viewController.view = testableScreenView
+        scannerViewController.view = testableScreenView
 
-        viewController.viewDidLoad()
+        scannerViewController.viewDidLoad()
 
         XCTAssertTrue(testableScreenView.didCallHideBlurOverlay!)
     }
 
     func testViewDidLoadCallsCaptureSessionHandlingWithExpectedView() {
         XCTAssertNil(captureSessionHandler.viewReceivedInViewDidLoad)
-        viewController.loadView()
-        let expectedView = viewController.view
+        scannerViewController.loadView()
+        let expectedView = scannerViewController.view
 
-        viewController.viewDidLoad()
+        scannerViewController.viewDidLoad()
 
         XCTAssertEqual(expectedView, captureSessionHandler.viewReceivedInViewDidLoad)
     }
 
     func testViewDidLoadCallsQRPointScanningHandlingWithExpectedView() {
         XCTAssertNil(qrPointScanningHandler.viewReceivedInViewDidLoad)
-        viewController.loadView()
-        let expectedView = viewController.view
+        scannerViewController.loadView()
+        let expectedView = scannerViewController.view
 
-        viewController.viewDidLoad()
+        scannerViewController.viewDidLoad()
 
         XCTAssertEqual(expectedView, qrPointScanningHandler.viewReceivedInViewDidLoad)
     }
 
     func testViewWillAppearCallsCaptureSessionHandlingWithExpectedView() {
         XCTAssertNil(captureSessionHandler.viewReceivedInViewWillAppear)
-        viewController.loadView()
-        let expectedView = viewController.view
+        scannerViewController.loadView()
+        let expectedView = scannerViewController.view
 
-        viewController.viewWillAppear(true)
+        scannerViewController.viewWillAppear(true)
 
         XCTAssertEqual(expectedView, captureSessionHandler.viewReceivedInViewWillAppear)
     }
 
     func testViewWillDisappearCallsCaptureSessionHandlingWithExpectedView() {
         XCTAssertNil(captureSessionHandler.viewReceivedInViewWillDisappear)
-        viewController.loadView()
-        let expectedView = viewController.view
+        scannerViewController.loadView()
+        let expectedView = scannerViewController.view
 
-        viewController.viewWillDisappear(true)
+        scannerViewController.viewWillDisappear(true)
 
         XCTAssertEqual(expectedView, captureSessionHandler.viewReceivedInViewWillDisappear)
     }

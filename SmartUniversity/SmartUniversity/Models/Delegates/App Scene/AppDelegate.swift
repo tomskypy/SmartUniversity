@@ -32,3 +32,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+private final class SceneConfiguration<DependencyProvider: SceneDependencyProviding>: UISceneConfiguration {
+
+    init(sceneSession: UISceneSession) {
+        super.init(name: nil, sessionRole: sceneSession.role)
+
+        self.delegateClass = SceneDelegate<DependencyProvider>.self
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+
+        self.delegateClass = SceneDelegate<DependencyProvider>.self
+    }
+}

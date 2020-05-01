@@ -35,6 +35,14 @@
 		3518743824532B9100053343 /* SceneObjectProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743724532B9100053343 /* SceneObjectProviding.swift */; };
 		3518743A24539F4A00053343 /* RoomsSceneObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */; };
 		351AC8B1243A9CF7009360D4 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */; };
+		351C3ECB245CBCCB001D1278 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F2245651020059D9E1 /* HexColor.swift */; };
+		351C3ECC245CBCD5001D1278 /* ARSceneViewHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */; };
+		351C3ECD245CBCE0001D1278 /* PosterReferenceImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7FA24525ADE00160793 /* PosterReferenceImageProvider.swift */; };
+		351C3ECE245CBCEF001D1278 /* ReferenceImageProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578A7F8245259D100160793 /* ReferenceImageProviding.swift */; };
+		351C3ECF245CBCF6001D1278 /* SceneObjectProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743724532B9100053343 /* SceneObjectProviding.swift */; };
+		351C3ED0245CBCFD001D1278 /* RoomsSceneObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */; };
+		351C3ED1245CBD07001D1278 /* MeshObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */; };
+		351C3ED2245CBE37001D1278 /* SCNObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F724565C240059D9E1 /* SCNObject+Init.swift */; };
 		3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedScreenView.swift */; };
 		3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E036241873DE007A344E /* MunimapScreenView.swift */; };
 		3524E03D24187729007A344E /* WebViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03C24187729007A344E /* WebViewHandler.swift */; };
@@ -53,7 +61,6 @@
 		352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */; };
 		354329B624157F620065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
-		354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
 		354329C52415A78B0065614A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C935240C5A52002F2457 /* AppDelegate.swift */; };
 		354329C92415A79B0065614A /* ARScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC621240DD8FB0030B6A3 /* ARScreenView.swift */; };
 		354329CA2415A79E0065614A /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC623240DD90F0030B6A3 /* BaseScreenView.swift */; };
@@ -62,7 +69,6 @@
 		354329CD2415A8CB0065614A /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */; };
 		354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503C937240C5A52002F2457 /* SceneDelegate.swift */; };
 		354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329B524157F620065614A /* BaseSceneDelegate.swift */; };
-		354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BC241592CA0065614A /* SceneConfiguration.swift */; };
 		354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB2BD240DEA4B00D60590 /* UIView+Sizing.swift */; };
 		354329D22415A8DA0065614A /* UIEdgeInsets+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+Init.swift */; };
 		354329D42415ABC80065614A /* SceneDependencyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329D32415ABC80065614A /* SceneDependencyProviding.swift */; };
@@ -161,7 +167,6 @@
 		352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointScanningHandlerTests.swift; sourceTree = "<group>"; };
 		354329B524157F620065614A /* BaseSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSceneDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
-		354329BC241592CA0065614A /* SceneConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfiguration.swift; sourceTree = "<group>"; };
 		354329D32415ABC80065614A /* SceneDependencyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDependencyProviding.swift; sourceTree = "<group>"; };
 		354329D72415ABF60065614A /* WindowSceneHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowSceneHandling.swift; sourceTree = "<group>"; };
 		3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshObjectProvider.swift; sourceTree = "<group>"; };
@@ -242,7 +247,6 @@
 				357EC626240DDD510030B6A3 /* View Controllers */,
 				357EC620240DD8E70030B6A3 /* Screen Views */,
 				357EC619240DCF890030B6A3 /* Dependencies */,
-				3503C935240C5A52002F2457 /* AppDelegate.swift */,
 				3503C93E240C5A53002F2457 /* Assets.xcassets */,
 				3503C940240C5A53002F2457 /* LaunchScreen.storyboard */,
 				3503C943240C5A53002F2457 /* Info.plist */,
@@ -283,6 +287,37 @@
 				3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */,
 			);
 			path = "Extensions Tests";
+			sourceTree = "<group>";
+		};
+		351C3EC8245CBB8A001D1278 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				351C3EC9245CBC2B001D1278 /* App Scene */,
+				350DE446243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift */,
+				350CF6F6243D4F6300282A64 /* QRPointScanningHandlerDelegate.swift */,
+				3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		351C3EC9245CBC2B001D1278 /* App Scene */ = {
+			isa = PBXGroup;
+			children = (
+				3503C935240C5A52002F2457 /* AppDelegate.swift */,
+				354329B524157F620065614A /* BaseSceneDelegate.swift */,
+				3503C937240C5A52002F2457 /* SceneDelegate.swift */,
+			);
+			path = "App Scene";
+			sourceTree = "<group>";
+		};
+		351C3ECA245CBC73001D1278 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */,
+				3524E032241872D9007A344E /* FrameBasedScreenView.swift */,
+				358A4349245119D30064D2F8 /* ARSceneContainerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		354329AC24157D550065614A /* Providers */ = {
@@ -384,16 +419,9 @@
 		357EC62B240DE0D20030B6A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				351C3ECA245CBC73001D1278 /* Views */,
+				351C3EC8245CBB8A001D1278 /* Delegates */,
 				35AC87D224314C77009C0E9D /* Remote */,
-				354329BC241592CA0065614A /* SceneConfiguration.swift */,
-				354329B524157F620065614A /* BaseSceneDelegate.swift */,
-				3503C937240C5A52002F2457 /* SceneDelegate.swift */,
-				357EC62C240DE10D0030B6A3 /* FrameBasedView.swift */,
-				3524E032241872D9007A344E /* FrameBasedScreenView.swift */,
-				350DE446243BE243003D2FE1 /* CaptureSessionHandlerDelegate.swift */,
-				350CF6F6243D4F6300282A64 /* QRPointScanningHandlerDelegate.swift */,
-				358A4349245119D30064D2F8 /* ARSceneContainerView.swift */,
-				3578A7FC2452612700160793 /* ARSceneViewHandlerDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -572,7 +600,6 @@
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Init.swift in Sources */,
 				35B209AD24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				3565E5EF24564B720059D9E1 /* MeshObjectProvider.swift in Sources */,
-				354329BD241592CA0065614A /* SceneConfiguration.swift in Sources */,
 				35AC87D124314BBA009C0E9D /* QRPoint.swift in Sources */,
 				350DE449243BE6B4003D2FE1 /* CaptureDeviceProvider.swift in Sources */,
 				350DE445243BD997003D2FE1 /* CaptureSessionHandler.swift in Sources */,
@@ -609,11 +636,13 @@
 				350CF6FB243D59FA00282A64 /* CaptureSessionHandler.swift in Sources */,
 				35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */,
 				35E746D624317664003BDA00 /* RemoteJSONDataProviding.swift in Sources */,
+				351C3ECF245CBCF6001D1278 /* SceneObjectProviding.swift in Sources */,
 				358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */,
 				354329C92415A79B0065614A /* ARScreenView.swift in Sources */,
 				350CF6FD243D5A0300282A64 /* QRScannerViewController.swift in Sources */,
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,
 				3516B36F2416F8E9009C5D36 /* FrameBasedViewTests.swift in Sources */,
+				351C3ED2245CBE37001D1278 /* SCNObject+Init.swift in Sources */,
 				352B3D37244FA6BC00B422CF /* PresentationHandling.swift in Sources */,
 				352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */,
 				354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */,
@@ -626,6 +655,7 @@
 				354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */,
 				35E746D72431766C003BDA00 /* RemoteDataProvider.swift in Sources */,
 				350CF6FC243D59FD00282A64 /* QRScannerScreenView.swift in Sources */,
+				351C3ECB245CBCCB001D1278 /* HexColor.swift in Sources */,
 				354329D22415A8DA0065614A /* UIEdgeInsets+Init.swift in Sources */,
 				350CF6FA243D59F500282A64 /* CaptureSessionProvider.swift in Sources */,
 				358A434B245119D30064D2F8 /* ARSceneContainerView.swift in Sources */,
@@ -634,6 +664,7 @@
 				35E746D42431765E003BDA00 /* QRPointsProviding.swift in Sources */,
 				3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */,
 				350CF6F9243D59F200282A64 /* CaptureDeviceProvider.swift in Sources */,
+				351C3ECC245CBCD5001D1278 /* ARSceneViewHandlerDelegate.swift in Sources */,
 				35B209B82421A0A5005E65AE /* MainNavigationViewControllerTests.swift in Sources */,
 				3524E0412418833A007A344E /* MunimapScreenView.swift in Sources */,
 				354329CA2415A79E0065614A /* BaseScreenView.swift in Sources */,
@@ -644,19 +675,22 @@
 				352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */,
 				352B3D3C244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift in Sources */,
 				3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */,
-				354329D02415A8D40065614A /* SceneConfiguration.swift in Sources */,
+				351C3ED1245CBD07001D1278 /* MeshObjectProvider.swift in Sources */,
 				354329D92415ABF90065614A /* WindowSceneHandling.swift in Sources */,
 				358A43482451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */,
 				354329CF2415A8D10065614A /* BaseSceneDelegate.swift in Sources */,
 				3524E04324188347007A344E /* MunimapViewController.swift in Sources */,
 				35E746D924317676003BDA00 /* ARLocalizedObjectData.swift in Sources */,
 				35B209AE24219014005E65AE /* MainNavigationSceneDependencyProvider.swift in Sources */,
+				351C3ECD245CBCE0001D1278 /* PosterReferenceImageProvider.swift in Sources */,
 				354329CE2415A8CE0065614A /* SceneDelegate.swift in Sources */,
 				35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */,
 				35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */,
 				35B209AF24219B17005E65AE /* MainNavigationViewController.swift in Sources */,
+				351C3ECE245CBCEF001D1278 /* ReferenceImageProviding.swift in Sources */,
 				35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */,
 				352B3D32244F7AEC00B422CF /* QRScannerViewControllerTests.swift in Sources */,
+				351C3ED0245CBCFD001D1278 /* RoomsSceneObjectProvider.swift in Sources */,
 				352B3D34244FA02400B422CF /* QRScannerViewControllerCaptureSessionTests.swift in Sources */,
 				350CF6FF243D5A0A00282A64 /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */,

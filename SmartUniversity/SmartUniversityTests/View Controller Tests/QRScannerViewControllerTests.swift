@@ -10,17 +10,15 @@ import XCTest
 
 final class TestableCaptureSessionHandler: CaptureSessionHandling {
 
-    var delegate: CaptureSessionHandlerDelegate? {
-        didSet {
-            didSetDelegate = delegate != nil
-        }
-    }
-
     var didSetDelegate: Bool?
 
     var viewReceivedInViewDidLoad: UIView?
     var viewReceivedInViewWillAppear: UIView?
     var viewReceivedInViewWillDisappear: UIView?
+
+    var delegate: CaptureSessionHandlerDelegate? {
+        didSet { didSetDelegate = delegate != nil }
+    }
 
     func handleViewDidLoad(_ view: UIView) {
         viewReceivedInViewDidLoad = view
@@ -38,16 +36,14 @@ final class TestableCaptureSessionHandler: CaptureSessionHandling {
 
 final class TestableQRPointScanningHandler: QRPointScanningHandling {
 
-    var delegate: QRPointScanningHandlerDelegate? {
-        didSet {
-            didSetDelegate = delegate != nil
-        }
-    }
-
     var didSetDelegate: Bool?
 
     var viewReceivedInViewDidLoad: UIView?
     var qrCodeValueReceived: String?
+
+    var delegate: QRPointScanningHandlerDelegate? {
+        didSet { didSetDelegate = delegate != nil }
+    }
 
     func handleViewDidLoad(_ view: UIView) {
         viewReceivedInViewDidLoad = view

@@ -18,9 +18,7 @@ private final class TestableScreenView: UIView, BaseScreenView {
 
 }
 
-private final class TestableBaseViewController: BaseViewController<TestableScreenView> {
-
-}
+private final class TestableBaseViewController: BaseViewController<TestableScreenView> { }
 
 final class BaseViewControllerTests: XCTestCase {
 

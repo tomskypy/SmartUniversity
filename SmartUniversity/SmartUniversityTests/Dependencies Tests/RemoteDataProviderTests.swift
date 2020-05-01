@@ -29,10 +29,11 @@ private final class TestableURLSessionProvider: URLSessionProviding {
         self.dataTaskResponse = dataTaskResponse
     }
 
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return TestableURLSessionDataTask(onResume: {
-            completionHandler(Data(repeating: 5, count: 3), nil, nil)
-        })
+    func dataTask(
+        with url: URL,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+    ) -> URLSessionDataTask {
+        TestableURLSessionDataTask(onResume: { completionHandler(Data(repeating: 5, count: 3), nil, nil) })
     } 
 }
 

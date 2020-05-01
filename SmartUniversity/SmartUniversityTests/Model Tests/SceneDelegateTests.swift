@@ -59,9 +59,7 @@ private struct FakeSceneDependencyProvider: SceneDependencyProviding {
     let rootViewController = IdentifiableViewController()
     var sceneHandler: WindowSceneHandling? = TestableSceneHandler()
 
-    func makeRootViewController() -> UIViewController {
-        return rootViewController
-    }
+    func makeRootViewController() -> UIViewController { rootViewController }
 
 }
 
@@ -110,7 +108,5 @@ final class SceneDelegateTests: XCTestCase {
         XCTAssertTrue(sceneHandler.wasWindowMadeKeyAndVisibleOnDidBecomeVisible!)
     }
 
-    private func makeWindow() -> UIWindow {
-        return IdentifiableWindow(frame: .zero)
-    }
+    private func makeWindow() -> UIWindow { IdentifiableWindow(frame: .zero) }
 }

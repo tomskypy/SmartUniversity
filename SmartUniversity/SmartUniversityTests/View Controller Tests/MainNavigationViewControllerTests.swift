@@ -11,10 +11,7 @@ import XCTest
 final class MainNavigationViewControllerTests: XCTestCase {
 
     func testInitSetsUpTabBarViewControllersCorrectly() {
-        let expectedViewControllers = [
-            UIViewController(),
-            UICollectionViewController()
-        ]
+        let expectedViewControllers = [UIViewController(), UICollectionViewController()]
 
         let tabBarController = MainNavigationViewController(controllers: expectedViewControllers) as UITabBarController
 

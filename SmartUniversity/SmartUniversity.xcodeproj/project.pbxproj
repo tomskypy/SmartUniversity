@@ -43,6 +43,7 @@
 		351C3ED0245CBCFD001D1278 /* RoomsSceneObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */; };
 		351C3ED1245CBD07001D1278 /* MeshObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5EE24564B720059D9E1 /* MeshObjectProvider.swift */; };
 		351C3ED2245CBE37001D1278 /* SCNObject+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F724565C240059D9E1 /* SCNObject+Init.swift */; };
+		351C3ED9245CD390001D1278 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565E5F42456543B0059D9E1 /* UIColor+HexString.swift */; };
 		3524E033241872D9007A344E /* FrameBasedScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E032241872D9007A344E /* FrameBasedScreenView.swift */; };
 		3524E037241873DE007A344E /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E036241873DE007A344E /* MunimapScreenView.swift */; };
 		3524E03D24187729007A344E /* WebViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524E03C24187729007A344E /* WebViewHandler.swift */; };
@@ -702,6 +703,7 @@
 				35E746D524317662003BDA00 /* URLSessionProviding.swift in Sources */,
 				354329D12415A8D60065614A /* UIView+Sizing.swift in Sources */,
 				35E746D72431766C003BDA00 /* RemoteDataProvider.swift in Sources */,
+				351C3ED9245CD390001D1278 /* UIColor+HexString.swift in Sources */,
 				350CF6FC243D59FD00282A64 /* QRScannerScreenView.swift in Sources */,
 				351C3ECB245CBCCB001D1278 /* HexColor.swift in Sources */,
 				354329D22415A8DA0065614A /* UIEdgeInsets+Init.swift in Sources */,

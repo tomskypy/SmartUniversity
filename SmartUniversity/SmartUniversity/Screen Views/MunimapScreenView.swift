@@ -10,13 +10,14 @@ import WebKit
 
 class MunimapScreenView: FrameBasedScreenView {
 
-    let webView: WKWebView = WKWebView()
+    let webView = WKWebView()
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let webViewFrame = CGRect(
             origin: CGPoint(x: 0, y: -safeAreaInsets.top),
-            size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom))
+            size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom)
+        )
 
         return [(view: webView, frame: webViewFrame)]
     }
@@ -25,6 +26,6 @@ class MunimapScreenView: FrameBasedScreenView {
 extension MunimapScreenView: BaseScreenView {
 
     func setupSubviews() {
-        self.addSubview(webView)
+        addSubview(webView)
     }
 }

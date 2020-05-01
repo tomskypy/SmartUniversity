@@ -10,7 +10,7 @@ import UIKit
 
 class FrameBasedScreenView: UIView { // FIXME: Unify implementation with FrameBasedView
 
-    open var margins: UIEdgeInsets { UIEdgeInsets(all: 0) }
+    open var margins: UIEdgeInsets { .init(all: 0) }
 
     override func layoutSubviews() {
         frames(forBounds: bounds).forEach({ $0.view.frame = $0.frame })

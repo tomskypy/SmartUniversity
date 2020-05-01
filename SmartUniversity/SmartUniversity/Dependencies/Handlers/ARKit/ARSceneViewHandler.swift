@@ -24,9 +24,7 @@ final class ARSceneViewHandler: NSObject, ARSceneViewHandling {
     weak var delegate: ARSceneViewHandlerDelegate?
 
     var referenceImages: Set<ARReferenceImage> {
-        didSet {
-            setupAndRunSceneSession()
-        }
+        didSet { setupAndRunSceneSession() }
     }
 
     private var sceneView: ARSCNView?

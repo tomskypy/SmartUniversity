@@ -27,7 +27,7 @@ final class RemoteDataProvider: RemoteJSONDataProviding {
 
         queue.async {
             self.urlSessionProvider.dataTask(with: url) { data, _, _ in // FIXME: Implement URLResponse and Error
-                guard let data = data else { return completion(nil, .noData)}
+                guard let data = data else { return completion(nil, .noData) }
                 do {
                     let response = try JSONDecoder().decode(JSONData.self, from: data)
                     completion(response, nil)

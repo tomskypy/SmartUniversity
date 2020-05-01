@@ -10,12 +10,10 @@ import UIKit
 
 final class ARScreenView: FrameBasedView {
 
-    override var margins: UIEdgeInsets { UIEdgeInsets(all: 50) }
+    override var margins: UIEdgeInsets { .init(all: 50) }
 
     var arSceneView: UIView? {
-        willSet {
-            arSceneView?.removeFromSuperview()
-        }
+        willSet { arSceneView?.removeFromSuperview() }
         didSet {
             if let arSceneView = arSceneView {
                 addSubview(arSceneView)
@@ -48,7 +46,8 @@ final class ARScreenView: FrameBasedView {
         if let arSceneView = arSceneView {
             let sceneViewFrame = CGRect(
                 origin: CGPoint(x: 0, y: -safeAreaInsets.top),
-                size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom))
+                size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom)
+            )
 
             frames.append((arSceneView, sceneViewFrame))
         }

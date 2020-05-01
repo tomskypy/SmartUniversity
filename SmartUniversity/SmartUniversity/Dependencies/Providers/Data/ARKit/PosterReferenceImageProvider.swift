@@ -9,6 +9,7 @@
 import ARKit
 
 struct PosterReferenceImageProvider: ReferenceImageProviding {
+    
     static let shared = PosterReferenceImageProvider()
 
     let referenceImages: Set<ARReferenceImage>

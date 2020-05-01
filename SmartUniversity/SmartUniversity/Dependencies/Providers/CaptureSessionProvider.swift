@@ -17,9 +17,7 @@ final class CaptureSessionProvider: CaptureSessionProviding {
 
     static let shared = CaptureSessionProvider()
 
-    func makeCaptureSession() -> AVCaptureSession {
-        AVCaptureSession()
-    }
+    func makeCaptureSession() -> AVCaptureSession { .init() }
 
     private init() { }
 }

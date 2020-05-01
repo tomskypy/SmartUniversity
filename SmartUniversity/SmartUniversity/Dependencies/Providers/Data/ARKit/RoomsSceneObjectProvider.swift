@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import ARKit
+import SceneKit
 
 struct RoomsSceneObjectProvider: SceneObjectProviding {
 

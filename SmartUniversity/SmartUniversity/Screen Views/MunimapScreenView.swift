@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import UIKit
 import WebKit
 
 class MunimapScreenView: FrameBasedScreenView {

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import UIKit
 import ARKit
 
 protocol ARSceneViewHandling {

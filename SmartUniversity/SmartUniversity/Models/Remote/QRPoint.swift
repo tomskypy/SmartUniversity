@@ -6,8 +6,6 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
-
 struct QRPoint: Decodable {
 
     let uuidString: String

@@ -10,7 +10,7 @@ import UIKit
 
 final class ARScreenView: FrameBasedView {
 
-    override var insets: UIEdgeInsets { .init(all: 50) }
+    var insets: UIEdgeInsets { .init(all: 50) }
 
     var arSceneView: UIView? {
         willSet { arSceneView?.removeFromSuperview() }

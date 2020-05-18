@@ -10,7 +10,7 @@ import UIKit
 
 class VerticalFrameBasedView: FrameBasedView {
 
-    override var insets: UIEdgeInsets { .init(all: 0) }
+    var insets: UIEdgeInsets { .init(all: 0) }
 
     override func layoutSubviews() {
         frames(forWidth: bounds.width).forEach({ $0.view.frame = $0.frame })

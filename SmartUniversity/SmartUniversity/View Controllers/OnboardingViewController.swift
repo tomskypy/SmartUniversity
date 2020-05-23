@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol OnboardingViewControllerDelegate: AnyObject {
+
+    func onboardingViewControllerDidSelectNext(_ viewController: OnboardingViewController)
+}
+
 class OnboardingViewController: BaseViewController<OnboardingScreenView> {
+
+    weak var delegate: OnboardingViewControllerDelegate?
 
     var titleText: String {
         didSet { screenView?.titleText = titleText }
@@ -32,5 +39,8 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
 
         screenView?.configure(withTitleText: titleText, bodyText: bodyText)
         screenView?.backgroundColor = .white
+        screenView?.didTapNextHandler = { [unowned self] in
+            self.delegate?.onboardingViewControllerDidSelectNext(self)
+        }
     }
 }

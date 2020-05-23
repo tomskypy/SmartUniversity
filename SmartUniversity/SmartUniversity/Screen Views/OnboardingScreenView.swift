@@ -25,6 +25,17 @@ final class OnboardingScreenView: FrameBasedView {
         set { nextButton.setTitle(newValue, for: .normal) }
     }
 
+    var didTapNextHandler: (() -> ())? {
+        willSet {
+            nextButton.removeTarget(self, action: #selector(nextTapped), for: .touchUpInside)
+        }
+        didSet {
+            guard didTapNextHandler != nil else { return }
+
+            nextButton.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
+        }
+    }
+
     private let insets = UIEdgeInsets(horizontal: 15, vertical: 20)
 
     private let colorProvider: ColorProviding
@@ -104,6 +115,10 @@ final class OnboardingScreenView: FrameBasedView {
     func configure(withTitleText titleText: String, bodyText: String) {
         titleLabel.text = titleText
         bodyLabel.text = bodyText
+    }
+
+    @objc private func nextTapped() {
+        didTapNextHandler?()
     }
 }
 

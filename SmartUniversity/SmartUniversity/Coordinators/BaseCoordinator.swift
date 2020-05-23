@@ -16,6 +16,8 @@ protocol NavigationController {
 protocol BaseCoordinator {
 
     init(navigationController: NavigationController)
+
+    func start()
 }
 
 extension UINavigationController: NavigationController {

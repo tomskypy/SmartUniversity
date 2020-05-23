@@ -93,6 +93,7 @@
 		357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC629240DDEC00030B6A3 /* ARViewController.swift */; };
 		357EC62D240DE10D0030B6A3 /* VerticalFrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* VerticalFrameBasedView.swift */; };
 		357EC631240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift */; };
+		3580F0DF2479CA3000EE1A42 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580F0DE2479CA3000EE1A42 /* OnboardingCoordinator.swift */; };
 		3580F0E12479CB1700EE1A42 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */; };
 		3580F0E22479CB1B00EE1A42 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */; };
 		358559CD2468B8340045D77A /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358559CC2468B8340045D77A /* OnboardingScreenView.swift */; };
@@ -195,6 +196,7 @@
 		357EC629240DDEC00030B6A3 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		357EC62C240DE10D0030B6A3 /* VerticalFrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalFrameBasedView.swift; sourceTree = "<group>"; };
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
+		3580F0DE2479CA3000EE1A42 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		358559CC2468B8340045D77A /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProvidingTests.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */,
+				3580F0DE2479CA3000EE1A42 /* OnboardingCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				357EC622240DD8FB0030B6A3 /* ARScreenView.swift in Sources */,
 				3524E03F24187A4C007A344E /* MunimapViewController.swift in Sources */,
 				354329D42415ABC80065614A /* SceneDependencyProviding.swift in Sources */,
+				3580F0DF2479CA3000EE1A42 /* OnboardingCoordinator.swift in Sources */,
 				358A434A245119D30064D2F8 /* ARSceneContainerView.swift in Sources */,
 				3592491D2472030E00CF340F /* UILabel+Inits.swift in Sources */,
 				357EC62D240DE10D0030B6A3 /* VerticalFrameBasedView.swift in Sources */,

@@ -8,12 +8,29 @@
 
 import UIKit
 
-final class OnboardingViewController: BaseViewController<OnboardingScreenView> {
+class OnboardingViewController: BaseViewController<OnboardingScreenView> {
+
+    var titleText: String {
+        didSet { screenView?.titleText = titleText }
+    }
+
+    var bodyText: String {
+        didSet { screenView?.bodyText = bodyText }
+    }
+
+    init(titleText: String, bodyText: String) {
+        self.titleText = titleText
+        self.bodyText = bodyText
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) { nil }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        screenView?.configure(withTitleText: "Test Onboarding Screen", mainText: "bla bla bla")
+        screenView?.configure(withTitleText: titleText, bodyText: bodyText)
         screenView?.backgroundColor = .white
     }
 }

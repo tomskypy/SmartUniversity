@@ -22,9 +22,7 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     func makeRootViewController() -> UIViewController {
         MainNavigationViewController(controllers: [
-            makeTabBarMunimapViewController(),
-            makeTabBarQRScannerViewController(),
-            makeTabBarARViewController()
+            makeTabBarOnboardingViewController()
         ])
     }
 
@@ -47,7 +45,18 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     private func makeTabBarQRScannerViewController() -> UIViewController {
         let controller = QRScannerViewController()
-        controller.tabBarItem = UITabBarItem(title: "QR Scan", image: UIImage(systemName: "qrcode.viewfinder"), tag: 1)
+        controller.tabBarItem = UITabBarItem(title: "QR Scan", image: UIImage(systemName: "qrcode.viewfinder"), tag: 2)
+
+        return controller
+    }
+
+    private func makeTabBarOnboardingViewController() -> UIViewController {
+        let controller = OnboardingViewController(titleText: "Test Test Onboarding", bodyText: "Ja guten aufsteigen, sehr shon, ja klar.")
+        controller.tabBarItem = UITabBarItem(
+            title: "Onboarding",
+            image: UIImage(systemName: "exclamationmark.bubble"),
+            tag: 3
+        )
 
         return controller
     }

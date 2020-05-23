@@ -93,6 +93,8 @@
 		357EC62A240DDEC00030B6A3 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC629240DDEC00030B6A3 /* ARViewController.swift */; };
 		357EC62D240DE10D0030B6A3 /* VerticalFrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC62C240DE10D0030B6A3 /* VerticalFrameBasedView.swift */; };
 		357EC631240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357EC630240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift */; };
+		3580F0E12479CB1700EE1A42 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */; };
+		3580F0E22479CB1B00EE1A42 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */; };
 		358559CD2468B8340045D77A /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358559CC2468B8340045D77A /* OnboardingScreenView.swift */; };
 		358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */; };
 		358A43472451169F0064D2F8 /* ARSceneViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */; };
@@ -193,6 +195,7 @@
 		357EC629240DDEC00030B6A3 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		357EC62C240DE10D0030B6A3 /* VerticalFrameBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalFrameBasedView.swift; sourceTree = "<group>"; };
 		357EC630240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Ext.swift"; sourceTree = "<group>"; };
+		3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		358559CC2468B8340045D77A /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProvidingTests.swift; sourceTree = "<group>"; };
 		358A43462451169F0064D2F8 /* ARSceneViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneViewHandler.swift; sourceTree = "<group>"; };
@@ -257,6 +260,7 @@
 		3503C934240C5A52002F2457 /* SmartUniversity */ = {
 			isa = PBXGroup;
 			children = (
+				3580F0DD2479CA1600EE1A42 /* Coordinators */,
 				357EC626240DDD510030B6A3 /* View Controllers */,
 				357EC620240DD8E70030B6A3 /* Screen Views */,
 				357EC62B240DE0D20030B6A3 /* Models */,
@@ -515,6 +519,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		3580F0DD2479CA1600EE1A42 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				3580F0E02479CB1700EE1A42 /* BaseCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		3592E8E32472073400549E2F /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +686,7 @@
 				3578A7FB24525ADE00160793 /* PosterReferenceImageProvider.swift in Sources */,
 				3578A7F9245259D100160793 /* ReferenceImageProviding.swift in Sources */,
 				3524E033241872D9007A344E /* FrameBasedView.swift in Sources */,
+				3580F0E12479CB1700EE1A42 /* BaseCoordinator.swift in Sources */,
 				3565E5F824565C240059D9E1 /* SCNObject+Init.swift in Sources */,
 				35B209AB24219008005E65AE /* MainNavigationViewController.swift in Sources */,
 				357EC631240DE74A0030B6A3 /* UIEdgeInsets+Ext.swift in Sources */,
@@ -722,6 +735,7 @@
 				35E746D624317664003BDA00 /* RemoteJSONDataProviding.swift in Sources */,
 				351C3ECF245CBCF6001D1278 /* SceneObjectProviding.swift in Sources */,
 				358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */,
+				3580F0E22479CB1B00EE1A42 /* BaseCoordinator.swift in Sources */,
 				354329C92415A79B0065614A /* ARScreenView.swift in Sources */,
 				350CF6FD243D5A0300282A64 /* QRScannerViewController.swift in Sources */,
 				354329CB2415A8C40065614A /* ARViewController.swift in Sources */,

@@ -15,6 +15,8 @@ private struct OnboardingControllerConfiguration {
 
 class OnboardingCoordinator: BaseCoordinator {
 
+    var didFinishHandler: (() -> Void)?
+
     private lazy var viewControllerConfigurations: [OnboardingControllerConfiguration] = [
         .init(titleText: "Welcome to SmartUniversity", bodyText: "We will show you around, no worries..."),
         .init(
@@ -39,8 +41,13 @@ class OnboardingCoordinator: BaseCoordinator {
     }
 
     private func pushViewControllerOnIndex(_ index: Int) {
+        guard index < viewControllerConfigurations.count else {
+            didFinishHandler?()
+            return
+        }
+
         navigationController.pushViewController(
-            OnboardingViewController(configuration: viewControllerConfigurations[index])
+            OnboardingViewController(configuration: viewControllerConfigurations[index], delegate: self)
         )
     }
 
@@ -57,7 +64,9 @@ extension OnboardingCoordinator: OnboardingViewControllerDelegate {
 
 private extension OnboardingViewController {
 
-    convenience init(configuration: OnboardingControllerConfiguration) {
+    convenience init(configuration: OnboardingControllerConfiguration, delegate: OnboardingViewControllerDelegate) {
         self.init(titleText: configuration.titleText, bodyText: configuration.bodyText)
+
+        self.delegate = delegate
     }
 }

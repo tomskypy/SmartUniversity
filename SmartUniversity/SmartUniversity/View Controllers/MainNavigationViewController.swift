@@ -10,6 +10,8 @@ import UIKit
 
 class MainNavigationViewController: UITabBarController {
 
+    var onboardingCoordinator: OnboardingCoordinator?
+
     init(controllers: [UIViewController]) {
         super.init(nibName: nil, bundle: nil)
 

@@ -25,7 +25,7 @@ final class OnboardingScreenView: FrameBasedView {
         set { nextButton.setTitle(newValue, for: .normal) }
     }
 
-    var didTapNextHandler: (() -> ())? {
+    var didTapNextHandler: (() -> Void)? {
         willSet {
             nextButton.removeTarget(self, action: #selector(nextTapped), for: .touchUpInside)
         }

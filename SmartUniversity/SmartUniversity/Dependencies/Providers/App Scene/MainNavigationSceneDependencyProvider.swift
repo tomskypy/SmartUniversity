@@ -11,6 +11,7 @@ import UIKit
 final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     var sceneHandler: WindowSceneHandling?
+    var onboardingCoordinator: OnboardingCoordinator?
 
     private lazy var munimapServerURL: URL = {
         let webWindowZoom = munimapWebWindowZoomValue()
@@ -21,9 +22,10 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     }()
 
     func makeRootViewController() -> UIViewController {
-        MainNavigationViewController(controllers: [
-            makeTabBarOnboardingViewController()
-        ])
+        let vc = UINavigationController()
+        onboardingCoordinator = OnboardingCoordinator(navigationController: vc)
+        onboardingCoordinator?.start()
+        return vc
     }
 
     private func makeTabBarMunimapViewController() -> UIViewController {
@@ -51,7 +53,7 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     }
 
     private func makeTabBarOnboardingViewController() -> UIViewController {
-        let controller = OnboardingViewController(titleText: "Test Test Onboarding", bodyText: "Ja guten aufsteigen, sehr shon, ja klar.")
+        let controller = UINavigationController()
         controller.tabBarItem = UITabBarItem(
             title: "Onboarding",
             image: UIImage(systemName: "exclamationmark.bubble"),
@@ -64,4 +66,5 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     private func munimapWebWindowZoomValue(for screen: UIScreen = UIScreen.main) -> Int {
         screen.scale <= 2 ? 100 : 200
     }
+
 }

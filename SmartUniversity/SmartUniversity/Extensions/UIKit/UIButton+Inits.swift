@@ -48,7 +48,7 @@ private extension UIButton.Style {
     var backgroundColor: UIColor {
         switch self {
         case .solid(let color): return color
-        case .transparent:      return .white // TODO handle darkmode
+        case .transparent:      return .clear
         }
     }
 }

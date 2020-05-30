@@ -38,7 +38,6 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
         super.viewDidLoad()
 
         screenView?.configure(withTitleText: titleText, bodyText: bodyText)
-        screenView?.backgroundColor = .white
         screenView?.didTapNextHandler = { [unowned self] in
             self.delegate?.onboardingViewControllerDidSelectNext(self)
         }

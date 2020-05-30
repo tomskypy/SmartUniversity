@@ -115,6 +115,8 @@ final class OnboardingScreenView: FrameBasedView {
     func configure(withTitleText titleText: String, bodyText: String) {
         titleLabel.text = titleText
         bodyLabel.text = bodyText
+
+        backgroundColor = colorProvider.backgroundColor
     }
 
     @objc private func nextTapped() {

@@ -10,8 +10,6 @@ import UIKit
 
 class FrameBasedView: UIView {
 
-    open var insets: UIEdgeInsets { .init(all: 0) }
-
     override func layoutSubviews() {
         frames(forBounds: bounds).forEach({ $0.view.frame = $0.frame })
     }

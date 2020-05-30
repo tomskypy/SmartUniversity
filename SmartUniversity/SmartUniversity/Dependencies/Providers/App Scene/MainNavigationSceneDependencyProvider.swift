@@ -10,7 +10,11 @@ import UIKit
 
 final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
-    var sceneHandler: WindowSceneHandling?
+    let navigationController: NavigationController
+
+    var sceneHandler: WindowSceneHandling? { self }
+
+    var onboardingCoordinator: OnboardingCoordinator?
 
     private lazy var munimapServerURL: URL = {
         let webWindowZoom = munimapWebWindowZoomValue()
@@ -20,12 +24,16 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
         return url
     }()
 
+    convenience init() {
+        self.init(navigationController: UINavigationController())
+    }
+
+    init(navigationController: NavigationController) {
+        self.navigationController = navigationController
+    }
+
     func makeRootViewController() -> UIViewController {
-        MainNavigationViewController(controllers: [
-            makeTabBarMunimapViewController(),
-            makeTabBarQRScannerViewController(),
-            makeTabBarARViewController()
-        ])
+        navigationController
     }
 
     private func makeTabBarMunimapViewController() -> UIViewController {
@@ -47,12 +55,37 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     private func makeTabBarQRScannerViewController() -> UIViewController {
         let controller = QRScannerViewController()
-        controller.tabBarItem = UITabBarItem(title: "QR Scan", image: UIImage(systemName: "qrcode.viewfinder"), tag: 1)
+        controller.tabBarItem = UITabBarItem(title: "QR Scan", image: UIImage(systemName: "qrcode.viewfinder"), tag: 2)
+
+        return controller
+    }
+
+    private func makeTabBarOnboardingViewController() -> UIViewController {
+        let controller = UINavigationController()
+        controller.tabBarItem = UITabBarItem(
+            title: "Onboarding",
+            image: UIImage(systemName: "exclamationmark.bubble"),
+            tag: 3
+        )
 
         return controller
     }
 
     private func munimapWebWindowZoomValue(for screen: UIScreen = UIScreen.main) -> Int {
         screen.scale <= 2 ? 100 : 200
+    }
+
+}
+
+extension MainNavigationSceneDependencyProvider: WindowSceneHandling {
+
+    func windowWillBecomeVisible(_ window: UIWindow) { }
+
+    func windowDidBecomeVisible(_ window: UIWindow) {
+        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+        onboardingCoordinator?.didFinishHandler = {
+            print("lol")
+        }
+        onboardingCoordinator?.start()
     }
 }

@@ -12,7 +12,8 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     let navigationController: NavigationController
 
-    var sceneHandler: WindowSceneHandling?
+    var sceneHandler: WindowSceneHandling? { self }
+
     var onboardingCoordinator: OnboardingCoordinator?
 
     private lazy var munimapServerURL: URL = {
@@ -32,12 +33,7 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
     }
 
     func makeRootViewController() -> UIViewController {
-        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
-        onboardingCoordinator?.didFinishHandler = {
-            print("lol")
-        }
-        onboardingCoordinator?.start()
-        return navigationController
+        navigationController
     }
 
     private func makeTabBarMunimapViewController() -> UIViewController {
@@ -79,4 +75,17 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
         screen.scale <= 2 ? 100 : 200
     }
 
+}
+
+extension MainNavigationSceneDependencyProvider: WindowSceneHandling {
+
+    func windowWillBecomeVisible(_ window: UIWindow) { }
+
+    func windowDidBecomeVisible(_ window: UIWindow) {
+        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+        onboardingCoordinator?.didFinishHandler = {
+            print("lol")
+        }
+        onboardingCoordinator?.start()
+    }
 }

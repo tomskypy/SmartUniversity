@@ -10,6 +10,8 @@ import UIKit
 
 final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
+    let navigationController: NavigationController
+
     var sceneHandler: WindowSceneHandling?
     var onboardingCoordinator: OnboardingCoordinator?
 
@@ -21,11 +23,21 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
         return url
     }()
 
+    convenience init() {
+        self.init(navigationController: UINavigationController())
+    }
+
+    init(navigationController: NavigationController) {
+        self.navigationController = navigationController
+    }
+
     func makeRootViewController() -> UIViewController {
-        let vc = UINavigationController()
-        onboardingCoordinator = OnboardingCoordinator(navigationController: vc)
+        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+        onboardingCoordinator?.didFinishHandler = {
+            print("lol")
+        }
         onboardingCoordinator?.start()
-        return vc
+        return navigationController
     }
 
     private func makeTabBarMunimapViewController() -> UIViewController {

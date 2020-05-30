@@ -8,9 +8,11 @@
 
 import UIKit
 
-protocol NavigationController {
+protocol NavigationController: UIViewController {
 
     func pushViewController(_ viewController: UIViewController)
+    func popViewController()
+    func popToRootViewController()
 }
 
 protocol BaseCoordinator {
@@ -24,5 +26,13 @@ extension UINavigationController: NavigationController {
 
     func pushViewController(_ viewController: UIViewController) {
         pushViewController(viewController, animated: true)
+    }
+
+    func popViewController() {
+        popViewController(animated: true)
+    }
+
+    func popToRootViewController() {
+        popToRootViewController(animated: true)
     }
 }

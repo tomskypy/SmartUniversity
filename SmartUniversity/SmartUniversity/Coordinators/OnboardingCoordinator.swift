@@ -35,6 +35,8 @@ class OnboardingCoordinator: BaseCoordinator {
 
     required init(navigationController: NavigationController) {
         self.navigationController = navigationController
+        
+        navigationController.setNavigationBarHidden()
     }
 
     func start() {
@@ -47,9 +49,11 @@ class OnboardingCoordinator: BaseCoordinator {
             return
         }
 
-        navigationController.pushViewController(
-            OnboardingViewController(configuration: viewControllerConfigurations[index], delegate: self)
+        let viewController = OnboardingViewController(
+            configuration: viewControllerConfigurations[index],
+            delegate: self
         )
+        navigationController.pushViewController(viewController)
     }
 
 }

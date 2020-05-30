@@ -13,6 +13,7 @@ protocol NavigationController: UIViewController {
     func pushViewController(_ viewController: UIViewController)
     func popViewController()
     func popToRootViewController()
+    func setNavigationBarHidden()
 }
 
 protocol BaseCoordinator {
@@ -34,5 +35,9 @@ extension UINavigationController: NavigationController {
 
     func popToRootViewController() {
         popToRootViewController(animated: true)
+    }
+
+    func setNavigationBarHidden() {
+        setNavigationBarHidden(true, animated: false)
     }
 }

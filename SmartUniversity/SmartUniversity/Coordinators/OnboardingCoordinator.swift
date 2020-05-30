@@ -21,7 +21,8 @@ class OnboardingCoordinator: BaseCoordinator {
         .init(titleText: "Welcome to SmartUniversity", bodyText: "We will show you around, no worries..."),
         .init(
             titleText: "Second onboarding screen",
-            bodyText: "This is the second onboarding screen. You should know something already at this point."),
+            bodyText: "This is the second onboarding screen. You should know something already at this point."
+        ),
         .init(
             titleText: "Last onboarding screen",
             bodyText: "Here you have last chance to grasp some info. Good luck."

@@ -21,11 +21,48 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
+    var bottomTextOverlayState: InfoTextOverlayView.State? {
+        didSet {
+            guard let state = bottomTextOverlayState else {
+                return bottomOverlay.removeFromSuperview()
+            }
+
+            bottomOverlay.state = state
+            addSubview(bottomOverlay)
+        }
+    }
+
+    private let colorProvider: ColorProviding
+
+    private lazy var bottomOverlay = InfoTextOverlayView()
+
+    init(colorProvider: ColorProviding) {
+        self.colorProvider = colorProvider
+        super.init(frame: .zero)
+    }
+
+    override init(frame: CGRect) {
+        self.colorProvider = AppColorProvider.shared
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let blurredOverlayFrame = CGRect(origin: .zero, size: bounds.size)
 
-        return [(view: blurredOverlayView, frame: blurredOverlayFrame)]
+        let bottomOverlayFrameSize = bottomOverlay.size(constrainedToWidth: bounds.width)
+        let bottomOverlayFrame = CGRect(
+            x: 0,
+            y: bounds.height - bottomOverlayFrameSize.height,
+            size: bottomOverlayFrameSize
+        )
+
+        return [
+            (blurredOverlayView, blurredOverlayFrame),
+            (bottomOverlay, bottomOverlayFrame)
+        ]
     }
 
     func hideBlurOverlay() {

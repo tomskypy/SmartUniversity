@@ -30,6 +30,8 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     init(navigationController: NavigationController) {
         self.navigationController = navigationController
+
+        navigationController.setNavigationBarHidden()
     }
 
     func makeRootViewController() -> UIViewController {

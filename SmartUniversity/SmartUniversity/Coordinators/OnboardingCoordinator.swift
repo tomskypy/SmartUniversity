@@ -35,8 +35,6 @@ class OnboardingCoordinator: BaseCoordinator {
 
     required init(navigationController: NavigationController) {
         self.navigationController = navigationController
-        
-        navigationController.setNavigationBarHidden()
     }
 
     func start() {

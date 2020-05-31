@@ -18,7 +18,7 @@ class OnboardingCoordinator: BaseCoordinator {
     var didFinishHandler: (() -> Void)?
 
     private lazy var viewControllerConfigurations: [OnboardingControllerConfiguration] = [
-        .init(titleText: "Welcome to SmartUniversity", bodyText: "We will show you around, no worries..."),
+        .init(titleText: "Welcome to Smart University App", bodyText: "We will show you around, no worries..."),
         .init(
             titleText: "Second onboarding screen",
             bodyText: "This is the second onboarding screen. You should know something already at this point."

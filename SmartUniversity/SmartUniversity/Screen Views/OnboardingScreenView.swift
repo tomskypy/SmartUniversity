@@ -36,6 +36,17 @@ final class OnboardingScreenView: FrameBasedView {
         }
     }
 
+    var didTapSkipHandler: (() -> Void)? {
+        willSet {
+            skipButton.removeTarget(self, action: #selector(skipTapped), for: .touchUpInside)
+        }
+        didSet {
+            guard didTapSkipHandler != nil else { return }
+
+            skipButton.addTarget(self, action: #selector(skipTapped), for: .touchUpInside)
+        }
+    }
+
     private let insets = UIEdgeInsets(horizontal: 15, vertical: 20)
 
     private let colorProvider: ColorProviding
@@ -121,6 +132,10 @@ final class OnboardingScreenView: FrameBasedView {
 
     @objc private func nextTapped() {
         didTapNextHandler?()
+    }
+
+    @objc private func skipTapped() {
+        didTapSkipHandler?()
     }
 }
 

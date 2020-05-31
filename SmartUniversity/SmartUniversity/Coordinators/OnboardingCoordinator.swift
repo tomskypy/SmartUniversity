@@ -63,6 +63,11 @@ extension OnboardingCoordinator: OnboardingViewControllerDelegate {
 
         pushViewControllerOnIndex(controllerIndex)
     }
+
+    func onboardingViewControllerDidSelectSkip(_ viewController: OnboardingViewController) {
+        didFinishHandler?()
+    }
+
 }
 
 private extension OnboardingViewController {

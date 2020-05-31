@@ -84,9 +84,11 @@ extension MainNavigationSceneDependencyProvider: WindowSceneHandling {
     func windowWillBecomeVisible(_ window: UIWindow) { }
 
     func windowDidBecomeVisible(_ window: UIWindow) {
+        navigationController.pushViewController(makeTabBarQRScannerViewController())
+
         onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
         onboardingCoordinator?.didFinishHandler = {
-            print("lol")
+            self.navigationController.popToRootViewController()
         }
         onboardingCoordinator?.start()
     }

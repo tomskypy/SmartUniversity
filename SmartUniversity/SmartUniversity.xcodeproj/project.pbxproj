@@ -31,6 +31,7 @@
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
 		3516B3712416FCF0009C5D36 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */; };
 		3516B37324170961009C5D36 /* UIViewAddSubviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */; };
+		3516D08124846E2A00FCF2E9 /* InfoTextOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516D08024846E2A00FCF2E9 /* InfoTextOverlayView.swift */; };
 		3518743824532B9100053343 /* SceneObjectProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743724532B9100053343 /* SceneObjectProviding.swift */; };
 		3518743A24539F4A00053343 /* RoomsSceneObjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */; };
 		351AC8B1243A9CF7009360D4 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */; };
@@ -164,6 +165,7 @@
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
 		3516B3702416FCF0009C5D36 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		3516B37224170961009C5D36 /* UIViewAddSubviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAddSubviewsTests.swift; sourceTree = "<group>"; };
+		3516D08024846E2A00FCF2E9 /* InfoTextOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTextOverlayView.swift; sourceTree = "<group>"; };
 		3518743724532B9100053343 /* SceneObjectProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneObjectProviding.swift; sourceTree = "<group>"; };
 		3518743924539F4A00053343 /* RoomsSceneObjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsSceneObjectProvider.swift; sourceTree = "<group>"; };
 		351AC8B0243A9CF7009360D4 /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				357EC62C240DE10D0030B6A3 /* VerticalFrameBasedView.swift */,
 				3524E032241872D9007A344E /* FrameBasedView.swift */,
 				358A4349245119D30064D2F8 /* ARSceneContainerView.swift */,
+				3516D08024846E2A00FCF2E9 /* InfoTextOverlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */,
 				3578A7FB24525ADE00160793 /* PosterReferenceImageProvider.swift in Sources */,
 				3578A7F9245259D100160793 /* ReferenceImageProviding.swift in Sources */,
+				3516D08124846E2A00FCF2E9 /* InfoTextOverlayView.swift in Sources */,
 				3524E033241872D9007A344E /* FrameBasedView.swift in Sources */,
 				3580F0E12479CB1700EE1A42 /* BaseCoordinator.swift in Sources */,
 				3565E5F824565C240059D9E1 /* SCNObject+Init.swift in Sources */,

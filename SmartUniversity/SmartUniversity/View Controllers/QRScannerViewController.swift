@@ -59,13 +59,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     }
 
     private func handleSessionFailed() {
-        let controller = UIAlertController(
-            title: "Device not supported",
-            message: "Your device does not support code scanning with a camera.",
-            preferredStyle: .alert
+        screenView?.bottomTextOverlayState = .fail(
+            text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)"
         )
-        controller.addAction(UIAlertAction(title: "OK", style: .default))
-        presentationHandler.present(controller, onViewController: self, animated: true)
     }
 }
 
@@ -87,6 +83,8 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         qrPointScanningHandler.qrCodeValueScanned(outputString)
 
         screenView?.showBlurOverlay(maskBounds: objectBounds)
+
+        screenView?.bottomTextOverlayState = .success(text: "GJ, you've found a Point!")
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {

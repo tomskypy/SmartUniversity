@@ -21,9 +21,9 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
-    var bottomTextOverlayState: InfoTextOverlayView.State? {
+    private var bottomOverlayState: InfoOverlayView.State? {
         didSet {
-            guard let state = bottomTextOverlayState else {
+            guard let state = bottomOverlayState else {
                 return bottomOverlay.removeFromSuperview()
             }
 
@@ -32,9 +32,15 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
+    private var bottomOverlayButtonConfiguration: InfoOverlayView.ButtonConfiguration? {
+        didSet {
+            bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration
+        }
+    }
+
     private let colorProvider: ColorProviding
 
-    private lazy var bottomOverlay = InfoTextOverlayView()
+    private lazy var bottomOverlay = InfoOverlayView()
 
     init(colorProvider: ColorProviding) {
         self.colorProvider = colorProvider
@@ -75,6 +81,18 @@ class QRScannerScreenView: FrameBasedView {
         if blurredOverlayView.isHidden {
             blurredOverlayView.isHidden = false
         }
+    }
+
+    func configureBottomOverlay(
+        with state: InfoOverlayView.State,
+        buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
+    ) {
+        bottomOverlayState = state
+        bottomOverlayButtonConfiguration = buttonConfiguration
+    }
+
+    func hideBottomOverlay() {
+        bottomOverlayState = nil
     }
 
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {

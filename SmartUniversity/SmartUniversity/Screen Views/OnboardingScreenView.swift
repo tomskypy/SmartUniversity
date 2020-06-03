@@ -50,6 +50,7 @@ final class OnboardingScreenView: FrameBasedView {
     private let insets = UIEdgeInsets(horizontal: 15, vertical: 20)
 
     private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
 
     private lazy var titleLabel = UILabel(
         font: .boldSystemFont(ofSize: 45),
@@ -68,13 +69,9 @@ final class OnboardingScreenView: FrameBasedView {
     )
     private lazy var nextButton = UIButton(titleText: "Next", backgroundColor: .lightGray)
 
-    init(colorProvider: ColorProviding) {
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
-        super.init(frame: .zero)
-    }
-
-    override init(frame: CGRect) {
-        self.colorProvider = AppColorProvider.shared
+        self.layoutProvider = layoutProvider
         super.init(frame: .zero)
     }
 
@@ -112,7 +109,7 @@ final class OnboardingScreenView: FrameBasedView {
         )
         frames.append((bodyLabel, bodyLabelFrame))
 
-        let nextButtonSize = CGSize(width: 100, height: 40)
+        let nextButtonSize = layoutProvider.preferredButtonSize
         let nextButtonFrame = CGRect(
             x: bounds.width - insets.right - nextButtonSize.width,
             y: bounds.height - (safeAreaInsets.bottom + insets.bottom + nextButtonSize.height),

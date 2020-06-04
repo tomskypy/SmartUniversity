@@ -111,7 +111,7 @@
 		358A434B245119D30064D2F8 /* ARSceneContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A4349245119D30064D2F8 /* ARSceneContainerView.swift */; };
 		3592491D2472030E00CF340F /* UILabel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3592491C2472030E00CF340F /* UILabel+Init.swift */; };
 		3592E8E22472055700549E2F /* UIButton+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3592E8E12472055700549E2F /* UIButton+Init.swift */; };
-		3592E8E52472074700549E2F /* CRRect+Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3592E8E42472074700549E2F /* CRRect+Inits.swift */; };
+		3592E8E52472074700549E2F /* CGRect+Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3592E8E42472074700549E2F /* CGRect+Inits.swift */; };
 		35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */; };
 		35AC87CD24314910009C0E9D /* RemoteJSONDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */; };
 		35AC87CF24314A9E009C0E9D /* RemoteDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */; };
@@ -218,7 +218,7 @@
 		358A4349245119D30064D2F8 /* ARSceneContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneContainerView.swift; sourceTree = "<group>"; };
 		3592491C2472030E00CF340F /* UILabel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Init.swift"; sourceTree = "<group>"; };
 		3592E8E12472055700549E2F /* UIButton+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Init.swift"; sourceTree = "<group>"; };
-		3592E8E42472074700549E2F /* CRRect+Inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CRRect+Inits.swift"; sourceTree = "<group>"; };
+		3592E8E42472074700549E2F /* CGRect+Inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Inits.swift"; sourceTree = "<group>"; };
 		35AC87CA243146E8009C0E9D /* URLSessionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProviding.swift; sourceTree = "<group>"; };
 		35AC87CC24314910009C0E9D /* RemoteJSONDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProviding.swift; sourceTree = "<group>"; };
 		35AC87CE24314A9E009C0E9D /* RemoteDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProvider.swift; sourceTree = "<group>"; };
@@ -578,7 +578,7 @@
 		3592E8E32472073400549E2F /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
-				3592E8E42472074700549E2F /* CRRect+Inits.swift */,
+				3592E8E42472074700549E2F /* CGRect+Inits.swift */,
 			);
 			path = CoreGraphics;
 			sourceTree = "<group>";
@@ -766,7 +766,7 @@
 				350CF6F7243D4F6300282A64 /* QRPointScanningHandlerDelegate.swift in Sources */,
 				357EC628240DDD620030B6A3 /* BaseViewController.swift in Sources */,
 				350DE44B243BE985003D2FE1 /* CaptureSessionProvider.swift in Sources */,
-				3592E8E52472074700549E2F /* CRRect+Inits.swift in Sources */,
+				3592E8E52472074700549E2F /* CGRect+Inits.swift in Sources */,
 				350DE44D243C03B2003D2FE1 /* QRScannerScreenView.swift in Sources */,
 				354329D82415ABF60065614A /* WindowSceneHandling.swift in Sources */,
 				35AC87CB243146E8009C0E9D /* URLSessionProviding.swift in Sources */,

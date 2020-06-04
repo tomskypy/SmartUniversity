@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private final class TestableUIView: UIView {
 
     static let sizeThatFitsHeightReturnValue: CGFloat = 10

@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 class SURemoteDataInfoTests: XCTestCase {
 
     func testAllURLStringAreValidURLs() {

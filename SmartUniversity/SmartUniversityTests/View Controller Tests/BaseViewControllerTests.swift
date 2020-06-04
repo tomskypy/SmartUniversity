@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private final class TestableScreenView: UIView, BaseScreenView {
 
     var didReceiveSetupSubviews: Bool = false

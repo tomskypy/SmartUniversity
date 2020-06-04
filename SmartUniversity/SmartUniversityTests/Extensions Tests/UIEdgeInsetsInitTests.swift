@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 final class UIEdgeInsetsInitTests: XCTestCase {
 
     func testInitAllDoesInitiateAllValuesCorrectly() {

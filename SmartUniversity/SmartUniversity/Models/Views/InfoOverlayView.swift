@@ -8,13 +8,18 @@
 
 import UIKit
 
-final class InfoTextOverlayView: VerticalFrameBasedView {
+final class InfoOverlayView: VerticalFrameBasedView {
 
     enum State {
         case success(text: String)
         case neutral(text: String)
         case fail(text: String)
         case empty
+    }
+
+    struct ButtonConfiguration {
+        let text: String
+        let color: UIColor
     }
 
     var state: State = .empty {
@@ -37,9 +42,27 @@ final class InfoTextOverlayView: VerticalFrameBasedView {
         }
     }
 
-    private let textInsets = UIEdgeInsets(horizontal: 15, vertical: 20)
+    var buttonConfiguration: ButtonConfiguration? {
+        didSet {
+            guard let buttonConfiguration = buttonConfiguration else {
+                return button.removeFromSuperview()
+            }
+
+            button.backgroundColor = buttonConfiguration.color
+            button.setTitle(buttonConfiguration.text, for: .normal)
+
+            addSubview(button)
+        }
+    }
 
     private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
+
+    private lazy var contentInsets = layoutProvider.contentInsets(
+        for: self,
+        respectingSafeAreasOn: [.left, .bottom, .right]
+    )
+    private lazy var contentSpacing = layoutProvider.contentSpacing
 
     private lazy var overlay: UIView = {
         let overlayView = UIView()
@@ -55,41 +78,52 @@ final class InfoTextOverlayView: VerticalFrameBasedView {
         numberOfLines: 0
     )
 
-    init(colorProvider: ColorProviding) {
-        self.colorProvider = colorProvider
-        super.init(frame: .zero)
-    }
+    private lazy var button = UIButton(backgroundColor: .darkGray)
 
-    override init(frame: CGRect) {
-        self.colorProvider = AppColorProvider.shared
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
+        self.colorProvider = colorProvider
+        self.layoutProvider = layoutProvider
         super.init(frame: .zero)
     }
 
     required init?(coder: NSCoder) { nil }
 
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+        var frames: [(UIView, CGRect)] = []
+
         let textSize = textLabel.size(constrainedToWidth: width - insets.horizontalSum)
         let textFrame = CGRect(
-            x: textInsets.left,
-            y: bounds.height - (textSize.height + textInsets.bottom),
+            x: contentInsets.left,
+            y: contentInsets.top,
             size: textSize
         )
 
+        var buttonSize: CGSize = .zero
+        if buttonConfiguration != nil {
+            buttonSize = layoutProvider.preferredButtonSize
+            let buttonFrame = CGRect(
+                x: width - (buttonSize.width + contentInsets.right),
+                y: textFrame.maxY + contentSpacing,
+                size: buttonSize
+            )
+            frames.append((button, buttonFrame))
+        }
+
         let overlayFrame = CGRect(
-            x: 0,
-            y: 0,
+            origin: .zero,
             width: bounds.width,
-            height: textSize.height + textInsets.verticalSum
+            height: buttonSize.height + contentSpacing + textSize.height + contentInsets.verticalSum
         )
 
-        return [
+        frames.append(contentsOf: [
             (textLabel, textFrame),
             (overlay, overlayFrame)
-        ]
+        ])
+        return frames
     }
 }
 
-private extension InfoTextOverlayView.State {
+private extension InfoOverlayView.State {
 
     var labelText: String? {
         switch self {

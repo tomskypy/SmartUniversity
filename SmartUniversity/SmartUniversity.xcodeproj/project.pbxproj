@@ -332,14 +332,14 @@
 		35706400248872CC00E45B0D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				35706401248872CC00E45B0D /* UIColor+HexString.swift */,
 				35706402248872CC00E45B0D /* UIEdgeInsets+Init.swift */,
-				35706403248872CC00E45B0D /* UIButton+Init.swift */,
-				35706404248872CC00E45B0D /* UIView+AddSubviews.swift */,
-				35706405248872CC00E45B0D /* UILabel+Init.swift */,
-				35706406248872CC00E45B0D /* UIView+Sizing.swift */,
 				35706407248872CC00E45B0D /* UIEdgeInsets+Sum.swift */,
 				35706408248872CC00E45B0D /* UIEdgeInsets+Merge.swift */,
+				35706401248872CC00E45B0D /* UIColor+HexString.swift */,
+				35706404248872CC00E45B0D /* UIView+AddSubviews.swift */,
+				35706406248872CC00E45B0D /* UIView+Sizing.swift */,
+				35706405248872CC00E45B0D /* UILabel+Init.swift */,
+				35706403248872CC00E45B0D /* UIButton+Init.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -364,11 +364,11 @@
 		3570640C248872CC00E45B0D /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				3570640D248872CC00E45B0D /* CaptureDeviceProvider.swift */,
-				3570640E248872CC00E45B0D /* App Scene */,
-				35706411248872CC00E45B0D /* CaptureSessionProvider.swift */,
 				35706412248872CC00E45B0D /* Data */,
 				3570641E248872CC00E45B0D /* Remote */,
+				3570640E248872CC00E45B0D /* App Scene */,
+				3570640D248872CC00E45B0D /* CaptureDeviceProvider.swift */,
+				35706411248872CC00E45B0D /* CaptureSessionProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -386,9 +386,9 @@
 			isa = PBXGroup;
 			children = (
 				35706413248872CC00E45B0D /* UI */,
-				35706416248872CC00E45B0D /* AppConfigurationProvider.swift */,
 				35706417248872CC00E45B0D /* ARKit */,
 				3570641D248872CC00E45B0D /* QRPointsProviding.swift */,
+				35706416248872CC00E45B0D /* AppConfigurationProvider.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -396,8 +396,8 @@
 		35706413248872CC00E45B0D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				35706414248872CC00E45B0D /* AppLayoutProvider.swift */,
 				35706415248872CC00E45B0D /* AppColorProvider.swift */,
+				35706414248872CC00E45B0D /* AppLayoutProvider.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -418,8 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				3570641F248872CC00E45B0D /* URLSessionProviding.swift */,
-				35706420248872CC00E45B0D /* RemoteDataProvider.swift */,
 				35706421248872CC00E45B0D /* RemoteJSONDataProviding.swift */,
+				35706420248872CC00E45B0D /* RemoteDataProvider.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -428,9 +428,9 @@
 			isa = PBXGroup;
 			children = (
 				35706423248872CC00E45B0D /* UIKit */,
+				35706429248872CC00E45B0D /* ARKit */,
 				35706427248872CC00E45B0D /* CaptureSessionHandler.swift */,
 				35706428248872CC00E45B0D /* QRPointScanningHandler.swift */,
-				35706429248872CC00E45B0D /* ARKit */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -438,9 +438,9 @@
 		35706423248872CC00E45B0D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				35706426248872CC00E45B0D /* WindowSceneHandling.swift */,
 				35706424248872CC00E45B0D /* WebViewHandler.swift */,
 				35706425248872CC00E45B0D /* PresentationHandling.swift */,
-				35706426248872CC00E45B0D /* WindowSceneHandling.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -456,8 +456,8 @@
 		3570642B248872CC00E45B0D /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				3570642C248872CC00E45B0D /* OnboardingCoordinator.swift */,
 				3570642D248872CC00E45B0D /* BaseCoordinator.swift */,
+				3570642C248872CC00E45B0D /* OnboardingCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -475,9 +475,9 @@
 		3570642F248872CC00E45B0D /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				35706432248872CC00E45B0D /* App Scene */,
 				35706430248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift */,
 				35706431248872CC00E45B0D /* QRPointScanningHandlerDelegate.swift */,
-				35706432248872CC00E45B0D /* App Scene */,
 				35706436248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift */,
 			);
 			path = Delegates;
@@ -496,8 +496,8 @@
 		35706437248872CC00E45B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				35706438248872CC00E45B0D /* ARSceneContainerView.swift */,
 				35706439248872CC00E45B0D /* App */,
+				35706438248872CC00E45B0D /* ARSceneContainerView.swift */,
 				3570643B248872CC00E45B0D /* InfoOverlayView.swift */,
 				3570643C248872CC00E45B0D /* FrameBasedView.swift */,
 				3570643D248872CC00E45B0D /* VerticalFrameBasedView.swift */,
@@ -527,11 +527,11 @@
 		35706443248872CC00E45B0D /* Screen Views */ = {
 			isa = PBXGroup;
 			children = (
-				35706444248872CC00E45B0D /* ARScreenView.swift */,
 				35706445248872CC00E45B0D /* App */,
+				35706449248872CC00E45B0D /* BaseScreenView.swift */,
+				35706444248872CC00E45B0D /* ARScreenView.swift */,
 				35706447248872CC00E45B0D /* QRScannerScreenView.swift */,
 				35706448248872CC00E45B0D /* OnboardingScreenView.swift */,
-				35706449248872CC00E45B0D /* BaseScreenView.swift */,
 				3570644A248872CC00E45B0D /* MunimapScreenView.swift */,
 			);
 			path = "Screen Views";

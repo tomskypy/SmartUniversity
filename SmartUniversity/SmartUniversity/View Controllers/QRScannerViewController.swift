@@ -60,13 +60,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private func handleSessionFailed() {
         screenView?.configureBottomOverlay(
-            with: .fail(
-                text: "Zoom zoom, though them haters:"
-            ),
-            buttonConfiguration: .init(
-                text: "Noice",
-                color: .systemTeal
-            )
+            with: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
         )
     }
 }
@@ -90,7 +84,15 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
 
         screenView?.showBlurOverlay(maskBounds: objectBounds)
 
-        screenView?.configureBottomOverlay(with: .success(text: "GJ, you've found a Point!"))
+        screenView?.configureBottomOverlay(
+            with: .success(text: "GJ, you've found a Point!"),
+            buttonConfiguration: .init(
+                text: "Continue",
+                color: .darkGray,
+                tapHandler: { [weak self] in
+                }
+            )
+        )
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {

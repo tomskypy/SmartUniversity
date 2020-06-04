@@ -89,6 +89,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
     required init?(coder: NSCoder) { nil }
 
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+        var frames: [(UIView, CGRect)] = []
 
         let textSize = textLabel.size(constrainedToWidth: width - insets.horizontalSum)
         let textFrame = CGRect(
@@ -97,12 +98,16 @@ final class InfoOverlayView: VerticalFrameBasedView {
             size: textSize
         )
 
-        let buttonSize = layoutProvider.preferredButtonSize
-        let buttonFrame = CGRect(
-            x: width - (buttonSize.width + contentInsets.right),
-            y: textFrame.maxY + contentSpacing,
-            size: buttonSize
-        )
+        var buttonSize: CGSize = .zero
+        if buttonConfiguration != nil {
+            buttonSize = layoutProvider.preferredButtonSize
+            let buttonFrame = CGRect(
+                x: width - (buttonSize.width + contentInsets.right),
+                y: textFrame.maxY + contentSpacing,
+                size: buttonSize
+            )
+            frames.append((button, buttonFrame))
+        }
 
         let overlayFrame = CGRect(
             origin: .zero,
@@ -110,11 +115,11 @@ final class InfoOverlayView: VerticalFrameBasedView {
             height: buttonSize.height + contentSpacing + textSize.height + contentInsets.verticalSum
         )
 
-        return [
+        frames.append(contentsOf: [
             (textLabel, textFrame),
-            (button, buttonFrame),
             (overlay, overlayFrame)
-        ]
+        ])
+        return frames
     }
 }
 

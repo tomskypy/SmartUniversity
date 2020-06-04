@@ -9,9 +9,16 @@
 import AVFoundation
 import UIKit
 
+protocol QRScannerViewControllerDelegate: AnyObject {
+
+    func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController)
+}
+
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+
+    weak var delegate: QRScannerViewControllerDelegate?
 
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
@@ -90,6 +97,9 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
                 text: "Continue",
                 color: .darkGray,
                 tapHandler: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
                 }
             )
         )

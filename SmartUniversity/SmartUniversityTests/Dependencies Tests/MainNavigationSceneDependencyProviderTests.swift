@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 final class MainNavigationSceneDependencyProviderTests: XCTestCase {
 
     private var provider: MainNavigationSceneDependencyProvider!

@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private final class TestableURLSessionDataTask: URLSessionDataTask {
 
     let onResume: () -> Void
@@ -37,9 +39,7 @@ private final class TestableURLSessionProvider: URLSessionProviding {
     } 
 }
 
-private struct EmptyDecodable: Decodable {
-
-}
+private struct EmptyDecodable: Decodable { }
 
 private struct TestableJSONDataInfo: RemoteJSONDataInfo {
 

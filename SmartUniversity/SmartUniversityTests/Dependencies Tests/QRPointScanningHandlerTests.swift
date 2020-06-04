@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private class TestableQRPointsProvider: QRPointsProviding {
 
     var providedPoints: [QRPoint]?

@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 extension QRScannerViewControllerTests {
 
     // MARK: - QRPointScanningHandlerDelegate implementation tests

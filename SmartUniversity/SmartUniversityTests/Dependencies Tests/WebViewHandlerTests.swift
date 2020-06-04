@@ -9,6 +9,8 @@
 import XCTest
 import WebKit
 
+@testable import SmartUniversity
+
 private final class TestableWebView: WKWebView {
 
     var urlRequestReceivedInLoad: URLRequest?

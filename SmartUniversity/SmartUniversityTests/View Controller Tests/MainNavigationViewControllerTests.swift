@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 final class MainNavigationViewControllerTests: XCTestCase {
 
     func testInitSetsUpTabBarViewControllersCorrectly() {

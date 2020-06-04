@@ -9,6 +9,8 @@
 import XCTest
 import AVFoundation
 
+@testable import SmartUniversity
+
 extension QRScannerViewControllerTests {
 
     // MARK: - CaptureSessionHandlerDelegate implementation tests

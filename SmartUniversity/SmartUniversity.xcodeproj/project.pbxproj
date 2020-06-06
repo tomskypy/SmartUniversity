@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3503C93F240C5A53002F2457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3503C93E240C5A53002F2457 /* Assets.xcassets */; };
 		3503C942240C5A53002F2457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3503C940240C5A53002F2457 /* LaunchScreen.storyboard */; };
+		350C553F248BA14A00902F52 /* MainNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
@@ -107,6 +108,7 @@
 		3503C943240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3503C948240C5A53002F2457 /* SmartUniversityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUniversityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503C94E240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationCoordinator.swift; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 			children = (
 				3570642D248872CC00E45B0D /* BaseCoordinator.swift */,
 				3570642C248872CC00E45B0D /* OnboardingCoordinator.swift */,
+				350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				35706479248872CC00E45B0D /* ARSceneContainerView.swift in Sources */,
 				35706462248872CC00E45B0D /* ReferenceImageProviding.swift in Sources */,
 				35706487248872CC00E45B0D /* MunimapScreenView.swift in Sources */,
+				350C553F248BA14A00902F52 /* MainNavigationCoordinator.swift in Sources */,
 				3570646C248872CC00E45B0D /* PresentationHandling.swift in Sources */,
 				35706455248872CC00E45B0D /* UIView+AddSubviews.swift in Sources */,
 				35706464248872CC00E45B0D /* SceneObjectProviding.swift in Sources */,

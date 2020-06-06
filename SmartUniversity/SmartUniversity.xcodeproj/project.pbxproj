@@ -10,6 +10,8 @@
 		3503C93F240C5A53002F2457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3503C93E240C5A53002F2457 /* Assets.xcassets */; };
 		3503C942240C5A53002F2457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3503C940240C5A53002F2457 /* LaunchScreen.storyboard */; };
 		350C553F248BA14A00902F52 /* MainNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */; };
+		350C5541248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5540248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift */; };
+		350C5544248BBEA400902F52 /* MainNavigationCoordinator+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5543248BBEA400902F52 /* MainNavigationCoordinator+App.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
@@ -107,6 +109,8 @@
 		3503C948240C5A53002F2457 /* SmartUniversityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUniversityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3503C94E240C5A53002F2457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationCoordinator.swift; sourceTree = "<group>"; };
+		350C5540248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainNavigationCoordinator+Dependencies.swift"; sourceTree = "<group>"; };
+		350C5543248BBEA400902F52 /* MainNavigationCoordinator+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainNavigationCoordinator+App.swift"; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
@@ -248,6 +252,14 @@
 				3503C94E240C5A53002F2457 /* Info.plist */,
 			);
 			path = SmartUniversityTests;
+			sourceTree = "<group>";
+		};
+		350C5542248BBE8D00902F52 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				350C5543248BBEA400902F52 /* MainNavigationCoordinator+App.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		3516B3662416F147009C5D36 /* View Controller Tests */ = {
@@ -452,9 +464,11 @@
 		3570642B248872CC00E45B0D /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				350C5542248BBE8D00902F52 /* App */,
 				3570642D248872CC00E45B0D /* BaseCoordinator.swift */,
 				3570642C248872CC00E45B0D /* OnboardingCoordinator.swift */,
 				350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */,
+				350C5540248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -690,6 +704,7 @@
 				35706474248872CC00E45B0D /* QRPointScanningHandlerDelegate.swift in Sources */,
 				3570646A248872CC00E45B0D /* RemoteJSONDataProviding.swift in Sources */,
 				3570646B248872CC00E45B0D /* WebViewHandler.swift in Sources */,
+				350C5541248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift in Sources */,
 				3570646F248872CC00E45B0D /* QRPointScanningHandler.swift in Sources */,
 				35706472248872CC00E45B0D /* BaseCoordinator.swift in Sources */,
 				35706461248872CC00E45B0D /* AppConfigurationProvider.swift in Sources */,
@@ -723,6 +738,7 @@
 				3570645D248872CC00E45B0D /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				35706457248872CC00E45B0D /* UIView+Sizing.swift in Sources */,
 				35706468248872CC00E45B0D /* URLSessionProviding.swift in Sources */,
+				350C5544248BBEA400902F52 /* MainNavigationCoordinator+App.swift in Sources */,
 				35706467248872CC00E45B0D /* QRPointsProviding.swift in Sources */,
 				35706463248872CC00E45B0D /* MeshObjectProvider.swift in Sources */,
 			);

@@ -12,6 +12,8 @@
 		350C553F248BA14A00902F52 /* MainNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */; };
 		350C5541248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5540248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift */; };
 		350C5544248BBEA400902F52 /* MainNavigationCoordinator+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5543248BBEA400902F52 /* MainNavigationCoordinator+App.swift */; };
+		350C5546248BC19B00902F52 /* OnboardingCoordinator+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5545248BC19B00902F52 /* OnboardingCoordinator+Dependencies.swift */; };
+		350C5548248BD0F500902F52 /* OnboardingCoordinator+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5547248BD0F500902F52 /* OnboardingCoordinator+App.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
 		3516B36B2416F4A4009C5D36 /* UIViewSizingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */; };
 		3516B36D2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */; };
@@ -111,6 +113,8 @@
 		350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationCoordinator.swift; sourceTree = "<group>"; };
 		350C5540248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainNavigationCoordinator+Dependencies.swift"; sourceTree = "<group>"; };
 		350C5543248BBEA400902F52 /* MainNavigationCoordinator+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainNavigationCoordinator+App.swift"; sourceTree = "<group>"; };
+		350C5545248BC19B00902F52 /* OnboardingCoordinator+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingCoordinator+Dependencies.swift"; sourceTree = "<group>"; };
+		350C5547248BD0F500902F52 /* OnboardingCoordinator+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingCoordinator+App.swift"; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
 		3516B36A2416F4A4009C5D36 /* UIViewSizingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizingTests.swift; sourceTree = "<group>"; };
 		3516B36C2416F7DE009C5D36 /* UIEdgeInsetsInitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsInitTests.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				350C5543248BBEA400902F52 /* MainNavigationCoordinator+App.swift */,
+				350C5547248BD0F500902F52 /* OnboardingCoordinator+App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -466,9 +471,10 @@
 			children = (
 				350C5542248BBE8D00902F52 /* App */,
 				3570642D248872CC00E45B0D /* BaseCoordinator.swift */,
-				3570642C248872CC00E45B0D /* OnboardingCoordinator.swift */,
 				350C553E248BA14A00902F52 /* MainNavigationCoordinator.swift */,
 				350C5540248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift */,
+				3570642C248872CC00E45B0D /* OnboardingCoordinator.swift */,
+				350C5545248BC19B00902F52 /* OnboardingCoordinator+Dependencies.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -728,6 +734,7 @@
 				35706484248872CC00E45B0D /* QRScannerScreenView.swift in Sources */,
 				35706485248872CC00E45B0D /* OnboardingScreenView.swift in Sources */,
 				3570645F248872CC00E45B0D /* AppLayoutProvider.swift in Sources */,
+				350C5548248BD0F500902F52 /* OnboardingCoordinator+App.swift in Sources */,
 				35706479248872CC00E45B0D /* ARSceneContainerView.swift in Sources */,
 				35706462248872CC00E45B0D /* ReferenceImageProviding.swift in Sources */,
 				35706487248872CC00E45B0D /* MunimapScreenView.swift in Sources */,
@@ -738,6 +745,7 @@
 				3570645D248872CC00E45B0D /* MainNavigationSceneDependencyProvider.swift in Sources */,
 				35706457248872CC00E45B0D /* UIView+Sizing.swift in Sources */,
 				35706468248872CC00E45B0D /* URLSessionProviding.swift in Sources */,
+				350C5546248BC19B00902F52 /* OnboardingCoordinator+Dependencies.swift in Sources */,
 				350C5544248BBEA400902F52 /* MainNavigationCoordinator+App.swift in Sources */,
 				35706467248872CC00E45B0D /* QRPointsProviding.swift in Sources */,
 				35706463248872CC00E45B0D /* MeshObjectProvider.swift in Sources */,

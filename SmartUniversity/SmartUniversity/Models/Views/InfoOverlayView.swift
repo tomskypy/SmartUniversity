@@ -82,7 +82,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
     private lazy var button: UIButton = {
         let button = UIButton(backgroundColor: .darkGray)
         button.setTitleColor(.white, for: .normal)
-        
+
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
@@ -107,7 +107,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
 
         var buttonSize: CGSize = .zero
         if buttonConfiguration != nil {
-            buttonSize = layoutProvider.preferredButtonSize
+            buttonSize = layoutProvider.preferredSize(for: button)
             let buttonFrame = CGRect(
                 x: width - (buttonSize.width + contentInsets.right),
                 y: textFrame.maxY + contentSpacing,

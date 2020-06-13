@@ -74,9 +74,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     #if DEBUG
     private func handleDebugSession() {
         screenView?.configureBottomOverlay(
-            with: .success(text: "Debug session eh?"),
+            with: .success(text: "Debug session, eh?"),
             buttonConfiguration: .init(
-                text: "Let's go",
+                text: "Launch (with default data)",
                 color: .darkGray,
                 tapHandler: { [weak self] in
                     guard let self = self else { return }

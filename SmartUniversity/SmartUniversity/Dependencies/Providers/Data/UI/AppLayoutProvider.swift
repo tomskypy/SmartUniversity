@@ -17,11 +17,11 @@ enum LayoutSide {
 
 protocol LayoutProviding {
 
-    var preferredButtonSize: CGSize { get }
-
     var contentSpacing: CGFloat { get }
 
     func contentInsets(for view: UIView, respectingSafeAreasOn safeAreaSides: Set<LayoutSide>) -> UIEdgeInsets
+
+    func preferredSize(for button: UIButton) -> CGSize
 }
 
 extension LayoutProviding {
@@ -67,15 +67,10 @@ struct AppLayoutProvider: LayoutProviding {
 
     static let shared = AppLayoutProvider()
 
-    var preferredButtonSize: CGSize {
-        CGSize(width: 100, height: 40)
-    }
+    private static let contentInsets = UIEdgeInsets(all: 10)
+    private static let minimumButtonSize = CGSize(width: 100, height: 40)
 
-    var contentSpacing: CGFloat {
-        8
-    }
-
-    private let defaultContentInsets = UIEdgeInsets(all: 10)
+    let contentSpacing: CGFloat = 8
 
     private init() { }
 
@@ -83,7 +78,7 @@ struct AppLayoutProvider: LayoutProviding {
         for view: UIView,
         respectingSafeAreasOn safeAreaRespectingSides: Set<LayoutSide>
     ) -> UIEdgeInsets {
-        var insets = defaultContentInsets
+        var insets = Self.contentInsets
 
         let shouldAddSafeAreaInsets = safeAreaRespectingSides.count > 0
         if shouldAddSafeAreaInsets {
@@ -93,4 +88,12 @@ struct AppLayoutProvider: LayoutProviding {
         return insets
     }
 
+    func preferredSize(for button: UIButton) -> CGSize {
+        let height = Self.minimumButtonSize.height
+        let width = max(
+            Self.minimumButtonSize.width,
+            button.width(constrainedToHeight: height) + contentSpacing * 2
+        )
+        return .init(width: width, height: height)
+    }
 }

@@ -21,8 +21,7 @@ extension MainNavigationCoordinator {
 struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFactory {
 
     private static var munimapServerURL: URL = { // TODO move to separate testable URLs struct
-        let webWindowZoom = munimapWebWindowZoomValue()
-        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?windowZoom=\(webWindowZoom)") else {
+        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?device=mobile") else {
             fatalError("Failed to create munimap server url.")
         }
         return url
@@ -40,10 +39,6 @@ struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFacto
         case .arView:
             return ARViewController()
         }
-    }
-
-    private static func munimapWebWindowZoomValue(for screen: UIScreen = UIScreen.main) -> Int {
-        screen.scale <= 2 ? 100 : 200
     }
 }
 

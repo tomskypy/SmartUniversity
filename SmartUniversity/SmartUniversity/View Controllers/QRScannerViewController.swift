@@ -70,6 +70,23 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             with: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
         )
     }
+
+    #if DEBUG
+    private func handleDebugSession() {
+        screenView?.configureBottomOverlay(
+            with: .success(text: "Debug session eh?"),
+            buttonConfiguration: .init(
+                text: "Let's go",
+                color: .darkGray,
+                tapHandler: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
+                }
+            )
+        )
+    }
+    #endif
 }
 
 extension QRScannerViewController: CaptureSessionHandlerDelegate {
@@ -106,7 +123,12 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
-        handleSessionFailed()
+
+        #if DEBUG
+            handleDebugSession()
+        #else
+            handleSessionFailed()
+        #endif
     }
 }
 

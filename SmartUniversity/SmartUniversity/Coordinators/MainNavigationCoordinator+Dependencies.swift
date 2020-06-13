@@ -9,7 +9,7 @@
 import UIKit
 
 enum MainNavigationScene {
-    case qrScanner
+    case qrScanner(delegate: QRScannerViewControllerDelegate)
     case munimap
     case arView
 }

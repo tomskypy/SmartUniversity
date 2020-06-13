@@ -22,7 +22,7 @@ final class MainNavigationCoordinator: BaseCoordinator {
 
     func start() {
         navigationController.pushViewController(
-            dependencies.viewControllerFactory.makeViewController(for: .qrScanner)
+            dependencies.viewControllerFactory.makeViewController(for: .qrScanner(delegate: self))
         )
 
         // TODO add userdefaults check
@@ -32,4 +32,12 @@ final class MainNavigationCoordinator: BaseCoordinator {
         }
         onboardingCoordinator?.start()
     }
+}
+
+extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
+
+    func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController) {
+        navigationController.pushViewController(dependencies.viewControllerFactory.makeViewController(for: .munimap))
+    }
+
 }

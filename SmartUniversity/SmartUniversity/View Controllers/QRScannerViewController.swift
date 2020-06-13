@@ -122,7 +122,6 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
 
-        // TODO enable segue to map/AR view controllers
         screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
     }
 

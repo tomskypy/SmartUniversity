@@ -30,8 +30,8 @@ struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFacto
 
     func makeViewController(for scene: MainNavigationScene) -> UIViewController {
         switch scene {
-        case .qrScanner:
-            return QRScannerViewController()
+        case .qrScanner(let delegate):
+            return QRScannerViewController(delegate: delegate)
         case .munimap:
             return MunimapViewController(
                 munimapServerURL: Self.munimapServerURL,
@@ -44,5 +44,14 @@ struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFacto
 
     private static func munimapWebWindowZoomValue(for screen: UIScreen = UIScreen.main) -> Int {
         screen.scale <= 2 ? 100 : 200
+    }
+}
+
+private extension QRScannerViewController {
+
+    convenience init(delegate: QRScannerViewControllerDelegate) {
+        self.init()
+
+        self.delegate = delegate
     }
 }

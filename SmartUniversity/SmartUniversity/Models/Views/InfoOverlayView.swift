@@ -81,7 +81,8 @@ final class InfoOverlayView: VerticalFrameBasedView {
 
     private lazy var button: UIButton = {
         let button = UIButton(backgroundColor: .darkGray)
-
+        button.setTitleColor(.white, for: .normal)
+        
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()

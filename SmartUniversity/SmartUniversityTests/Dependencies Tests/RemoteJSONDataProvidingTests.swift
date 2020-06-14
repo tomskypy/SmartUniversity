@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private struct EmptyDecodable: Decodable {
     var jsonURLString: String = ""
 }

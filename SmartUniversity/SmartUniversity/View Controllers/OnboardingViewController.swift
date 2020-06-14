@@ -11,6 +11,8 @@ import UIKit
 protocol OnboardingViewControllerDelegate: AnyObject {
 
     func onboardingViewControllerDidSelectNext(_ viewController: OnboardingViewController)
+
+    func onboardingViewControllerDidSelectSkip(_ viewController: OnboardingViewController)
 }
 
 class OnboardingViewController: BaseViewController<OnboardingScreenView> {
@@ -38,8 +40,12 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
         super.viewDidLoad()
 
         screenView?.configure(withTitleText: titleText, bodyText: bodyText)
+
         screenView?.didTapNextHandler = { [unowned self] in
             self.delegate?.onboardingViewControllerDidSelectNext(self)
+        }
+        screenView?.didTapSkipHandler = { [unowned self] in
+            self.delegate?.onboardingViewControllerDidSelectSkip(self)
         }
     }
 }

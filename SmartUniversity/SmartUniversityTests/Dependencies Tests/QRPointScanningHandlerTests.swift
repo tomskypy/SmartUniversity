@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private class TestableQRPointsProvider: QRPointsProviding {
 
     var providedPoints: [QRPoint]?
@@ -118,6 +120,6 @@ private extension QRPointRemoteArray {
     init?(points: [QRPoint]?) {
         guard let points = points else { return nil }
 
-        self.points = points
+        self.init(points: points)
     }
 }

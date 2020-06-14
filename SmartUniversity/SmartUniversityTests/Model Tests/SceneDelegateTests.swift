@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private final class IdentifiableWindow: UIWindow, Identifiable {
 
     let id = UUID()

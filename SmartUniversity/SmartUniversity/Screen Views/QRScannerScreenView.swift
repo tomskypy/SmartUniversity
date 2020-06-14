@@ -21,11 +21,54 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
+    private var bottomOverlayState: InfoOverlayView.State? {
+        didSet {
+            guard let state = bottomOverlayState else {
+                return bottomOverlay.removeFromSuperview()
+            }
+
+            bottomOverlay.state = state
+            addSubview(bottomOverlay)
+        }
+    }
+
+    private var bottomOverlayButtonConfiguration: InfoOverlayView.ButtonConfiguration? {
+        didSet {
+            bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration
+        }
+    }
+
+    private let colorProvider: ColorProviding
+
+    private lazy var bottomOverlay = InfoOverlayView()
+
+    init(colorProvider: ColorProviding) {
+        self.colorProvider = colorProvider
+        super.init(frame: .zero)
+    }
+
+    override init(frame: CGRect) {
+        self.colorProvider = AppColorProvider.shared
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let blurredOverlayFrame = CGRect(origin: .zero, size: bounds.size)
 
-        return [(view: blurredOverlayView, frame: blurredOverlayFrame)]
+        let bottomOverlayFrameSize = bottomOverlay.size(constrainedToWidth: bounds.width)
+        let bottomOverlayFrame = CGRect(
+            x: 0,
+            y: bounds.height - bottomOverlayFrameSize.height,
+            size: bottomOverlayFrameSize
+        )
+
+        return [
+            (blurredOverlayView, blurredOverlayFrame),
+            (bottomOverlay, bottomOverlayFrame)
+        ]
     }
 
     func hideBlurOverlay() {
@@ -38,6 +81,18 @@ class QRScannerScreenView: FrameBasedView {
         if blurredOverlayView.isHidden {
             blurredOverlayView.isHidden = false
         }
+    }
+
+    func configureBottomOverlay(
+        with state: InfoOverlayView.State,
+        buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
+    ) {
+        bottomOverlayState = state
+        bottomOverlayButtonConfiguration = buttonConfiguration
+    }
+
+    func hideBottomOverlay() {
+        bottomOverlayState = nil
     }
 
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {

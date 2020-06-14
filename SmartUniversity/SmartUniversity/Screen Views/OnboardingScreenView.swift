@@ -36,9 +36,21 @@ final class OnboardingScreenView: FrameBasedView {
         }
     }
 
+    var didTapSkipHandler: (() -> Void)? {
+        willSet {
+            skipButton.removeTarget(self, action: #selector(skipTapped), for: .touchUpInside)
+        }
+        didSet {
+            guard didTapSkipHandler != nil else { return }
+
+            skipButton.addTarget(self, action: #selector(skipTapped), for: .touchUpInside)
+        }
+    }
+
     private let insets = UIEdgeInsets(horizontal: 15, vertical: 20)
 
     private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
 
     private lazy var titleLabel = UILabel(
         font: .boldSystemFont(ofSize: 45),
@@ -57,13 +69,9 @@ final class OnboardingScreenView: FrameBasedView {
     )
     private lazy var nextButton = UIButton(titleText: "Next", backgroundColor: .lightGray)
 
-    init(colorProvider: ColorProviding) {
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
-        super.init(frame: .zero)
-    }
-
-    override init(frame: CGRect) {
-        self.colorProvider = AppColorProvider.shared
+        self.layoutProvider = layoutProvider
         super.init(frame: .zero)
     }
 
@@ -101,7 +109,7 @@ final class OnboardingScreenView: FrameBasedView {
         )
         frames.append((bodyLabel, bodyLabelFrame))
 
-        let nextButtonSize = CGSize(width: 100, height: 40)
+        let nextButtonSize = layoutProvider.preferredSize(for: nextButton)
         let nextButtonFrame = CGRect(
             x: bounds.width - insets.right - nextButtonSize.width,
             y: bounds.height - (safeAreaInsets.bottom + insets.bottom + nextButtonSize.height),
@@ -121,6 +129,10 @@ final class OnboardingScreenView: FrameBasedView {
 
     @objc private func nextTapped() {
         didTapNextHandler?()
+    }
+
+    @objc private func skipTapped() {
+        didTapSkipHandler?()
     }
 }
 

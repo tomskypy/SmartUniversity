@@ -9,6 +9,8 @@
 import XCTest
 import WebKit
 
+@testable import SmartUniversity
+
 private final class TestableWebViewHandler: WebViewHandling {
 
     var webView: WKWebView?
@@ -19,6 +21,7 @@ private final class TestableWebViewHandler: WebViewHandling {
         urlReceivedInLoadURL = url
     }
 
+    func lockZoomScaleTo(_ zoomScale: CGFloat) { }
 }
 
 final class MunimapViewControllerTests: XCTestCase {

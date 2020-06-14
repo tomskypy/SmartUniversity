@@ -14,15 +14,7 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     var sceneHandler: WindowSceneHandling? { self }
 
-    var onboardingCoordinator: OnboardingCoordinator?
-
-    private lazy var munimapServerURL: URL = {
-        let webWindowZoom = munimapWebWindowZoomValue()
-        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?windowZoom=\(webWindowZoom)") else {
-            fatalError("Failed to create munimap server url.")
-        }
-        return url
-    }()
+    var mainNavigationCoordinator: MainNavigationCoordinator?
 
     convenience init() {
         self.init(navigationController: UINavigationController())
@@ -30,62 +22,22 @@ final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 
     init(navigationController: NavigationController) {
         self.navigationController = navigationController
+
+        navigationController.setNavigationBarHidden()
     }
 
     func makeRootViewController() -> UIViewController {
         navigationController
     }
-
-    private func makeTabBarMunimapViewController() -> UIViewController {
-        let controller = MunimapViewController(
-            munimapServerURL: munimapServerURL,
-            webViewHandler: WebViewHandler.shared
-        )
-        controller.tabBarItem = UITabBarItem(title: "MUNIMap", image: UIImage(systemName: "map"), tag: 0)
-
-        return controller
-    }
-
-    private func makeTabBarARViewController() -> UIViewController {
-        let controller = ARViewController()
-        controller.tabBarItem = UITabBarItem(title: "AR View", image: UIImage(systemName: "qrcode.viewfinder"), tag: 1)
-
-        return controller
-    }
-
-    private func makeTabBarQRScannerViewController() -> UIViewController {
-        let controller = QRScannerViewController()
-        controller.tabBarItem = UITabBarItem(title: "QR Scan", image: UIImage(systemName: "qrcode.viewfinder"), tag: 2)
-
-        return controller
-    }
-
-    private func makeTabBarOnboardingViewController() -> UIViewController {
-        let controller = UINavigationController()
-        controller.tabBarItem = UITabBarItem(
-            title: "Onboarding",
-            image: UIImage(systemName: "exclamationmark.bubble"),
-            tag: 3
-        )
-
-        return controller
-    }
-
-    private func munimapWebWindowZoomValue(for screen: UIScreen = UIScreen.main) -> Int {
-        screen.scale <= 2 ? 100 : 200
-    }
-
 }
 
 extension MainNavigationSceneDependencyProvider: WindowSceneHandling {
 
-    func windowWillBecomeVisible(_ window: UIWindow) { }
+    func windowWillBecomeVisible(_ window: UIWindow) {
+        mainNavigationCoordinator = MainNavigationCoordinator(navigationController: navigationController)
+    }
 
     func windowDidBecomeVisible(_ window: UIWindow) {
-        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
-        onboardingCoordinator?.didFinishHandler = {
-            print("lol")
-        }
-        onboardingCoordinator?.start()
+        mainNavigationCoordinator?.start()
     }
 }

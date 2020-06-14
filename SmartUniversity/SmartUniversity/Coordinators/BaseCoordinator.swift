@@ -17,8 +17,9 @@ protocol NavigationController: UIViewController {
 }
 
 protocol BaseCoordinator {
+    associatedtype Dependencies
 
-    init(navigationController: NavigationController)
+    init(navigationController: NavigationController, dependencies: Dependencies)
 
     func start()
 }

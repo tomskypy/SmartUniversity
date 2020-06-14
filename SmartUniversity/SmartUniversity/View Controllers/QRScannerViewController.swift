@@ -9,9 +9,16 @@
 import AVFoundation
 import UIKit
 
+protocol QRScannerViewControllerDelegate: AnyObject {
+
+    func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController)
+}
+
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+
+    weak var delegate: QRScannerViewControllerDelegate?
 
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
@@ -60,15 +67,26 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private func handleSessionFailed() {
         screenView?.configureBottomOverlay(
-            with: .fail(
-                text: "Zoom zoom, though them haters:"
-            ),
+            with: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
+        )
+    }
+
+    #if DEBUG
+    private func handleDebugSession() {
+        screenView?.configureBottomOverlay(
+            with: .success(text: "Debug session, eh?"),
             buttonConfiguration: .init(
-                text: "Noice",
-                color: .systemTeal
+                text: "Launch (with default data)",
+                color: .darkGray,
+                tapHandler: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
+                }
             )
         )
     }
+    #endif
 }
 
 extension QRScannerViewController: CaptureSessionHandlerDelegate {
@@ -90,11 +108,27 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
 
         screenView?.showBlurOverlay(maskBounds: objectBounds)
 
-        screenView?.configureBottomOverlay(with: .success(text: "GJ, you've found a Point!"))
+        screenView?.configureBottomOverlay(
+            with: .success(text: "GJ, you've found a Point!"),
+            buttonConfiguration: .init(
+                text: "Continue",
+                color: .darkGray,
+                tapHandler: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
+                }
+            )
+        )
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
-        handleSessionFailed()
+
+        #if DEBUG
+            handleDebugSession()
+        #else
+            handleSessionFailed()
+        #endif
     }
 }
 
@@ -110,7 +144,6 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
 
-        // TODO enable segue to map/AR view controllers
         screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
     }
 

@@ -14,5 +14,11 @@ extension UIView {
         sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
     }
 
+    func size(constrainedToHeight height: CGFloat) -> CGSize {
+        sizeThatFits(CGSize(width: .greatestFiniteMagnitude, height: height))
+    }
+
     func height(constrainedToWidth width: CGFloat) -> CGFloat { size(constrainedToWidth: width).height }
+
+    func width(constrainedToHeight height: CGFloat) -> CGFloat { size(constrainedToHeight: height).width }
 }

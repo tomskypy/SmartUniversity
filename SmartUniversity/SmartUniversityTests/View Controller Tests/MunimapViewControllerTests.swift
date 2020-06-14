@@ -21,6 +21,7 @@ private final class TestableWebViewHandler: WebViewHandling {
         urlReceivedInLoadURL = url
     }
 
+    func lockZoomScaleTo(_ zoomScale: CGFloat) { }
 }
 
 final class MunimapViewControllerTests: XCTestCase {

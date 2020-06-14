@@ -20,6 +20,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
     struct ButtonConfiguration {
         let text: String
         let color: UIColor
+        let tapHandler: () -> Void
     }
 
     var state: State = .empty {
@@ -78,7 +79,13 @@ final class InfoOverlayView: VerticalFrameBasedView {
         numberOfLines: 0
     )
 
-    private lazy var button = UIButton(backgroundColor: .darkGray)
+    private lazy var button: UIButton = {
+        let button = UIButton(backgroundColor: .darkGray)
+        button.setTitleColor(.white, for: .normal)
+
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        return button
+    }()
 
     init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
@@ -100,7 +107,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
 
         var buttonSize: CGSize = .zero
         if buttonConfiguration != nil {
-            buttonSize = layoutProvider.preferredButtonSize
+            buttonSize = layoutProvider.preferredSize(for: button)
             let buttonFrame = CGRect(
                 x: width - (buttonSize.width + contentInsets.right),
                 y: textFrame.maxY + contentSpacing,
@@ -120,6 +127,10 @@ final class InfoOverlayView: VerticalFrameBasedView {
             (overlay, overlayFrame)
         ])
         return frames
+    }
+
+    @objc private func buttonTapped() {
+        buttonConfiguration?.tapHandler()
     }
 }
 

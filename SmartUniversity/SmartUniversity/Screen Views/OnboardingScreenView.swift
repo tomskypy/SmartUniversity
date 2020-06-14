@@ -109,7 +109,7 @@ final class OnboardingScreenView: FrameBasedView {
         )
         frames.append((bodyLabel, bodyLabelFrame))
 
-        let nextButtonSize = layoutProvider.preferredButtonSize
+        let nextButtonSize = layoutProvider.preferredSize(for: nextButton)
         let nextButtonFrame = CGRect(
             x: bounds.width - insets.right - nextButtonSize.width,
             y: bounds.height - (safeAreaInsets.bottom + insets.bottom + nextButtonSize.height),

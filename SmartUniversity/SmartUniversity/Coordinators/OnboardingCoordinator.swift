@@ -8,33 +8,18 @@
 
 import UIKit
 
-private struct OnboardingControllerConfiguration {
-    let titleText: String
-    let bodyText: String
-}
-
-class OnboardingCoordinator: BaseCoordinator {
+final class OnboardingCoordinator: BaseCoordinator {
 
     var didFinishHandler: (() -> Void)?
 
-    private lazy var viewControllerConfigurations: [OnboardingControllerConfiguration] = [
-        .init(titleText: "Welcome to Smart University App", bodyText: "We will show you around, no worries..."),
-        .init(
-            titleText: "Second onboarding screen",
-            bodyText: "This is the second onboarding screen. You should know something already at this point."
-        ),
-        .init(
-            titleText: "Last onboarding screen",
-            bodyText: "Here you have last chance to grasp some info. Good luck."
-        )
-    ]
+    private let navigationController: NavigationController
+    private let dependencies: OnboardingCoordinator.Dependencies
 
     private var controllerIndex: Int = 0
 
-    private let navigationController: NavigationController
-
-    required init(navigationController: NavigationController) {
+    required init(navigationController: NavigationController, dependencies: OnboardingCoordinator.Dependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
 
     func start() {
@@ -42,18 +27,17 @@ class OnboardingCoordinator: BaseCoordinator {
     }
 
     private func pushViewControllerOnIndex(_ index: Int) {
-        guard index < viewControllerConfigurations.count else {
+        guard index < dependencies.viewControllerConfigurations.count else {
             didFinishHandler?()
             return
         }
 
         let viewController = OnboardingViewController(
-            configuration: viewControllerConfigurations[index],
+            configuration: dependencies.viewControllerConfigurations[index],
             delegate: self
         )
         navigationController.pushViewController(viewController)
     }
-
 }
 
 extension OnboardingCoordinator: OnboardingViewControllerDelegate {
@@ -67,12 +51,14 @@ extension OnboardingCoordinator: OnboardingViewControllerDelegate {
     func onboardingViewControllerDidSelectSkip(_ viewController: OnboardingViewController) {
         didFinishHandler?()
     }
-
 }
 
 private extension OnboardingViewController {
 
-    convenience init(configuration: OnboardingControllerConfiguration, delegate: OnboardingViewControllerDelegate) {
+    convenience init(
+        configuration: OnboardingCoordinator.ViewControllerConfiguration,
+        delegate: OnboardingViewControllerDelegate
+    ) {
         self.init(titleText: configuration.titleText, bodyText: configuration.bodyText)
 
         self.delegate = delegate

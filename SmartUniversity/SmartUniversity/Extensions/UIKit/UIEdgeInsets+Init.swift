@@ -42,6 +42,16 @@ extension UIEdgeInsets {
         self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
     }
 
+    // MARK: - Mixed axis and singular
+
+    init(left: CGFloat, right: CGFloat, vertical: CGFloat) {
+        self.init(top: vertical, left: left, bottom: vertical, right: right)
+    }
+
+    init(top: CGFloat, bottom: CGFloat, horizontal: CGFloat) {
+        self.init(top: top, left: horizontal, bottom: bottom, right: horizontal)
+    }
+
     // MARK: - All
 
     init(all: CGFloat) {

@@ -11,6 +11,8 @@ import UIKit
 protocol ColorProviding {
 
     var backgroundColor: UIColor { get }
+    var overlayColor: UIColor { get }
+
     var textColor: UIColor { get }
 }
 
@@ -28,6 +30,10 @@ struct AppColorProvider: ColorProviding {
 
     var backgroundColor: UIColor {
         actualColor(for: Self.backgroundColorSet)
+    }
+
+    var overlayColor: UIColor {
+        actualColor(for: Self.backgroundColorSet).withAlphaComponent(0.45)
     }
 
     var textColor: UIColor {

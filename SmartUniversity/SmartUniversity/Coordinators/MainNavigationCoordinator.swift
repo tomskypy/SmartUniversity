@@ -37,7 +37,11 @@ final class MainNavigationCoordinator: BaseCoordinator {
 extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
 
     func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController) {
-        navigationController.pushViewController(dependencies.viewControllerFactory.makeViewController(for: .munimap))
+        let postScanningViewController = ARMapPageViewController(
+            arViewController: dependencies.viewControllerFactory.makeViewController(for: .arView),
+            muniMapViewController: dependencies.viewControllerFactory.makeViewController(for: .munimap)
+        )
+        navigationController.pushViewController(postScanningViewController)
     }
 
 }

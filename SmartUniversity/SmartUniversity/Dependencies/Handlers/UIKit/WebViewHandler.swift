@@ -33,6 +33,7 @@ class WebViewHandler: WebViewHandling {
         webView.scrollView.maximumZoomScale = zoomScale
 
         webView.scrollView.setZoomScale(zoomScale, animated: true)
+        webView.scrollView.isScrollEnabled = false
     }
 
 }

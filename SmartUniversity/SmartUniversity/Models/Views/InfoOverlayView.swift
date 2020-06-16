@@ -24,36 +24,11 @@ final class InfoOverlayView: VerticalFrameBasedView {
     }
 
     var state: State = .empty {
-        didSet {
-            overlay.backgroundColor = state.backgroundColor
-            textLabel.text = state.labelText
-
-            switch state {
-            case .success, .neutral, .fail:
-                if subviews.contains(overlay) == false {
-                    addSubview(overlay)
-                }
-                if subviews.contains(textLabel) == false {
-                    addSubview(textLabel)
-                }
-            case .empty:
-                overlay.removeFromSuperview()
-                textLabel.removeFromSuperview()
-            }
-        }
+        didSet { configureSubviews(for: state) }
     }
 
     var buttonConfiguration: ButtonConfiguration? {
-        didSet {
-            guard let buttonConfiguration = buttonConfiguration else {
-                return button.removeFromSuperview()
-            }
-
-            button.backgroundColor = buttonConfiguration.color
-            button.setTitle(buttonConfiguration.text, for: .normal)
-
-            addSubview(button)
-        }
+        didSet { configureButton(with: buttonConfiguration) }
     }
 
     private let colorProvider: ColorProviding
@@ -99,38 +74,61 @@ final class InfoOverlayView: VerticalFrameBasedView {
         var frames: [(UIView, CGRect)] = []
 
         let textSize = textLabel.size(constrainedToWidth: width - insets.horizontalSum)
-        let textFrame = CGRect(
-            x: contentInsets.left,
-            y: contentInsets.top,
-            size: textSize
-        )
+        let textFrame = CGRect(x: contentInsets.left, y: contentInsets.top, size: textSize)
 
-        var buttonSize: CGSize = .zero
-        if buttonConfiguration != nil {
-            buttonSize = layoutProvider.preferredSize(for: button)
-            let buttonFrame = CGRect(
-                x: width - (buttonSize.width + contentInsets.right),
-                y: textFrame.maxY + contentSpacing,
-                size: buttonSize
-            )
+        let buttonSize: CGSize = {
+            let buttonFrame = self.makeButtonFrame(forWidth: width, textFrameMaxY: textFrame.maxY)
             frames.append((button, buttonFrame))
-        }
+            return buttonFrame.size
+        }()
 
-        let overlayFrame = CGRect(
-            origin: .zero,
-            width: bounds.width,
-            height: buttonSize.height + contentSpacing + textSize.height + contentInsets.verticalSum
-        )
+        let contentHeight = buttonSize.height + contentSpacing + textSize.height + contentInsets.verticalSum
+        let overlayFrame = CGRect(origin: .zero, width: bounds.width, height: contentHeight)
 
-        frames.append(contentsOf: [
-            (textLabel, textFrame),
-            (overlay, overlayFrame)
-        ])
+        frames.append(contentsOf: [(textLabel, textFrame), (overlay, overlayFrame)])
         return frames
     }
 
     @objc private func buttonTapped() {
         buttonConfiguration?.tapHandler()
+    }
+
+    private func configureSubviews(for state: State) {
+        overlay.backgroundColor = state.backgroundColor
+        textLabel.text = state.labelText
+
+        switch state {
+        case .success, .neutral, .fail:
+            if subviews.contains(overlay) == false {
+                addSubview(overlay)
+            }
+            if subviews.contains(textLabel) == false {
+                addSubview(textLabel)
+            }
+        case .empty:
+            overlay.removeFromSuperview()
+            textLabel.removeFromSuperview()
+        }
+    }
+
+    private func configureButton(with buttonConfiguration: ButtonConfiguration?) {
+        guard let buttonConfiguration = buttonConfiguration else {
+            return button.removeFromSuperview()
+        }
+
+        button.backgroundColor = buttonConfiguration.color
+        button.setTitle(buttonConfiguration.text, for: .normal)
+
+        addSubview(button)
+    }
+
+    private func makeButtonFrame(forWidth width: CGFloat, textFrameMaxY: CGFloat) -> CGRect {
+        let buttonSize = layoutProvider.preferredSize(for: button)
+        return CGRect(
+            x: width - (buttonSize.width + contentInsets.right),
+            y: textFrameMaxY + contentSpacing,
+            size: buttonSize
+        )
     }
 }
 
@@ -138,8 +136,10 @@ private extension InfoOverlayView.State {
 
     var labelText: String? {
         switch self {
-        case .success(let text), .neutral(let text), .fail(let text):   return text
-        case .empty:                                                    return nil
+        case .success(let text),
+             .neutral(let text),
+             .fail(let text):   return text
+        case .empty:            return nil
         }
     }
 

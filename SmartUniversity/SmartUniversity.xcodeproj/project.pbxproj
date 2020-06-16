@@ -90,6 +90,7 @@
 		35706486248872CC00E45B0D /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35706449248872CC00E45B0D /* BaseScreenView.swift */; };
 		35706487248872CC00E45B0D /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570644A248872CC00E45B0D /* MunimapScreenView.swift */; };
 		3586FD692499591B000C9D3C /* QRScannerScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FD682499591B000C9D3C /* QRScannerScreenView+App.swift */; };
+		3586FD6B24996FA0000C9D3C /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */; };
 		358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */; };
 		35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */; };
 		35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B92421A376005E65AE /* WebViewHandlerTests.swift */; };
@@ -196,6 +197,7 @@
 		35706449248872CC00E45B0D /* BaseScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreenView.swift; sourceTree = "<group>"; };
 		3570644A248872CC00E45B0D /* MunimapScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MunimapScreenView.swift; sourceTree = "<group>"; };
 		3586FD682499591B000C9D3C /* QRScannerScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QRScannerScreenView+App.swift"; sourceTree = "<group>"; };
+		3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
 		358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProvidingTests.swift; sourceTree = "<group>"; };
 		35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProviderTests.swift; sourceTree = "<group>"; };
 		35B209B92421A376005E65AE /* WebViewHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandlerTests.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				357063FE248872CC00E45B0D /* CoreGraphics */,
 				35706400248872CC00E45B0D /* UIKit */,
 				35706409248872CC00E45B0D /* SceneKit */,
+				3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,
 				3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */,
 				35706469248872CC00E45B0D /* RemoteDataProvider.swift in Sources */,
+				3586FD6B24996FA0000C9D3C /* Collection+SafeIndex.swift in Sources */,
 				35706478248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift in Sources */,
 				3570645A248872CC00E45B0D /* SCNObject+Init.swift in Sources */,
 				35706465248872CC00E45B0D /* PosterReferenceImageProvider.swift in Sources */,

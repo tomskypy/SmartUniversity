@@ -12,11 +12,8 @@ import AVFoundation
 class QRScannerScreenView: FrameBasedView {
 
     var scannerPreviewLayer: AVCaptureVideoPreviewLayer? {
-        didSet {
-            guard let scannerPreviewLayer = scannerPreviewLayer else { return }
-
-            layer.sublayers?.insert(scannerPreviewLayer, at: 0)
-        }
+        willSet { removePreviewSublayer(previewLayer: scannerPreviewLayer) }
+        didSet { configurePreviewSublayer(with: scannerPreviewLayer) }
     }
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -87,6 +84,21 @@ class QRScannerScreenView: FrameBasedView {
 
         bottomOverlay.state = state
         addSubview(bottomOverlay)
+    }
+
+    private func configurePreviewSublayer(with scannerPreviewLayer: AVCaptureVideoPreviewLayer?) {
+        guard let scannerPreviewLayer = scannerPreviewLayer else { return }
+
+        layer.sublayers?.insert(scannerPreviewLayer, at: 0)
+    }
+
+    private func removePreviewSublayer(previewLayer: AVCaptureVideoPreviewLayer?) {
+        guard let previewLayer = previewLayer else { return }
+
+        let bottomMostSublayer = layer.sublayers?[safe: 0]
+        if previewLayer == bottomMostSublayer {
+            layer.sublayers?.remove(at: 0)
+        }
     }
 
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {

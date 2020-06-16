@@ -29,10 +29,9 @@ class ARMapPageScreenView: FrameBasedView {
         let hitView = super.hitTest(point, with: event)
 
         switch hitView {
-        case munimapSideTapView, arViewSideTapView:
-            return hitView
-        default:
-            return nil
+        case munimapSideTapView,
+             arViewSideTapView: return hitView
+        default:                return nil
         }
     }
 
@@ -46,11 +45,8 @@ class ARMapPageScreenView: FrameBasedView {
         case arViewSideTapView:     xOffset = bounds.width - tapViewSize.width
         default:                    return .zero
         }
-        return CGRect(
-            x: xOffset,
-            y: bounds.height - tapViewSize.height,
-            size: tapViewSize
-        )
+
+        return CGRect(x: xOffset, y: bounds.height - tapViewSize.height, size: tapViewSize)
     }
 }
 

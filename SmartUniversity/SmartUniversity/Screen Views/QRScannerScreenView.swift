@@ -22,14 +22,7 @@ class QRScannerScreenView: FrameBasedView {
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
     private var bottomOverlayState: InfoOverlayView.State? {
-        didSet {
-            guard let state = bottomOverlayState else {
-                return bottomOverlay.removeFromSuperview()
-            }
-
-            bottomOverlay.state = state
-            addSubview(bottomOverlay)
-        }
+        didSet { configureBottomOverlay(for: bottomOverlayState) }
     }
 
     private var bottomOverlayButtonConfiguration: InfoOverlayView.ButtonConfiguration? {
@@ -76,7 +69,7 @@ class QRScannerScreenView: FrameBasedView {
     }
 
     func configureBottomOverlay(
-        with state: InfoOverlayView.State,
+        for state: InfoOverlayView.State,
         buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
     ) {
         bottomOverlayState = state
@@ -85,6 +78,15 @@ class QRScannerScreenView: FrameBasedView {
 
     func hideBottomOverlay() {
         bottomOverlayState = nil
+    }
+
+    private func configureBottomOverlay(for state: InfoOverlayView.State?) {
+        guard let state = bottomOverlayState else {
+            return bottomOverlay.removeFromSuperview()
+        }
+
+        bottomOverlay.state = state
+        addSubview(bottomOverlay)
     }
 
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {

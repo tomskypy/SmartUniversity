@@ -9,6 +9,7 @@
 import UIKit
 
 final class OnboardingScreenView: FrameBasedView {
+    typealias TapHandler = () -> Void
 
     var titleText: String? {
         get { titleLabel.text }
@@ -25,25 +26,19 @@ final class OnboardingScreenView: FrameBasedView {
         set { nextButton.setTitle(newValue, for: .normal) }
     }
 
-    var didTapNextHandler: (() -> Void)? {
-        willSet {
-            nextButton.removeTarget(self, action: #selector(nextTapped), for: .touchUpInside)
-        }
+    var didTapNextHandler: TapHandler? {
+        willSet { removeButtonTarget(for: #selector(nextTapped), on: nextButton) }
         didSet {
             guard didTapNextHandler != nil else { return }
-
-            nextButton.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
+            addButtonTarget(for: #selector(nextTapped), on: nextButton)
         }
     }
 
-    var didTapSkipHandler: (() -> Void)? {
-        willSet {
-            skipButton.removeTarget(self, action: #selector(skipTapped), for: .touchUpInside)
-        }
+    var didTapSkipHandler: TapHandler? {
+        willSet { removeButtonTarget(for: #selector(skipTapped), on: skipButton) }
         didSet {
             guard didTapSkipHandler != nil else { return }
-
-            skipButton.addTarget(self, action: #selector(skipTapped), for: .touchUpInside)
+            addButtonTarget(for: #selector(skipTapped), on: skipButton)
         }
     }
 
@@ -67,7 +62,7 @@ final class OnboardingScreenView: FrameBasedView {
         titleText: "Skip",
         backgroundColor: colorProvider.backgroundColor
     )
-    private lazy var nextButton = UIButton(titleText: "Next", backgroundColor: .lightGray)
+    private let nextButton = UIButton(titleText: "Next", backgroundColor: .lightGray)
 
     init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
@@ -133,6 +128,16 @@ final class OnboardingScreenView: FrameBasedView {
 
     @objc private func skipTapped() {
         didTapSkipHandler?()
+    }
+
+    private func removeButtonTarget(for selector: Selector, on button: UIButton) {
+
+        button.removeTarget(self, action: selector, for: .touchUpInside)
+    }
+
+    private func addButtonTarget(for selector: Selector, on button: UIButton) {
+
+        button.addTarget(self, action: selector, for: .touchUpInside)
     }
 }
 

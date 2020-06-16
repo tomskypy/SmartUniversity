@@ -11,8 +11,6 @@ import AVFoundation
 
 class QRScannerScreenView: FrameBasedView {
 
-    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-
     var scannerPreviewLayer: AVCaptureVideoPreviewLayer? {
         didSet {
             guard let scannerPreviewLayer = scannerPreviewLayer else { return }
@@ -20,6 +18,8 @@ class QRScannerScreenView: FrameBasedView {
             layer.sublayers?.insert(scannerPreviewLayer, at: 0)
         }
     }
+
+    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
     private var bottomOverlayState: InfoOverlayView.State? {
         didSet {
@@ -40,15 +40,10 @@ class QRScannerScreenView: FrameBasedView {
 
     private let colorProvider: ColorProviding
 
-    private lazy var bottomOverlay = InfoOverlayView()
+    private let bottomOverlay = InfoOverlayView()
 
     init(colorProvider: ColorProviding) {
         self.colorProvider = colorProvider
-        super.init(frame: .zero)
-    }
-
-    override init(frame: CGRect) {
-        self.colorProvider = AppColorProvider.shared
         super.init(frame: .zero)
     }
 
@@ -65,10 +60,7 @@ class QRScannerScreenView: FrameBasedView {
             size: bottomOverlayFrameSize
         )
 
-        return [
-            (blurredOverlayView, blurredOverlayFrame),
-            (bottomOverlay, bottomOverlayFrame)
-        ]
+        return [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
     }
 
     func hideBlurOverlay() {

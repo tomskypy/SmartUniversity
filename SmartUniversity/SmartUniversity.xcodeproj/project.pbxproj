@@ -92,6 +92,10 @@
 		3586FD692499591B000C9D3C /* QRScannerScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FD682499591B000C9D3C /* QRScannerScreenView+App.swift */; };
 		3586FD6B24996FA0000C9D3C /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */; };
 		358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */; };
+		35AEAA5A249ADF9D0036A544 /* ARViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AEAA59249ADF9D0036A544 /* ARViewController+App.swift */; };
+		35AEAA5C249ADFE90036A544 /* QRScannerViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AEAA5B249ADFE90036A544 /* QRScannerViewController+App.swift */; };
+		35AEAA5E249AE0C70036A544 /* MunimapViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AEAA5D249AE0C70036A544 /* MunimapViewController+App.swift */; };
+		35AEAA60249AE17B0036A544 /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AEAA5F249AE17B0036A544 /* AppURL.swift */; };
 		35B209B624219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */; };
 		35B209BA2421A376005E65AE /* WebViewHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209B92421A376005E65AE /* WebViewHandlerTests.swift */; };
 		35B209BC2421A52F005E65AE /* MunimapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */; };
@@ -199,6 +203,10 @@
 		3586FD682499591B000C9D3C /* QRScannerScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QRScannerScreenView+App.swift"; sourceTree = "<group>"; };
 		3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
 		358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProvidingTests.swift; sourceTree = "<group>"; };
+		35AEAA59249ADF9D0036A544 /* ARViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARViewController+App.swift"; sourceTree = "<group>"; };
+		35AEAA5B249ADFE90036A544 /* QRScannerViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QRScannerViewController+App.swift"; sourceTree = "<group>"; };
+		35AEAA5D249AE0C70036A544 /* MunimapViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MunimapViewController+App.swift"; sourceTree = "<group>"; };
+		35AEAA5F249AE17B0036A544 /* AppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURL.swift; sourceTree = "<group>"; };
 		35B209B524219CED005E65AE /* MainNavigationSceneDependencyProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSceneDependencyProviderTests.swift; sourceTree = "<group>"; };
 		35B209B92421A376005E65AE /* WebViewHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewHandlerTests.swift; sourceTree = "<group>"; };
 		35B209BB2421A52F005E65AE /* MunimapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunimapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -327,10 +335,11 @@
 		357063F6248872CC00E45B0D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				35AEAA58249ADF830036A544 /* App */,
 				357063F7248872CC00E45B0D /* BaseViewController.swift */,
-				357063F8248872CC00E45B0D /* MunimapViewController.swift */,
 				357063F9248872CC00E45B0D /* OnboardingViewController.swift */,
 				357063FA248872CC00E45B0D /* QRScannerViewController.swift */,
+				357063F8248872CC00E45B0D /* MunimapViewController.swift */,
 				357063FB248872CC00E45B0D /* ARViewController.swift */,
 				35162542249551A20069E22C /* ARMapPageViewController.swift */,
 			);
@@ -416,6 +425,7 @@
 				35706417248872CC00E45B0D /* ARKit */,
 				3570641D248872CC00E45B0D /* QRPointsProviding.swift */,
 				35706416248872CC00E45B0D /* AppConfigurationProvider.swift */,
+				35AEAA5F249AE17B0036A544 /* AppURL.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -580,6 +590,16 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		35AEAA58249ADF830036A544 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				35AEAA5B249ADFE90036A544 /* QRScannerViewController+App.swift */,
+				35AEAA5D249AE0C70036A544 /* MunimapViewController+App.swift */,
+				35AEAA59249ADF9D0036A544 /* ARViewController+App.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -704,6 +724,7 @@
 			files = (
 				35706476248872CC00E45B0D /* AppDelegate.swift in Sources */,
 				35706460248872CC00E45B0D /* AppColorProvider.swift in Sources */,
+				35AEAA60249AE17B0036A544 /* AppURL.swift in Sources */,
 				3570645B248872CC00E45B0D /* CaptureDeviceProvider.swift in Sources */,
 				3570647D248872CC00E45B0D /* VerticalFrameBasedView.swift in Sources */,
 				35706453248872CC00E45B0D /* UIEdgeInsets+Init.swift in Sources */,
@@ -729,6 +750,7 @@
 				350C62B62496809F000787C0 /* CornerTapView+App.swift in Sources */,
 				35706474248872CC00E45B0D /* QRPointScanningHandlerDelegate.swift in Sources */,
 				3570646A248872CC00E45B0D /* RemoteJSONDataProviding.swift in Sources */,
+				35AEAA5A249ADF9D0036A544 /* ARViewController+App.swift in Sources */,
 				3570646B248872CC00E45B0D /* WebViewHandler.swift in Sources */,
 				350C5541248BBCE700902F52 /* MainNavigationCoordinator+Dependencies.swift in Sources */,
 				3570646F248872CC00E45B0D /* QRPointScanningHandler.swift in Sources */,
@@ -747,6 +769,7 @@
 				3570645A248872CC00E45B0D /* SCNObject+Init.swift in Sources */,
 				35706465248872CC00E45B0D /* PosterReferenceImageProvider.swift in Sources */,
 				3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */,
+				35AEAA5E249AE0C70036A544 /* MunimapViewController+App.swift in Sources */,
 				35706459248872CC00E45B0D /* UIEdgeInsets+Merge.swift in Sources */,
 				35706452248872CC00E45B0D /* UIColor+HexString.swift in Sources */,
 				3570646E248872CC00E45B0D /* CaptureSessionHandler.swift in Sources */,
@@ -764,6 +787,7 @@
 				3586FD692499591B000C9D3C /* QRScannerScreenView+App.swift in Sources */,
 				3570646C248872CC00E45B0D /* PresentationHandling.swift in Sources */,
 				3516254524957D1F0069E22C /* ARMapPageScreenView.swift in Sources */,
+				35AEAA5C249ADFE90036A544 /* QRScannerViewController+App.swift in Sources */,
 				35706455248872CC00E45B0D /* UIView+AddSubviews.swift in Sources */,
 				35706464248872CC00E45B0D /* SceneObjectProviding.swift in Sources */,
 				3570645D248872CC00E45B0D /* MainNavigationSceneDependencyProvider.swift in Sources */,

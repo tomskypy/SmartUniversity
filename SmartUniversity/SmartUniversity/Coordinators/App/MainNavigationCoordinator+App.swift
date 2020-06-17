@@ -20,22 +20,12 @@ extension MainNavigationCoordinator {
 
 struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFactory {
 
-    private static var munimapServerURL: URL = { // TODO move to separate testable URLs struct
-        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?device=mobile") else {
-            fatalError("Failed to create munimap server url.")
-        }
-        return url
-    }()
-
     func makeViewController(for scene: MainNavigationScene) -> UIViewController {
         switch scene {
         case .qrScanner(let delegate):
             return QRScannerViewController(delegate: delegate)
         case .munimap:
-            return MunimapViewController(
-                munimapServerURL: Self.munimapServerURL,
-                webViewHandler: WebViewHandler.shared
-            )
+            return MunimapViewController()
         case .arView:
             return ARViewController()
         }

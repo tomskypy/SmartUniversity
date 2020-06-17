@@ -29,9 +29,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
 
     init(
-        captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler(),
-        qrPointScanningHandler: QRPointScanningHandling = QRPointScanningHandler(),
-        presentationHandler: PresentationHandling = PresentationHandler.shared
+        captureSessionHandler: CaptureSessionHandling,
+        qrPointScanningHandler: QRPointScanningHandling,
+        presentationHandler: PresentationHandling
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler

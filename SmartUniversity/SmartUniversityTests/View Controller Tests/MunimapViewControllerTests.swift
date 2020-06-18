@@ -17,7 +17,7 @@ private final class TestableWebViewHandler: WebViewHandling {
 
     var urlReceivedInLoadURL: URL?
 
-    func loadURL(_ url: URL) {
+    func loadURL(_ url: URL, completion: CompletionHandler?) {
         urlReceivedInLoadURL = url
     }
 

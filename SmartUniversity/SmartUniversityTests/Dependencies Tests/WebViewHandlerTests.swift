@@ -13,16 +13,30 @@ import WebKit
 
 private final class TestableWebView: WKWebView {
 
+    override var navigationDelegate: WKNavigationDelegate? {
+        didSet {
+            loadingDelegate = navigationDelegate as? WebViewLoadingDelegate
+        }
+    }
+
     var urlRequestReceivedInLoad: URLRequest?
+
+    var loadingDelegate: WebViewLoadingDelegate?
 
     override func load(_ request: URLRequest) -> WKNavigation? {
         urlRequestReceivedInLoad = request
 
         return nil
     }
+
+    func triggerWebViewDidFinish() {
+        loadingDelegate?.webViewDidFinishLoading(self)
+    }
 }
 
 final class WebViewHandlerTests: XCTestCase {
+
+    private static let testableURL = URL(string: "https://www.apple.com")!
 
     private var webViewHandler: WebViewHandler!
 
@@ -32,7 +46,7 @@ final class WebViewHandlerTests: XCTestCase {
 
     func testLoadURLCallsLoadCorrectlyOnAssignedWebView() {
         let webView = TestableWebView()
-        let expectedURL = URL(string: "https://www.apple.com")!
+        let expectedURL = Self.testableURL
 
         webViewHandler.webView = webView
         webViewHandler.loadURL(expectedURL)
@@ -40,4 +54,17 @@ final class WebViewHandlerTests: XCTestCase {
         XCTAssertEqual(expectedURL, webView.urlRequestReceivedInLoad?.url)
     }
 
+    func testLoadURLTriggersCompletionWhenWebViewDidFinish() {
+        let webView = TestableWebView()
+        var didTriggerCompletion = false
+
+        webViewHandler.webView = webView
+        webViewHandler.loadURL(Self.testableURL, completion: {
+            didTriggerCompletion = true
+        })
+
+        webView.triggerWebViewDidFinish()
+
+        XCTAssertTrue(didTriggerCompletion)
+    }
 }

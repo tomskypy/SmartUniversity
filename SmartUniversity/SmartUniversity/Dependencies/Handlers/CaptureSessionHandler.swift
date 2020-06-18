@@ -29,8 +29,8 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     private let sessionProvider: CaptureSessionProviding
 
     init(
-        deviceProvider: CaptureDeviceProviding = CaptureDeviceProvider.shared,
-        sessionProvider: CaptureSessionProviding = CaptureSessionProvider.shared
+        deviceProvider: CaptureDeviceProviding = CaptureDeviceProvider(),
+        sessionProvider: CaptureSessionProviding = CaptureSessionProvider()
     ) {
         self.deviceProvider = deviceProvider
         self.sessionProvider = sessionProvider

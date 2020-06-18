@@ -16,9 +16,7 @@ protocol WebViewHandling {
     func lockZoomScaleTo(_ zoomScale: CGFloat)
 }
 
-class WebViewHandler: WebViewHandling {
-
-    static var shared = WebViewHandler()
+struct WebViewHandler: WebViewHandling {
 
     weak var webView: WKWebView?
 

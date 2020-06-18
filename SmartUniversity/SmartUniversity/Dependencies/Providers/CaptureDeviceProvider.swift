@@ -15,9 +15,5 @@ protocol CaptureDeviceProviding {
 
 struct CaptureDeviceProvider: CaptureDeviceProviding {
 
-    static let shared = CaptureDeviceProvider()
-
     let videoCaptureDevice: AVCaptureDevice? = .default(for: .video)
-
-    private init() { }
 }

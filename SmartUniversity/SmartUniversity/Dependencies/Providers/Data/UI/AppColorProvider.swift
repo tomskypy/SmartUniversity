@@ -16,7 +16,7 @@ protocol ColorProviding {
     var textColor: UIColor { get }
 }
 
-struct AppColorProvider: ColorProviding {
+final class AppColorProvider: ColorProviding {
 
     static let shared = AppColorProvider()
 

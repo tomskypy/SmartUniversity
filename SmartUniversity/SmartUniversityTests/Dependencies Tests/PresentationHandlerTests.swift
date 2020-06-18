@@ -25,7 +25,7 @@ final class PresentationHandlerTests: XCTestCase {
         let presentingViewController = TestableViewController()
         let expectedViewControllerToPresent = UIViewController()
 
-        PresentationHandler.shared.present(
+        PresentationHandler().present(
             expectedViewControllerToPresent,
             onViewController: presentingViewController,
             animated: true

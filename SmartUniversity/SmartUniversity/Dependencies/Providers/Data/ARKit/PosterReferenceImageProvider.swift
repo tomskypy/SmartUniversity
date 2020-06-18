@@ -8,7 +8,7 @@
 
 import ARKit
 
-struct PosterReferenceImageProvider: ReferenceImageProviding {
+final class PosterReferenceImageProvider: ReferenceImageProviding {
 
     static let shared = PosterReferenceImageProvider()
 

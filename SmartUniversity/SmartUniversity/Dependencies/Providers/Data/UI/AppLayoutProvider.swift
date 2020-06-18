@@ -63,7 +63,7 @@ extension LayoutProviding {
     }
 }
 
-struct AppLayoutProvider: LayoutProviding {
+final class AppLayoutProvider: LayoutProviding {
 
     static let shared = AppLayoutProvider()
 

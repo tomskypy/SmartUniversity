@@ -11,6 +11,6 @@ import Foundation
 extension MunimapViewController {
 
     convenience init() {
-        self.init(munimapServerURL: AppURL.munimap.value, webViewHandler: WebViewHandler.shared)
+        self.init(munimapServerURL: AppURL.munimap.value, webViewHandler: WebViewHandler())
     }
 }

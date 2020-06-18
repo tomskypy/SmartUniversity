@@ -443,10 +443,10 @@
 			isa = PBXGroup;
 			children = (
 				35706418248872CC00E45B0D /* ReferenceImageProviding.swift */,
-				35706419248872CC00E45B0D /* MeshObjectProvider.swift */,
 				3570641A248872CC00E45B0D /* SceneObjectProviding.swift */,
 				3570641B248872CC00E45B0D /* PosterReferenceImageProvider.swift */,
 				3570641C248872CC00E45B0D /* RoomsSceneObjectProvider.swift */,
+				35706419248872CC00E45B0D /* MeshObjectProvider.swift */,
 			);
 			path = ARKit;
 			sourceTree = "<group>";

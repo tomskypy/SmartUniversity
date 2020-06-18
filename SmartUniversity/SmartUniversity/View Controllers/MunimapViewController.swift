@@ -29,20 +29,27 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
         super.viewDidLoad()
 
         webViewHandler.webView = screenView?.webView
-        webViewHandler.loadURL(munimapServerURL)
+        webViewHandler.loadURL(munimapServerURL) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self?.lockWebViewZoom()
+            }
+        }
+        // show untappable loading overlay
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        // check loading state, hide overlay
+    }
+
+    private func lockWebViewZoom() {
         let webViewZoomScale = calculateIdealZoomScale(
             viewFrame: view.frame,
             screenScale: UIScreen.main.scale,
             mapSize: Self.mapSize
         )
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { // TODO trigger automatically when web view load finished
-            self.webViewHandler.lockZoomScaleTo(webViewZoomScale)
-        }
+        webViewHandler.lockZoomScaleTo(webViewZoomScale)
     }
 
     private func calculateIdealZoomScale(

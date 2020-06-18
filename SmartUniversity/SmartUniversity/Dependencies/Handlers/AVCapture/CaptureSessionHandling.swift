@@ -1,4 +1,4 @@
- //
+//
 //  CaptureSessionHandling.swift
 //  SmartUniversity
 //

@@ -8,20 +8,6 @@
 
 import Foundation
 
-enum DefaultsBoolKey {
-    case isOnboardingHidden(defaultValue: Bool)
-}
-
-protocol UserDefaultsProviding {
-
-    func bool(for key: DefaultsBoolKey) -> Bool
-}
-
-protocol ConfigurationProviding {
-
-    var isOnboardingHidden: Bool { get }
-}
-
 struct AppConfigurationProvider {
 
     let defaultsProvider: UserDefaultsProviding
@@ -32,7 +18,7 @@ struct AppConfigurationProvider {
 
 }
 
-extension AppConfigurationProvider: ConfigurationProviding {
+extension AppConfigurationProvider: GlobalConfigurationProviding {
 
     var isOnboardingHidden: Bool {
         defaultsProvider.bool(for: .isOnboardingHidden(defaultValue: false))

@@ -12,10 +12,3 @@ protocol PresentationHandling {
 
     func present(_ viewController: UIViewController, onViewController: UIViewController, animated: Bool)
 }
-
-struct PresentationHandler: PresentationHandling {
-    
-    func present(_ viewController: UIViewController, onViewController: UIViewController, animated: Bool) {
-        onViewController.present(viewController, animated: animated)
-    }
-}

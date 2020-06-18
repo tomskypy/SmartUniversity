@@ -8,14 +8,6 @@
 
 import WebKit
 
-protocol WebViewHandling {
-
-    var webView: WKWebView? { get set }
-
-    func loadURL(_ url: URL)
-    func lockZoomScaleTo(_ zoomScale: CGFloat)
-}
-
 struct WebViewHandler: WebViewHandling {
 
     weak var webView: WKWebView?

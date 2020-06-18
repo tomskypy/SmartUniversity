@@ -8,11 +8,6 @@
 
 import AVFoundation
 
-protocol CaptureDeviceProviding {
-
-    var videoCaptureDevice: AVCaptureDevice? { get }
-}
-
 struct CaptureDeviceProvider: CaptureDeviceProviding {
 
     let videoCaptureDevice: AVCaptureDevice? = .default(for: .video)

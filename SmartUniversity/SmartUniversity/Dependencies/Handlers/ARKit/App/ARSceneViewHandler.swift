@@ -8,17 +8,6 @@
 
 import ARKit
 
-protocol ARSceneViewHandling {
-
-    var delegate: ARSceneViewHandlerDelegate? { get set }
-
-    var referenceImages: Set<ARReferenceImage> { get set }
-
-    func handleViewDidLoad(_ view: UIView)
-    func handleViewWillAppear(_ view: UIView)
-    func handleViewWillDisappear(_ view: UIView)
-}
-
 final class ARSceneViewHandler: NSObject, ARSceneViewHandling {
 
     weak var delegate: ARSceneViewHandlerDelegate?

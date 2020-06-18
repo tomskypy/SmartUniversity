@@ -8,11 +8,6 @@
 
 import AVFoundation
 
-protocol CaptureSessionProviding {
-
-    func makeCaptureSession() -> AVCaptureSession
-}
-
 struct CaptureSessionProvider: CaptureSessionProviding {
 
     func makeCaptureSession() -> AVCaptureSession { .init() }

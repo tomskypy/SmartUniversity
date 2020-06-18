@@ -12,14 +12,3 @@ protocol PresentationHandling {
 
     func present(_ viewController: UIViewController, onViewController: UIViewController, animated: Bool)
 }
-
-struct PresentationHandler: PresentationHandling {
-
-    static var shared = PresentationHandler()
-
-    private init() { }
-
-    func present(_ viewController: UIViewController, onViewController: UIViewController, animated: Bool) {
-        onViewController.present(viewController, animated: animated)
-    }
-}

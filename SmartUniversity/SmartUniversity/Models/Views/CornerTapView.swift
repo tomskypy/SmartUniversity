@@ -42,19 +42,16 @@ final class CornerTapView: VerticalFrameBasedView {
     }
 
     var preferredWidth: CGFloat {
-        (frames(forWidth: .greatestFiniteMagnitude).max(by: { $0.frame.maxX < $1.frame.maxX })?.frame ?? .zero).maxX + insets.left
+        let leftMostView = frames(forWidth: .greatestFiniteMagnitude).max(by: { $0.frame.maxX < $1.frame.maxX })
+        return (leftMostView?.frame ?? .zero).maxX + insets.left
     }
 
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
 
     private var containedView: UIView {
-        willSet {
-            containedView.removeFromSuperview()
-        }
-        didSet {
-            addSubview(containedView)
-        }
+        willSet { containedView.removeFromSuperview() }
+        didSet { addSubview(containedView) }
     }
 
     init(configuration: Configuration, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
@@ -65,13 +62,9 @@ final class CornerTapView: VerticalFrameBasedView {
 
         super.init(frame: .zero)
 
-        isUserInteractionEnabled = true
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
-
-        backgroundColor = colorProvider.overlayColor
-
-        layer.cornerRadius = 25
-        layer.maskedCorners = [configuration.corner.maskedCorner]
+        configureLayer(with: configuration)
+        configureBackground(with: colorProvider.overlayColor)
+        configureTapDelegate(with: #selector(viewTapped))
 
         addSubview(containedView)
     }
@@ -84,6 +77,20 @@ final class CornerTapView: VerticalFrameBasedView {
 
     @objc private func viewTapped() {
         tapHandler?()
+    }
+
+    private func configureTapDelegate(with selector: Selector) {
+        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+    }
+
+    private func configureBackground(with overlayColor: UIColor) {
+        backgroundColor = overlayColor
+    }
+
+    private func configureLayer(with configuration: Configuration) {
+        layer.cornerRadius = 25
+        layer.maskedCorners = [configuration.corner.maskedCorner]
     }
 
     private static func makeContainedView(for content: Content, colorProvider: ColorProviding) -> UIView {

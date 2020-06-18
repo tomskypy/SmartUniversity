@@ -29,9 +29,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
 
     init(
-        captureSessionHandler: CaptureSessionHandling = CaptureSessionHandler(),
-        qrPointScanningHandler: QRPointScanningHandling = QRPointScanningHandler(),
-        presentationHandler: PresentationHandling = PresentationHandler.shared
+        captureSessionHandler: CaptureSessionHandling,
+        qrPointScanningHandler: QRPointScanningHandling,
+        presentationHandler: PresentationHandling
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler
@@ -67,14 +67,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private func handleSessionFailed() {
         screenView?.configureBottomOverlay(
-            with: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
+            for: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
         )
     }
 
     #if DEBUG
     private func handleDebugSession() {
         screenView?.configureBottomOverlay(
-            with: .success(text: "Debug session, eh?"),
+            for: .success(text: "Debug session, eh?"),
             buttonConfiguration: .init(
                 text: "Launch (with default data)",
                 color: .darkGray,
@@ -109,7 +109,7 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         screenView?.showBlurOverlay(maskBounds: objectBounds)
 
         screenView?.configureBottomOverlay(
-            with: .success(text: "GJ, you've found a Point!"),
+            for: .success(text: "GJ, you've found a Point!"),
             buttonConfiguration: .init(
                 text: "Continue",
                 color: .darkGray,

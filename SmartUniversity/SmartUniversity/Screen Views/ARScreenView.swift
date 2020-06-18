@@ -33,7 +33,8 @@ final class ARScreenView: FrameBasedView {
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
         var frames: [(UIView, CGRect)] = []
 
-        let contentWidth = bounds.width - insets.left - insets.right
+        let contentWidth = bounds.width - insets.horizontalSum
+        let contentHeight = bounds.height + safeAreaInsets.verticalSum
 
         let labelFrame =  CGRect(
             x: insets.top,
@@ -45,8 +46,9 @@ final class ARScreenView: FrameBasedView {
 
         if let arSceneView = arSceneView {
             let sceneViewFrame = CGRect(
-                origin: CGPoint(x: 0, y: -safeAreaInsets.top),
-                size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom)
+                x: 0,
+                y: -safeAreaInsets.top,
+                size: CGSize(width: bounds.width, height: contentHeight)
             )
 
             frames.append((arSceneView, sceneViewFrame))

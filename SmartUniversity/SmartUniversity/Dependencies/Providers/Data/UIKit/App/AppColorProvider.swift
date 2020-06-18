@@ -8,15 +8,7 @@
 
 import UIKit
 
-protocol ColorProviding {
-
-    var backgroundColor: UIColor { get }
-    var overlayColor: UIColor { get }
-
-    var textColor: UIColor { get }
-}
-
-struct AppColorProvider: ColorProviding {
+final class AppColorProvider: ColorProviding {
 
     static let shared = AppColorProvider()
 

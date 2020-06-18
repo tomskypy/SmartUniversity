@@ -43,5 +43,4 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
         )
         navigationController.pushViewController(postScanningViewController)
     }
-
 }

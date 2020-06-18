@@ -11,25 +11,15 @@ import AVFoundation
 
 class QRScannerScreenView: FrameBasedView {
 
-    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-
     var scannerPreviewLayer: AVCaptureVideoPreviewLayer? {
-        didSet {
-            guard let scannerPreviewLayer = scannerPreviewLayer else { return }
-
-            layer.sublayers?.insert(scannerPreviewLayer, at: 0)
-        }
+        willSet { removePreviewSublayer(previewLayer: scannerPreviewLayer) }
+        didSet { configurePreviewSublayer(with: scannerPreviewLayer) }
     }
 
-    private var bottomOverlayState: InfoOverlayView.State? {
-        didSet {
-            guard let state = bottomOverlayState else {
-                return bottomOverlay.removeFromSuperview()
-            }
+    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
-            bottomOverlay.state = state
-            addSubview(bottomOverlay)
-        }
+    private var bottomOverlayState: InfoOverlayView.State? {
+        didSet { configureBottomOverlay(for: bottomOverlayState) }
     }
 
     private var bottomOverlayButtonConfiguration: InfoOverlayView.ButtonConfiguration? {
@@ -40,15 +30,10 @@ class QRScannerScreenView: FrameBasedView {
 
     private let colorProvider: ColorProviding
 
-    private lazy var bottomOverlay = InfoOverlayView()
+    private let bottomOverlay = InfoOverlayView()
 
     init(colorProvider: ColorProviding) {
         self.colorProvider = colorProvider
-        super.init(frame: .zero)
-    }
-
-    override init(frame: CGRect) {
-        self.colorProvider = AppColorProvider.shared
         super.init(frame: .zero)
     }
 
@@ -65,10 +50,7 @@ class QRScannerScreenView: FrameBasedView {
             size: bottomOverlayFrameSize
         )
 
-        return [
-            (blurredOverlayView, blurredOverlayFrame),
-            (bottomOverlay, bottomOverlayFrame)
-        ]
+        return [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
     }
 
     func hideBlurOverlay() {
@@ -84,7 +66,7 @@ class QRScannerScreenView: FrameBasedView {
     }
 
     func configureBottomOverlay(
-        with state: InfoOverlayView.State,
+        for state: InfoOverlayView.State,
         buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
     ) {
         bottomOverlayState = state
@@ -93,6 +75,30 @@ class QRScannerScreenView: FrameBasedView {
 
     func hideBottomOverlay() {
         bottomOverlayState = nil
+    }
+
+    private func configureBottomOverlay(for state: InfoOverlayView.State?) {
+        guard let state = bottomOverlayState else {
+            return bottomOverlay.removeFromSuperview()
+        }
+
+        bottomOverlay.state = state
+        addSubview(bottomOverlay)
+    }
+
+    private func configurePreviewSublayer(with scannerPreviewLayer: AVCaptureVideoPreviewLayer?) {
+        guard let scannerPreviewLayer = scannerPreviewLayer else { return }
+
+        layer.sublayers?.insert(scannerPreviewLayer, at: 0)
+    }
+
+    private func removePreviewSublayer(previewLayer: AVCaptureVideoPreviewLayer?) {
+        guard let previewLayer = previewLayer else { return }
+
+        let bottomMostSublayer = layer.sublayers?[safe: 0]
+        if previewLayer == bottomMostSublayer {
+            layer.sublayers?.remove(at: 0)
+        }
     }
 
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {

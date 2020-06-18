@@ -6,17 +6,8 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import AVFoundation
 import UIKit
-
-protocol CaptureSessionHandling {
-
-    var delegate: CaptureSessionHandlerDelegate? { get set }
-
-    func handleViewDidLoad(_ view: UIView)
-    func handleViewWillAppear(_ view: UIView)
-    func handleViewWillDisappear(_ view: UIView)
-}
+import AVFoundation
 
 final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
 
@@ -29,8 +20,8 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     private let sessionProvider: CaptureSessionProviding
 
     init(
-        deviceProvider: CaptureDeviceProviding = CaptureDeviceProvider.shared,
-        sessionProvider: CaptureSessionProviding = CaptureSessionProvider.shared
+        deviceProvider: CaptureDeviceProviding = CaptureDeviceProvider(),
+        sessionProvider: CaptureSessionProviding = CaptureSessionProvider()
     ) {
         self.deviceProvider = deviceProvider
         self.sessionProvider = sessionProvider

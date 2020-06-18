@@ -8,12 +8,7 @@
 
 import SceneKit
 
-protocol MeshObjectProviding {
-
-    func makeMeshBox(fromBox box: SCNBox) -> SCNBox
-}
-
-struct MeshObjectProvider: MeshObjectProviding {
+final class MeshObjectProvider: MeshObjectProviding {
 
     static let shared = MeshObjectProvider()
 

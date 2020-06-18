@@ -8,11 +8,18 @@
 
 import WebKit
 
-struct WebViewHandler: WebViewHandling {
+final class WebViewHandler: NSObject, WebViewHandling {
 
     weak var webView: WKWebView?
 
-    func loadURL(_ url: URL) {
+    private var completionHandler: CompletionHandler?
+
+    func loadURL(_ url: URL, completion: CompletionHandler?) {
+        if let completion = completion {
+            completionHandler = completion
+            webView?.navigationDelegate = self
+        }
+
         webView?.load(URLRequest(url: url))
     }
 
@@ -25,5 +32,13 @@ struct WebViewHandler: WebViewHandling {
         webView.scrollView.setZoomScale(zoomScale, animated: true)
         webView.scrollView.isScrollEnabled = false
     }
+}
 
+extension WebViewHandler: WKNavigationDelegate {
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        completionHandler?()
+
+        completionHandler = nil
+    }
 }

@@ -27,6 +27,6 @@ final class AppConfigurationProvider {
 extension AppConfigurationProvider: AppConfigurationProviding {
 
     var isOnboardingHidden: Bool {
-        defaultsProvider.bool(for: .isOnboardingHidden(defaultValue: false))
+        defaultsProvider.bool(for: .isOnboardingHidden)
     }
 }

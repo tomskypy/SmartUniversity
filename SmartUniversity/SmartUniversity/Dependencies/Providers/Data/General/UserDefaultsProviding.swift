@@ -9,7 +9,7 @@
 import Foundation
 
 enum DefaultsBoolKey {
-    case isOnboardingHidden(defaultValue: Bool)
+    case isOnboardingHidden
 }
 
 protocol UserDefaultsProviding {

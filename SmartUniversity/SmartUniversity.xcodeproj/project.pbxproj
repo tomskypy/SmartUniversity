@@ -28,6 +28,7 @@
 		352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */; };
 		352B3D3C244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3B244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift */; };
 		352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */; };
+		353400A0249EA93100198B5B /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3534009F249EA93100198B5B /* LoadingOverlayView.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F7248872CC00E45B0D /* BaseViewController.swift */; };
 		3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F8248872CC00E45B0D /* MunimapViewController.swift */; };
@@ -150,6 +151,7 @@
 		352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandlerTests.swift; sourceTree = "<group>"; };
 		352B3D3B244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerQRPointScanningTests.swift; sourceTree = "<group>"; };
 		352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointScanningHandlerTests.swift; sourceTree = "<group>"; };
+		3534009F249EA93100198B5B /* LoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		357063F7248872CC00E45B0D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		357063F8248872CC00E45B0D /* MunimapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MunimapViewController.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				35706438248872CC00E45B0D /* ARSceneContainerView.swift */,
 				3570643B248872CC00E45B0D /* InfoOverlayView.swift */,
 				350C62B324968084000787C0 /* CornerTapView.swift */,
+				3534009F249EA93100198B5B /* LoadingOverlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				35D3018F249AEF4D0088801B /* CaptureDeviceProviding.swift in Sources */,
 				35706471248872CC00E45B0D /* OnboardingCoordinator.swift in Sources */,
 				35706458248872CC00E45B0D /* UIEdgeInsets+Sum.swift in Sources */,
+				353400A0249EA93100198B5B /* LoadingOverlayView.swift in Sources */,
 				3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */,
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,

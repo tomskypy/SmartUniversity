@@ -34,13 +34,7 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
                 self?.lockWebViewZoom()
             }
         }
-        // show untappable loading overlay
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        // check loading state, hide overlay
+        screenView?.isLoadingOverlayHidden = false
     }
 
     private func lockWebViewZoom() {
@@ -50,6 +44,8 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
             mapSize: Self.mapSize
         )
         webViewHandler.lockZoomScaleTo(webViewZoomScale)
+
+        screenView?.isLoadingOverlayHidden = true
     }
 
     private func calculateIdealZoomScale(

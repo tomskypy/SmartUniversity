@@ -16,7 +16,7 @@ final class CornerTapView: VerticalFrameBasedView {
     }
 
     enum Content {
-        case label(text: String, alignment: NSTextAlignment)
+        case label(text: String, textSize: CGFloat, alignment: NSTextAlignment)
     }
 
     enum Corner {
@@ -95,9 +95,9 @@ final class CornerTapView: VerticalFrameBasedView {
 
     private static func makeContainedView(for content: Content, colorProvider: ColorProviding) -> UIView {
         switch content {
-        case .label(let text, let alignment):
+        case .label(let text, let textSize, let alignment):
             let label = UILabel(
-                font: .boldSystemFont(ofSize: 40),
+                font: .boldSystemFont(ofSize: textSize),
                 textColor: colorProvider.textColor,
                 numberOfLines: 0
             )

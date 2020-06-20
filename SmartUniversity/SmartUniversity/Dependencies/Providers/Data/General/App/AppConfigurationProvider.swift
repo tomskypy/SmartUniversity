@@ -8,17 +8,23 @@
 
 import Foundation
 
-struct AppConfigurationProvider {
+protocol AppConfigurationProviding {
+
+    var isOnboardingHidden: Bool { get }
+}
+
+final class AppConfigurationProvider {
+
+    static let shared = AppConfigurationProvider()
 
     let defaultsProvider: UserDefaultsProviding
 
-    init(defaultsProvider: UserDefaultsProviding) {
+    init(defaultsProvider: UserDefaultsProviding = UserDefaults.standard) {
         self.defaultsProvider = defaultsProvider
     }
-
 }
 
-extension AppConfigurationProvider: GlobalConfigurationProviding {
+extension AppConfigurationProvider: AppConfigurationProviding {
 
     var isOnboardingHidden: Bool {
         defaultsProvider.bool(for: .isOnboardingHidden(defaultValue: false))

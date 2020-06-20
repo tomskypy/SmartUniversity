@@ -8,7 +8,19 @@
 
 import WebKit
 
-class MunimapScreenView: FrameBasedView {
+final class MunimapScreenView: FrameBasedView {
+
+    var isLoadingOverlayHidden: Bool = true {
+        didSet {
+            if isLoadingOverlayHidden {
+                loadingOverlay.removeFromSuperview()
+            } else {
+                addSubview(loadingOverlay)
+            }
+        }
+    }
+
+    let loadingOverlay = LoadingOverlayView(layoutProvider: AppLayoutProvider.shared)
 
     let webView = WKWebView()
 
@@ -16,9 +28,9 @@ class MunimapScreenView: FrameBasedView {
 
         let contentHeight = bounds.height + safeAreaInsets.verticalSum
 
-        let webViewFrame = CGRect(x: 0, y: -safeAreaInsets.top, width: bounds.width, height: contentHeight)
+        let fullScreenFrame =  CGRect(x: 0, y: -safeAreaInsets.top, width: bounds.width, height: contentHeight)
 
-        return [(view: webView, frame: webViewFrame)]
+        return [(webView, fullScreenFrame), (loadingOverlay, fullScreenFrame)]
     }
 }
 

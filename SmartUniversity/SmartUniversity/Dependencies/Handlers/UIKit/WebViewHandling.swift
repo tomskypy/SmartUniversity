@@ -9,9 +9,17 @@
 import WebKit
 
 protocol WebViewHandling {
+    typealias CompletionHandler = () -> Void
 
     var webView: WKWebView? { get set }
 
-    func loadURL(_ url: URL)
+    func loadURL(_ url: URL, completion: CompletionHandler?)
     func lockZoomScaleTo(_ zoomScale: CGFloat)
+}
+
+extension WebViewHandling {
+
+    func loadURL(_ url: URL) {
+        loadURL(url, completion: nil)
+    }
 }

@@ -20,9 +20,16 @@ private final class TestableWebView: WKWebView {
 
         return nil
     }
+
+    func triggerWebViewDidFinish() {
+
+        navigationDelegate!.webView!(self, didFinish: nil)
+    }
 }
 
 final class WebViewHandlerTests: XCTestCase {
+
+    private static let testableURL = URL(string: "https://www.apple.com")!
 
     private var webViewHandler: WebViewHandler!
 
@@ -32,7 +39,7 @@ final class WebViewHandlerTests: XCTestCase {
 
     func testLoadURLCallsLoadCorrectlyOnAssignedWebView() {
         let webView = TestableWebView()
-        let expectedURL = URL(string: "https://www.apple.com")!
+        let expectedURL = Self.testableURL
 
         webViewHandler.webView = webView
         webViewHandler.loadURL(expectedURL)
@@ -40,4 +47,17 @@ final class WebViewHandlerTests: XCTestCase {
         XCTAssertEqual(expectedURL, webView.urlRequestReceivedInLoad?.url)
     }
 
+    func testLoadURLTriggersCompletionWhenWebViewDidFinish() {
+        let webView = TestableWebView()
+        var didTriggerCompletion = false
+
+        webViewHandler.webView = webView
+        webViewHandler.loadURL(Self.testableURL, completion: {
+            didTriggerCompletion = true
+        })
+
+        webView.triggerWebViewDidFinish()
+
+        XCTAssertTrue(didTriggerCompletion)
+    }
 }

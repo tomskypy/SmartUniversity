@@ -59,6 +59,9 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
             arViewController: dependencies.viewControllerFactory.makeViewController(for: .arView),
             muniMapViewController: dependencies.viewControllerFactory.makeViewController(for: .munimap)
         )
+        postScanningViewController.didFinishHandler = { [weak self] in
+            self?.navigationController.popToRootViewController()
+        }
         navigationController.pushViewController(postScanningViewController)
     }
 }

@@ -53,6 +53,11 @@ class QRScannerScreenView: FrameBasedView {
         return [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
     }
 
+    func reset() {
+        hideBlurOverlay()
+        hideBottomOverlay()
+    }
+
     func hideBlurOverlay() {
         blurredOverlayView.isHidden = true
     }

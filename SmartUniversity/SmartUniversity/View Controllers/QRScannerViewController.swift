@@ -47,8 +47,6 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        screenView?.hideBlurOverlay()
-
         captureSessionHandler.handleViewDidLoad(view)
         qrPointScanningHandler.handleViewDidLoad(view)
     }
@@ -57,6 +55,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         super.viewWillAppear(animated)
 
         captureSessionHandler.handleViewWillAppear(view)
+
+        screenView?.reset()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

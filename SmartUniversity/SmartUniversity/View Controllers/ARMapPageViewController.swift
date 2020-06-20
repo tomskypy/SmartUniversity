@@ -27,6 +27,8 @@ class BasePageViewController<ScreenView: BaseScreenView>: UIPageViewController {
 
 final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView> {
 
+    var didFinishHandler: (() -> Void)?
+
     let arViewController: UIViewController
     let muniMapViewController: UIViewController
 
@@ -53,6 +55,12 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
 
     private func setupSideTapViewHandlers() {
         guard let screenOverlayView = screenOverlayView else { return }
+
+        screenOverlayView.navigateBackSideTapView.tapHandler = { [weak self] in
+            guard let self = self else { return }
+
+            self.didFinishHandler?()
+        }
 
         screenOverlayView.munimapSideTapView.tapHandler = { [weak self] in
             guard let self = self else { return }

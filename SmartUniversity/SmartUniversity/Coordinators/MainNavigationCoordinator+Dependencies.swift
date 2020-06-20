@@ -24,5 +24,6 @@ extension MainNavigationCoordinator {
     struct Dependencies {
 
         let viewControllerFactory: MainNavigationViewControllerFactory
+        let appConfigurationProvider: AppConfigurationProviding
     }
 }

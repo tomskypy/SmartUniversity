@@ -13,7 +13,11 @@ final class MainNavigationCoordinator: BaseCoordinator {
     let navigationController: NavigationController
     let dependencies: Dependencies
 
-    private(set) var onboardingCoordinator: OnboardingCoordinator?
+    private(set) var onboardingCoordinator: OnboardingCoordinator? {
+        didSet {
+            onboardingCoordinator?.delegate = self
+        }
+    }
 
     init(navigationController: NavigationController, dependencies: MainNavigationCoordinator.Dependencies) {
         self.navigationController = navigationController
@@ -25,12 +29,26 @@ final class MainNavigationCoordinator: BaseCoordinator {
             dependencies.viewControllerFactory.makeViewController(for: .qrScanner(delegate: self))
         )
 
-        // TODO add userdefaults check
-        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
-        onboardingCoordinator?.didFinishHandler = {
-            self.navigationController.popToRootViewController()
+        if dependencies.appConfigurationProvider.isOnboardingHidden == false {
+            initiateOnboarding()
         }
+    }
+
+    private func initiateOnboarding() {
+        onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
         onboardingCoordinator?.start()
+    }
+}
+
+extension MainNavigationCoordinator: OnboardingCoordinatorDelegate {
+
+    func onboardingCoordinatorDidFinish() {
+        self.dependencies.appConfigurationProvider.setDidPassOnboarding()
+        self.navigationController.popToRootViewController()
+    }
+
+    func onboardingCoordinatorDidSkipOnboarding() {
+        self.navigationController.popToRootViewController()
     }
 }
 

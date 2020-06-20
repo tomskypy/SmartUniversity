@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol QRPointScanningHandling {
-
-    var delegate: QRPointScanningHandlerDelegate? { get set }
-
-    func handleViewDidLoad(_ view: UIView)
-    func qrCodeValueScanned(_ value: String)
-}
-
 final class QRPointScanningHandler: QRPointScanningHandling {
 
     weak var delegate: QRPointScanningHandlerDelegate?
@@ -23,9 +15,14 @@ final class QRPointScanningHandler: QRPointScanningHandling {
     var qrPoints: [QRPoint] = []
 
     private let qrPointsProvider: QRPointsProviding
+    private let qrPointIDParser: QRPointIDParsing
 
-    init(qrPointsProvider: QRPointsProviding = RemoteDataProvider.shared) {
+    init(
+        qrPointsProvider: QRPointsProviding = RemoteDataProvider.shared,
+        qrPointIDParser: QRPointIDParsing = QRPointIDParser())
+    {
         self.qrPointsProvider = qrPointsProvider
+        self.qrPointIDParser = qrPointIDParser
     }
 
     func handleViewDidLoad(_ view: UIView) {
@@ -33,11 +30,15 @@ final class QRPointScanningHandler: QRPointScanningHandling {
     }
 
     func qrCodeValueScanned(_ value: String) {
+        guard let qrPointUUID = qrPointIDParser.parseUUID(from: value) else {
+            delegate?.qrPointScanningHandler(self, couldNotParseQRPointIDForScannedValue: value)
+            return
+        }
 
-        if let detectedQRPoint = qrPoints.first(where: { $0.uuidString == value}) {
+        if let detectedQRPoint = qrPoints.first(where: { UUID(uuidString: $0.uuidString) == qrPointUUID }) {
             delegate?.qrPointScanningHandler(self, didFetchQRPoint: detectedQRPoint, forScannedValue: value)
         } else {
-            delegate?.qrPointScanningHandler(self, couldNotFetchQRPointForScannedValue: value)
+            delegate?.qrPointScanningHandler(self, couldNotFetchQRPointDataForScannedValue: value)
         }
     }
 

@@ -70,23 +70,6 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             for: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
         )
     }
-
-    #if DEBUG
-    private func handleDebugSession() {
-        screenView?.configureBottomOverlay(
-            for: .success(text: "Debug session, eh?"),
-            buttonConfiguration: .init(
-                text: "Launch (with default data)",
-                color: .darkGray,
-                tapHandler: { [weak self] in
-                    guard let self = self else { return }
-
-                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
-                }
-            )
-        )
-    }
-    #endif
 }
 
 extension QRScannerViewController: CaptureSessionHandlerDelegate {
@@ -103,23 +86,12 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     ) {
+        guard scannedValueCodeObjectBounds?.scannedValue != outputString else { return }
+
         scannedValueCodeObjectBounds = (outputString, objectBounds)
         qrPointScanningHandler.qrCodeValueScanned(outputString)
 
         screenView?.showBlurOverlay(maskBounds: objectBounds)
-
-        screenView?.configureBottomOverlay(
-            for: .success(text: "GJ, you've found a Point!"),
-            buttonConfiguration: .init(
-                text: "Continue",
-                color: .darkGray,
-                tapHandler: { [weak self] in
-                    guard let self = self else { return }
-
-                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
-                }
-            )
-        )
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
@@ -145,9 +117,86 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         else { return }
 
         screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
+
+        screenView?.configureBottomOverlay(
+            for: .success(text: "GJ, you've found a Point!"),
+            buttonConfiguration: .init(
+                text: "Continue",
+                color: .darkGray,
+                tapHandler: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
+                }
+            )
+        )
     }
 
-    func qrPointScanningHandler(_ handler: QRPointScanningHandling, couldNotFetchQRPointForScannedValue value: String) {
-        screenView?.hideBlurOverlay()
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotParseQRPointIDForScannedValue value: String
+    ) {
+        showFailBottomOverlay(withText: "Unknown scanned code.")
     }
+
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotFetchQRPointDataForScannedValue value: String
+    ) {
+        showFailBottomOverlay(withText: "Cannot fetch Point data for scanned code.")
+    }
+
+    private func showFailBottomOverlay(withText text: String) {
+        screenView?.hideBlurOverlay()
+
+        let hideOverlayHandler = { [weak self] in
+            guard let self = self else { return }
+
+            self.screenView?.reset()
+            self.scannedValueCodeObjectBounds = nil
+        }
+        screenView?.configureBottomOverlay(
+            for: .fail(text: text),
+            buttonConfiguration: .init(text: "Ok", color: .darkGray, tapHandler: hideOverlayHandler)
+        )
+    }
+}
+
+private extension QRScannerViewController {
+
+    #if DEBUG
+    private func handleDebugSession() {
+        let continueTapHandler = { [weak self] in
+            guard let self = self else { return }
+
+            self.delegate?.qrScannerViewController(
+                self,
+                didSelectContinueWith: QRPoint(
+                    uuidString: "",
+                    label: "",
+                    muniMapPlaceID: "",
+                    rooms: [
+                        ARLocalizedObjectData(
+                            label: "test1",
+                            dimensions: .init(width: 2, height: 2, length: 2),
+                            position: .init(right: 0, up: 0, front: 10),
+                            tint: "#"
+                        ),
+                        ARLocalizedObjectData(
+                            label: "test2",
+                            dimensions: .init(width: 1, height: 1, length: 1),
+                            position: .init(right: 0, up: 3, front: 10),
+                            tint: "#008080FF"
+                        )
+                ])
+            )
+        }
+
+        screenView?.configureBottomOverlay(
+            for: .success(text: "Debug session, eh?"),
+            buttonConfiguration: .init(text: "Launch (debug data)", color: .darkGray, tapHandler: continueTapHandler)
+        )
+    }
+    #endif
+
 }

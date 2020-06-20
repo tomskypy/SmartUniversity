@@ -13,15 +13,7 @@ import WebKit
 
 private final class TestableWebView: WKWebView {
 
-    override var navigationDelegate: WKNavigationDelegate? {
-        didSet {
-            loadingDelegate = navigationDelegate as? WebViewLoadingDelegate
-        }
-    }
-
     var urlRequestReceivedInLoad: URLRequest?
-
-    var loadingDelegate: WebViewLoadingDelegate?
 
     override func load(_ request: URLRequest) -> WKNavigation? {
         urlRequestReceivedInLoad = request
@@ -30,7 +22,8 @@ private final class TestableWebView: WKWebView {
     }
 
     func triggerWebViewDidFinish() {
-        loadingDelegate?.webViewDidFinishLoading(self)
+
+        navigationDelegate!.webView!(self, didFinish: nil)
     }
 }
 

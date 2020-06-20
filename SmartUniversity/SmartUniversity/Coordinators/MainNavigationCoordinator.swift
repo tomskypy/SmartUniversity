@@ -13,7 +13,11 @@ final class MainNavigationCoordinator: BaseCoordinator {
     let navigationController: NavigationController
     let dependencies: Dependencies
 
-    private(set) var onboardingCoordinator: OnboardingCoordinator?
+    private(set) var onboardingCoordinator: OnboardingCoordinator? {
+        didSet {
+            onboardingCoordinator?.delegate = self
+        }
+    }
 
     init(navigationController: NavigationController, dependencies: MainNavigationCoordinator.Dependencies) {
         self.navigationController = navigationController
@@ -32,11 +36,19 @@ final class MainNavigationCoordinator: BaseCoordinator {
 
     private func initiateOnboarding() {
         onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
-        onboardingCoordinator?.didFinishHandler = {
-            self.dependencies.appConfigurationProvider.setDidPassOnboarding()
-            self.navigationController.popToRootViewController()
-        }
         onboardingCoordinator?.start()
+    }
+}
+
+extension MainNavigationCoordinator: OnboardingCoordinatorDelegate {
+
+    func onboardingCoordinatorDidFinish() {
+        self.dependencies.appConfigurationProvider.setDidPassOnboarding()
+        self.navigationController.popToRootViewController()
+    }
+
+    func onboardingCoordinatorDidSkipOnboarding() {
+        self.navigationController.popToRootViewController()
     }
 }
 

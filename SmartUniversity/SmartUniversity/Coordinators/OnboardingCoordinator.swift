@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol OnboardingCoordinatorDelegate: AnyObject {
+
+    func onboardingCoordinatorDidFinish()
+    func onboardingCoordinatorDidSkipOnboarding()
+}
+
 final class OnboardingCoordinator: BaseCoordinator {
 
-    var didFinishHandler: (() -> Void)?
+    weak var delegate: OnboardingCoordinatorDelegate?
 
     private let navigationController: NavigationController
     private let dependencies: OnboardingCoordinator.Dependencies
@@ -28,7 +34,7 @@ final class OnboardingCoordinator: BaseCoordinator {
 
     private func pushViewControllerOnIndex(_ index: Int) {
         guard index < dependencies.viewControllerConfigurations.count else {
-            didFinishHandler?()
+            delegate?.onboardingCoordinatorDidFinish()
             return
         }
 
@@ -49,7 +55,7 @@ extension OnboardingCoordinator: OnboardingViewControllerDelegate {
     }
 
     func onboardingViewControllerDidSelectSkip(_ viewController: OnboardingViewController) {
-        didFinishHandler?()
+        delegate?.onboardingCoordinatorDidSkipOnboarding()
     }
 }
 

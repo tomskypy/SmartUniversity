@@ -28,8 +28,6 @@
 		352B3D39244FAB1600B422CF /* PresentationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */; };
 		352B3D3C244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3B244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift */; };
 		352B3D3E244FB4E400B422CF /* QRPointScanningHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */; };
-		353A2FA7249BA68D00919D22 /* WKWebView+LoadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A2FA6249BA68D00919D22 /* WKWebView+LoadingDelegate.swift */; };
-		353A2FA9249BAAA800919D22 /* WebViewLoadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A2FA8249BAAA800919D22 /* WebViewLoadingDelegate.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F7248872CC00E45B0D /* BaseViewController.swift */; };
 		3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F8248872CC00E45B0D /* MunimapViewController.swift */; };
@@ -152,8 +150,6 @@
 		352B3D38244FAB1600B422CF /* PresentationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHandlerTests.swift; sourceTree = "<group>"; };
 		352B3D3B244FAF9200B422CF /* QRScannerViewControllerQRPointScanningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewControllerQRPointScanningTests.swift; sourceTree = "<group>"; };
 		352B3D3D244FB4E400B422CF /* QRPointScanningHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointScanningHandlerTests.swift; sourceTree = "<group>"; };
-		353A2FA6249BA68D00919D22 /* WKWebView+LoadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+LoadingDelegate.swift"; sourceTree = "<group>"; };
-		353A2FA8249BAAA800919D22 /* WebViewLoadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewLoadingDelegate.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		357063F7248872CC00E45B0D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		357063F8248872CC00E45B0D /* MunimapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MunimapViewController.swift; sourceTree = "<group>"; };
@@ -335,14 +331,6 @@
 			path = "Extensions Tests";
 			sourceTree = "<group>";
 		};
-		353A2FA5249BA67C00919D22 /* WebKit */ = {
-			isa = PBXGroup;
-			children = (
-				353A2FA6249BA68D00919D22 /* WKWebView+LoadingDelegate.swift */,
-			);
-			path = WebKit;
-			sourceTree = "<group>";
-		};
 		354329B724157FD40065614A /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,7 +371,6 @@
 		357063FD248872CC00E45B0D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				353A2FA5249BA67C00919D22 /* WebKit */,
 				357063FE248872CC00E45B0D /* CoreGraphics */,
 				35706400248872CC00E45B0D /* UIKit */,
 				35706409248872CC00E45B0D /* SceneKit */,
@@ -554,7 +541,6 @@
 				35706430248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift */,
 				35706431248872CC00E45B0D /* QRPointScanningHandlerDelegate.swift */,
 				35706436248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift */,
-				353A2FA8249BAAA800919D22 /* WebViewLoadingDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -866,7 +852,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35706476248872CC00E45B0D /* AppDelegate.swift in Sources */,
-				353A2FA9249BAAA800919D22 /* WebViewLoadingDelegate.swift in Sources */,
 				35706460248872CC00E45B0D /* AppColorProvider.swift in Sources */,
 				35AEAA60249AE17B0036A544 /* AppURL.swift in Sources */,
 				3570645B248872CC00E45B0D /* CaptureDeviceProvider.swift in Sources */,
@@ -880,7 +865,6 @@
 				35706456248872CC00E45B0D /* UILabel+Init.swift in Sources */,
 				35D30184249AEDDA0088801B /* ColorProviding.swift in Sources */,
 				3570647C248872CC00E45B0D /* FrameBasedView.swift in Sources */,
-				353A2FA7249BA68D00919D22 /* WKWebView+LoadingDelegate.swift in Sources */,
 				35D30186249AEE0A0088801B /* LayoutProviding.swift in Sources */,
 				35706475248872CC00E45B0D /* BaseSceneDelegate.swift in Sources */,
 				35706481248872CC00E45B0D /* QRPoint.swift in Sources */,

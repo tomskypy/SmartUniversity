@@ -17,7 +17,7 @@ final class WebViewHandler: NSObject, WebViewHandling {
     func loadURL(_ url: URL, completion: CompletionHandler?) {
         if let completion = completion {
             completionHandler = completion
-            webView?.setLoadingDelegate(self)
+            webView?.navigationDelegate = self
         }
 
         webView?.load(URLRequest(url: url))
@@ -34,11 +34,11 @@ final class WebViewHandler: NSObject, WebViewHandling {
     }
 }
 
-extension WebViewHandler: WebViewLoadingDelegate {
+extension WebViewHandler: WKNavigationDelegate {
 
-    func webViewDidFinishLoading(_ webView: WKWebView) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+
         completionHandler?()
-
         completionHandler = nil
     }
 }

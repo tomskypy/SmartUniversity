@@ -15,12 +15,18 @@ enum DefaultsBoolKey {
 protocol UserDefaultsProviding {
 
     func bool(for key: DefaultsBoolKey) -> Bool
+
+    func setBool(_ value: Bool, for key: DefaultsBoolKey)
 }
 
 extension UserDefaults: UserDefaultsProviding {
 
     func bool(for key: DefaultsBoolKey) -> Bool {
         bool(forKey: key.keyString)
+    }
+
+    func setBool(_ value: Bool, for key: DefaultsBoolKey) {
+        set(value, forKey: key.keyString)
     }
 }
 

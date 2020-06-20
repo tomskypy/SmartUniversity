@@ -11,13 +11,13 @@ import Foundation
 protocol AppConfigurationProviding {
 
     var isOnboardingHidden: Bool { get }
+
+    func setDidPassOnboarding()
 }
 
-final class AppConfigurationProvider {
+struct AppConfigurationProvider {
 
-    static let shared = AppConfigurationProvider()
-
-    let defaultsProvider: UserDefaultsProviding
+    private let defaultsProvider: UserDefaultsProviding
 
     init(defaultsProvider: UserDefaultsProviding = UserDefaults.standard) {
         self.defaultsProvider = defaultsProvider
@@ -28,5 +28,9 @@ extension AppConfigurationProvider: AppConfigurationProviding {
 
     var isOnboardingHidden: Bool {
         defaultsProvider.bool(for: .isOnboardingHidden)
+    }
+
+    func setDidPassOnboarding() {
+        defaultsProvider.setBool(true, for: .isOnboardingHidden)
     }
 }

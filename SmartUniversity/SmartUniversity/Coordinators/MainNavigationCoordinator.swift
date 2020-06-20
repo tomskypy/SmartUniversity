@@ -25,9 +25,15 @@ final class MainNavigationCoordinator: BaseCoordinator {
             dependencies.viewControllerFactory.makeViewController(for: .qrScanner(delegate: self))
         )
 
-        // TODO add userdefaults check
+        if dependencies.appConfigurationProvider.isOnboardingHidden == false {
+            initiateOnboarding()
+        }
+    }
+
+    private func initiateOnboarding() {
         onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
         onboardingCoordinator?.didFinishHandler = {
+            self.dependencies.appConfigurationProvider.setDidPassOnboarding()
             self.navigationController.popToRootViewController()
         }
         onboardingCoordinator?.start()

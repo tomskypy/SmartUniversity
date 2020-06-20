@@ -13,7 +13,10 @@ extension MainNavigationCoordinator {
     convenience init(navigationController: NavigationController) {
         self.init(
             navigationController: navigationController,
-            dependencies: .init(viewControllerFactory: AppMainNavigationViewControllerFactory())
+            dependencies: .init(
+                viewControllerFactory: AppMainNavigationViewControllerFactory(),
+                appConfigurationProvider: AppConfigurationProvider()
+            )
         )
     }
 }

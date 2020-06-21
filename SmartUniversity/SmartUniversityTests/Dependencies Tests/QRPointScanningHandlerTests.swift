@@ -45,7 +45,17 @@ private class TestableQRPointScanningHandlerDelegate: QRPointScanningHandlerDele
         scannedValueReceivedInDidFetchQRPoint = value
     }
 
-    func qrPointScanningHandler(_ handler: QRPointScanningHandling, couldNotFetchQRPointForScannedValue value: String) {
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotParseQRPointIDForScannedValue value: String
+    ) {
+        // TODO add test for this
+    }
+
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotFetchQRPointDataForScannedValue value: String
+    ) {
         scannedValueReceivedInCouldNotFetchQRPoint = value
     }
 }

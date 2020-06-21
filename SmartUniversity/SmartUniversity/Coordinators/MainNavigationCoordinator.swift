@@ -54,9 +54,14 @@ extension MainNavigationCoordinator: OnboardingCoordinatorDelegate {
 
 extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
 
-    func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController) {
+    func qrScannerViewController(
+        _ qrScannerViewController: QRScannerViewController,
+        didSelectContinueWith qrPoint: QRPoint
+    ) {
         let postScanningViewController = ARMapPageViewController(
-            arViewController: dependencies.viewControllerFactory.makeViewController(for: .arView),
+            arViewController: dependencies.viewControllerFactory.makeViewController(
+                for: .arView(roomsData: qrPoint.rooms)
+            ),
             muniMapViewController: dependencies.viewControllerFactory.makeViewController(for: .munimap)
         )
         postScanningViewController.didFinishHandler = { [weak self] in

@@ -11,7 +11,10 @@ import UIKit
 
 protocol QRScannerViewControllerDelegate: AnyObject {
 
-    func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController)
+    func qrScannerViewController(
+        _ qrScannerViewController: QRScannerViewController,
+        didSelectContinueWith qrPoint: QRPoint
+    )
 }
 
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
@@ -126,7 +129,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
                 tapHandler: { [weak self] in
                     guard let self = self else { return }
 
-                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
+                    self.delegate?.qrScannerViewController(self, didSelectContinueWith: qrPoint)
                 }
             )
         )

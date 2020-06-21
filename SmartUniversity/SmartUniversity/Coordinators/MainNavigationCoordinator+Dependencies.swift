@@ -11,7 +11,7 @@ import UIKit
 enum MainNavigationScene {
     case qrScanner(delegate: QRScannerViewControllerDelegate)
     case munimap
-    case arView
+    case arView(roomsData: [ARLocalizedObjectData])
 }
 
 protocol MainNavigationViewControllerFactory {

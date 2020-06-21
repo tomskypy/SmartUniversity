@@ -29,8 +29,8 @@ struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFacto
             return QRScannerViewController(delegate: delegate)
         case .munimap:
             return MunimapViewController()
-        case .arView:
-            return ARViewController()
+        case .arView(let roomsData):
+            return ARViewController(roomsData: roomsData)
         }
     }
 }

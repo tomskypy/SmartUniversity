@@ -123,6 +123,8 @@ final class InfoOverlayView: VerticalFrameBasedView {
     }
 
     private func makeButtonFrame(forWidth width: CGFloat, textFrameMaxY: CGFloat) -> CGRect {
+        guard buttonConfiguration != nil else { return .zero }
+
         let buttonSize = layoutProvider.preferredSize(for: button)
         return CGRect(
             x: width - (buttonSize.width + contentInsets.right),

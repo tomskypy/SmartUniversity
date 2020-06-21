@@ -62,7 +62,9 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
             arViewController: dependencies.viewControllerFactory.makeViewController(
                 for: .arView(roomsData: qrPoint.rooms)
             ),
-            muniMapViewController: dependencies.viewControllerFactory.makeViewController(for: .munimap)
+            muniMapViewController: dependencies.viewControllerFactory.makeViewController(
+                for: .munimap(focusedPlaceID: qrPoint.muniMapPlaceID)
+            )
         )
         postScanningViewController.didFinishHandler = { [weak self] in
             self?.navigationController.popToRootViewController()

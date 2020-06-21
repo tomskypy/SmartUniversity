@@ -9,21 +9,21 @@
 import Foundation
 
 enum AppURL {
-    case munimap
+    case munimap(placeID: String)
 
     var value: URL {
         switch self {
-        case .munimap: return Self.munimapServerURL
+        case .munimap(let placeID): return Self.makeMunimapServerURL(withPlaceID: placeID)
         }
     }
 }
 
 private extension AppURL {
 
-    private static var munimapServerURL: URL = {
-        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?device=mobile") else {
+    private static func makeMunimapServerURL(withPlaceID placeID: String) -> URL {
+        guard let url = URL(string: "https://smart-uni-be.herokuapp.com/munimap?device=mobile&id=\(placeID)") else {
             fatalError("Failed to create munimap server url.")
         }
         return url
-    }()
+    }
 }

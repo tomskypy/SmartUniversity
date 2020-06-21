@@ -109,14 +109,14 @@ final class QRScannerViewControllerTests: XCTestCase {
         XCTAssertTrue(qrPointScanningHandler.didSetDelegate!)
     }
 
-    func testViewDidLoadCallsScreenViewHideBlurOverlay() {
-        let testableScreenView = TestableQRScannerScreenView()
-        scannerViewController.view = testableScreenView
-
-        scannerViewController.viewDidLoad()
-
-        XCTAssertTrue(testableScreenView.didCallHideBlurOverlay!)
-    }
+//    func testViewDidLoadCallsScreenViewHideBlurOverlay() { // TODO replace with more meaningful test
+//        let testableScreenView = TestableQRScannerScreenView()
+//        scannerViewController.view = testableScreenView
+//
+//        scannerViewController.viewDidLoad()
+//
+//        XCTAssertTrue(testableScreenView.didCallHideBlurOverlay!)
+//    }
 
     func testViewDidLoadCallsCaptureSessionHandlingWithExpectedView() {
         XCTAssertNil(captureSessionHandler.viewReceivedInViewDidLoad)

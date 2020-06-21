@@ -27,10 +27,10 @@ struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFacto
         switch scene {
         case .qrScanner(let delegate):
             return QRScannerViewController(delegate: delegate)
-        case .munimap:
-            return MunimapViewController()
-        case .arView:
-            return ARViewController()
+        case .munimap(let focusedPlaceID):
+            return MunimapViewController(focusedPlaceID: focusedPlaceID)
+        case .arView(let roomsData):
+            return ARViewController(roomsData: roomsData)
         }
     }
 }

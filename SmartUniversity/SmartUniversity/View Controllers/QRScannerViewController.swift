@@ -11,7 +11,10 @@ import UIKit
 
 protocol QRScannerViewControllerDelegate: AnyObject {
 
-    func qrScannerViewControllerDidSelectContinue(_ qrScannerViewController: QRScannerViewController)
+    func qrScannerViewController(
+        _ qrScannerViewController: QRScannerViewController,
+        didSelectContinueWith qrPoint: QRPoint
+    )
 }
 
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
@@ -56,7 +59,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
         captureSessionHandler.handleViewWillAppear(view)
 
-        screenView?.reset()
+        reset()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,22 +74,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         )
     }
 
-    #if DEBUG
-    private func handleDebugSession() {
-        screenView?.configureBottomOverlay(
-            for: .success(text: "Debug session, eh?"),
-            buttonConfiguration: .init(
-                text: "Launch (with default data)",
-                color: .darkGray,
-                tapHandler: { [weak self] in
-                    guard let self = self else { return }
+    private func reset() {
+        screenView?.reset()
+        scannedValueCodeObjectBounds = nil
 
-                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
-                }
-            )
+        screenView?.configureBottomOverlay(
+            for: .neutral(text: "Scanning for Smart University Point QR code...")
         )
     }
-    #endif
 }
 
 extension QRScannerViewController: CaptureSessionHandlerDelegate {
@@ -103,23 +98,12 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     ) {
+        guard scannedValueCodeObjectBounds?.scannedValue != outputString else { return }
+
         scannedValueCodeObjectBounds = (outputString, objectBounds)
         qrPointScanningHandler.qrCodeValueScanned(outputString)
 
         screenView?.showBlurOverlay(maskBounds: objectBounds)
-
-        screenView?.configureBottomOverlay(
-            for: .success(text: "GJ, you've found a Point!"),
-            buttonConfiguration: .init(
-                text: "Continue",
-                color: .darkGray,
-                tapHandler: { [weak self] in
-                    guard let self = self else { return }
-
-                    self.delegate?.qrScannerViewControllerDidSelectContinue(self)
-                }
-            )
-        )
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
@@ -145,9 +129,83 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         else { return }
 
         screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
+
+        screenView?.configureBottomOverlay(
+            for: .success(text: "GJ, you've found a Point!"),
+            buttonConfiguration: .init(
+                text: "Continue",
+                color: .darkGray,
+                tapHandler: { [weak self] in
+                    guard let self = self else { return }
+
+                    self.delegate?.qrScannerViewController(self, didSelectContinueWith: qrPoint)
+                }
+            )
+        )
     }
 
-    func qrPointScanningHandler(_ handler: QRPointScanningHandling, couldNotFetchQRPointForScannedValue value: String) {
-        screenView?.hideBlurOverlay()
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotParseQRPointIDForScannedValue value: String
+    ) {
+        showFailBottomOverlay(withText: "Unknown scanned code.")
     }
+
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotFetchQRPointDataForScannedValue value: String
+    ) {
+        showFailBottomOverlay(withText: "Cannot fetch Point data for scanned code.")
+    }
+
+    private func showFailBottomOverlay(withText text: String) {
+        screenView?.hideBlurOverlay()
+
+        let hideOverlayHandler: () -> Void = { [weak self] in
+            self?.reset()
+        }
+        screenView?.configureBottomOverlay(
+            for: .fail(text: text),
+            buttonConfiguration: .init(text: "Ok", color: .darkGray, tapHandler: hideOverlayHandler)
+        )
+    }
+}
+
+private extension QRScannerViewController {
+
+    #if DEBUG
+    private func handleDebugSession() {
+        let continueTapHandler = { [weak self] in
+            guard let self = self else { return }
+
+            self.delegate?.qrScannerViewController(
+                self,
+                didSelectContinueWith: QRPoint(
+                    uuidString: "",
+                    label: "",
+                    muniMapPlaceID: "",
+                    rooms: [
+                        ARLocalizedObjectData(
+                            label: "test1",
+                            dimensions: .init(width: 2, height: 2, length: 2),
+                            position: .init(right: 0, up: 0, front: 10),
+                            tint: "#"
+                        ),
+                        ARLocalizedObjectData(
+                            label: "test2",
+                            dimensions: .init(width: 1, height: 1, length: 1),
+                            position: .init(right: 0, up: 3, front: 10),
+                            tint: "#008080FF"
+                        )
+                ])
+            )
+        }
+
+        screenView?.configureBottomOverlay(
+            for: .success(text: "Debug session, eh?"),
+            buttonConfiguration: .init(text: "Launch (debug data)", color: .darkGray, tapHandler: continueTapHandler)
+        )
+    }
+    #endif
+
 }

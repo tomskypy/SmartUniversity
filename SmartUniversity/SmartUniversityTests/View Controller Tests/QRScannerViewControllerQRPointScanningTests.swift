@@ -36,7 +36,10 @@ extension QRScannerViewControllerTests {
         scannerViewController.view = testableScreenView
         XCTAssertNil(testableScreenView.didCallHideBlurOverlay)
 
-        scannerViewController.qrPointScanningHandler(qrPointScanningHandler, couldNotFetchQRPointForScannedValue: "")
+        scannerViewController.qrPointScanningHandler(
+            qrPointScanningHandler,
+            couldNotFetchQRPointDataForScannedValue: ""
+        )
 
         XCTAssertTrue(testableScreenView.didCallHideBlurOverlay!)
     }

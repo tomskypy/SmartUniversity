@@ -16,5 +16,13 @@ protocol QRPointScanningHandlerDelegate: AnyObject {
         forScannedValue value: String
     )
 
-    func qrPointScanningHandler(_ handler: QRPointScanningHandling, couldNotFetchQRPointForScannedValue value: String)
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotParseQRPointIDForScannedValue value: String
+    )
+
+    func qrPointScanningHandler(
+        _ handler: QRPointScanningHandling,
+        couldNotFetchQRPointDataForScannedValue value: String
+    )
 }

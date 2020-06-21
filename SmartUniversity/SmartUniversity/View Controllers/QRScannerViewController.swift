@@ -77,6 +77,10 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private func reset() {
         screenView?.reset()
         scannedValueCodeObjectBounds = nil
+
+        screenView?.configureBottomOverlay(
+            for: .neutral(text: "Scanning for Smart University Point QR code...")
+        )
     }
 }
 

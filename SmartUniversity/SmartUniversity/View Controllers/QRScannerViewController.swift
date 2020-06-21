@@ -59,7 +59,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
         captureSessionHandler.handleViewWillAppear(view)
 
-        screenView?.reset()
+        reset()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,6 +72,11 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         screenView?.configureBottomOverlay(
             for: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
         )
+    }
+
+    private func reset() {
+        screenView?.reset()
+        scannedValueCodeObjectBounds = nil
     }
 }
 
@@ -152,11 +157,8 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
     private func showFailBottomOverlay(withText text: String) {
         screenView?.hideBlurOverlay()
 
-        let hideOverlayHandler = { [weak self] in
-            guard let self = self else { return }
-
-            self.screenView?.reset()
-            self.scannedValueCodeObjectBounds = nil
+        let hideOverlayHandler: () -> Void = { [weak self] in
+            self?.reset()
         }
         screenView?.configureBottomOverlay(
             for: .fail(text: text),

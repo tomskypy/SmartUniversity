@@ -19,8 +19,8 @@ final class QRPointScanningHandler: QRPointScanningHandling {
 
     init(
         qrPointsProvider: QRPointsProviding = RemoteDataProvider.shared,
-        qrPointIDParser: QRPointIDParsing = QRPointIDParser())
-    {
+        qrPointIDParser: QRPointIDParsing = QRPointIDParser()
+    ) {
         self.qrPointsProvider = qrPointsProvider
         self.qrPointIDParser = qrPointIDParser
     }

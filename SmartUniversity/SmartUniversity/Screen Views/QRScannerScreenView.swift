@@ -18,6 +18,10 @@ class QRScannerScreenView: FrameBasedView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
+    private let colorProvider: ColorProviding
+
+    private let bottomOverlay = InfoOverlayView()
+
     private var bottomOverlayState: InfoOverlayView.State? {
         didSet { configureBottomOverlay(for: bottomOverlayState) }
     }
@@ -28,9 +32,7 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
-    private let colorProvider: ColorProviding
-
-    private let bottomOverlay = InfoOverlayView()
+    private var lastOverlayHideAnimationWorkItem: DispatchWorkItem?
 
     init(colorProvider: ColorProviding) {
         self.colorProvider = colorProvider
@@ -63,11 +65,25 @@ class QRScannerScreenView: FrameBasedView {
     }
 
     func showBlurOverlay(maskBounds: CGRect) {
+        lastOverlayHideAnimationWorkItem?.cancel()
+
         blurredOverlayView.layer.mask = createRectangularMask(innerBounds: maskBounds)
 
         if blurredOverlayView.isHidden {
             blurredOverlayView.isHidden = false
+            blurredOverlayView.alpha = 1
         }
+        let overlayHideAnimationWorkItem = DispatchWorkItem(block: {
+            UIView.animate(
+                withDuration: 1,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: { self.blurredOverlayView.alpha = 0 },
+                completion: { _ in self.hideBlurOverlay() }
+            )
+        })
+        lastOverlayHideAnimationWorkItem = overlayHideAnimationWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: overlayHideAnimationWorkItem)
     }
 
     func configureBottomOverlay(

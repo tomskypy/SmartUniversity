@@ -28,6 +28,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private var presentationHandler: PresentationHandling
 
+    private var hasCaptureSessionError: Bool = false
+
     /// Tuple containg scanned object's `String` value and its detected bounds within the scanning view.
     var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
 
@@ -57,9 +59,11 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        captureSessionHandler.handleViewWillAppear(view)
+        if hasCaptureSessionError == false {
+            reset()
+        }
 
-        reset()
+        captureSessionHandler.handleViewWillAppear(view)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,6 +111,7 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
+        hasCaptureSessionError = true
 
         #if DEBUG
             handleDebugSession()

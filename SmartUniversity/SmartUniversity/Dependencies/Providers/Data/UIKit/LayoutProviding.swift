@@ -62,3 +62,10 @@ extension LayoutProviding {
         return rootSuperview
     }
 }
+
+extension Set where Element == LayoutSide {
+
+    static func all() -> Self {
+        [.top, .left, .bottom, .right]
+    }
+}

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRScannerScreenView: FrameBasedView {
+class QRScannerScreenView: TitledScreenView {
 
     var scannerPreviewLayer: AVCaptureVideoPreviewLayer? {
         willSet { removePreviewSublayer(previewLayer: scannerPreviewLayer) }
@@ -36,14 +36,19 @@ class QRScannerScreenView: FrameBasedView {
 
     // MARK: - Inits
 
-    init(colorProvider: ColorProviding) {
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
-        super.init(frame: .zero)
+        super.init(layoutProvider: layoutProvider)
+
+        titleText = "QR Scanner"
     }
 
     required init?(coder: NSCoder) { nil }
 
+    // MARK: - Layouting
+
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
+        let frames = super.frames(forBounds: bounds)
 
         let blurredOverlayFrame = CGRect(origin: .zero, size: bounds.size)
 
@@ -54,7 +59,11 @@ class QRScannerScreenView: FrameBasedView {
             size: bottomOverlayFrameSize
         )
 
-        return [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
+        return frames + [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
+    }
+
+    override func setupSubviews() {
+        addSubview(blurredOverlayView)
     }
 
     // MARK: - Reset
@@ -162,12 +171,5 @@ class QRScannerScreenView: FrameBasedView {
         maskLayer.path = maskPath.cgPath
 
         return maskLayer
-    }
-}
-
-extension QRScannerScreenView: BaseScreenView {
-
-    func setupSubviews() {
-        addSubview(blurredOverlayView)
     }
 }

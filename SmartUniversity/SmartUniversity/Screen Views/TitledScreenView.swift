@@ -14,22 +14,43 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
         didSet { configure(withTitleText: titleText) }
     }
 
-    private let label = UILabel(
+    var titleColor: UIColor = UIColor.white.withAlphaComponent(0.45) {
+        didSet { label.textColor = titleColor.withAlphaComponent(0.45) }
+    }
+
+    private lazy var label = UILabel(
         font: .systemFont(ofSize: 65, weight: .heavy),
-        textColor: UIColor.white.withAlphaComponent(0.45),
-        textAlignment: .center
+        textColor: titleColor,
+        textAlignment: .center,
+        adjustsFontSizeToFitWidth: true
     )
 
-    override open func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
-        let insets = safeAreaInsets
+    private lazy var insets = layoutProvider.contentInsets(for: self, respectingSafeAreasOn: .all())
 
-        let contentWidth = bounds.width
+    private let layoutProvider: LayoutProviding
+
+    init(layoutProvider: LayoutProviding) {
+        self.layoutProvider = layoutProvider
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override open func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
+
+        let contentWidth = bounds.width - insets.horizontalSum
         let labelHeight = label.height(constrainedToWidth: contentWidth)
 
         return [
             (label, CGRect(x: insets.left, y: insets.top, width: contentWidth, height: labelHeight))
         ]
     }
+
+    override func addSubview(_ view: UIView) {
+        insertSubview(view, belowSubview: label)
+    }
+
+    func setupSubviews() { }
 
     private func configure(withTitleText titleText: String?) {
         guard let titleText = titleText else {
@@ -39,6 +60,4 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
         addSubview(label)
         label.text = titleText
     }
-
-    func setupSubviews() { }
 }

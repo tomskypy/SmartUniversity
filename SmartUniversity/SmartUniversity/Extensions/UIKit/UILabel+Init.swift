@@ -15,7 +15,8 @@ extension UILabel {
         font: UIFont,
         textColor: UIColor,
         textAlignment: NSTextAlignment = .natural,
-        numberOfLines: Int = 1
+        numberOfLines: Int = 1,
+        adjustsFontSizeToFitWidth: Bool = false
     ) {
         self.init()
 
@@ -24,5 +25,9 @@ extension UILabel {
         self.textColor = textColor
         self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
+        if adjustsFontSizeToFitWidth {
+            self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+            self.minimumScaleFactor = 0.5
+        }
     }
 }

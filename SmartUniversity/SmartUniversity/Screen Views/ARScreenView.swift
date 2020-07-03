@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ARScreenView: FrameBasedView {
+final class ARScreenView: TitledScreenView {
 
     var insets: UIEdgeInsets { .init(all: 50) }
 
@@ -23,47 +23,35 @@ final class ARScreenView: FrameBasedView {
         }
     }
 
-    let testLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hello, Smart University developer!"
-        label.textColor = .green
-        return label
-    }()
+    override init(layoutProvider: LayoutProviding) {
+        super.init(layoutProvider: layoutProvider)
+
+        titleText = "AR View"
+    }
+
+    required init?(coder: NSCoder) { nil }
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
-        var frames: [(UIView, CGRect)] = []
 
-        let contentWidth = bounds.width - insets.horizontalSum
-        let contentHeight = bounds.height + safeAreaInsets.verticalSum
+        let frames = super.frames(forBounds: bounds)
 
-        let labelFrame =  CGRect(
-            x: insets.top,
-            y: insets.left,
-            width: contentWidth,
-            height: testLabel.height(constrainedToWidth: contentWidth)
-        )
-        frames.append((testLabel, labelFrame))
-
-        if let arSceneView = arSceneView {
-            let sceneViewFrame = CGRect(
-                x: 0,
-                y: -safeAreaInsets.top,
-                size: CGSize(width: bounds.width, height: contentHeight)
-            )
-
-            frames.append((arSceneView, sceneViewFrame))
+        guard let arSceneView = arSceneView else {
+            return frames
         }
 
-        return frames
+        let contentHeight = bounds.height + safeAreaInsets.verticalSum
+
+        let sceneViewFrame = CGRect(
+            x: 0,
+            y: -safeAreaInsets.top,
+            size: CGSize(width: bounds.width, height: contentHeight)
+        )
+
+        return frames + [(arSceneView, sceneViewFrame)]
     }
-}
 
-extension ARScreenView: BaseScreenView {
-
-    func setupSubviews() {
+    override func setupSubviews() {
         backgroundColor = .black
-
-        addSubview(testLabel)
     }
 }
 

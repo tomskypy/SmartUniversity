@@ -36,6 +36,7 @@
 		353400AD249ED7E600198B5B /* QRPointIDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353400AC249ED7E600198B5B /* QRPointIDParser.swift */; };
 		353400AF249ED7FA00198B5B /* QRPointScanningHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353400AE249ED7FA00198B5B /* QRPointScanningHandling.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
+		3545E4E124AFAC6B000EE4BD /* TitledScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545E4E024AFAC6B000EE4BD /* TitledScreenView.swift */; };
 		3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F7248872CC00E45B0D /* BaseViewController.swift */; };
 		3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F8248872CC00E45B0D /* MunimapViewController.swift */; };
 		3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F9248872CC00E45B0D /* OnboardingViewController.swift */; };
@@ -164,6 +165,7 @@
 		353400AC249ED7E600198B5B /* QRPointIDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointIDParser.swift; sourceTree = "<group>"; };
 		353400AE249ED7FA00198B5B /* QRPointScanningHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointScanningHandling.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
+		3545E4E024AFAC6B000EE4BD /* TitledScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledScreenView.swift; sourceTree = "<group>"; };
 		357063F7248872CC00E45B0D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		357063F8248872CC00E45B0D /* MunimapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MunimapViewController.swift; sourceTree = "<group>"; };
 		357063F9248872CC00E45B0D /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 			children = (
 				35706445248872CC00E45B0D /* App */,
 				35706449248872CC00E45B0D /* BaseScreenView.swift */,
+				3545E4E024AFAC6B000EE4BD /* TitledScreenView.swift */,
 				35706444248872CC00E45B0D /* ARScreenView.swift */,
 				35706447248872CC00E45B0D /* QRScannerScreenView.swift */,
 				35706448248872CC00E45B0D /* OnboardingScreenView.swift */,
@@ -942,6 +945,7 @@
 				3570645A248872CC00E45B0D /* SCNObject+Init.swift in Sources */,
 				35706465248872CC00E45B0D /* PosterReferenceImageProvider.swift in Sources */,
 				353400AD249ED7E600198B5B /* QRPointIDParser.swift in Sources */,
+				3545E4E124AFAC6B000EE4BD /* TitledScreenView.swift in Sources */,
 				3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */,
 				35AEAA5E249AE0C70036A544 /* MunimapViewController+App.swift in Sources */,
 				35706459248872CC00E45B0D /* UIEdgeInsets+Merge.swift in Sources */,

@@ -34,6 +34,8 @@ class QRScannerScreenView: FrameBasedView {
 
     private var lastOverlayHideAnimationWorkItem: DispatchWorkItem?
 
+    // MARK: - Inits
+
     init(colorProvider: ColorProviding) {
         self.colorProvider = colorProvider
         super.init(frame: .zero)
@@ -55,17 +57,17 @@ class QRScannerScreenView: FrameBasedView {
         return [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
     }
 
+    // MARK: - Reset
+
     func reset() {
         hideBlurOverlay()
         hideBottomOverlay()
     }
 
-    func hideBlurOverlay() {
-        blurredOverlayView.isHidden = true
-    }
+    // MARK: - Blur sqaure overlay
 
     func showBlurOverlay(maskBounds: CGRect) {
-        lastOverlayHideAnimationWorkItem?.cancel()
+        resetBlurOverlayAnimations()
 
         blurredOverlayView.layer.mask = createRectangularMask(innerBounds: maskBounds)
 
@@ -73,6 +75,31 @@ class QRScannerScreenView: FrameBasedView {
             blurredOverlayView.isHidden = false
             blurredOverlayView.alpha = 1
         }
+    }
+
+    func hideBlurOverlay() {
+        blurredOverlayView.isHidden = true
+    }
+
+    // MARK: - Bottom overlay
+
+    func configureBottomOverlay(
+        for state: InfoOverlayView.State,
+        buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
+    ) {
+        bottomOverlayState = state
+        bottomOverlayButtonConfiguration = buttonConfiguration
+    }
+
+    func hideBottomOverlay() {
+        bottomOverlayState = nil
+    }
+
+    // MARK: - Helpers - Reset
+
+    private func resetBlurOverlayAnimations() {
+        lastOverlayHideAnimationWorkItem?.cancel()
+
         let overlayHideAnimationWorkItem = DispatchWorkItem(block: {
             UIView.animate(
                 withDuration: 1,
@@ -86,17 +113,7 @@ class QRScannerScreenView: FrameBasedView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: overlayHideAnimationWorkItem)
     }
 
-    func configureBottomOverlay(
-        for state: InfoOverlayView.State,
-        buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
-    ) {
-        bottomOverlayState = state
-        bottomOverlayButtonConfiguration = buttonConfiguration
-    }
-
-    func hideBottomOverlay() {
-        bottomOverlayState = nil
-    }
+    // MARK: - Helpers - Configuration
 
     private func configureBottomOverlay(for state: InfoOverlayView.State?) {
         guard let state = bottomOverlayState else {
@@ -121,6 +138,8 @@ class QRScannerScreenView: FrameBasedView {
             layer.sublayers?.remove(at: 0)
         }
     }
+
+    // MARK: - Helpers - Factories
 
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {
         let maskLayer = CAShapeLayer()

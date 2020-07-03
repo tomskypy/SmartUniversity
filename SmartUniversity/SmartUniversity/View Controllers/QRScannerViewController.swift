@@ -23,6 +23,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     weak var delegate: QRScannerViewControllerDelegate?
 
+    private static let fadeInAnimationLength = 0.45
+    private static let fadeOutAnimationLength = 0.15
+
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
 
@@ -64,12 +67,20 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         }
 
         captureSessionHandler.handleViewWillAppear(view)
+
+        UIView.animate(withDuration: Self.fadeInAnimationLength, delay: 0, options: .curveEaseIn, animations: {
+            self.view.alpha = 1.0
+        })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         captureSessionHandler.handleViewWillDisappear(view)
+
+        UIView.animate(withDuration: Self.fadeOutAnimationLength, animations: {
+            self.view.alpha = 0
+        })
     }
 
     private func handleSessionFailed() {

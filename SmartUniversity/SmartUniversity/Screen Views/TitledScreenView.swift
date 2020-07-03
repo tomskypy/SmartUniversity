@@ -14,8 +14,8 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
         didSet { configure(withTitleText: titleText) }
     }
 
-    var titleColor: UIColor = UIColor.white.withAlphaComponent(0.45) {
-        didSet { label.textColor = titleColor.withAlphaComponent(0.45) }
+    var titleColor: UIColor = makeTransparentTitleColor(from: .white) {
+        didSet { label.textColor = Self.makeTransparentTitleColor(from: titleColor) }
     }
 
     private lazy var label = UILabel(
@@ -39,11 +39,9 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
     override open func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let contentWidth = bounds.width - insets.horizontalSum
-        let labelHeight = label.height(constrainedToWidth: contentWidth)
+        let labelHeight = label.height(constrainedToWidth: contentWidth) // FIXME: does not scale well when limited
 
-        return [
-            (label, CGRect(x: insets.left, y: insets.top, width: contentWidth, height: labelHeight))
-        ]
+        return [(label, CGRect(x: insets.left, y: insets.top, width: contentWidth, height: labelHeight))]
     }
 
     override func addSubview(_ view: UIView) {
@@ -57,7 +55,11 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
             return label.removeFromSuperview()
         }
 
-        addSubview(label)
         label.text = titleText
+        addSubview(label)
+    }
+
+    private static func makeTransparentTitleColor(from color: UIColor) -> UIColor {
+        color.withAlphaComponent(0.55)
     }
 }

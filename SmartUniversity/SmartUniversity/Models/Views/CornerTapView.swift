@@ -20,8 +20,6 @@ final class CornerTapView: VerticalFrameBasedView {
     }
 
     enum Corner {
-        case topLeft
-        case topRight
         case bottomLeft
         case bottomRight
     }
@@ -33,7 +31,17 @@ final class CornerTapView: VerticalFrameBasedView {
         )
     }
 
+    override var insetAgnosticSubviews: [UIView] { [backgroundView] }
+
     var tapHandler: (() -> Void)?
+
+    override var backgroundColor: UIColor? {
+        get { backgroundConfiguration.color }
+        set {
+            guard let backgroundColor = newValue else { return }
+            backgroundConfiguration = Self.makeBackgroundConfiguration(with: backgroundColor)
+        }
+    }
 
     var configuration: Configuration {
         didSet {
@@ -43,36 +51,53 @@ final class CornerTapView: VerticalFrameBasedView {
 
     var preferredWidth: CGFloat {
         let leftMostView = frames(forWidth: .greatestFiniteMagnitude).max(by: { $0.frame.maxX < $1.frame.maxX })
-        return (leftMostView?.frame ?? .zero).maxX + insets.left
+        return (leftMostView?.frame ?? .zero).maxX
     }
 
-    private let colorProvider: ColorProviding
-    private let layoutProvider: LayoutProviding
+    private lazy var backgroundView = GradientView(configuration: backgroundConfiguration)
 
     private var containedView: UIView {
         willSet { containedView.removeFromSuperview() }
         didSet { addSubview(containedView) }
     }
 
+    private var backgroundConfiguration: GradientView.Configuration {
+        didSet { backgroundView.configuration = backgroundConfiguration }
+    }
+
+    private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
+
     init(configuration: Configuration, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.configuration = configuration
+
         self.colorProvider = colorProvider
         self.layoutProvider = layoutProvider
+
         containedView = Self.makeContainedView(for: configuration.content, colorProvider: colorProvider)
+        backgroundConfiguration = Self.makeBackgroundConfiguration(with: colorProvider.overlayColor)
 
         super.init(frame: .zero)
 
-        configureLayer(with: configuration)
-        configureBackground(with: colorProvider.overlayColor)
         configureTapDelegate(with: #selector(viewTapped))
 
-        addSubview(containedView)
+        addSubviews(backgroundView, containedView)
     }
 
     required init?(coder: NSCoder) { nil }
 
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
-        [(containedView, CGRect(x: insets.left, y: insets.top, size: containedView.size(constrainedToWidth: width)))]
+        let contentSize = containedView.size(constrainedToWidth: width)
+
+        let containedViewFrame = CGRect(x: insets.left, y: insets.top, size: contentSize)
+
+        let backgroundFrame = CGRect(
+            origin: .zero,
+            width: contentSize.width + insets.horizontalSum,
+            height: contentSize.height + insets.verticalSum
+        )
+
+        return [(containedView, containedViewFrame), (backgroundView, backgroundFrame)]
     }
 
     @objc private func viewTapped() {
@@ -82,15 +107,6 @@ final class CornerTapView: VerticalFrameBasedView {
     private func configureTapDelegate(with selector: Selector) {
         isUserInteractionEnabled = true
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
-    }
-
-    private func configureBackground(with overlayColor: UIColor) {
-        backgroundColor = overlayColor
-    }
-
-    private func configureLayer(with configuration: Configuration) {
-        layer.cornerRadius = 25
-        layer.maskedCorners = [configuration.corner.maskedCorner]
     }
 
     private static func makeContainedView(for content: Content, colorProvider: ColorProviding) -> UIView {
@@ -106,14 +122,16 @@ final class CornerTapView: VerticalFrameBasedView {
             return label
         }
     }
+
+    private static func makeBackgroundConfiguration(with overlayColor: UIColor) -> GradientView.Configuration {
+        .init(locations: [0.2, 0.9, 1], color: overlayColor, axis: .vertical)
+    }
 }
 
 private extension CornerTapView.Corner {
 
     var maskedCorner: CACornerMask {
         switch self {
-        case .topLeft:      return .layerMaxXMaxYCorner
-        case .topRight:     return .layerMinXMaxYCorner
         case .bottomLeft:   return .layerMaxXMinYCorner
         case .bottomRight:  return .layerMinXMinYCorner
         }
@@ -121,7 +139,6 @@ private extension CornerTapView.Corner {
 
     var respectedSafeAreaLayoutSide: LayoutSide {
         switch self {
-        case .topLeft, .topRight:       return .top
         case .bottomLeft, .bottomRight: return .bottom
         }
     }

@@ -40,6 +40,7 @@
 		3545E4E524AFC3BE000EE4BD /* ARScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545E4E424AFC3BE000EE4BD /* ARScreenView+App.swift */; };
 		3545E4E724AFC459000EE4BD /* MunimapScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545E4E624AFC459000EE4BD /* MunimapScreenView+App.swift */; };
 		3545E4E924AFC677000EE4BD /* TitledScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545E4E824AFC677000EE4BD /* TitledScreenView+App.swift */; };
+		356E7A0B24B0AD1B002C1D1C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E7A0A24B0AD1B002C1D1C /* GradientView.swift */; };
 		3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F7248872CC00E45B0D /* BaseViewController.swift */; };
 		3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F8248872CC00E45B0D /* MunimapViewController.swift */; };
 		3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357063F9248872CC00E45B0D /* OnboardingViewController.swift */; };
@@ -172,6 +173,7 @@
 		3545E4E424AFC3BE000EE4BD /* ARScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARScreenView+App.swift"; sourceTree = "<group>"; };
 		3545E4E624AFC459000EE4BD /* MunimapScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MunimapScreenView+App.swift"; sourceTree = "<group>"; };
 		3545E4E824AFC677000EE4BD /* TitledScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TitledScreenView+App.swift"; sourceTree = "<group>"; };
+		356E7A0A24B0AD1B002C1D1C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		357063F7248872CC00E45B0D /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		357063F8248872CC00E45B0D /* MunimapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MunimapViewController.swift; sourceTree = "<group>"; };
 		357063F9248872CC00E45B0D /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				3570643B248872CC00E45B0D /* InfoOverlayView.swift */,
 				350C62B324968084000787C0 /* CornerTapView.swift */,
 				3534009F249EA93100198B5B /* LoadingOverlayView.swift */,
+				356E7A0A24B0AD1B002C1D1C /* GradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				353400A6249ED3CB00198B5B /* String+Subscript.swift in Sources */,
 				35706462248872CC00E45B0D /* ReferenceImageProviding.swift in Sources */,
 				35706487248872CC00E45B0D /* MunimapScreenView.swift in Sources */,
+				356E7A0B24B0AD1B002C1D1C /* GradientView.swift in Sources */,
 				350C553F248BA14A00902F52 /* MainNavigationCoordinator.swift in Sources */,
 				35D30191249AEF6A0088801B /* CaptureSessionProviding.swift in Sources */,
 				3586FD692499591B000C9D3C /* QRScannerScreenView+App.swift in Sources */,

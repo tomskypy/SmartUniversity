@@ -168,7 +168,7 @@ final class CornerTapView: VerticalFrameBasedView {
     }
 
     private static func makeBackgroundConfiguration(with overlayColor: UIColor) -> GradientView.Configuration {
-        .init(locations: [0.2, 0.9, 1], color: overlayColor, axis: .vertical)
+        .init(color: overlayColor, axis: .vertical(locations: [0.2, 0.9, 1.0], upToDown: false))
     }
 }
 

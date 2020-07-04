@@ -12,15 +12,26 @@ class VerticalFrameBasedView: FrameBasedView {
 
     var insets: UIEdgeInsets { .init(all: 0) }
 
+    var insetAgnosticSubviews: [UIView] { [] }
+
     override func layoutSubviews() {
         frames(forWidth: bounds.width).forEach({ $0.view.frame = $0.frame })
     }
 
     /// Returns most fitting size respecting only width of provided CGSize.
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let bottomMostFrame = frames(forWidth: size.width).max(by: { $0.frame.maxY < $1.frame.maxY })?.frame ?? .zero
+        guard let bottomMostView = frames(forWidth: size.width).max(by: { $0.frame.maxY < $1.frame.maxY }) else {
+            return .zero
+        }
 
-        return CGSize(width: size.width, height: bottomMostFrame.maxY + insets.bottom)
+        var height = bottomMostView.frame.maxY
+
+        let shouldAddInsetsToHeight = insetAgnosticSubviews.contains(bottomMostView.view) == false
+        if shouldAddInsetsToHeight {
+            height += insets.bottom
+        }
+
+        return CGSize(width: size.width, height: height)
     }
 
     /// Override this function to layout subviews.

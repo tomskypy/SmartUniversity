@@ -29,17 +29,11 @@ final class GradientView: UIView {
         }
     }
 
-    var configuration: Configuration {
-        didSet { gradientLayer = Self.makeMaskingGradientLayer(with: configuration) }
-    }
-
     private var gradientLayer: CAGradientLayer {
-        willSet { gradientLayer.removeFromSuperlayer() }
         didSet { layer.mask = gradientLayer }
     }
 
     init(configuration: Configuration) {
-        self.configuration = configuration
         self.gradientLayer = Self.makeMaskingGradientLayer(with: configuration)
         super.init(frame: .zero)
 

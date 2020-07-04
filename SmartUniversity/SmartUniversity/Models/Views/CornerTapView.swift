@@ -47,6 +47,16 @@ final class CornerTapView: VerticalFrameBasedView {
         }
     }
 
+    override var tintColor: UIColor? {
+        get { super.tintColor }
+        set {
+            guard let tintColor = newValue else { return }
+
+            super.tintColor = tintColor
+            iconView.image = iconView.image?.withTintColor(tintColor)
+        }
+    }
+
     // MARK: - Delegate
 
     var tapHandler: (() -> Void)?
@@ -70,14 +80,17 @@ final class CornerTapView: VerticalFrameBasedView {
 
     private lazy var iconView = UIImageView()
 
-    private lazy var backgroundView = GradientView(configuration: backgroundConfiguration)
+    private var backgroundView: GradientView {
+        willSet { backgroundView.removeFromSuperview() }
+        didSet { insertSubview(backgroundView, at: 0) }
+    }
 
     private var label: UILabel
 
     // MARK: - Background configuration
 
     private var backgroundConfiguration: GradientView.Configuration {
-        didSet { backgroundView.configuration = backgroundConfiguration }
+        didSet { backgroundView = GradientView(configuration: backgroundConfiguration) }
     }
 
     // MARK: - Dependencies
@@ -94,7 +107,9 @@ final class CornerTapView: VerticalFrameBasedView {
         self.layoutProvider = layoutProvider
 
         label = Self.makeLabel(with: configuration.content, colorProvider: colorProvider)
+
         backgroundConfiguration = Self.makeBackgroundConfiguration(with: colorProvider.overlayColor)
+        backgroundView = GradientView(configuration: backgroundConfiguration)
 
         super.init(frame: .zero)
 

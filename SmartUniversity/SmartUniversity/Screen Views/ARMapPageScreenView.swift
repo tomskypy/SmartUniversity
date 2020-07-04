@@ -11,15 +11,28 @@ import UIKit
 class ARMapPageScreenView: FrameBasedView {
 
     let navigateBackSideTapView = CornerTapView(
-        configuration: .init(content: .label(text: "◀ Back", textSize: 18, alignment: .left), corner: .topLeft)
+        configuration: .init(
+            corner: .bottomLeft,
+            content: .init(
+                icon: UIImage(systemName: "gobackward")?.applyingSymbolConfiguration(.init(scale: .small)),
+                text: "back",
+                textSize: 25,
+                alignment: .left)
+        )
     )
 
     let munimapSideTapView = CornerTapView(
-        configuration: .init(content: .label(text: "muni\nmap", textSize: 40, alignment: .left), corner: .bottomLeft)
+        configuration: .init(
+            corner: .bottomLeft,
+            content: .init(icon: UIImage(systemName: "map")?.applyingSymbolConfiguration(.init(scale: .medium)), text: "munimap", textSize: 25, alignment: .left)
+        )
     )
 
     let arViewSideTapView = CornerTapView(
-        configuration: .init(content: .label(text: "AR\nview", textSize: 40, alignment: .right), corner: .bottomRight)
+        configuration: .init(
+            corner: .bottomLeft,
+            content: .init(icon: UIImage(systemName: "arkit")?.applyingSymbolConfiguration(.init(scale: .medium)), text: "AR view", textSize: 25, alignment: .left)
+        )
     )
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {

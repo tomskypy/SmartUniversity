@@ -11,18 +11,24 @@ import UIKit
 final class CornerTapView: VerticalFrameBasedView {
 
     struct Configuration {
-        let content: Content
         let corner: Corner
-    }
-
-    enum Content {
-        case label(text: String, textSize: CGFloat, alignment: NSTextAlignment)
+        let content: Content
     }
 
     enum Corner {
         case bottomLeft
         case bottomRight
     }
+
+    struct Content {
+        let icon: UIImage?
+
+        let text: String
+        let textSize: CGFloat
+        let alignment: NSTextAlignment
+    }
+
+    // MARK: - Property overrides
 
     override var insets: UIEdgeInsets {
         layoutProvider.contentInsets(
@@ -33,8 +39,6 @@ final class CornerTapView: VerticalFrameBasedView {
 
     override var insetAgnosticSubviews: [UIView] { [backgroundView] }
 
-    var tapHandler: (() -> Void)?
-
     override var backgroundColor: UIColor? {
         get { backgroundConfiguration.color }
         set {
@@ -43,10 +47,14 @@ final class CornerTapView: VerticalFrameBasedView {
         }
     }
 
+    // MARK: - Delegate
+
+    var tapHandler: (() -> Void)?
+
+    // MARK: - Configuration
+
     var configuration: Configuration {
-        didSet {
-            containedView = Self.makeContainedView(for: configuration.content, colorProvider: colorProvider)
-        }
+        didSet { configure(with: configuration) }
     }
 
     var preferredWidth: CGFloat {
@@ -54,19 +62,30 @@ final class CornerTapView: VerticalFrameBasedView {
         return (leftMostView?.frame ?? .zero).maxX
     }
 
+    // MARK: - View spacing
+
+    private lazy var contentSpacing = layoutProvider.contentSpacing
+
+    // MARK: - Subviews
+
+    private lazy var iconView = UIImageView()
+
     private lazy var backgroundView = GradientView(configuration: backgroundConfiguration)
 
-    private var containedView: UIView {
-        willSet { containedView.removeFromSuperview() }
-        didSet { addSubview(containedView) }
-    }
+    private var label: UILabel
+
+    // MARK: - Background configuration
 
     private var backgroundConfiguration: GradientView.Configuration {
         didSet { backgroundView.configuration = backgroundConfiguration }
     }
 
+    // MARK: - Dependencies
+
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
+
+    // MARK: - Inits
 
     init(configuration: Configuration, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.configuration = configuration
@@ -74,53 +93,78 @@ final class CornerTapView: VerticalFrameBasedView {
         self.colorProvider = colorProvider
         self.layoutProvider = layoutProvider
 
-        containedView = Self.makeContainedView(for: configuration.content, colorProvider: colorProvider)
+        label = Self.makeLabel(with: configuration.content, colorProvider: colorProvider)
         backgroundConfiguration = Self.makeBackgroundConfiguration(with: colorProvider.overlayColor)
 
         super.init(frame: .zero)
 
+        configure(with: configuration)
         configureTapDelegate(with: #selector(viewTapped))
 
-        addSubviews(backgroundView, containedView)
+        addSubviews(backgroundView, label, iconView)
     }
 
     required init?(coder: NSCoder) { nil }
 
-    override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
-        let contentSize = containedView.size(constrainedToWidth: width)
+    // MARK: - Layouting
 
-        let containedViewFrame = CGRect(x: insets.left, y: insets.top, size: contentSize)
+    override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+        let contentMaxWidth = width - insets.horizontalSum
+
+        let iconSize = CGSize(width: 60, height: 60)
+        let labelSize = label.size(constrainedToWidth: contentMaxWidth)
+
+        let contentWidth = max(iconSize.width, labelSize.width)
+        let contentHeight = iconSize.height + contentSpacing + labelSize.height
+
+        let iconViewFrame = CGRect(x: insets.left + (contentWidth - iconSize.width) / 2, y: insets.top, size: iconSize)
+
+        let labelFrame = CGRect(
+            x: insets.left + (contentWidth - labelSize.width) / 2,
+            y: iconViewFrame.maxY + contentSpacing,
+            size: labelSize
+        )
 
         let backgroundFrame = CGRect(
             origin: .zero,
-            width: contentSize.width + insets.horizontalSum,
-            height: contentSize.height + insets.verticalSum
+            width: contentWidth + insets.horizontalSum,
+            height: contentHeight + insets.verticalSum
         )
 
-        return [(containedView, containedViewFrame), (backgroundView, backgroundFrame)]
+        return [(iconView, iconViewFrame), (label, labelFrame), (backgroundView, backgroundFrame)]
     }
+
+    // MARK: - Handling
 
     @objc private func viewTapped() {
         tapHandler?()
     }
+
+    // MARK: - Delegate configuration
 
     private func configureTapDelegate(with selector: Selector) {
         isUserInteractionEnabled = true
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
     }
 
-    private static func makeContainedView(for content: Content, colorProvider: ColorProviding) -> UIView {
-        switch content {
-        case .label(let text, let textSize, let alignment):
-            let label = UILabel(
-                font: .boldSystemFont(ofSize: textSize),
-                textColor: colorProvider.textColor,
-                numberOfLines: 0
-            )
-            label.text = text
-            label.textAlignment = alignment
-            return label
-        }
+    // MARK: - Helpers - Configuration
+
+    private func configure(with configuration: Configuration) {
+        label = Self.makeLabel(with: configuration.content, colorProvider: colorProvider)
+        iconView.image = configuration.content.icon
+    }
+
+    // MARK: - Helpers - Factories
+
+    private static func makeLabel(with content: Content, colorProvider: ColorProviding) -> UILabel {
+        let label = UILabel(
+            font: .boldSystemFont(ofSize: content.textSize),
+            textColor: colorProvider.textColor,
+            numberOfLines: 0
+        )
+        label.text = content.text
+        label.textAlignment = content.alignment
+        return label
     }
 
     private static func makeBackgroundConfiguration(with overlayColor: UIColor) -> GradientView.Configuration {

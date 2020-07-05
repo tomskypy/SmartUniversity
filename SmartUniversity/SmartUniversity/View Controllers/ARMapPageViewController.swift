@@ -51,6 +51,10 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
         super.viewDidAppear(animated)
 
         setViewControllers([muniMapViewController], direction: .forward, animated: true)
+        
+        if let screenOverlayView = screenOverlayView {
+            screenOverlayView.highlightTapView(screenOverlayView.munimapCornerTapView)
+        }
     }
 
     private func setupSideTapViewHandlers() {
@@ -62,7 +66,7 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
             self.didFinishHandler?()
         }
 
-        let munimapTapView = screenOverlayView.munimapSideTapView
+        let munimapTapView = screenOverlayView.munimapCornerTapView
         munimapTapView.tapHandler = { [weak self] in
             guard let self = self else { return }
 
@@ -70,7 +74,7 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
             self.screenOverlayView?.highlightTapView(munimapTapView)
         }
 
-        let arViewTapView = screenOverlayView.arViewSideTapView
+        let arViewTapView = screenOverlayView.arViewCornerTapView
         arViewTapView.tapHandler = { [weak self] in
             guard let self = self else { return }
 

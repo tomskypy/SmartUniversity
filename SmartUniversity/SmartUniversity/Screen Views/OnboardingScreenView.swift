@@ -49,7 +49,7 @@ final class OnboardingScreenView: FrameBasedView {
 
     private lazy var titleLabel = UILabel(
         font: .systemFont(ofSize: 70, weight: .black),
-        textColor: colorProvider.textColor,
+        textColor: colorProvider.primaryColor,
         numberOfLines: 0
     )
     private lazy var bodyLabel = UILabel(
@@ -60,9 +60,13 @@ final class OnboardingScreenView: FrameBasedView {
     private lazy var skipButton = UIButton(
         style: .transparent,
         titleText: "Skip",
-        backgroundColor: colorProvider.backgroundColor
+        colorProviding: colorProvider
     )
-    private let nextButton = UIButton(titleText: "Next", backgroundColor: .lightGray)
+    private lazy var nextButton = UIButton(
+        style: .solid(colorProvider.secondaryColor),
+        titleText: "Next",
+        colorProviding: colorProvider
+    )
 
     init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider

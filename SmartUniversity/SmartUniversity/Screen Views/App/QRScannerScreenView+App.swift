@@ -6,11 +6,9 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
-
 extension QRScannerScreenView {
 
     convenience init() {
-        self.init(colorProvider: AppColorProvider.shared)
+        self.init(colorProvider: AppColorProvider.shared, layoutProvider: AppLayoutProvider.shared)
     }
 }

@@ -10,23 +10,37 @@ import UIKit
 
 class ARMapPageScreenView: FrameBasedView {
 
-    let navigateBackSideTapView = CornerTapView(
-        configuration: .init(content: .label(text: "◀ Back", textSize: 18, alignment: .left), corner: .topLeft)
+    let navigateBackSideTapView = SideTapView(text: "◄Back◄")
+
+    let munimapCornerTapView = CornerTapView(
+        configuration: .init(
+            corner: .bottomLeft,
+            content: .init(
+                icon: UIImage(systemName: "map")?.applyingSymbolConfiguration(.init(scale: .medium)),
+                text: "munimap",
+                textSize: 25,
+                alignment: .left
+            )
+        )
     )
 
-    let munimapSideTapView = CornerTapView(
-        configuration: .init(content: .label(text: "muni\nmap", textSize: 40, alignment: .left), corner: .bottomLeft)
-    )
-
-    let arViewSideTapView = CornerTapView(
-        configuration: .init(content: .label(text: "AR\nview", textSize: 40, alignment: .right), corner: .bottomRight)
+    let arViewCornerTapView = CornerTapView(
+        configuration: .init(
+            corner: .bottomLeft,
+            content: .init(
+                icon: UIImage(systemName: "arkit")?.applyingSymbolConfiguration(.init(scale: .medium)),
+                text: "AR view",
+                textSize: 25,
+                alignment: .left
+            )
+        )
     )
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
         [
-            (navigateBackSideTapView, makeTapViewFrame(for: navigateBackSideTapView, bounds: bounds)),
-            (munimapSideTapView, makeTapViewFrame(for: munimapSideTapView, bounds: bounds)),
-            (arViewSideTapView, makeTapViewFrame(for: arViewSideTapView, bounds: bounds))
+            (navigateBackSideTapView, makeSideViewFrame(for: navigateBackSideTapView, bounds: bounds)),
+            (munimapCornerTapView, makeTapViewFrame(for: munimapCornerTapView, bounds: bounds)),
+            (arViewCornerTapView, makeTapViewFrame(for: arViewCornerTapView, bounds: bounds))
         ]
     }
 
@@ -35,9 +49,27 @@ class ARMapPageScreenView: FrameBasedView {
 
         switch hitView {
         case navigateBackSideTapView,
-             munimapSideTapView,
-             arViewSideTapView: return hitView
+             munimapCornerTapView,
+             arViewCornerTapView: return hitView
         default:                return nil
+        }
+    }
+
+    func highlightTapView(_ tapView: CornerTapView) { // FIXME: refactor
+        let activeColor = UIColor.blue
+        let activeTextColor = UIColor.white
+
+        let inactiveColor = UIColor.gray
+        let inactiveTextColor = UIColor.black
+
+        switch tapView {
+        case munimapCornerTapView:
+            munimapCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
+            arViewCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
+        case arViewCornerTapView:
+            munimapCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
+            arViewCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
+        default: return
         }
     }
 
@@ -51,10 +83,10 @@ class ARMapPageScreenView: FrameBasedView {
         case navigateBackSideTapView:
             xOffset = 0
             yOffset = 0
-        case munimapSideTapView:
+        case munimapCornerTapView:
             xOffset = 0
             yOffset = bounds.height - tapViewSize.height
-        case arViewSideTapView:
+        case arViewCornerTapView:
             xOffset = bounds.width - tapViewSize.width
             yOffset = bounds.height - tapViewSize.height
         default:                    return .zero
@@ -62,12 +94,37 @@ class ARMapPageScreenView: FrameBasedView {
 
         return CGRect(x: xOffset, y: yOffset, size: tapViewSize)
     }
+
+    private func makeSideViewFrame(for sideView: SideTapView, bounds: CGRect) -> CGRect {
+        let sideViewSize = sideView.size(constrainedToWidth: bounds.width / 2)
+
+        let yOffset = (bounds.height - sideViewSize.height) / 2
+
+        let xOffset: CGFloat
+        switch sideView {
+        case navigateBackSideTapView:
+            xOffset = 0
+        default:                    return .zero
+        }
+
+        return CGRect(x: xOffset, y: yOffset, size: sideViewSize)
+    }
 }
 
 extension ARMapPageScreenView: BaseScreenView {
 
     func setupSubviews() {
 
-        addSubviews(navigateBackSideTapView, munimapSideTapView, arViewSideTapView)
+        addSubviews(navigateBackSideTapView, munimapCornerTapView, arViewCornerTapView)
+    }
+}
+
+private extension CornerTapView {
+
+    func highlight(withColor color: UIColor, textColor: UIColor) {
+        backgroundColor = color
+        tintColor = color
+
+        self.textColor = textColor
     }
 }

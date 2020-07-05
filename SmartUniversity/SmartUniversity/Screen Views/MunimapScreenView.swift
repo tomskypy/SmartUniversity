@@ -8,7 +8,7 @@
 
 import WebKit
 
-final class MunimapScreenView: FrameBasedView {
+final class MunimapScreenView: TitledScreenView {
 
     var isLoadingOverlayHidden: Bool = true {
         didSet {
@@ -24,19 +24,25 @@ final class MunimapScreenView: FrameBasedView {
 
     let webView = WKWebView()
 
+    override init(layoutProvider: LayoutProviding) {
+        super.init(layoutProvider: layoutProvider)
+
+        titleText = "munimap"
+        titleColor = .black
+    }
+
+    required init?(coder: NSCoder) { nil }
+
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let contentHeight = bounds.height + safeAreaInsets.verticalSum
 
         let fullScreenFrame =  CGRect(x: 0, y: -safeAreaInsets.top, width: bounds.width, height: contentHeight)
 
-        return [(webView, fullScreenFrame), (loadingOverlay, fullScreenFrame)]
+        return super.frames(forBounds: bounds) + [(webView, fullScreenFrame), (loadingOverlay, fullScreenFrame)]
     }
-}
 
-extension MunimapScreenView: BaseScreenView {
-
-    func setupSubviews() {
+    override func setupSubviews() {
         addSubview(webView)
     }
 }

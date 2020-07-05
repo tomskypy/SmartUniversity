@@ -29,7 +29,11 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
         let imageMaterial = SCNMaterial()
         imageMaterial.diffuse.contents = posterImage
 
-        let plane = SCNPlane(size: posterSize)
+        let scaleFactor: CGFloat = 1.2
+        let width = posterSize.width * scaleFactor
+        let height = posterSize.height * scaleFactor
+
+        let plane = SCNPlane(width: width, height: height)
         plane.materials = [imageMaterial]
 
         let planeNode = SCNNode(geometry: plane)

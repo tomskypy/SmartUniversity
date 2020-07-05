@@ -10,12 +10,24 @@ import UIKit
 
 extension UILabel {
 
-    convenience init(text: String = "", font: UIFont, textColor: UIColor, numberOfLines: Int = 1) {
+    convenience init(
+        text: String = "",
+        font: UIFont,
+        textColor: UIColor,
+        textAlignment: NSTextAlignment = .natural,
+        numberOfLines: Int = 1,
+        adjustsFontSizeToFitWidth: Bool = false
+    ) {
         self.init()
 
         self.text = text
         self.font = font
         self.textColor = textColor
+        self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
+        if adjustsFontSizeToFitWidth {
+            self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+            self.minimumScaleFactor = 0.5
+        }
     }
 }

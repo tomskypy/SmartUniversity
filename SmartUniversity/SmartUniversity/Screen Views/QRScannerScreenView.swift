@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRScannerScreenView: FrameBasedView {
+class QRScannerScreenView: TitledScreenView {
 
     var scannerPreviewLayer: AVCaptureVideoPreviewLayer? {
         willSet { removePreviewSublayer(previewLayer: scannerPreviewLayer) }
@@ -17,6 +17,10 @@ class QRScannerScreenView: FrameBasedView {
     }
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+
+    private let colorProvider: ColorProviding
+
+    private let bottomOverlay = InfoOverlayView()
 
     private var bottomOverlayState: InfoOverlayView.State? {
         didSet { configureBottomOverlay(for: bottomOverlayState) }
@@ -28,18 +32,23 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
-    private let colorProvider: ColorProviding
+    private var lastOverlayHideAnimationWorkItem: DispatchWorkItem?
 
-    private let bottomOverlay = InfoOverlayView()
+    // MARK: - Inits
 
-    init(colorProvider: ColorProviding) {
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
-        super.init(frame: .zero)
+        super.init(layoutProvider: layoutProvider)
+
+        titleText = "QR Scanner"
     }
 
     required init?(coder: NSCoder) { nil }
 
+    // MARK: - Layouting
+
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
+        let frames = super.frames(forBounds: bounds)
 
         let blurredOverlayFrame = CGRect(origin: .zero, size: bounds.size)
 
@@ -50,25 +59,38 @@ class QRScannerScreenView: FrameBasedView {
             size: bottomOverlayFrameSize
         )
 
-        return [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
+        return frames + [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
     }
+
+    override func setupSubviews() {
+        addSubview(blurredOverlayView)
+    }
+
+    // MARK: - Reset
 
     func reset() {
         hideBlurOverlay()
         hideBottomOverlay()
     }
 
-    func hideBlurOverlay() {
-        blurredOverlayView.isHidden = true
-    }
+    // MARK: - Blur sqaure overlay
 
     func showBlurOverlay(maskBounds: CGRect) {
+        resetBlurOverlayAnimations()
+
         blurredOverlayView.layer.mask = createRectangularMask(innerBounds: maskBounds)
 
         if blurredOverlayView.isHidden {
             blurredOverlayView.isHidden = false
+            blurredOverlayView.alpha = 1
         }
     }
+
+    func hideBlurOverlay() {
+        blurredOverlayView.isHidden = true
+    }
+
+    // MARK: - Bottom overlay
 
     func configureBottomOverlay(
         for state: InfoOverlayView.State,
@@ -81,6 +103,26 @@ class QRScannerScreenView: FrameBasedView {
     func hideBottomOverlay() {
         bottomOverlayState = nil
     }
+
+    // MARK: - Helpers - Reset
+
+    private func resetBlurOverlayAnimations() {
+        lastOverlayHideAnimationWorkItem?.cancel()
+
+        let overlayHideAnimationWorkItem = DispatchWorkItem(block: {
+            UIView.animate(
+                withDuration: 1,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: { self.blurredOverlayView.alpha = 0 },
+                completion: { _ in self.hideBlurOverlay() }
+            )
+        })
+        lastOverlayHideAnimationWorkItem = overlayHideAnimationWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: overlayHideAnimationWorkItem)
+    }
+
+    // MARK: - Helpers - Configuration
 
     private func configureBottomOverlay(for state: InfoOverlayView.State?) {
         guard let state = bottomOverlayState else {
@@ -106,6 +148,8 @@ class QRScannerScreenView: FrameBasedView {
         }
     }
 
+    // MARK: - Helpers - Factories
+
     private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {
         let maskLayer = CAShapeLayer()
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
@@ -127,12 +171,5 @@ class QRScannerScreenView: FrameBasedView {
         maskLayer.path = maskPath.cgPath
 
         return maskLayer
-    }
-}
-
-extension QRScannerScreenView: BaseScreenView {
-
-    func setupSubviews() {
-        addSubview(blurredOverlayView)
     }
 }

@@ -23,10 +23,15 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     weak var delegate: QRScannerViewControllerDelegate?
 
+    private static let fadeInAnimationLength = 0.45
+    private static let fadeOutAnimationLength = 0.15
+
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
 
     private var presentationHandler: PresentationHandling
+
+    private var hasCaptureSessionError: Bool = false
 
     /// Tuple containg scanned object's `String` value and its detected bounds within the scanning view.
     var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
@@ -57,15 +62,25 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if hasCaptureSessionError == false {
+            reset()
+        }
+
         captureSessionHandler.handleViewWillAppear(view)
 
-        reset()
+        UIView.animate(withDuration: Self.fadeInAnimationLength, delay: 0, options: .curveEaseIn, animations: {
+            self.view.alpha = 1.0
+        })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         captureSessionHandler.handleViewWillDisappear(view)
+
+        UIView.animate(withDuration: Self.fadeOutAnimationLength, animations: {
+            self.view.alpha = 0
+        })
     }
 
     private func handleSessionFailed() {
@@ -98,15 +113,16 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
         didReceiveValidOutput outputString: String,
         fromObjectWithBounds objectBounds: CGRect
     ) {
+        screenView?.showBlurOverlay(maskBounds: objectBounds)
+
         guard scannedValueCodeObjectBounds?.scannedValue != outputString else { return }
 
         scannedValueCodeObjectBounds = (outputString, objectBounds)
         qrPointScanningHandler.qrCodeValueScanned(outputString)
-
-        screenView?.showBlurOverlay(maskBounds: objectBounds)
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
+        hasCaptureSessionError = true
 
         #if DEBUG
             handleDebugSession()
@@ -127,8 +143,6 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             let scannedValueCodeObjectBounds = scannedValueCodeObjectBounds,
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
-
-        screenView?.showBlurOverlay(maskBounds: scannedValueCodeObjectBounds.objectBounds)
 
         screenView?.configureBottomOverlay(
             for: .success(text: "GJ, you've found a Point!"),

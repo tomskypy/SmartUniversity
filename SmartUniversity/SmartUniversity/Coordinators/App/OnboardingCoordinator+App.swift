@@ -21,14 +21,29 @@ extension OnboardingCoordinator {
 enum AppOnboardingDependencies {
 
     static let viewControllerConfigurations: [OnboardingCoordinator.ViewControllerConfiguration] = [
-        .init(titleText: "Welcome to Smart University App", bodyText: "We will show you around, no worries..."),
         .init(
-            titleText: "Second onboarding screen",
-            bodyText: "This is the second onboarding screen. You should know something already at this point."
+            titleText: "Wel-\ncome",
+            bodyText: "... to Smart University app!\n\nThanks for giving it a try, let us show you around."
         ),
         .init(
-            titleText: "Last onboarding screen",
-            bodyText: "Here you have last chance to grasp some info. Good luck."
+            titleText: "In-\ndoors",
+            bodyText: "The main feature is indoor localization within MUNI's faculties.\n\nWe cannot utilize GPS indoors, so we've come up with QR Points."
+        ),
+        .init(
+            titleText: "QR\nScan-\nner",
+            bodyText: "QR Scanner helps you access any QR Point.\n\nThose are posters with a QR code placed strategically around faculties."
+        ),
+        .init(
+            titleText: "muni-\nmap",
+            bodyText: "Powered by QR Point's data, you'll be localized on the munimap*.\n\n*munimap - handy MUNI's interactive map of all rooms on all floors within any faculty"
+        ),
+        .init(
+            titleText: "AR\nView",
+            bodyText: "Last but hopefully not least there's AR View.\n\nLaunch it and aim the AR preview at the QR Point. Then, simply follow the instructions."
+        ),
+        .init(
+            titleText: "Than-\nks",
+            bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions."
         )
     ]
 }

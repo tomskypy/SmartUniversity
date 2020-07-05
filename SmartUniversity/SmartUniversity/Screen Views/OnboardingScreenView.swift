@@ -48,7 +48,7 @@ final class OnboardingScreenView: FrameBasedView {
     private let layoutProvider: LayoutProviding
 
     private lazy var titleLabel = UILabel(
-        font: .boldSystemFont(ofSize: 45),
+        font: .systemFont(ofSize: 70, weight: .black),
         textColor: colorProvider.textColor,
         numberOfLines: 0
     )
@@ -117,6 +117,7 @@ final class OnboardingScreenView: FrameBasedView {
 
     func configure(withTitleText titleText: String, bodyText: String) {
         titleLabel.text = titleText
+
         bodyLabel.text = bodyText
 
         backgroundColor = colorProvider.backgroundColor

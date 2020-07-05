@@ -101,6 +101,9 @@
 		35706485248872CC00E45B0D /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35706448248872CC00E45B0D /* OnboardingScreenView.swift */; };
 		35706486248872CC00E45B0D /* BaseScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35706449248872CC00E45B0D /* BaseScreenView.swift */; };
 		35706487248872CC00E45B0D /* MunimapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570644A248872CC00E45B0D /* MunimapScreenView.swift */; };
+		358325B524B1610C00DADC6A /* SideTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358325B424B1610C00DADC6A /* SideTapView.swift */; };
+		358325B724B1637700DADC6A /* Sequence+Intersperse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358325B624B1637700DADC6A /* Sequence+Intersperse.swift */; };
+		358325B924B1673800DADC6A /* SideTapView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358325B824B1673800DADC6A /* SideTapView+App.swift */; };
 		3586FD692499591B000C9D3C /* QRScannerScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FD682499591B000C9D3C /* QRScannerScreenView+App.swift */; };
 		3586FD6B24996FA0000C9D3C /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */; };
 		358A43452450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */; };
@@ -234,6 +237,9 @@
 		35706448248872CC00E45B0D /* OnboardingScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		35706449248872CC00E45B0D /* BaseScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScreenView.swift; sourceTree = "<group>"; };
 		3570644A248872CC00E45B0D /* MunimapScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MunimapScreenView.swift; sourceTree = "<group>"; };
+		358325B424B1610C00DADC6A /* SideTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTapView.swift; sourceTree = "<group>"; };
+		358325B624B1637700DADC6A /* Sequence+Intersperse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Intersperse.swift"; sourceTree = "<group>"; };
+		358325B824B1673800DADC6A /* SideTapView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideTapView+App.swift"; sourceTree = "<group>"; };
 		3586FD682499591B000C9D3C /* QRScannerScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QRScannerScreenView+App.swift"; sourceTree = "<group>"; };
 		3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
 		358A43442450EF0C0064D2F8 /* RemoteJSONDataProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONDataProvidingTests.swift; sourceTree = "<group>"; };
@@ -418,6 +424,7 @@
 				3586FD6A24996FA0000C9D3C /* Collection+SafeIndex.swift */,
 				353400A3249ED1B000198B5B /* String+RegexMatches.swift */,
 				353400A5249ED3CB00198B5B /* String+Subscript.swift */,
+				358325B624B1637700DADC6A /* Sequence+Intersperse.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +616,7 @@
 				350C62B324968084000787C0 /* CornerTapView.swift */,
 				3534009F249EA93100198B5B /* LoadingOverlayView.swift */,
 				356E7A0A24B0AD1B002C1D1C /* GradientView.swift */,
+				358325B424B1610C00DADC6A /* SideTapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 			children = (
 				3570643A248872CC00E45B0D /* InfoOverlayView+App.swift */,
 				350C62B52496809F000787C0 /* CornerTapView+App.swift */,
+				358325B824B1673800DADC6A /* SideTapView+App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -927,12 +936,14 @@
 				35706451248872CC00E45B0D /* CGRect+Inits.swift in Sources */,
 				35706466248872CC00E45B0D /* RoomsSceneObjectProvider.swift in Sources */,
 				35706482248872CC00E45B0D /* ARScreenView.swift in Sources */,
+				358325B524B1610C00DADC6A /* SideTapView.swift in Sources */,
 				3570647B248872CC00E45B0D /* InfoOverlayView.swift in Sources */,
 				35D3019B249AF0C80088801B /* ARSceneViewHandling.swift in Sources */,
 				35706480248872CC00E45B0D /* RemoteJSONDataInfo.swift in Sources */,
 				350C62B62496809F000787C0 /* CornerTapView+App.swift in Sources */,
 				3545E4E724AFC459000EE4BD /* MunimapScreenView+App.swift in Sources */,
 				35706474248872CC00E45B0D /* QRPointScanningHandlerDelegate.swift in Sources */,
+				358325B724B1637700DADC6A /* Sequence+Intersperse.swift in Sources */,
 				3570646A248872CC00E45B0D /* RemoteJSONDataProviding.swift in Sources */,
 				35AEAA5A249ADF9D0036A544 /* ARViewController+App.swift in Sources */,
 				3570646B248872CC00E45B0D /* WebViewHandler.swift in Sources */,
@@ -951,6 +962,7 @@
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,
 				3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */,
+				358325B924B1673800DADC6A /* SideTapView+App.swift in Sources */,
 				35D30197249AEFD70088801B /* PresentationHandler.swift in Sources */,
 				35D30195249AEFBA0088801B /* WebViewHandling.swift in Sources */,
 				35706469248872CC00E45B0D /* RemoteDataProvider.swift in Sources */,

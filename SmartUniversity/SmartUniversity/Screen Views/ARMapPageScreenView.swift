@@ -54,6 +54,20 @@ class ARMapPageScreenView: FrameBasedView {
         }
     }
 
+    func highlightTapView(_ tapView: CornerTapView) {
+        let activeColor = UIColor.blue
+        let inactiveColor = UIColor.gray
+        switch tapView {
+        case munimapSideTapView:
+            munimapSideTapView.highlight(withColor: activeColor)
+            arViewSideTapView.highlight(withColor: inactiveColor)
+        case arViewSideTapView:
+            munimapSideTapView.highlight(withColor: inactiveColor)
+            arViewSideTapView.highlight(withColor: activeColor)
+        default: return
+        }
+    }
+
     private func makeTapViewFrame(for tapView: CornerTapView, bounds: CGRect) -> CGRect {
         let tapViewWidth = min(tapView.preferredWidth, bounds.width / 2)
         let tapViewSize = tapView.size(constrainedToWidth: tapViewWidth)
@@ -82,5 +96,13 @@ extension ARMapPageScreenView: BaseScreenView {
     func setupSubviews() {
 
         addSubviews(navigateBackSideTapView, munimapSideTapView, arViewSideTapView)
+    }
+}
+
+private extension CornerTapView {
+
+    func highlight(withColor color: UIColor) {
+        backgroundColor = color
+        tintColor = color
     }
 }

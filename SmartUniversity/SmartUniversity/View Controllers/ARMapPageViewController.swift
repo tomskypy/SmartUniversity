@@ -62,16 +62,20 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
             self.didFinishHandler?()
         }
 
-        screenOverlayView.munimapSideTapView.tapHandler = { [weak self] in
+        let munimapTapView = screenOverlayView.munimapSideTapView
+        munimapTapView.tapHandler = { [weak self] in
             guard let self = self else { return }
 
             self.switchTo(self.muniMapViewController, direction: .reverse)
+            self.screenOverlayView?.highlightTapView(munimapTapView)
         }
 
-        screenOverlayView.arViewSideTapView.tapHandler = { [weak self] in
+        let arViewTapView = screenOverlayView.arViewSideTapView
+        arViewTapView.tapHandler = { [weak self] in
             guard let self = self else { return }
 
             self.switchTo(self.arViewController, direction: .forward)
+            self.screenOverlayView?.highlightTapView(arViewTapView)
         }
     }
 

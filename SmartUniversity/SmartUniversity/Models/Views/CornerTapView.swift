@@ -67,6 +67,11 @@ final class CornerTapView: VerticalFrameBasedView {
         didSet { configure(with: configuration) }
     }
 
+    var textColor: UIColor {
+        get { label.textColor }
+        set { label.textColor = newValue }
+    }
+
     var preferredWidth: CGFloat {
         let leftMostView = frames(forWidth: .greatestFiniteMagnitude).max(by: { $0.frame.maxX < $1.frame.maxX })
         return (leftMostView?.frame ?? .zero).maxX

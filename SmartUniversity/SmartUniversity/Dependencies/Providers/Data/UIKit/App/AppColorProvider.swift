@@ -10,15 +10,31 @@ import UIKit
 
 final class AppColorProvider: ColorProviding {
 
+
     static let shared = AppColorProvider()
 
     private struct ColorSet {
         let light: UIColor
         let dark: UIColor
+
+        func reversed() -> ColorSet {
+            .init(light: dark, dark: light)
+        }
     }
+
+    private static let primaryColorSet = ColorSet(light: UIColor(hex: "#005bb2")!, dark: UIColor(hex: "#69b6ff")!) // FIXME: get rid of !s
+    private static let secondaryColorSet = ColorSet(light: UIColor(hex: "#4a626d")!, dark: UIColor(hex: "#a6bfcc")!)
 
     private static let backgroundColorSet = ColorSet(light: .white, dark: .black)
     private static let textColorSet = ColorSet(light: .black, dark: .white)
+
+    var primaryColor: UIColor {
+        actualColor(for: Self.primaryColorSet)
+    }
+
+    var secondaryColor: UIColor {
+        actualColor(for: Self.secondaryColorSet)
+    }
 
     var backgroundColor: UIColor {
         actualColor(for: Self.backgroundColorSet)
@@ -30,6 +46,10 @@ final class AppColorProvider: ColorProviding {
 
     var textColor: UIColor {
         actualColor(for: Self.textColorSet)
+    }
+
+    var buttonTextColor: UIColor {
+        actualColor(for: Self.textColorSet.reversed())
     }
 
     private init() { }

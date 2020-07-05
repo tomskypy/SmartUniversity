@@ -10,12 +10,18 @@ import UIKit
 
 final class MunimapViewController: BaseViewController<MunimapScreenView> {
 
-    private static let mapSize = CGSize(width: 500, height: 1000)
-
     override var preferredStatusBarStyle: UIStatusBarStyle { .darkContent }
 
     let munimapServerURL: URL
     var webViewHandler: WebViewHandling
+
+    private var isVisible: Bool {
+        isViewLoaded && view.window != nil
+    }
+
+    private var didLoadMap: Bool = false
+
+    private static let mapSize = CGSize(width: 500, height: 1000)
 
     init(munimapServerURL: URL, webViewHandler: WebViewHandling) {
         self.munimapServerURL = munimapServerURL
@@ -30,14 +36,27 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
 
         webViewHandler.webView = screenView?.webView
         webViewHandler.loadURL(munimapServerURL) { [weak self] in
+            self?.didLoadMap = true
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self?.lockWebViewZoom()
+                self?.hideLoadingAndLockWebViewZoom()
             }
         }
         screenView?.isLoadingOverlayHidden = false
     }
 
-    private func lockWebViewZoom() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let isShowingLoadingOverlay = screenView?.isLoadingOverlayHidden == false
+        if didLoadMap && isShowingLoadingOverlay {
+            hideLoadingAndLockWebViewZoom()
+        }
+    }
+
+    private func hideLoadingAndLockWebViewZoom() { // FIXME: refactor this logic
+        guard isVisible else { return }
+
         let webViewZoomScale = calculateIdealZoomScale(
             viewFrame: view.frame,
             screenScale: UIScreen.main.scale,

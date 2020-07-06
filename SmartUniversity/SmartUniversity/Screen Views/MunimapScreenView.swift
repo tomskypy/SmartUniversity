@@ -13,18 +13,30 @@ final class MunimapScreenView: TitledScreenView {
     var isLoadingOverlayHidden: Bool = true {
         didSet {
             if isLoadingOverlayHidden {
-                loadingOverlay.removeFromSuperview()
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                    self.loadingOverlay.alpha = 0.0
+                }, completion: { _ in
+                    self.loadingOverlay.removeFromSuperview()
+                })
             } else {
+                loadingOverlay.alpha = 1.0
                 addSubview(loadingOverlay)
             }
         }
     }
 
-    let loadingOverlay = LoadingOverlayView(layoutProvider: AppLayoutProvider.shared)
-
     let webView = WKWebView()
 
-    override init(layoutProvider: LayoutProviding) {
+    private lazy var loadingOverlay = LoadingOverlayView(
+        loadingText: "loading map",
+        colorProvider: colorProvider,
+        layoutProvider: layoutProvider
+    )
+
+    private let colorProvider: ColorProviding
+
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
+        self.colorProvider = colorProvider
         super.init(layoutProvider: layoutProvider)
 
         titleText = "munimap"

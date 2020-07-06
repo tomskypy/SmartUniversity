@@ -78,6 +78,6 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
 
         let scale = max(xRatio, yRatio) / 2
 
-        return scale > 1.1 ? scale : 1
+        return max(scale, 1)
     }
 }

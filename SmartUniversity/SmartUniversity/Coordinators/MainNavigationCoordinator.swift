@@ -48,7 +48,18 @@ extension MainNavigationCoordinator: OnboardingCoordinatorDelegate {
     }
 
     func onboardingCoordinatorDidSkipOnboarding() {
-        self.navigationController.popToRootViewController()
+
+        let alert = UIAlertController(
+            title: "Skip onboarding",
+            message: "Skipping... We'll show it at next launch again, so you don't miss the important info.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+            self.navigationController.popToRootViewController()
+        })
+
+        self.navigationController.present(alert, animated: true)
     }
 }
 

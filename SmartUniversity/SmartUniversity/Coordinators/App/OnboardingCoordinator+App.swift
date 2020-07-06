@@ -14,14 +14,23 @@ extension OnboardingCoordinator {
     convenience init(navigationController: NavigationController) {
         self.init(
             navigationController: navigationController,
-            dependencies: .init(viewControllerConfigurations: AppOnboardingDependencies.viewControllerConfigurations)
+            dependencies: .init(
+                viewControllerConfigurations: AppOnboardingDependenciesFactory().makeViewControllerConfigurations()
+            )
         )
     }
 }
 
-enum AppOnboardingDependencies {
+struct AppOnboardingDependenciesFactory {
 
-    static let viewControllerConfigurations: [OnboardingCoordinator.ViewControllerConfiguration] = [
+    let externalAppLauncher: ExternalAppLaunching
+
+    init(externalAppLauncher: ExternalAppLaunching = ExternalAppLauncher()) {
+        self.externalAppLauncher = externalAppLauncher
+    }
+
+    func makeViewControllerConfigurations() -> [OnboardingCoordinator.ViewControllerConfiguration]{
+        [
         .init(
             titleText: "Wel-\ncome",
             bodyText: "... to the Smart University app!\n\nThanks for giving it a try, let us show you around."
@@ -34,7 +43,7 @@ enum AppOnboardingDependencies {
             titleText: "QR\nScan-\nner",
             bodyText: "The QR Scanner helps you access any QR Point.\n\nThose are posters with a QR code placed strategically around faculties.",
             action: { viewController in
-                checkCameraPermissionAuthorization(within: viewController)
+                self.checkCameraPermissionAuthorization(within: viewController)
             }
         ),
         .init(
@@ -49,9 +58,10 @@ enum AppOnboardingDependencies {
             titleText: "Than-\nks",
             bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions."
         )
-    ]
+        ]
+    }
 
-    private static func checkCameraPermissionAuthorization(within viewController: UIViewController) {
+    private func checkCameraPermissionAuthorization(within viewController: UIViewController) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             return
@@ -59,7 +69,7 @@ enum AppOnboardingDependencies {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted == false {
-                    appHasToCloseAlertDialog(on: viewController)
+                    self.appHasToCloseAlertDialog(on: viewController)
                 }
             }
 
@@ -73,7 +83,7 @@ enum AppOnboardingDependencies {
         }
     }
 
-    private static func appHasToCloseAlertDialog(on viewController: UIViewController) {
+    private func appHasToCloseAlertDialog(on viewController: UIViewController) {
         let alert = UIAlertController(
             title: "Unsupported configuration",
             message: "Set configuration is unsupported, app has to close.",
@@ -85,23 +95,14 @@ enum AppOnboardingDependencies {
         })
     }
 
-    private static func grantCameraPermissionsInSettingsAlertDialog(on viewController: UIViewController) {
+    private func grantCameraPermissionsInSettingsAlertDialog(on viewController: UIViewController) {
         let alert = UIAlertController(
             title: "Grant camera permissions",
             message: "Please grant camera permissions in the Settings by tapping the button.",
             preferredStyle: .alert
         )
         let settingsAction = UIAlertAction(title: "Open Settings", style: .default) { (_) -> Void in
-
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)")
-                })
-            }
+            self.externalAppLauncher.launchSettings()
         }
         alert.addAction(settingsAction)
         viewController.present(alert, animated: true)

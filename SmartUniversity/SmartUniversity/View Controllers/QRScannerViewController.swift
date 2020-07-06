@@ -26,6 +26,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private static let fadeInAnimationLength = 0.45
     private static let fadeOutAnimationLength = 0.15
 
+    private let externalAppLauncher: ExternalAppLaunching
+
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
 
@@ -39,11 +41,13 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     init(
         captureSessionHandler: CaptureSessionHandling,
         qrPointScanningHandler: QRPointScanningHandling,
-        presentationHandler: PresentationHandling
+        presentationHandler: PresentationHandling,
+        externalAppLauncher: ExternalAppLaunching
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler
         self.presentationHandler = presentationHandler
+        self.externalAppLauncher = externalAppLauncher
         super.init(nibName: nil, bundle: nil)
 
         self.captureSessionHandler.delegate = self
@@ -89,6 +93,18 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         )
     }
 
+    private func handleSessionUnauthorized() {
+        screenView?.configureBottomOverlay(
+            for: .fail(text: "Please authorize camera use in the Settings to enable the QR Scanner."),
+            buttonConfiguration: .init(
+                text: "Open Settings",
+                tapHandler: { [weak self] in
+                    self?.externalAppLauncher.launchSettings()
+                }
+            )
+        )
+    }
+
     private func reset() {
         screenView?.reset()
         scannedValueCodeObjectBounds = nil
@@ -124,11 +140,18 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
         hasCaptureSessionError = true
 
-        #if DEBUG
-            handleDebugSession()
-        #else
-            handleSessionFailed()
-        #endif
+        switch error {
+            case .captureNotAuthorized:
+                handleSessionUnauthorized()
+            case .metadataOutputUnavailable, .videoInputUnavailable:
+                #if DEBUG
+                    handleDebugSession()
+                #else
+                    handleSessionFailed()
+                #endif
+        }
+
+
     }
 }
 

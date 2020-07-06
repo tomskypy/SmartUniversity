@@ -33,7 +33,10 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     // MARK: - CaptureSessionHandling
 
     func handleViewDidLoad(_ view: UIView) {
-        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else { return }
+        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else {
+            delegate?.captureSessionHandler(self, didTriggerError: .captureNotAuthorized)
+            return
+        }
 
         let captureSession = sessionProvider.makeCaptureSession()
 
@@ -58,10 +61,6 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     }
 
     func handleViewWillAppear(_ view: UIView) {
-        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else {
-            delegate?.captureSessionHandler(self, didTriggerError: .captureNotAuthorized)
-            return
-        }
         guard let captureSession = captureSession else { return }
 
         if captureSession.isRunning == false {

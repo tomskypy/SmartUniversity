@@ -116,7 +116,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private func handleSessionUnauthorized() {
         screenView?.configureBottomOverlay(
-            for: .neutral(text: "Please authorize camera use in the Settings to enable the QR Scanner."),
+            for: .neutral(text: "Please allow the app to access camera in the Settings to enable the QR Scanner."),
             buttonConfiguration: .init(
                 text: "Open Settings",
                 tapHandler: { [weak self] in

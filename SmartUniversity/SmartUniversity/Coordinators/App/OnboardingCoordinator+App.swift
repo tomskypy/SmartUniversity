@@ -79,8 +79,8 @@ struct AppOnboardingDependenciesFactory {
         completion: @escaping OnboardingViewController.ActionCompletion
     ) {
         let alert = UIAlertController(
-            title: "Grant camera permissions",
-            message: "Please grant camera permissions in the Settings by tapping the button.",
+            title: "Allow camera access",
+            message: "Please allow the app to access the camera in the Settings to enable QR Point scanning features.",
             preferredStyle: .alert
         )
 

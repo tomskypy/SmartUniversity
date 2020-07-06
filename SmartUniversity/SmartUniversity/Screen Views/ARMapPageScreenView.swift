@@ -36,6 +36,15 @@ class ARMapPageScreenView: FrameBasedView {
         )
     )
 
+    private let colorProvider: ColorProviding
+
+    init(colorProvider: ColorProviding) {
+        self.colorProvider = colorProvider
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
         [
             (navigateBackSideTapView, makeSideViewFrame(for: navigateBackSideTapView, bounds: bounds)),
@@ -56,11 +65,11 @@ class ARMapPageScreenView: FrameBasedView {
     }
 
     func highlightTapView(_ tapView: CornerTapView) { // FIXME: refactor
-        let activeColor = UIColor.blue
-        let activeTextColor = UIColor.white
+        let activeColor = colorProvider.primaryColor
+        let activeTextColor = colorProvider.buttonTextColor
 
         let inactiveColor = UIColor.gray
-        let inactiveTextColor = UIColor.black
+        let inactiveTextColor = UIColor.darkGray
 
         switch tapView {
         case munimapCornerTapView:

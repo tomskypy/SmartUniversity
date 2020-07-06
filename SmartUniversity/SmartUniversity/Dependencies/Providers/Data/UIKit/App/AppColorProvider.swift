@@ -10,7 +10,6 @@ import UIKit
 
 final class AppColorProvider: ColorProviding {
 
-
     static let shared = AppColorProvider()
 
     private struct ColorSet {
@@ -26,7 +25,8 @@ final class AppColorProvider: ColorProviding {
     private static let secondaryColorSet = ColorSet(light: UIColor(hex: "#4a626d")!, dark: UIColor(hex: "#a6bfcc")!)
 
     private static let backgroundColorSet = ColorSet(light: .white, dark: .black)
-    private static let textColorSet = ColorSet(light: .black, dark: .white)
+    private static let textColorSet = ColorSet(light: .darkText, dark: .lightText)
+    private static let buttonTextColorSet = ColorSet(light: .white, dark: .black)
 
     var primaryColor: UIColor {
         actualColor(for: Self.primaryColorSet)
@@ -49,7 +49,7 @@ final class AppColorProvider: ColorProviding {
     }
 
     var buttonTextColor: UIColor {
-        actualColor(for: Self.textColorSet.reversed())
+        actualColor(for: Self.buttonTextColorSet)
     }
 
     private init() { }

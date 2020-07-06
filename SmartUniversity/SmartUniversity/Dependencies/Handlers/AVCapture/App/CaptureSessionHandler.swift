@@ -18,18 +18,23 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
 
     private let deviceProvider: CaptureDeviceProviding
     private let sessionProvider: CaptureSessionProviding
+    private let authorizationStatusProvider: CaptureAuthorizationStatusProviding
 
     init(
         deviceProvider: CaptureDeviceProviding = CaptureDeviceProvider(),
-        sessionProvider: CaptureSessionProviding = CaptureSessionProvider()
+        sessionProvider: CaptureSessionProviding = CaptureSessionProvider(),
+        authorizationStatusProvider: CaptureAuthorizationStatusProviding = AppCaptureAuthorizationProvider.shared
     ) {
         self.deviceProvider = deviceProvider
         self.sessionProvider = sessionProvider
+        self.authorizationStatusProvider = authorizationStatusProvider
     }
 
     // MARK: - CaptureSessionHandling
 
     func handleViewDidLoad(_ view: UIView) {
+        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else { return }
+
         let captureSession = sessionProvider.makeCaptureSession()
 
         guard let sessionInput = makeVideoDeviceInput(for: captureSession) else {
@@ -53,6 +58,10 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     }
 
     func handleViewWillAppear(_ view: UIView) {
+        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else {
+            delegate?.captureSessionHandler(self, didTriggerError: .captureNotAuthorized)
+            return
+        }
         guard let captureSession = captureSession else { return }
 
         if captureSession.isRunning == false {

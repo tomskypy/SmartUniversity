@@ -9,6 +9,8 @@
 import AVFoundation
 
 enum CaptureSessionError: Error {
+    case captureNotAuthorized
+
     case videoInputUnavailable
     case metadataOutputUnavailable
 }

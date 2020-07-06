@@ -48,7 +48,11 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
         screenView?.didTapNextHandler = { [unowned self] in
 
             if let action = self.action {
-                action(self, { self.delegate?.onboardingViewControllerDidSelectNext(self) })
+                let actionCompletion = {
+                    DispatchQueue.main.async { self.delegate?.onboardingViewControllerDidSelectNext(self) }
+                }
+
+                action(self, actionCompletion)
             } else {
                 self.delegate?.onboardingViewControllerDidSelectNext(self)
             }

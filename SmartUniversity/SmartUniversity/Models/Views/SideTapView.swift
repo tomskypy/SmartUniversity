@@ -22,16 +22,18 @@ final class SideTapView: VerticalFrameBasedView {
     }
 
     private lazy var label = UILabel(
-        font: .boldSystemFont(ofSize: 20),
+        font: .boldSystemFont(ofSize: layoutProvider.textSize(.normal)),
         textColor: colorProvider.textColor,
         textAlignment: .center,
         numberOfLines: 0
     )
 
     private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
 
-    init(text: String, colorProvider: ColorProviding) {
+    init(text: String, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
+        self.layoutProvider = layoutProvider
         super.init(frame: .zero)
 
         self.text = text
@@ -40,7 +42,7 @@ final class SideTapView: VerticalFrameBasedView {
 
         backgroundColor = colorProvider.backgroundColor.withAlphaComponent(0.55)
 
-        layer.cornerRadius = 12
+        layer.cornerRadius = 16
         layer.maskedCorners = .init(arrayLiteral: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
 
         addSubview(label)

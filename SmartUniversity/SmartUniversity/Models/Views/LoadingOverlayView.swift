@@ -17,7 +17,7 @@ final class LoadingOverlayView: FrameBasedView {
 
     private lazy var loadingLabel = UILabel(
         text: "loading",
-        font: .systemFont(ofSize: 18, weight: .semibold),
+        font: .systemFont(ofSize: layoutProvider.textSize(.small), weight: .semibold),
         textColor: colorProvider.lightTextColor
     )
 

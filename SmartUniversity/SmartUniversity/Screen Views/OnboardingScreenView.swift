@@ -54,16 +54,13 @@ final class OnboardingScreenView: FrameBasedView {
 
     private lazy var insets = layoutProvider.contentInsets(for: self, respectingSafeAreasOn: .all())
 
-    private let colorProvider: ColorProviding
-    private let layoutProvider: LayoutProviding
-
     private lazy var titleLabel = UILabel(
         font: .systemFont(ofSize: 70, weight: .black),
         textColor: colorProvider.primaryColor,
         numberOfLines: 0
     )
     private lazy var bodyLabel = UILabel(
-        font: .systemFont(ofSize: 22),
+        font: .systemFont(ofSize: layoutProvider.textSize(.normal)),
         textColor: colorProvider.textColor,
         numberOfLines: 0
     )
@@ -77,6 +74,9 @@ final class OnboardingScreenView: FrameBasedView {
         titleText: "Next",
         colorProviding: colorProvider
     )
+
+    private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
 
     init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider

@@ -11,6 +11,6 @@ import Foundation
 extension ARMapPageScreenView {
 
     convenience init() {
-        self.init(colorProvider: AppColorProvider.shared)
+        self.init(colorProvider: AppColorProvider.shared, layoutProvider: AppLayoutProvider.shared)
     }
 }

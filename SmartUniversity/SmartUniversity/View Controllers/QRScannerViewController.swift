@@ -27,6 +27,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private static let fadeOutAnimationLength = 0.15
 
     private let externalAppLauncher: ExternalAppLaunching
+    private let authorizationStatusProvider: CaptureAuthorizationStatusProviding
 
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
@@ -42,12 +43,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         captureSessionHandler: CaptureSessionHandling,
         qrPointScanningHandler: QRPointScanningHandling,
         presentationHandler: PresentationHandling,
-        externalAppLauncher: ExternalAppLaunching
+        externalAppLauncher: ExternalAppLaunching,
+        authorizationStatusProvider: CaptureAuthorizationStatusProviding
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler
         self.presentationHandler = presentationHandler
         self.externalAppLauncher = externalAppLauncher
+        self.authorizationStatusProvider = authorizationStatusProvider
         super.init(nibName: nil, bundle: nil)
 
         self.captureSessionHandler.delegate = self

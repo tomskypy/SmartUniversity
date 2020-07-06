@@ -117,15 +117,26 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         )
     }
 
-    private func handleSessionUnauthorized() {
-        screenView?.configureBottomOverlay(
-            for: .neutral(text: "Please allow the app to access camera in the Settings to enable the QR Scanner."),
-            buttonConfiguration: .init(
-                text: "Open Settings",
-                tapHandler: { [weak self] in
-                    self?.externalAppLauncher.launchSettings(completion: nil)
+    private func handleSessionUnauthorized() { // FIXME: refactor this omgggg
+        let buttonText: String
+        let buttonTapHandler: () -> Void
+        if authorizationStatusProvider.videoCaptureAuthorizationStatus == .notDetermined {
+            buttonText = "Allow access"
+            buttonTapHandler = {
+                AVCaptureDevice.requestAccess(for: .video) { [weak self] _ in
+                    DispatchQueue.main.async { self?.handleSessionUnauthorized() }
                 }
-            )
+            }
+        } else {
+            buttonText = "Open Settings"
+            buttonTapHandler = { [weak self] in
+                self?.externalAppLauncher.launchSettings(completion: nil)
+            }
+        }
+
+        screenView?.configureBottomOverlay(
+            for: .neutral(text: "Please allow the app to access camera to enable the QR Scanner."),
+            buttonConfiguration: .init(text: buttonText, tapHandler: buttonTapHandler)
         )
     }
 

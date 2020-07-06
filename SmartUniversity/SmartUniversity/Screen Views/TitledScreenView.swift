@@ -60,6 +60,6 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
     }
 
     private static func makeTransparentTitleColor(from color: UIColor) -> UIColor {
-        color.withAlphaComponent(0.55)
+        color.withAlphaComponent(0.35)
     }
 }

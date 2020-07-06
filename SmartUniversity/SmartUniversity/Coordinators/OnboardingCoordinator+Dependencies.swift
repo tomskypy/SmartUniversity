@@ -16,10 +16,18 @@ extension OnboardingCoordinator {
 
         let action: OnboardingViewController.Action?
 
-        init(titleText: String, bodyText: String, action: OnboardingViewController.Action? = nil) {
+        let isFinal: Bool
+
+        init(
+            titleText: String,
+            bodyText: String,
+            action: OnboardingViewController.Action? = nil,
+            isFinal: Bool = false
+        ) {
             self.titleText = titleText
             self.bodyText = bodyText
             self.action = action
+            self.isFinal = isFinal
         }
     }
 

@@ -81,11 +81,20 @@ final class TestablePresentationHandler: PresentationHandling {
 
 }
 
+final class TestableExternalAppLauncher: ExternalAppLaunching {
+    var didCallLaunchSettings: Bool?
+
+    func launchSettings(completion: (() -> Void)?) {
+        didCallLaunchSettings = true
+    }
+}
+
 final class QRScannerViewControllerTests: XCTestCase {
 
     var captureSessionHandler: TestableCaptureSessionHandler!
     var qrPointScanningHandler: TestableQRPointScanningHandler!
     var presentationHandler: TestablePresentationHandler!
+    var externalAppLauncher: TestableExternalAppLauncher!
 
     var scannerViewController: QRScannerViewController!
 
@@ -93,11 +102,13 @@ final class QRScannerViewControllerTests: XCTestCase {
         captureSessionHandler = .init()
         qrPointScanningHandler = .init()
         presentationHandler = .init()
+        externalAppLauncher = .init()
 
         scannerViewController = .init(
             captureSessionHandler: captureSessionHandler,
             qrPointScanningHandler: qrPointScanningHandler,
-            presentationHandler: presentationHandler
+            presentationHandler: presentationHandler,
+            externalAppLauncher: externalAppLauncher
         )
     }
 

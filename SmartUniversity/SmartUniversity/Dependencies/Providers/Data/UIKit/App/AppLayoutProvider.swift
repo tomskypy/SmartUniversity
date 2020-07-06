@@ -12,7 +12,7 @@ final class AppLayoutProvider: LayoutProviding {
 
     static let shared = AppLayoutProvider()
 
-    private static let contentInsets = UIEdgeInsets(all: 10)
+    private static let contentInsets = UIEdgeInsets(all: 16)
     private static let minimumButtonSize = CGSize(width: 100, height: 40)
 
     let contentSpacing: CGFloat = 8

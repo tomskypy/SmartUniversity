@@ -23,13 +23,13 @@ extension UIButton {
     convenience init(
         style: Style = .solid(.lightGray),
         titleText: String? = nil,
-        backgroundColor: UIColor,
-        cornerRadius: CGFloat = 6
+        cornerRadius: CGFloat = 6,
+        colorProviding: ColorProviding? = nil
     ) {
         self.init(type: .system)
         if let titleText = titleText {
             setTitle(titleText, for: .normal)
-            setTitleColor(style.titleColor, for: .normal)
+            setTitleColor(style.titleColor(colorProviding: colorProviding), for: .normal)
         }
         self.backgroundColor = style.backgroundColor
         self.cornerRadius = cornerRadius
@@ -38,17 +38,17 @@ extension UIButton {
 
 private extension UIButton.Style {
 
-    var titleColor: UIColor {
-        switch self {
-        case .solid:        return .white
-        case .transparent:  return .systemBlue
-        }
-    }
-
     var backgroundColor: UIColor {
         switch self {
         case .solid(let color): return color
         case .transparent:      return .clear
+        }
+    }
+
+    func titleColor(colorProviding: ColorProviding?) -> UIColor {
+        switch self {
+        case .solid:        return colorProviding?.buttonTextColor ?? .white
+        case .transparent:  return colorProviding?.secondaryColor ?? .systemBlue
         }
     }
 }

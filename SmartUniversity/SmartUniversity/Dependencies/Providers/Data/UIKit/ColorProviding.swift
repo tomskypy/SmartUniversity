@@ -10,8 +10,12 @@ import UIKit
 
 protocol ColorProviding {
 
+    var primaryColor: UIColor { get }
+    var secondaryColor: UIColor { get }
+
     var backgroundColor: UIColor { get }
     var overlayColor: UIColor { get }
 
     var textColor: UIColor { get }
+    var buttonTextColor: UIColor { get }
 }

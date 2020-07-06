@@ -42,14 +42,14 @@ final class OnboardingScreenView: FrameBasedView {
         }
     }
 
-    private let insets = UIEdgeInsets(horizontal: 15, vertical: 20)
+    private lazy var insets = layoutProvider.contentInsets(for: self, respectingSafeAreasOn: .all())
 
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
 
     private lazy var titleLabel = UILabel(
-        font: .boldSystemFont(ofSize: 45),
-        textColor: colorProvider.textColor,
+        font: .systemFont(ofSize: 70, weight: .black),
+        textColor: colorProvider.primaryColor,
         numberOfLines: 0
     )
     private lazy var bodyLabel = UILabel(
@@ -60,9 +60,13 @@ final class OnboardingScreenView: FrameBasedView {
     private lazy var skipButton = UIButton(
         style: .transparent,
         titleText: "Skip",
-        backgroundColor: colorProvider.backgroundColor
+        colorProviding: colorProvider
     )
-    private let nextButton = UIButton(titleText: "Next", backgroundColor: .lightGray)
+    private lazy var nextButton = UIButton(
+        style: .solid(colorProvider.secondaryColor),
+        titleText: "Next",
+        colorProviding: colorProvider
+    )
 
     init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
@@ -81,24 +85,26 @@ final class OnboardingScreenView: FrameBasedView {
         let skipButtonSize = skipButton.size(constrainedToWidth: contentWidth)
         let skipButtonFrame = CGRect(
             x: bounds.width - insets.right - skipButtonSize.width,
-            y: safeAreaInsets.top + insets.top,
+            y: insets.top,
             size: skipButtonSize
         )
         frames.append((skipButton, skipButtonFrame))
 
-        let titleWidth = contentWidth - skipButtonFrame.width
+        let titleMaxHeight = bounds.height / 2 - (insets.top + contentVerticalSpacing)
+
+        let titleSize = titleLabel.size(constrainedToWidth: contentWidth - skipButtonFrame.width)
+        let titleYOffset = max((titleMaxHeight - titleSize.height) / 2, 0)
         let titleLabelFrame = CGRect(
             x: insets.left,
-            y: safeAreaInsets.top + insets.top,
-            width: titleWidth,
-            height: titleLabel.height(constrainedToWidth: titleWidth)
+            y: insets.top + titleYOffset,
+            size: titleSize
         )
         frames.append((titleLabel, titleLabelFrame))
 
-        let bodyLabelHeight = bodyLabel.height(constrainedToWidth: contentWidth)
+        let bodyLabelHeight = bodyLabel.height(constrainedToWidth: contentWidth) // FIXME: restrict height
         let bodyLabelFrame = CGRect(
             x: insets.left,
-            y: max((bounds.height - bodyLabelHeight) / 2, titleLabelFrame.maxY + contentVerticalSpacing),
+            y: max((bounds.height - contentVerticalSpacing) / 2, titleLabelFrame.maxY + contentVerticalSpacing),
             width: contentWidth,
             height: bodyLabelHeight
         )
@@ -107,7 +113,7 @@ final class OnboardingScreenView: FrameBasedView {
         let nextButtonSize = layoutProvider.preferredSize(for: nextButton)
         let nextButtonFrame = CGRect(
             x: bounds.width - insets.right - nextButtonSize.width,
-            y: bounds.height - (safeAreaInsets.bottom + insets.bottom + nextButtonSize.height),
+            y: bounds.height - (insets.bottom + nextButtonSize.height),
             size: nextButtonSize
         )
         frames.append((nextButton, nextButtonFrame))
@@ -117,6 +123,7 @@ final class OnboardingScreenView: FrameBasedView {
 
     func configure(withTitleText titleText: String, bodyText: String) {
         titleLabel.text = titleText
+
         bodyLabel.text = bodyText
 
         backgroundColor = colorProvider.backgroundColor

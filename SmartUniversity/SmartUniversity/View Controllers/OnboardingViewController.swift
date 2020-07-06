@@ -19,6 +19,8 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
 
     weak var delegate: OnboardingViewControllerDelegate?
 
+    var action: ((UIViewController) -> Void)?
+
     var titleText: String {
         didSet { screenView?.titleText = titleText }
     }
@@ -42,6 +44,8 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
         screenView?.configure(withTitleText: titleText, bodyText: bodyText)
 
         screenView?.didTapNextHandler = { [unowned self] in
+            self.action?(self)
+
             self.delegate?.onboardingViewControllerDidSelectNext(self)
         }
         screenView?.didTapSkipHandler = { [unowned self] in

@@ -9,6 +9,6 @@
 extension MunimapScreenView {
 
     convenience init() {
-        self.init(layoutProvider: AppLayoutProvider.shared)
+        self.init(colorProvider: AppColorProvider.shared, layoutProvider: AppLayoutProvider.shared)
     }
 }

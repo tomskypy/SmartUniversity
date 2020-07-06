@@ -18,6 +18,8 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
         didSet { label.textColor = Self.makeTransparentTitleColor(from: titleColor) }
     }
 
+    let layoutProvider: LayoutProviding
+
     private lazy var label = UILabel(
         font: .systemFont(ofSize: 65, weight: .heavy),
         textColor: titleColor,
@@ -26,8 +28,6 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
     )
 
     private lazy var insets = layoutProvider.contentInsets(for: self, respectingSafeAreasOn: .all())
-
-    private let layoutProvider: LayoutProviding
 
     init(layoutProvider: LayoutProviding) {
         self.layoutProvider = layoutProvider

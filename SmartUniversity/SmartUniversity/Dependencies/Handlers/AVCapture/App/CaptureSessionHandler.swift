@@ -33,35 +33,11 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     // MARK: - CaptureSessionHandling
 
     func handleViewDidLoad(_ view: UIView) {
-        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else {
-            delegate?.captureSessionHandler(self, didTriggerError: .captureNotAuthorized)
-            return
-        }
-
-        let captureSession = sessionProvider.makeCaptureSession()
-
-        guard let sessionInput = makeVideoDeviceInput(for: captureSession) else {
-            return handleSessionError(.videoInputUnavailable)
-        }
-        captureSession.addInput(sessionInput)
-
-        guard let sessionOutput = makeSessionMetadataOutput(for: captureSession) else {
-            return handleSessionError(.metadataOutputUnavailable)
-        }
-        captureSession.addOutput(sessionOutput)
-
-        if sessionOutput.availableMetadataObjectTypes.contains(.qr) {
-            sessionOutput.metadataObjectTypes = [.qr]
-            sessionOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        } else {
-            return handleSessionError(.metadataOutputUnavailable)
-        }
-
-        self.captureSession = captureSession
+        captureSession = makeCaptureSession()
     }
 
     func handleViewWillAppear(_ view: UIView) {
-        guard let captureSession = captureSession else { return }
+        guard let captureSession = captureSession ?? makeCaptureSession() else { return }
 
         if captureSession.isRunning == false {
             DispatchQueue.main.async {
@@ -84,6 +60,37 @@ final class CaptureSessionHandler: NSObject, CaptureSessionHandling {
     }
 
     // MARK: - Capture Session Component Factories
+
+    private func makeCaptureSession() -> AVCaptureSession? {
+        guard authorizationStatusProvider.videoCaptureAuthorizationStatus == .authorized else {
+            delegate?.captureSessionHandler(self, didTriggerError: .captureNotAuthorized)
+            return nil
+        }
+
+        let captureSession = sessionProvider.makeCaptureSession()
+
+        guard let sessionInput = makeVideoDeviceInput(for: captureSession) else {
+            handleSessionError(.videoInputUnavailable)
+            return nil
+        }
+        captureSession.addInput(sessionInput)
+
+        guard let sessionOutput = makeSessionMetadataOutput(for: captureSession) else {
+            handleSessionError(.metadataOutputUnavailable)
+            return nil
+        }
+        captureSession.addOutput(sessionOutput)
+
+        if sessionOutput.availableMetadataObjectTypes.contains(.qr) {
+            sessionOutput.metadataObjectTypes = [.qr]
+            sessionOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        } else {
+            handleSessionError(.metadataOutputUnavailable)
+            return nil
+        }
+
+        return captureSession
+    }
 
     private func makeVideoDeviceInput(for session: AVCaptureSession) -> AVCaptureDeviceInput? {
 

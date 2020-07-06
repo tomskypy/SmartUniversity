@@ -69,7 +69,7 @@ struct AppOnboardingDependenciesFactory {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted == false {
-                    self.appHasToCloseAlertDialog(on: viewController)
+                    self.grantCameraPermissionsInSettingsAlertDialog(on: viewController)
                 }
             }
 
@@ -79,20 +79,8 @@ struct AppOnboardingDependenciesFactory {
         case .restricted:
             fallthrough
         @unknown default:
-            appHasToCloseAlertDialog(on: viewController)
+            grantCameraPermissionsInSettingsAlertDialog(on: viewController)
         }
-    }
-
-    private func appHasToCloseAlertDialog(on viewController: UIViewController) {
-        let alert = UIAlertController(
-            title: "Unsupported configuration",
-            message: "Set configuration is unsupported, app has to close.",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        viewController.present(alert, animated: true, completion: {
-            exit(0) // FIXME: replace with alternative UX
-        })
     }
 
     private func grantCameraPermissionsInSettingsAlertDialog(on viewController: UIViewController) {

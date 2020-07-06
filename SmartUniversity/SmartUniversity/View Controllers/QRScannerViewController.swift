@@ -122,9 +122,15 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         let buttonTapHandler: () -> Void
         if authorizationStatusProvider.videoCaptureAuthorizationStatus == .notDetermined {
             buttonText = "Allow access"
-            buttonTapHandler = {
-                AVCaptureDevice.requestAccess(for: .video) { [weak self] _ in
-                    DispatchQueue.main.async { self?.handleSessionUnauthorized() }
+            buttonTapHandler = { [weak self] in
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    DispatchQueue.main.async {
+                        if granted {
+                            self?.resetScanningUI()
+                        } else {
+                            self?.handleSessionUnauthorized()
+                        }
+                    }
                 }
             }
         } else {

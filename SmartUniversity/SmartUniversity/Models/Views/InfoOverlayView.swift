@@ -49,7 +49,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
 
     private lazy var textLabel = UILabel(
         font: .systemFont(ofSize: 18),
-        textColor: colorProvider.textColor,
+        textColor: colorProvider.lightTextColor,
         numberOfLines: 0
     )
 

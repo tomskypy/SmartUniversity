@@ -12,7 +12,7 @@ protocol ColorProviding {
 
     var primaryColor: UIColor { get }
     var primaryDarkColor: UIColor { get }
-    
+
     var secondaryColor: UIColor { get }
 
     var neutralColor: UIColor { get }
@@ -22,5 +22,7 @@ protocol ColorProviding {
     var overlayColor: UIColor { get }
 
     var textColor: UIColor { get }
+    var lightTextColor: UIColor { get }
+
     var buttonTextColor: UIColor { get }
 }

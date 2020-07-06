@@ -31,9 +31,12 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
         didSet { screenView?.bodyText = bodyText }
     }
 
-    init(titleText: String, bodyText: String) {
+    private let isFinal: Bool
+
+    init(titleText: String, bodyText: String, isFinal: Bool) {
         self.titleText = titleText
         self.bodyText = bodyText
+        self.isFinal = isFinal
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,7 +46,7 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        screenView?.configure(withTitleText: titleText, bodyText: bodyText)
+        screenView?.configure(withTitleText: titleText, bodyText: bodyText, asFinal: isFinal)
 
         screenView?.didTapNextHandler = { [unowned self] in
 

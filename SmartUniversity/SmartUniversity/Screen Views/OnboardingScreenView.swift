@@ -26,6 +26,16 @@ final class OnboardingScreenView: FrameBasedView {
         set { nextButton.setTitle(newValue, for: .normal) }
     }
 
+    var isSkipHidden: Bool = false {
+        didSet {
+            if isSkipHidden {
+                skipButton.removeFromSuperview()
+            } else {
+                addSubview(skipButton)
+            }
+        }
+    }
+
     var didTapNextHandler: TapHandler? {
         willSet { removeButtonTarget(for: #selector(nextTapped), on: nextButton) }
         didSet {
@@ -121,12 +131,18 @@ final class OnboardingScreenView: FrameBasedView {
         return frames
     }
 
-    func configure(withTitleText titleText: String, bodyText: String) {
+    func configure(withTitleText titleText: String, bodyText: String, asFinal: Bool) { // FIXME: refactor
         titleLabel.text = titleText
 
         bodyLabel.text = bodyText
 
         backgroundColor = colorProvider.backgroundColor
+
+        buttonText = asFinal ? "Finish" : "Next"
+        isSkipHidden = asFinal
+    }
+
+    func configureAsFinal() {
     }
 
     @objc private func nextTapped() {

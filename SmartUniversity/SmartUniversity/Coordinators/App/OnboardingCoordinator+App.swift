@@ -54,7 +54,8 @@ struct AppOnboardingDependenciesFactory {
             ),
             .init(
                 titleText: "Than-\nks",
-                bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions."
+                bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions.",
+                isFinal: true
             )
         ]
     }
@@ -84,10 +85,10 @@ struct AppOnboardingDependenciesFactory {
             preferredStyle: .alert
         )
 
-        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
             self.externalAppLauncher.launchSettings(completion: completion)
         })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             completion()
         })
 

@@ -10,5 +10,5 @@ import Foundation
 
 protocol ExternalAppLaunching {
 
-    func launchSettings()
+    func launchSettings(completion: (() -> Void)?)
 }

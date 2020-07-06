@@ -120,7 +120,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             buttonConfiguration: .init(
                 text: "Open Settings",
                 tapHandler: { [weak self] in
-                    self?.externalAppLauncher.launchSettings()
+                    self?.externalAppLauncher.launchSettings(completion: nil)
                 }
             )
         )

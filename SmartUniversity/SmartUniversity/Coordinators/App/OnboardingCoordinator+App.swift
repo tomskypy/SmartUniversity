@@ -29,70 +29,68 @@ struct AppOnboardingDependenciesFactory {
         self.externalAppLauncher = externalAppLauncher
     }
 
-    func makeViewControllerConfigurations() -> [OnboardingCoordinator.ViewControllerConfiguration]{
+    func makeViewControllerConfigurations() -> [OnboardingCoordinator.ViewControllerConfiguration] {
         [
-        .init(
-            titleText: "Wel-\ncome",
-            bodyText: "... to the Smart University app!\n\nThanks for giving it a try, let us show you around."
-        ),
-        .init(
-            titleText: "In-\ndoors",
-            bodyText: "The main feature is a indoor localization within MUNI's faculties.\n\nWe cannot utilize the GPS indoors, so we've come up with QR Points."
-        ),
-        .init(
-            titleText: "QR\nScan-\nner",
-            bodyText: "The QR Scanner helps you access any QR Point.\n\nThose are posters with a QR code placed strategically around faculties.",
-            action: { viewController in
-                self.checkCameraPermissionAuthorization(within: viewController)
-            }
-        ),
-        .init(
-            titleText: "muni-\nmap",
-            bodyText: "Powered by the QR Point's data, you'll be localized on the munimap*.\n\n*munimap - handy MUNI's interactive map of all rooms on all floors within any faculty"
-        ),
-        .init(
-            titleText: "AR\nView",
-            bodyText: "Last but hopefully not least there's AR View.\n\nLaunch it and aim the AR preview at the QR Point. Then, simply follow the instructions."
-        ),
-        .init(
-            titleText: "Than-\nks",
-            bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions."
-        )
+            .init(
+                titleText: "Wel-\ncome",
+                bodyText: "... to the Smart University app!\n\nThanks for giving it a try, let us show you around."
+            ),
+            .init(
+                titleText: "In-\ndoors",
+                bodyText: "The main feature is a indoor localization within MUNI's faculties.\n\nWe cannot utilize the GPS indoors, so we've come up with QR Points."
+            ),
+            .init(
+                titleText: "QR\nScan-\nner",
+                bodyText: "The QR Scanner helps you access any QR Point.\n\nThose are posters with a QR code placed strategically around faculties.",
+                action: { self.checkCameraPermissionAuthorization(within: $0, completion: $1) }
+            ),
+            .init(
+                titleText: "muni-\nmap",
+                bodyText: "Powered by the QR Point's data, you'll be localized on the munimap*.\n\n*munimap - handy MUNI's interactive map of all rooms on all floors within any faculty"
+            ),
+            .init(
+                titleText: "AR\nView",
+                bodyText: "Last but hopefully not least there's AR View.\n\nLaunch it and aim the AR preview at the QR Point. Then, simply follow the instructions."
+            ),
+            .init(
+                titleText: "Than-\nks",
+                bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions."
+            )
         ]
     }
 
-    private func checkCameraPermissionAuthorization(within viewController: UIViewController) {
+    private func checkCameraPermissionAuthorization(
+        within viewController: OnboardingViewController,
+        completion: @escaping OnboardingViewController.ActionCompletion
+    ) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized:
-            return
-
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted == false {
-                    self.grantCameraPermissionsInSettingsAlertDialog(on: viewController)
-                }
-            }
-
-        case .denied:
-            grantCameraPermissionsInSettingsAlertDialog(on: viewController)
-
-        case .restricted:
-            fallthrough
-        @unknown default:
-            grantCameraPermissionsInSettingsAlertDialog(on: viewController)
+        case .notDetermined:        AVCaptureDevice.requestAccess(for: .video) { _ in completion() }
+        case .authorized:           break
+        case .denied, .restricted:  fallthrough
+        @unknown default:           presentAllowCameraAccessInSettingsAlertDialog(
+            on: viewController,
+            completion: completion
+        )
         }
     }
 
-    private func grantCameraPermissionsInSettingsAlertDialog(on viewController: UIViewController) {
+    private func presentAllowCameraAccessInSettingsAlertDialog(
+        on viewController: OnboardingViewController,
+        completion: @escaping OnboardingViewController.ActionCompletion
+    ) {
         let alert = UIAlertController(
             title: "Grant camera permissions",
             message: "Please grant camera permissions in the Settings by tapping the button.",
             preferredStyle: .alert
         )
-        let settingsAction = UIAlertAction(title: "Open Settings", style: .default) { (_) -> Void in
-            self.externalAppLauncher.launchSettings()
-        }
-        alert.addAction(settingsAction)
+
+        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { (_) -> Void in
+            self.externalAppLauncher.launchSettings(completion: completion)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) -> Void in
+            completion()
+        })
+
         viewController.present(alert, animated: true)
     }
 }

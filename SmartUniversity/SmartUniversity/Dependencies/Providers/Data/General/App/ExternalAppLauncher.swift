@@ -10,11 +10,13 @@ import UIKit
 
 struct ExternalAppLauncher: ExternalAppLaunching {
 
-    func launchSettings() {
+    func launchSettings(completion: (() -> Void)?) {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return}
 
         if UIApplication.shared.canOpenURL(settingsUrl) {
-            UIApplication.shared.open(settingsUrl)
+            UIApplication.shared.open(settingsUrl) { _ in
+                completion?()
+            }
         }
     }
 }

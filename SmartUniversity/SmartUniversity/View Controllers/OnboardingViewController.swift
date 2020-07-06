@@ -16,10 +16,12 @@ protocol OnboardingViewControllerDelegate: AnyObject {
 }
 
 class OnboardingViewController: BaseViewController<OnboardingScreenView> {
+    typealias ActionCompletion = () -> Void
+    typealias Action = (OnboardingViewController, @escaping ActionCompletion) -> Void
 
     weak var delegate: OnboardingViewControllerDelegate?
 
-    var action: ((UIViewController) -> Void)?
+    var action: Action?
 
     var titleText: String {
         didSet { screenView?.titleText = titleText }
@@ -44,9 +46,12 @@ class OnboardingViewController: BaseViewController<OnboardingScreenView> {
         screenView?.configure(withTitleText: titleText, bodyText: bodyText)
 
         screenView?.didTapNextHandler = { [unowned self] in
-            self.action?(self)
 
-            self.delegate?.onboardingViewControllerDidSelectNext(self)
+            if let action = self.action {
+                action(self, { self.delegate?.onboardingViewControllerDidSelectNext(self) })
+            } else {
+                self.delegate?.onboardingViewControllerDidSelectNext(self)
+            }
         }
         screenView?.didTapSkipHandler = { [unowned self] in
             self.delegate?.onboardingViewControllerDidSelectSkip(self)

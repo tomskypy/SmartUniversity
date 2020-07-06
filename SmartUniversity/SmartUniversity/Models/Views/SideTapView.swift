@@ -38,7 +38,7 @@ final class SideTapView: VerticalFrameBasedView {
 
         configureTapDelegate(with: #selector(viewTapped))
 
-        backgroundColor = colorProvider.backgroundColor.withAlphaComponent(0.45)
+        backgroundColor = colorProvider.backgroundColor.withAlphaComponent(0.65)
 
         layer.cornerRadius = 12
         layer.maskedCorners = .init(arrayLiteral: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])

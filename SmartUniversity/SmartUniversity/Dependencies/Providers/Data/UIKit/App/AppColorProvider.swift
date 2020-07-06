@@ -10,7 +10,6 @@ import UIKit
 
 final class AppColorProvider: ColorProviding {
 
-
     static let shared = AppColorProvider()
 
     private struct ColorSet {
@@ -22,18 +21,39 @@ final class AppColorProvider: ColorProviding {
         }
     }
 
-    private static let primaryColorSet = ColorSet(light: UIColor(hex: "#005bb2")!, dark: UIColor(hex: "#69b6ff")!) // FIXME: get rid of !s
+    private static let primaryColorSet = ColorSet(light: UIColor(hex: "#58a5f0")!, dark: UIColor(hex: "#69b6ff")!) // FIXME: get rid of !s
+    private static let primaryDarkColorSet = ColorSet(light: UIColor(hex: "#3c5d8c")!, dark: UIColor(hex: "#000d34")!)
+
     private static let secondaryColorSet = ColorSet(light: UIColor(hex: "#4a626d")!, dark: UIColor(hex: "#a6bfcc")!)
 
+    private static let neutralColorSet = ColorSet(light: UIColor(hex: "#cfcfcf")!, dark: UIColor(hex: "#707070")!)
+    private static let negativeColorSet = ColorSet(light: UIColor(hex: "#ff5131")!, dark: UIColor(hex: "#9b0000")!)
+
     private static let backgroundColorSet = ColorSet(light: .white, dark: .black)
-    private static let textColorSet = ColorSet(light: .black, dark: .white)
+
+    private static let textColorSet = ColorSet(light: .darkText, dark: .lightText)
+    private static let ligthTextColorSet = ColorSet(light: .white, dark: .lightText)
+
+    private static let buttonTextColorSet = ColorSet(light: .white, dark: .black)
 
     var primaryColor: UIColor {
         actualColor(for: Self.primaryColorSet)
     }
 
+    var primaryDarkColor: UIColor {
+        actualColor(for: Self.primaryDarkColorSet)
+    }
+
     var secondaryColor: UIColor {
         actualColor(for: Self.secondaryColorSet)
+    }
+
+    var neutralColor: UIColor {
+        actualColor(for: Self.neutralColorSet)
+    }
+
+    var negativeColor: UIColor {
+        actualColor(for: Self.negativeColorSet)
     }
 
     var backgroundColor: UIColor {
@@ -48,8 +68,12 @@ final class AppColorProvider: ColorProviding {
         actualColor(for: Self.textColorSet)
     }
 
+    var lightTextColor: UIColor {
+        actualColor(for: Self.ligthTextColorSet)
+    }
+
     var buttonTextColor: UIColor {
-        actualColor(for: Self.textColorSet.reversed())
+        actualColor(for: Self.buttonTextColorSet)
     }
 
     private init() { }

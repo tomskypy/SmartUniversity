@@ -148,7 +148,6 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             for: .success(text: "GJ, you've found a Point!"),
             buttonConfiguration: .init(
                 text: "Continue",
-                color: .darkGray,
                 tapHandler: { [weak self] in
                     guard let self = self else { return }
 
@@ -180,7 +179,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         }
         screenView?.configureBottomOverlay(
             for: .fail(text: text),
-            buttonConfiguration: .init(text: "Ok", color: .darkGray, tapHandler: hideOverlayHandler)
+            buttonConfiguration: .init(text: "Ok", tapHandler: hideOverlayHandler)
         )
     }
 }
@@ -217,7 +216,7 @@ private extension QRScannerViewController {
 
         screenView?.configureBottomOverlay(
             for: .success(text: "Debug session, eh?"),
-            buttonConfiguration: .init(text: "Launch (debug data)", color: .darkGray, tapHandler: continueTapHandler)
+            buttonConfiguration: .init(text: "Launch (debug data)", tapHandler: continueTapHandler)
         )
     }
     #endif

@@ -9,6 +9,6 @@
 extension SideTapView {
 
     convenience init(text: String) {
-        self.init(text: text, colorProvider: AppColorProvider.shared)
+        self.init(text: text, colorProvider: AppColorProvider.shared, layoutProvider: AppLayoutProvider.shared)
     }
 }

@@ -110,7 +110,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private func handleSessionFailed() {
         screenView?.configureBottomOverlay(
-            for: .fail(text: "Sry bro, no way to run on this bad boi. :C \n(device unsupported)")
+            for: .fail(text: "Sorry bro, no way to run the app on this bad boi. :C \n(device unsupported)")
         )
     }
 
@@ -131,7 +131,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         scannedValueCodeObjectBounds = nil
 
         screenView?.configureBottomOverlay(
-            for: .neutral(text: "Scanning for Smart University Point QR code...")
+            for: .neutral(text: "Aim at Smart University Point QR code.")
         )
     }
 }
@@ -176,9 +176,9 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         else { return }
 
         screenView?.configureBottomOverlay(
-            for: .success(text: "GJ, you've found a Point!"),
+            for: .success(text: "QR Point data scanned! Tap the button bellow when ready..."),
             buttonConfiguration: .init(
-                text: "Continue",
+                text: "Proceed",
                 tapHandler: { [weak self] in
                     guard let self = self else { return }
 
@@ -199,7 +199,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         _ handler: QRPointScanningHandling,
         couldNotFetchQRPointDataForScannedValue value: String
     ) {
-        showFailBottomOverlay(withText: "Cannot fetch Point data for scanned code.")
+        showFailBottomOverlay(withText: "Cannot fetch QR Point data for scanned code.")
     }
 
     private func showFailBottomOverlay(withText text: String) {
@@ -246,8 +246,8 @@ private extension QRScannerViewController {
         }
 
         screenView?.configureBottomOverlay(
-            for: .success(text: "Debug session, eh?"),
-            buttonConfiguration: .init(text: "Launch (debug data)", tapHandler: continueTapHandler)
+            for: .success(text: "Debug session, eh? Enjoy..."),
+            buttonConfiguration: .init(text: "Proceed", tapHandler: continueTapHandler)
         )
     }
     #endif

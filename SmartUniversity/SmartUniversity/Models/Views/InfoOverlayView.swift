@@ -30,9 +30,6 @@ final class InfoOverlayView: VerticalFrameBasedView {
         didSet { configureButton(with: buttonConfiguration) }
     }
 
-    private let colorProvider: ColorProviding
-    private let layoutProvider: LayoutProviding
-
     override var insets: UIEdgeInsets {
         layoutProvider.contentInsets(for: self, respectingSafeAreasOn: [.left, .bottom, .right])
     }
@@ -50,7 +47,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
     }()
 
     private lazy var textLabel = UILabel(
-        font: .systemFont(ofSize: 18),
+        font: .systemFont(ofSize: layoutProvider.textSize(.normal)),
         textColor: colorProvider.lightTextColor,
         numberOfLines: 0
     )
@@ -63,6 +60,9 @@ final class InfoOverlayView: VerticalFrameBasedView {
         return button
     }()
 
+    private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
+
     init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
         self.layoutProvider = layoutProvider
@@ -74,19 +74,19 @@ final class InfoOverlayView: VerticalFrameBasedView {
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
         var frames: [(UIView, CGRect)] = []
 
-        let textSize = textLabel.size(constrainedToWidth: width - insets.horizontalSum)
-        let textFrame = CGRect(x: insets.left, y: insets.top, size: textSize)
+        let textLabelSize = textLabel.size(constrainedToWidth: width - insets.horizontalSum)
+        let textLabelFrame = CGRect(x: insets.left, y: insets.top, size: textLabelSize)
 
         let buttonSize: CGSize = {
-            let buttonFrame = self.makeButtonFrame(forWidth: width, textFrameMaxY: textFrame.maxY)
+            let buttonFrame = self.makeButtonFrame(forWidth: width, textFrameMaxY: textLabelFrame.maxY)
             frames.append((button, buttonFrame))
             return buttonFrame.size
         }()
 
-        let contentHeight = buttonSize.height + contentSpacing + textSize.height + insets.verticalSum
+        let contentHeight = buttonSize.height + contentSpacing + textLabelSize.height + insets.verticalSum
         let overlayFrame = CGRect(origin: .zero, width: width, height: contentHeight)
 
-        frames.append(contentsOf: [(textLabel, textFrame), (overlay, overlayFrame)])
+        frames.append(contentsOf: [(textLabel, textLabelFrame), (overlay, overlayFrame)])
         return frames
     }
 

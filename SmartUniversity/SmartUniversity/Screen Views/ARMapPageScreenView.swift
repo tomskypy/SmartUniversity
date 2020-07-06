@@ -12,34 +12,36 @@ class ARMapPageScreenView: FrameBasedView {
 
     let navigateBackSideTapView = SideTapView(text: "◄back◄")
 
-    let munimapCornerTapView = CornerTapView(
+    private(set) lazy var munimapCornerTapView = CornerTapView( // FIXME: refactor
         configuration: .init(
             corner: .bottomLeft,
             content: .init(
                 icon: UIImage(systemName: "map")?.applyingSymbolConfiguration(.init(scale: .medium)),
                 text: "munimap",
-                textSize: 25,
+                textSize: layoutProvider.textSize(.large),
                 alignment: .left
             )
         )
     )
 
-    let arViewCornerTapView = CornerTapView(
+    private(set) lazy var arViewCornerTapView = CornerTapView(
         configuration: .init(
             corner: .bottomLeft,
             content: .init(
                 icon: UIImage(systemName: "arkit")?.applyingSymbolConfiguration(.init(scale: .medium)),
                 text: "AR view",
-                textSize: 25,
+                textSize: layoutProvider.textSize(.large),
                 alignment: .left
             )
         )
     )
 
     private let colorProvider: ColorProviding
+    private let layoutProvider: LayoutProviding
 
-    init(colorProvider: ColorProviding) {
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
+        self.layoutProvider = layoutProvider
         super.init(frame: .zero)
     }
 

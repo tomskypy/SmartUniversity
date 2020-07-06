@@ -45,12 +45,8 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
         super.viewDidLoad()
 
         setupSideTapViewHandlers()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        setViewControllers([muniMapViewController], direction: .forward, animated: true)
+        setViewControllers([muniMapViewController], direction: .forward, animated: false)
 
         if let screenOverlayView = screenOverlayView {
             screenOverlayView.highlightTapView(screenOverlayView.munimapCornerTapView)

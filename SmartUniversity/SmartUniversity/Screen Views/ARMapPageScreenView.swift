@@ -10,7 +10,7 @@ import UIKit
 
 class ARMapPageScreenView: FrameBasedView {
 
-    let navigateBackSideTapView = SideTapView(text: "◄Back◄")
+    let navigateBackSideTapView = SideTapView(text: "◄back◄")
 
     let munimapCornerTapView = CornerTapView(
         configuration: .init(

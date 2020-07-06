@@ -41,4 +41,12 @@ final class AppLayoutProvider: LayoutProviding {
         )
         return .init(width: width, height: height)
     }
+
+    func textSize(_ sizeClass: SizeClass) -> CGFloat {
+        switch sizeClass {
+        case .small:    return 18
+        case .normal:   return 22
+        case .large:    return 28
+        }
+    }
 }

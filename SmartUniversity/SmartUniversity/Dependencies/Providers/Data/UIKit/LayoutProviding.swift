@@ -15,6 +15,12 @@ enum LayoutSide {
     case right
 }
 
+enum SizeClass {
+    case small
+    case normal
+    case large
+}
+
 protocol LayoutProviding {
 
     var contentSpacing: CGFloat { get }
@@ -22,6 +28,8 @@ protocol LayoutProviding {
     func contentInsets(for view: UIView, respectingSafeAreasOn safeAreaSides: Set<LayoutSide>) -> UIEdgeInsets
 
     func preferredSize(for button: UIButton) -> CGSize
+
+    func textSize(_ sizeClass: SizeClass) -> CGFloat
 }
 
 extension LayoutProviding {

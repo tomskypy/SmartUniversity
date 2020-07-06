@@ -37,11 +37,9 @@ final class InfoOverlayView: VerticalFrameBasedView {
         layoutProvider.contentInsets(for: self, respectingSafeAreasOn: [.left, .bottom, .right])
     }
 
-    override var insetAgnosticSubviews: [UIView] {
-        [overlay]
-    }
+    override var insetAgnosticSubviews: [UIView] { [overlay] }
 
-    private lazy var contentSpacing = layoutProvider.contentSpacing
+    private lazy var contentSpacing = layoutProvider.contentSpacing * 2
 
     private lazy var overlay: UIView = {
         let overlayView = UIView()

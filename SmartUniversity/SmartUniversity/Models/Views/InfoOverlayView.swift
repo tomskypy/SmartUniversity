@@ -19,7 +19,6 @@ final class InfoOverlayView: VerticalFrameBasedView {
 
     struct ButtonConfiguration {
         let text: String
-        let color: UIColor
         let tapHandler: () -> Void
     }
 
@@ -55,8 +54,8 @@ final class InfoOverlayView: VerticalFrameBasedView {
     )
 
     private lazy var button: UIButton = {
-        let button = UIButton(style: .solid(.darkGray))
-        button.setTitleColor(.white, for: .normal)
+        let button = UIButton(style: .solid(colorProvider.primaryColor))
+        button.setTitleColor(colorProvider.buttonTextColor, for: .normal)
 
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
@@ -94,7 +93,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
     }
 
     private func configureSubviews(for state: State) {
-        overlay.backgroundColor = state.backgroundColor
+        overlay.backgroundColor = state.backgroundColor(colorProvider: colorProvider)
         textLabel.text = state.labelText
 
         switch state {
@@ -116,7 +115,6 @@ final class InfoOverlayView: VerticalFrameBasedView {
             return button.removeFromSuperview()
         }
 
-        button.backgroundColor = buttonConfiguration.color
         button.setTitle(buttonConfiguration.text, for: .normal)
 
         addSubview(button)
@@ -145,11 +143,11 @@ private extension InfoOverlayView.State {
         }
     }
 
-    var backgroundColor: UIColor? {
+    func backgroundColor(colorProvider: ColorProviding) -> UIColor? {
         switch self {
-        case .success:  return .green
-        case .neutral:  return .gray
-        case .fail:     return .red
+        case .success:  return colorProvider.primaryDarkColor
+        case .neutral:  return colorProvider.neutralColor
+        case .fail:     return colorProvider.negativeColor
         case .empty:    return nil
         }
     }

@@ -11,7 +11,12 @@ import UIKit
 protocol ColorProviding {
 
     var primaryColor: UIColor { get }
+    var primaryDarkColor: UIColor { get }
+    
     var secondaryColor: UIColor { get }
+
+    var neutralColor: UIColor { get }
+    var negativeColor: UIColor { get }
 
     var backgroundColor: UIColor { get }
     var overlayColor: UIColor { get }

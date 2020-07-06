@@ -68,5 +68,6 @@ private extension OnboardingViewController {
         self.init(titleText: configuration.titleText, bodyText: configuration.bodyText)
 
         self.delegate = delegate
+        self.action = configuration.action
     }
 }

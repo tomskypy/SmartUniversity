@@ -125,10 +125,13 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             buttonTapHandler = { [weak self] in
                 AVCaptureDevice.requestAccess(for: .video) { granted in
                     DispatchQueue.main.async {
+                        guard let self = self else { return }
+
                         if granted {
-                            self?.resetScanningUI()
+                            self.captureSessionHandler.handleViewWillAppear(self.view)
+                            self.resetScanningUI()
                         } else {
-                            self?.handleSessionUnauthorized()
+                            self.handleSessionUnauthorized()
                         }
                     }
                 }

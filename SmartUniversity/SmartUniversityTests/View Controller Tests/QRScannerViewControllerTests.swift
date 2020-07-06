@@ -9,6 +9,7 @@
 import XCTest
 
 @testable import SmartUniversity
+import AVFoundation
 
 final class TestableCaptureSessionHandler: CaptureSessionHandling {
 
@@ -84,8 +85,15 @@ final class TestablePresentationHandler: PresentationHandling {
 final class TestableExternalAppLauncher: ExternalAppLaunching {
     var didCallLaunchSettings: Bool?
 
-    func launchSettings(completion: (() -> Void)?) {
+    func launchSettings(completion: (() -> Void)?) { // TODO add tests
         didCallLaunchSettings = true
+    }
+}
+
+final class TestableCaptureAuthorizationStatusProvider: CaptureAuthorizationStatusProviding {
+
+    var videoCaptureAuthorizationStatus: AVAuthorizationStatus { // TODO add tests
+        .authorized
     }
 }
 
@@ -95,6 +103,7 @@ final class QRScannerViewControllerTests: XCTestCase {
     var qrPointScanningHandler: TestableQRPointScanningHandler!
     var presentationHandler: TestablePresentationHandler!
     var externalAppLauncher: TestableExternalAppLauncher!
+    var authorizationStatusProvider: TestableCaptureAuthorizationStatusProvider!
 
     var scannerViewController: QRScannerViewController!
 
@@ -103,12 +112,14 @@ final class QRScannerViewControllerTests: XCTestCase {
         qrPointScanningHandler = .init()
         presentationHandler = .init()
         externalAppLauncher = .init()
+        authorizationStatusProvider = .init()
 
         scannerViewController = .init(
             captureSessionHandler: captureSessionHandler,
             qrPointScanningHandler: qrPointScanningHandler,
             presentationHandler: presentationHandler,
-            externalAppLauncher: externalAppLauncher
+            externalAppLauncher: externalAppLauncher,
+            authorizationStatusProvider: authorizationStatusProvider
         )
     }
 

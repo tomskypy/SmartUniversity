@@ -16,6 +16,8 @@
 		350C5548248BD0F500902F52 /* OnboardingCoordinator+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C5547248BD0F500902F52 /* OnboardingCoordinator+App.swift */; };
 		350C62B424968084000787C0 /* CornerTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C62B324968084000787C0 /* CornerTapView.swift */; };
 		350C62B62496809F000787C0 /* CornerTapView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C62B52496809F000787C0 /* CornerTapView+App.swift */; };
+		350DDB9624B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDB9524B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift */; };
+		350DDB9824B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDB9724B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift */; };
 		35162543249551A20069E22C /* ARMapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35162542249551A20069E22C /* ARMapPageViewController.swift */; };
 		3516254524957D1F0069E22C /* ARMapPageScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516254424957D1F0069E22C /* ARMapPageScreenView.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
@@ -36,6 +38,8 @@
 		353400AA249ED7B600198B5B /* QRPointIDParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353400A9249ED7B600198B5B /* QRPointIDParsing.swift */; };
 		353400AD249ED7E600198B5B /* QRPointIDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353400AC249ED7E600198B5B /* QRPointIDParser.swift */; };
 		353400AF249ED7FA00198B5B /* QRPointScanningHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353400AE249ED7FA00198B5B /* QRPointScanningHandling.swift */; };
+		353F7A9024B39B620094A289 /* ExternalAppLaunching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F7A8F24B39B620094A289 /* ExternalAppLaunching.swift */; };
+		353F7A9224B39B890094A289 /* ExternalAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353F7A9124B39B890094A289 /* ExternalAppLauncher.swift */; };
 		354329BB24157FFB0065614A /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354329BA24157FFB0065614A /* SceneDelegateTests.swift */; };
 		3545E4E124AFAC6B000EE4BD /* TitledScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545E4E024AFAC6B000EE4BD /* TitledScreenView.swift */; };
 		3545E4E524AFC3BE000EE4BD /* ARScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545E4E424AFC3BE000EE4BD /* ARScreenView+App.swift */; };
@@ -153,6 +157,8 @@
 		350C5547248BD0F500902F52 /* OnboardingCoordinator+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingCoordinator+App.swift"; sourceTree = "<group>"; };
 		350C62B324968084000787C0 /* CornerTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerTapView.swift; sourceTree = "<group>"; };
 		350C62B52496809F000787C0 /* CornerTapView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CornerTapView+App.swift"; sourceTree = "<group>"; };
+		350DDB9524B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureAuthorizationStatusProviding.swift; sourceTree = "<group>"; };
+		350DDB9724B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCaptureAuthorizationProvider.swift; sourceTree = "<group>"; };
 		35162542249551A20069E22C /* ARMapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapPageViewController.swift; sourceTree = "<group>"; };
 		3516254424957D1F0069E22C /* ARMapPageScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapPageScreenView.swift; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
@@ -173,6 +179,8 @@
 		353400A9249ED7B600198B5B /* QRPointIDParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointIDParsing.swift; sourceTree = "<group>"; };
 		353400AC249ED7E600198B5B /* QRPointIDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointIDParser.swift; sourceTree = "<group>"; };
 		353400AE249ED7FA00198B5B /* QRPointScanningHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointScanningHandling.swift; sourceTree = "<group>"; };
+		353F7A8F24B39B620094A289 /* ExternalAppLaunching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppLaunching.swift; sourceTree = "<group>"; };
+		353F7A9124B39B890094A289 /* ExternalAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppLauncher.swift; sourceTree = "<group>"; };
 		354329BA24157FFB0065614A /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		3545E4E024AFAC6B000EE4BD /* TitledScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledScreenView.swift; sourceTree = "<group>"; };
 		3545E4E424AFC3BE000EE4BD /* ARScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARScreenView+App.swift"; sourceTree = "<group>"; };
@@ -751,6 +759,7 @@
 			children = (
 				35D3019C249AF19B0088801B /* App */,
 				35D3019D249AF1A80088801B /* CaptureSessionHandling.swift */,
+				350DDB9524B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift */,
 			);
 			path = AVCapture;
 			sourceTree = "<group>";
@@ -767,6 +776,7 @@
 			isa = PBXGroup;
 			children = (
 				35706427248872CC00E45B0D /* CaptureSessionHandler.swift */,
+				350DDB9724B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -777,6 +787,7 @@
 				35D301A0249AF20C0088801B /* App */,
 				3570641D248872CC00E45B0D /* QRPointsProviding.swift */,
 				353400A1249EB08A00198B5B /* UserDefaultsProviding.swift */,
+				353F7A8F24B39B620094A289 /* ExternalAppLaunching.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -786,6 +797,7 @@
 			children = (
 				35AEAA5F249AE17B0036A544 /* AppURL.swift */,
 				35706416248872CC00E45B0D /* AppConfigurationProvider.swift */,
+				353F7A9124B39B890094A289 /* ExternalAppLauncher.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -960,6 +972,7 @@
 				35D3018F249AEF4D0088801B /* CaptureDeviceProviding.swift in Sources */,
 				35706471248872CC00E45B0D /* OnboardingCoordinator.swift in Sources */,
 				35706458248872CC00E45B0D /* UIEdgeInsets+Sum.swift in Sources */,
+				353F7A9224B39B890094A289 /* ExternalAppLauncher.swift in Sources */,
 				353400A0249EA93100198B5B /* LoadingOverlayView.swift in Sources */,
 				3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */,
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
@@ -970,6 +983,7 @@
 				35D30195249AEFBA0088801B /* WebViewHandling.swift in Sources */,
 				35706469248872CC00E45B0D /* RemoteDataProvider.swift in Sources */,
 				3586FD6B24996FA0000C9D3C /* Collection+SafeIndex.swift in Sources */,
+				353F7A9024B39B620094A289 /* ExternalAppLaunching.swift in Sources */,
 				35706478248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift in Sources */,
 				3570645A248872CC00E45B0D /* SCNObject+Init.swift in Sources */,
 				35706465248872CC00E45B0D /* PosterReferenceImageProvider.swift in Sources */,
@@ -978,6 +992,7 @@
 				3570644B248872CC00E45B0D /* BaseViewController.swift in Sources */,
 				35AEAA5E249AE0C70036A544 /* MunimapViewController+App.swift in Sources */,
 				35706459248872CC00E45B0D /* UIEdgeInsets+Merge.swift in Sources */,
+				350DDB9824B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift in Sources */,
 				35706452248872CC00E45B0D /* UIColor+HexString.swift in Sources */,
 				35D3019E249AF1A80088801B /* CaptureSessionHandling.swift in Sources */,
 				3570646E248872CC00E45B0D /* CaptureSessionHandler.swift in Sources */,
@@ -995,6 +1010,7 @@
 				353400A6249ED3CB00198B5B /* String+Subscript.swift in Sources */,
 				35706462248872CC00E45B0D /* ReferenceImageProviding.swift in Sources */,
 				35706487248872CC00E45B0D /* MunimapScreenView.swift in Sources */,
+				350DDB9624B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift in Sources */,
 				356E7A0B24B0AD1B002C1D1C /* GradientView.swift in Sources */,
 				350C553F248BA14A00902F52 /* MainNavigationCoordinator.swift in Sources */,
 				35D30191249AEF6A0088801B /* CaptureSessionProviding.swift in Sources */,

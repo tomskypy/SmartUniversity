@@ -26,12 +26,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private static let fadeInAnimationLength = 0.45
     private static let fadeOutAnimationLength = 0.15
 
+    private let externalAppLauncher: ExternalAppLaunching
+
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
 
     private var presentationHandler: PresentationHandling
 
-    private var hasCaptureSessionError: Bool = false
+    private var captureSessionError: CaptureSessionError?
 
     /// Tuple containg scanned object's `String` value and its detected bounds within the scanning view.
     var scannedValueCodeObjectBounds: (scannedValue: String, objectBounds: CGRect)?
@@ -39,11 +41,13 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     init(
         captureSessionHandler: CaptureSessionHandling,
         qrPointScanningHandler: QRPointScanningHandling,
-        presentationHandler: PresentationHandling
+        presentationHandler: PresentationHandling,
+        externalAppLauncher: ExternalAppLaunching
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler
         self.presentationHandler = presentationHandler
+        self.externalAppLauncher = externalAppLauncher
         super.init(nibName: nil, bundle: nil)
 
         self.captureSessionHandler.delegate = self
@@ -62,11 +66,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if hasCaptureSessionError == false {
-            reset()
-        }
-
         captureSessionHandler.handleViewWillAppear(view)
+
+        updateUI()
 
         UIView.animate(withDuration: Self.fadeInAnimationLength, delay: 0, options: .curveEaseIn, animations: {
             self.view.alpha = 1.0
@@ -76,11 +78,34 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+        if case .captureNotAuthorized = captureSessionError { // FIXME: consider reworking
+            captureSessionError = nil
+        }
+
         captureSessionHandler.handleViewWillDisappear(view)
 
         UIView.animate(withDuration: Self.fadeOutAnimationLength, animations: {
             self.view.alpha = 0
         })
+    }
+
+    private func updateUI() {
+        if let captureSessionError = captureSessionError {
+
+            switch captureSessionError {
+            case .captureNotAuthorized:
+                handleSessionUnauthorized()
+            case .metadataOutputUnavailable, .videoInputUnavailable:
+                #if DEBUG
+                    handleDebugSession()
+                #else
+                    handleSessionFailed()
+                #endif
+            }
+        } else {
+
+            resetScanningUI()
+        }
     }
 
     private func handleSessionFailed() {
@@ -89,7 +114,19 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         )
     }
 
-    private func reset() {
+    private func handleSessionUnauthorized() {
+        screenView?.configureBottomOverlay(
+            for: .neutral(text: "Please allow the app to access camera in the Settings to enable the QR Scanner."),
+            buttonConfiguration: .init(
+                text: "Open Settings",
+                tapHandler: { [weak self] in
+                    self?.externalAppLauncher.launchSettings(completion: nil)
+                }
+            )
+        )
+    }
+
+    private func resetScanningUI() {
         screenView?.reset()
         scannedValueCodeObjectBounds = nil
 
@@ -122,13 +159,7 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
     }
 
     func captureSessionHandler(_ handler: CaptureSessionHandling, didTriggerError error: CaptureSessionError) {
-        hasCaptureSessionError = true
-
-        #if DEBUG
-            handleDebugSession()
-        #else
-            handleSessionFailed()
-        #endif
+        captureSessionError = error
     }
 }
 
@@ -175,7 +206,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
         screenView?.hideBlurOverlay()
 
         let hideOverlayHandler: () -> Void = { [weak self] in
-            self?.reset()
+            self?.resetScanningUI()
         }
         screenView?.configureBottomOverlay(
             for: .fail(text: text),

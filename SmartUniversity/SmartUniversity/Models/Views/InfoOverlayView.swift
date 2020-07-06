@@ -33,11 +33,13 @@ final class InfoOverlayView: VerticalFrameBasedView {
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
 
-    private lazy var contentInsets = layoutProvider.contentInsets(
-        for: self,
-        respectingSafeAreasOn: [.left, .bottom, .right]
-    )
-    private lazy var contentSpacing = layoutProvider.contentSpacing
+    override var insets: UIEdgeInsets {
+        layoutProvider.contentInsets(for: self, respectingSafeAreasOn: [.left, .bottom, .right])
+    }
+
+    override var insetAgnosticSubviews: [UIView] { [overlay] }
+
+    private lazy var contentSpacing = layoutProvider.contentSpacing * 2
 
     private lazy var overlay: UIView = {
         let overlayView = UIView()
@@ -73,7 +75,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
         var frames: [(UIView, CGRect)] = []
 
         let textSize = textLabel.size(constrainedToWidth: width - insets.horizontalSum)
-        let textFrame = CGRect(x: contentInsets.left, y: contentInsets.top, size: textSize)
+        let textFrame = CGRect(x: insets.left, y: insets.top, size: textSize)
 
         let buttonSize: CGSize = {
             let buttonFrame = self.makeButtonFrame(forWidth: width, textFrameMaxY: textFrame.maxY)
@@ -81,8 +83,8 @@ final class InfoOverlayView: VerticalFrameBasedView {
             return buttonFrame.size
         }()
 
-        let contentHeight = buttonSize.height + contentSpacing + textSize.height + contentInsets.verticalSum
-        let overlayFrame = CGRect(origin: .zero, width: bounds.width, height: contentHeight)
+        let contentHeight = buttonSize.height + contentSpacing + textSize.height + insets.verticalSum
+        let overlayFrame = CGRect(origin: .zero, width: width, height: contentHeight)
 
         frames.append(contentsOf: [(textLabel, textFrame), (overlay, overlayFrame)])
         return frames
@@ -125,7 +127,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
 
         let buttonSize = layoutProvider.preferredSize(for: button)
         return CGRect(
-            x: width - (buttonSize.width + contentInsets.right),
+            x: width - (buttonSize.width + insets.right),
             y: textFrameMaxY + contentSpacing,
             size: buttonSize
         )

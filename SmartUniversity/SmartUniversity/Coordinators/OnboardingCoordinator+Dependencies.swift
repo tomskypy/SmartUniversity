@@ -14,9 +14,9 @@ extension OnboardingCoordinator {
         let titleText: String
         let bodyText: String
 
-        let action: ((UIViewController) -> Void)?
+        let action: OnboardingViewController.Action?
 
-        init(titleText: String, bodyText: String, action: ((UIViewController) -> Void)? = nil) {
+        init(titleText: String, bodyText: String, action: OnboardingViewController.Action? = nil) {
             self.titleText = titleText
             self.bodyText = bodyText
             self.action = action

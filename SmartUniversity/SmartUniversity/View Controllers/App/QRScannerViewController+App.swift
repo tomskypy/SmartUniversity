@@ -14,7 +14,8 @@ extension QRScannerViewController {
         self.init(
             captureSessionHandler: CaptureSessionHandler(),
             qrPointScanningHandler: QRPointScanningHandler(),
-            presentationHandler: PresentationHandler()
+            presentationHandler: PresentationHandler(),
+            externalAppLauncher: ExternalAppLauncher()
         )
     }
 }

@@ -66,4 +66,8 @@ extension ARViewController: ARSceneViewHandlerDelegate {
             node.addChildNode(roomNode)
         }
     }
+
+    func arSceneViewHandlerWillUpdate(_ handler: ARSceneViewHandler, sceneView: ARSCNView?) {
+    }
+
 }

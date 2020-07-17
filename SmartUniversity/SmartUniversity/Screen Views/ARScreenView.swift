@@ -23,6 +23,8 @@ final class ARScreenView: TitledScreenView {
         }
     }
 
+    private static let maxRoomLabelWidth: CGFloat = 250
+
     override init(layoutProvider: LayoutProviding) {
         super.init(layoutProvider: layoutProvider)
 
@@ -52,6 +54,51 @@ final class ARScreenView: TitledScreenView {
 
     override func setupSubviews() {
         backgroundColor = .black
+    }
+
+    func makeAndAddRoomLabel(text: String) -> UIView {
+        let label = RoomLabelView(text: text)
+        label.frame.size = label.size(constrainedToWidth: Self.maxRoomLabelWidth)
+        addSubview(label)
+        
+        return label
+    }
+}
+
+private class RoomLabelView: VerticalFrameBasedView {
+
+    override var insets: UIEdgeInsets {
+        .init(all: 4)
+    }
+
+    private let label = UILabel(font: .systemFont(ofSize: 25, weight: .light), textColor: .white)
+
+    init(text: String) {
+        super.init(frame: .zero)
+
+        backgroundColor = UIColor.black.withAlphaComponent(0.45)
+        layer.cornerRadius = 3
+
+        label.text = text
+
+        addSubview(label)
+    }
+
+    required init?(coder: NSCoder) { nil }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        guard let leftMostFrameTuple = frames(forWidth: size.width).max(by: { $0.frame.maxY < $1.frame.maxY }) else {
+            return .zero
+        }
+
+        return CGSize(width: leftMostFrameTuple.frame.maxX + insets.right, height: super.sizeThatFits(size).height)
+    }
+
+    override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+
+        let labelSize = label.size(constrainedToWidth: width - insets.horizontalSum)
+
+        return [(label, CGRect(x: insets.left, y: insets.top, size: labelSize))]
     }
 }
 

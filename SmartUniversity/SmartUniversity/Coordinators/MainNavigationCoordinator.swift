@@ -67,19 +67,23 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
 
     func qrScannerViewController(
         _ qrScannerViewController: QRScannerViewController,
-        didSelectContinueWith qrPoint: QRPoint
+        didSelectContinueWith qrPoint: QRPoint?
     ) {
         let postScanningViewController = ARMapPageViewController(
-            arViewController: dependencies.viewControllerFactory.makeViewController(
-                for: .arView(roomsData: qrPoint.rooms)
-            ),
+            arViewController: makeArViewController(for: qrPoint),
             muniMapViewController: dependencies.viewControllerFactory.makeViewController(
-                for: .munimap(focusedPlaceID: qrPoint.muniMapPlaceID)
+                for: .munimap(focusedPlaceID: qrPoint?.muniMapPlaceID)
             )
         )
         postScanningViewController.didFinishHandler = { [weak self] in
             self?.navigationController.popToRootViewController()
         }
         navigationController.pushViewController(postScanningViewController)
+    }
+
+    private func makeArViewController(for qrPoint: QRPoint?) -> UIViewController? {
+        guard let qrPoint = qrPoint else { return nil }
+
+        return dependencies.viewControllerFactory.makeViewController(for: .arView(roomsData: qrPoint.rooms))
     }
 }

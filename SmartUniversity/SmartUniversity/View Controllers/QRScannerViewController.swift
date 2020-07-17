@@ -13,7 +13,7 @@ protocol QRScannerViewControllerDelegate: AnyObject {
 
     func qrScannerViewController(
         _ qrScannerViewController: QRScannerViewController,
-        didSelectContinueWith qrPoint: QRPoint
+        didSelectContinueWith qrPoint: QRPoint?
     )
 }
 

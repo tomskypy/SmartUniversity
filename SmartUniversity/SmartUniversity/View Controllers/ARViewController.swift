@@ -63,12 +63,14 @@ extension ARViewController: ARSceneViewHandlerDelegate {
         )
         node.addChildNode(posterNode)
 
-        roomsData.forEach { roomData in
-            let roomNode = sceneObjectProvider.makeNodeFor(.room(objectData: roomData))
-            roomNode.eulerAngles = SCNVector3Make(Float(Double.pi / 2), 0, 0)
-            node.addChildNode(roomNode)
+        DispatchQueue.main.async {
+            self.resetRoomLabelViews()
 
-            DispatchQueue.main.async {
+            self.roomsData.forEach { roomData in
+                let roomNode = self.sceneObjectProvider.makeNodeFor(.room(objectData: roomData))
+                roomNode.eulerAngles = SCNVector3Make(Float(Double.pi / 2), 0, 0)
+                node.addChildNode(roomNode)
+
                 guard let label = self.screenView?.makeAndAddRoomLabel(text: roomData.label) else { return }
 
                 label.isHidden = true
@@ -99,6 +101,12 @@ extension ARViewController: ARSceneViewHandlerDelegate {
                 }
             }
         }
+    }
+
+    private func resetRoomLabelViews() {
+
+        roomLabelViews.values.forEach { $0.removeFromSuperview() }
+        roomLabelViews = [:]
     }
 
 }

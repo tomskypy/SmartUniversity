@@ -20,13 +20,13 @@ class VerticalFrameBasedView: FrameBasedView {
 
     /// Returns most fitting size respecting only width of provided CGSize.
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        guard let bottomMostView = frames(forWidth: size.width).max(by: { $0.frame.maxY < $1.frame.maxY }) else {
+        guard let bottomMostFrameTuple = frames(forWidth: size.width).max(by: { $0.frame.maxY < $1.frame.maxY }) else {
             return .zero
         }
 
-        var height = bottomMostView.frame.maxY
+        var height = bottomMostFrameTuple.frame.maxY
 
-        let shouldAddInsetsToHeight = insetAgnosticSubviews.contains(bottomMostView.view) == false
+        let shouldAddInsetsToHeight = insetAgnosticSubviews.contains(bottomMostFrameTuple.view) == false
         if shouldAddInsetsToHeight {
             height += insets.bottom
         }

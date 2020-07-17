@@ -68,4 +68,8 @@ extension ARSceneViewHandler: ARSCNViewDelegate {
 
         delegate?.arSceneViewHandler(self, didDetectReferenceImage: imageAnchor, onNode: node)
     }
+
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        delegate?.arSceneViewHandlerWillUpdate(self, sceneView: sceneView)
+    }
 }

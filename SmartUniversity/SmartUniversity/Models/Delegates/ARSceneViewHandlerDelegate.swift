@@ -15,4 +15,6 @@ protocol ARSceneViewHandlerDelegate: AnyObject {
         didDetectReferenceImage imageAnchor: ARImageAnchor,
         onNode node: SCNNode
     )
+
+    func arSceneViewHandlerWillUpdate(_ handler: ARSceneViewHandler, sceneView: ARSCNView?)
 }

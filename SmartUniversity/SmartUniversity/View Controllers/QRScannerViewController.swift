@@ -62,6 +62,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupSideTapViewHandler()
+
         captureSessionHandler.handleViewDidLoad(view)
         qrPointScanningHandler.handleViewDidLoad(view)
     }
@@ -154,8 +156,18 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         scannedValueCodeObjectBounds = nil
 
         screenView?.configureBottomOverlay(
-            for: .neutral(text: "Aim at Smart University Point QR code.")
+            for: .neutral(text: "Aim at Smart University Point QR code or skip to munimap.")
         )
+    }
+
+    private func setupSideTapViewHandler() {
+        guard let screenView = screenView else { return }
+
+        screenView.navigateToMunimapSideTapView.tapHandler = { [weak self] in
+            guard let self = self else { return }
+
+            self.delegate?.qrScannerViewController(self, didSelectContinueWith: nil)
+        }
     }
 }
 

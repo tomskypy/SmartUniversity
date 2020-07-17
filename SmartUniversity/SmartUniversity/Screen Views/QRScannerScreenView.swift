@@ -20,6 +20,8 @@ class QRScannerScreenView: TitledScreenView {
 
     private let colorProvider: ColorProviding
 
+    let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
+
     private let bottomOverlay = InfoOverlayView()
 
     private var bottomOverlayState: InfoOverlayView.State? {
@@ -59,11 +61,15 @@ class QRScannerScreenView: TitledScreenView {
             size: bottomOverlayFrameSize
         )
 
-        return frames + [(blurredOverlayView, blurredOverlayFrame), (bottomOverlay, bottomOverlayFrame)]
+        return frames + [
+            (blurredOverlayView, blurredOverlayFrame),
+            (navigateToMunimapSideTapView, makeSideViewFrame(for: navigateToMunimapSideTapView, bounds: bounds)),
+            (bottomOverlay, bottomOverlayFrame)
+        ]
     }
 
     override func setupSubviews() {
-        addSubview(blurredOverlayView)
+        addSubviews(blurredOverlayView, navigateToMunimapSideTapView)
     }
 
     // MARK: - Reset
@@ -71,14 +77,22 @@ class QRScannerScreenView: TitledScreenView {
     func reset() {
         hideBlurOverlay()
         hideBottomOverlay()
+
+        navigateToMunimapSideTapView.isHidden = false
     }
 
-    // MARK: - Blur sqaure overlay
+    // MARK: - munimap tap view
+
+    func hideMunimapSideTapView() {
+        navigateToMunimapSideTapView.isHidden = true
+    }
+
+    // MARK: - Blur square overlay
 
     func showBlurOverlay(maskBounds: CGRect) {
         resetBlurOverlayAnimations()
 
-        blurredOverlayView.layer.mask = createRectangularMask(innerBounds: maskBounds)
+        blurredOverlayView.layer.mask = makeRectangularMask(innerBounds: maskBounds)
 
         if blurredOverlayView.isHidden {
             blurredOverlayView.isHidden = false
@@ -150,7 +164,7 @@ class QRScannerScreenView: TitledScreenView {
 
     // MARK: - Helpers - Factories
 
-    private func createRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {
+    private func makeRectangularMask(innerBounds: CGRect, width: CGFloat = 10) -> CALayer {
         let maskLayer = CAShapeLayer()
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         maskLayer.fillColor = UIColor.black.cgColor
@@ -171,5 +185,21 @@ class QRScannerScreenView: TitledScreenView {
         maskLayer.path = maskPath.cgPath
 
         return maskLayer
+    }
+
+    private func makeSideViewFrame(for sideView: SideTapView, bounds: CGRect) -> CGRect {
+        let sideViewSize = sideView.size(constrainedToWidth: bounds.width / 2)
+
+        let yOffset = (bounds.height - sideViewSize.height) / 2
+
+        let xOffset: CGFloat
+        switch sideView {
+        case navigateToMunimapSideTapView:
+            xOffset = bounds.width - sideViewSize.width
+        default:
+            return .zero
+        }
+
+        return CGRect(x: xOffset, y: yOffset, size: sideViewSize)
     }
 }

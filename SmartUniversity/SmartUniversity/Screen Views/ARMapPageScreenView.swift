@@ -10,7 +10,7 @@ import UIKit
 
 class ARMapPageScreenView: FrameBasedView {
 
-    let navigateBackSideTapView = SideTapView(text: "◄back◄")
+    let navigateBackSideTapView = SideTapView(side: .left, text: "◅back◅")
 
     private(set) lazy var munimapCornerTapView = CornerTapView( // FIXME: refactor
         configuration: .init(
@@ -91,16 +91,14 @@ class ARMapPageScreenView: FrameBasedView {
         let xOffset: CGFloat
         let yOffset: CGFloat
         switch tapView {
-        case navigateBackSideTapView:
-            xOffset = 0
-            yOffset = 0
         case munimapCornerTapView:
             xOffset = 0
             yOffset = bounds.height - tapViewSize.height
         case arViewCornerTapView:
             xOffset = bounds.width - tapViewSize.width
             yOffset = bounds.height - tapViewSize.height
-        default:                    return .zero
+        default:
+            return .zero
         }
 
         return CGRect(x: xOffset, y: yOffset, size: tapViewSize)

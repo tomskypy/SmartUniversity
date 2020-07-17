@@ -13,7 +13,7 @@ protocol QRScannerViewControllerDelegate: AnyObject {
 
     func qrScannerViewController(
         _ qrScannerViewController: QRScannerViewController,
-        didSelectContinueWith qrPoint: QRPoint
+        didSelectContinueWith qrPoint: QRPoint?
     )
 }
 
@@ -61,6 +61,8 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupSideTapViewHandler()
 
         captureSessionHandler.handleViewDidLoad(view)
         qrPointScanningHandler.handleViewDidLoad(view)
@@ -154,8 +156,18 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         scannedValueCodeObjectBounds = nil
 
         screenView?.configureBottomOverlay(
-            for: .neutral(text: "Aim at Smart University Point QR code.")
+            for: .neutral(text: "Aim at Smart University Point QR code or skip to munimap.")
         )
+    }
+
+    private func setupSideTapViewHandler() {
+        guard let screenView = screenView else { return }
+
+        screenView.navigateToMunimapSideTapView.tapHandler = { [weak self] in
+            guard let self = self else { return }
+
+            self.delegate?.qrScannerViewController(self, didSelectContinueWith: nil)
+        }
     }
 }
 
@@ -198,6 +210,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
 
+        screenView?.hideMunimapSideTapView()
         screenView?.configureBottomOverlay(
             for: .success(text: "QR Point data scanned! Tap the button bellow when ready..."),
             buttonConfiguration: .init(
@@ -268,6 +281,7 @@ private extension QRScannerViewController {
             )
         }
 
+        screenView?.hideMunimapSideTapView()
         screenView?.configureBottomOverlay(
             for: .success(text: "Debug session, eh? Enjoy..."),
             buttonConfiguration: .init(text: "Proceed", tapHandler: continueTapHandler)

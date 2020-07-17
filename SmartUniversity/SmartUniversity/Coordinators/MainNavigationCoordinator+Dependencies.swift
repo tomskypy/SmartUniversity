@@ -10,7 +10,7 @@ import UIKit
 
 enum MainNavigationScene {
     case qrScanner(delegate: QRScannerViewControllerDelegate)
-    case munimap(focusedPlaceID: String)
+    case munimap(focusedPlaceID: String?)
     case arView(roomsData: [ARLocalizedObjectData])
 }
 

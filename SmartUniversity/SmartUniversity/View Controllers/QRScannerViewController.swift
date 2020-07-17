@@ -198,6 +198,7 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
 
+        screenView?.hideMunimapSideTapView()
         screenView?.configureBottomOverlay(
             for: .success(text: "QR Point data scanned! Tap the button bellow when ready..."),
             buttonConfiguration: .init(
@@ -268,6 +269,7 @@ private extension QRScannerViewController {
             )
         }
 
+        screenView?.hideMunimapSideTapView()
         screenView?.configureBottomOverlay(
             for: .success(text: "Debug session, eh? Enjoy..."),
             buttonConfiguration: .init(text: "Proceed", tapHandler: continueTapHandler)

@@ -77,6 +77,14 @@ class QRScannerScreenView: TitledScreenView {
     func reset() {
         hideBlurOverlay()
         hideBottomOverlay()
+
+        navigateToMunimapSideTapView.isHidden = false
+    }
+
+    // MARK: - munimap tap view
+
+    func hideMunimapSideTapView() {
+        navigateToMunimapSideTapView.isHidden = true
     }
 
     // MARK: - Blur square overlay

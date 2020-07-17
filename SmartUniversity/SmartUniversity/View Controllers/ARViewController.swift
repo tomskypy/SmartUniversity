@@ -65,6 +65,7 @@ extension ARViewController: ARSceneViewHandlerDelegate {
 
         roomsData.forEach { roomData in
             let roomNode = sceneObjectProvider.makeNodeFor(.room(objectData: roomData))
+            roomNode.eulerAngles = SCNVector3Make(Float(Double.pi / 2), 0, 0)
             node.addChildNode(roomNode)
 
             DispatchQueue.main.async {

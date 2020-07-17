@@ -10,6 +10,11 @@ import UIKit
 
 final class SideTapView: VerticalFrameBasedView {
 
+    enum Side {
+        case left
+        case right
+    }
+
     override var insets: UIEdgeInsets {
         .init(all: 8)
     }
@@ -31,7 +36,7 @@ final class SideTapView: VerticalFrameBasedView {
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
 
-    init(text: String, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
+    init(side: Side, text: String, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
         self.colorProvider = colorProvider
         self.layoutProvider = layoutProvider
         super.init(frame: .zero)
@@ -43,7 +48,7 @@ final class SideTapView: VerticalFrameBasedView {
         backgroundColor = colorProvider.backgroundColor.withAlphaComponent(0.55)
 
         layer.cornerRadius = 16
-        layer.maskedCorners = .init(arrayLiteral: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+        layer.maskedCorners = side.maskedCorners
 
         addSubview(label)
     }
@@ -78,5 +83,15 @@ final class SideTapView: VerticalFrameBasedView {
 
     private func makeLabelFrame(forWidth width: CGFloat) -> CGRect {
         CGRect(x: insets.left, y: insets.top, size: label.size(constrainedToWidth: width - insets.horizontalSum))
+    }
+}
+
+private extension SideTapView.Side {
+
+    var maskedCorners: CACornerMask {
+        switch self {
+        case .right:    return .init(arrayLiteral: [.layerMinXMinYCorner, .layerMinXMaxYCorner])
+        case .left:     return .init(arrayLiteral: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+        }
     }
 }

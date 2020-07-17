@@ -29,10 +29,10 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
 
     var didFinishHandler: (() -> Void)?
 
-    let arViewController: UIViewController
+    let arViewController: UIViewController?
     let muniMapViewController: UIViewController
 
-    init(arViewController: UIViewController, muniMapViewController: UIViewController) {
+    init(arViewController: UIViewController?, muniMapViewController: UIViewController) {
         self.arViewController = arViewController
         self.muniMapViewController = muniMapViewController
 
@@ -71,11 +71,15 @@ final class ARMapPageViewController: BasePageViewController<ARMapPageScreenView>
         }
 
         let arViewTapView = screenOverlayView.arViewCornerTapView
-        arViewTapView.tapHandler = { [weak self] in
-            guard let self = self else { return }
+        if let arViewController = arViewController {
+            arViewTapView.tapHandler = { [weak self] in
+                guard let self = self else { return }
 
-            self.switchTo(self.arViewController, direction: .forward)
-            self.screenOverlayView?.highlightTapView(arViewTapView)
+                self.switchTo(arViewController, direction: .forward)
+                self.screenOverlayView?.highlightTapView(arViewTapView)
+            }
+        } else {
+            arViewTapView.isHidden = true
         }
     }
 

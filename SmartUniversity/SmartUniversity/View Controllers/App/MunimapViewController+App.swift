@@ -10,7 +10,7 @@ import Foundation
 
 extension MunimapViewController {
 
-    convenience init(focusedPlaceID: String) {
+    convenience init(focusedPlaceID: String?) {
         self.init(munimapServerURL: AppURL.munimap(placeID: focusedPlaceID).value, webViewHandler: WebViewHandler())
     }
 }

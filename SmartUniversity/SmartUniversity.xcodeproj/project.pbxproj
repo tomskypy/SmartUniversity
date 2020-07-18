@@ -18,6 +18,8 @@
 		350C62B62496809F000787C0 /* CornerTapView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C62B52496809F000787C0 /* CornerTapView+App.swift */; };
 		350DDB9624B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDB9524B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift */; };
 		350DDB9824B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDB9724B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift */; };
+		3515269324C33295000929A8 /* TextOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515269224C33295000929A8 /* TextOverlayView.swift */; };
+		3515269524C33625000929A8 /* TextOverlayView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3515269424C33625000929A8 /* TextOverlayView+App.swift */; };
 		35162543249551A20069E22C /* ARMapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35162542249551A20069E22C /* ARMapPageViewController.swift */; };
 		3516254524957D1F0069E22C /* ARMapPageScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516254424957D1F0069E22C /* ARMapPageScreenView.swift */; };
 		3516B3682416F162009C5D36 /* BaseViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */; };
@@ -159,6 +161,8 @@
 		350C62B52496809F000787C0 /* CornerTapView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CornerTapView+App.swift"; sourceTree = "<group>"; };
 		350DDB9524B3928000B6F362 /* CaptureAuthorizationStatusProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureAuthorizationStatusProviding.swift; sourceTree = "<group>"; };
 		350DDB9724B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCaptureAuthorizationProvider.swift; sourceTree = "<group>"; };
+		3515269224C33295000929A8 /* TextOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOverlayView.swift; sourceTree = "<group>"; };
+		3515269424C33625000929A8 /* TextOverlayView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextOverlayView+App.swift"; sourceTree = "<group>"; };
 		35162542249551A20069E22C /* ARMapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapPageViewController.swift; sourceTree = "<group>"; };
 		3516254424957D1F0069E22C /* ARMapPageScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapPageScreenView.swift; sourceTree = "<group>"; };
 		3516B3672416F162009C5D36 /* BaseViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerTests.swift; sourceTree = "<group>"; };
@@ -623,6 +627,7 @@
 				3570643D248872CC00E45B0D /* VerticalFrameBasedView.swift */,
 				35706438248872CC00E45B0D /* ARSceneContainerView.swift */,
 				3570643B248872CC00E45B0D /* InteractiveOverlayView.swift */,
+				3515269224C33295000929A8 /* TextOverlayView.swift */,
 				350C62B324968084000787C0 /* CornerTapView.swift */,
 				3534009F249EA93100198B5B /* LoadingOverlayView.swift */,
 				356E7A0A24B0AD1B002C1D1C /* GradientView.swift */,
@@ -637,6 +642,7 @@
 				3570643A248872CC00E45B0D /* InteractiveOverlayView+App.swift */,
 				350C62B52496809F000787C0 /* CornerTapView+App.swift */,
 				358325B824B1673800DADC6A /* SideTapView+App.swift */,
+				3515269424C33625000929A8 /* TextOverlayView+App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 				3570647B248872CC00E45B0D /* InteractiveOverlayView.swift in Sources */,
 				35D3019B249AF0C80088801B /* ARSceneViewHandling.swift in Sources */,
 				35706480248872CC00E45B0D /* RemoteJSONDataInfo.swift in Sources */,
+				3515269524C33625000929A8 /* TextOverlayView+App.swift in Sources */,
 				350C62B62496809F000787C0 /* CornerTapView+App.swift in Sources */,
 				3545E4E724AFC459000EE4BD /* MunimapScreenView+App.swift in Sources */,
 				35706474248872CC00E45B0D /* QRPointScanningHandlerDelegate.swift in Sources */,
@@ -978,6 +985,7 @@
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,
 				3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */,
+				3515269324C33295000929A8 /* TextOverlayView.swift in Sources */,
 				358325B924B1673800DADC6A /* SideTapView+App.swift in Sources */,
 				35D30197249AEFD70088801B /* PresentationHandler.swift in Sources */,
 				35D30195249AEFBA0088801B /* WebViewHandling.swift in Sources */,

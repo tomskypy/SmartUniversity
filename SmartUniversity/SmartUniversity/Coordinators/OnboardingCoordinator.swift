@@ -14,7 +14,7 @@ protocol OnboardingCoordinatorDelegate: AnyObject {
     func onboardingCoordinatorDidSkipOnboarding()
 }
 
-final class OnboardingCoordinator: BaseCoordinator {
+final class OnboardingCoordinator: NSObject, BaseCoordinator {
 
     weak var delegate: OnboardingCoordinatorDelegate?
 
@@ -56,6 +56,19 @@ extension OnboardingCoordinator: OnboardingViewControllerDelegate {
 
     func onboardingViewControllerDidSelectSkip(_ viewController: OnboardingViewController) {
         delegate?.onboardingCoordinatorDidSkipOnboarding()
+    }
+}
+
+extension OnboardingCoordinator: UIGestureRecognizerDelegate {
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        guard gestureRecognizer.isEqual(navigationController.interactivePopGestureRecognizer) else {
+            return true
+        }
+
+        controllerIndex -= 1
+        return true
     }
 }
 

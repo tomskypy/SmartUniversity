@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainNavigationCoordinator: BaseCoordinator {
+final class MainNavigationCoordinator: NSObject, BaseCoordinator {
 
     let navigationController: NavigationController
     let dependencies: Dependencies
@@ -22,9 +22,13 @@ final class MainNavigationCoordinator: BaseCoordinator {
     init(navigationController: NavigationController, dependencies: MainNavigationCoordinator.Dependencies) {
         self.navigationController = navigationController
         self.dependencies = dependencies
+        super.init()
     }
 
     func start() {
+        navigationController.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController.interactivePopGestureRecognizer?.delegate = self
+
         navigationController.pushViewController(
             dependencies.viewControllerFactory.makeViewController(for: .qrScanner(delegate: self))
         )
@@ -36,6 +40,7 @@ final class MainNavigationCoordinator: BaseCoordinator {
 
     private func initiateOnboarding() {
         onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+        navigationController.interactivePopGestureRecognizer?.delegate = onboardingCoordinator
         onboardingCoordinator?.start()
     }
 }
@@ -43,11 +48,14 @@ final class MainNavigationCoordinator: BaseCoordinator {
 extension MainNavigationCoordinator: OnboardingCoordinatorDelegate {
 
     func onboardingCoordinatorDidFinish() {
-        self.dependencies.appConfigurationProvider.setDidPassOnboarding()
-        self.navigationController.popToRootViewController()
+        resetInteractivePopGestureRecognizer()
+
+        dependencies.appConfigurationProvider.setDidPassOnboarding()
+        navigationController.popToRootViewController()
     }
 
     func onboardingCoordinatorDidSkipOnboarding() {
+        resetInteractivePopGestureRecognizer()
 
         let alert = UIAlertController(
             title: "Skip onboarding",
@@ -60,6 +68,10 @@ extension MainNavigationCoordinator: OnboardingCoordinatorDelegate {
         })
 
         self.navigationController.present(alert, animated: true)
+    }
+
+    private func resetInteractivePopGestureRecognizer() {
+        navigationController.interactivePopGestureRecognizer?.delegate = self
     }
 }
 
@@ -85,5 +97,12 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
         guard let qrPoint = qrPoint else { return nil }
 
         return dependencies.viewControllerFactory.makeViewController(for: .arView(roomsData: qrPoint.rooms))
+    }
+}
+
+extension MainNavigationCoordinator: UIGestureRecognizerDelegate {
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
     }
 }

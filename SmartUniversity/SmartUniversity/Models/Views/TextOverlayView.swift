@@ -16,15 +16,31 @@ final class TextOverlayView: VerticalFrameBasedView {
         case long
     }
 
+    private static let additionalTopInset: CGFloat = 8
+
+    override var isHidden: Bool {
+        get { super.isHidden }
+        set {
+            let willHide = newValue
+            if willHide {
+                hidingWorkItem?.cancel()
+            }
+
+            super.isHidden = newValue
+        }
+    }
+
     override var insets: UIEdgeInsets {
-        layoutProvider.contentInsets(for: self, respectingSafeAreasOn: .all())
+        layoutProvider.contentInsets(for: self, size: .small, respectingSafeAreasOn: [.top])
     }
 
     private var hidingWorkItem: DispatchWorkItem?
 
     private lazy var label = UILabel(
         font: .systemFont(ofSize: layoutProvider.textSize(.small)),
-        textColor: colorProvider.textColor
+        textColor: colorProvider.textColor,
+        textAlignment: .center,
+        numberOfLines: 0
     )
 
     private let colorProvider: ColorProviding
@@ -36,14 +52,24 @@ final class TextOverlayView: VerticalFrameBasedView {
 
         super.init(frame: .zero)
 
-        backgroundColor = colorProvider.primaryDarkColor
+        backgroundColor = colorProvider.primaryDarkColor.withAlphaComponent(0.45)
         isHidden = initiallyHidden
+
+        addSubview(label)
     }
 
     required init?(coder: NSCoder) { nil }
 
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
-        [(label, CGRect(x: insets.left, y: insets.top, width: width, height: label.height(constrainedToWidth: width)))]
+        let contentWidth = width - insets.horizontalSum
+
+        let labelFrame = CGRect(
+            x: insets.left,
+            y: insets.top + Self.additionalTopInset,
+            width: contentWidth,
+            height: label.height(constrainedToWidth: contentWidth)
+        )
+        return [(label, labelFrame)]
     }
 
     func reveal(forPeriod visibilityPeriod: VisibilityPeriod, text: String? = nil) {
@@ -51,6 +77,7 @@ final class TextOverlayView: VerticalFrameBasedView {
 
         if let text = text {
             label.text = text
+            setNeedsLayout()
         }
 
         isHidden = false
@@ -58,9 +85,9 @@ final class TextOverlayView: VerticalFrameBasedView {
             let workItem = DispatchWorkItem { [weak self] in
                 self?.isHidden = true
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + hideDelaySeconds, execute: workItem)
-
             hidingWorkItem = workItem
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + hideDelaySeconds, execute: workItem)
         }
     }
 }

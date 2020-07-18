@@ -8,7 +8,14 @@
 
 import UIKit
 
+enum ARScreenTextOverlayContent {
+    case aimAtPosterToInitiate
+    case needToRecapturePoster
+}
+
 final class ARScreenView: TitledScreenView {
+
+    private static let maxRoomLabelWidth: CGFloat = 250
 
     var insets: UIEdgeInsets { .init(all: 50) }
 
@@ -16,14 +23,14 @@ final class ARScreenView: TitledScreenView {
         willSet { arSceneView?.removeFromSuperview() }
         didSet {
             if let arSceneView = arSceneView {
-                addSubview(arSceneView)
+                insertSubview(arSceneView, at: 0)
             }
 
             setNeedsLayout()
         }
     }
 
-    private static let maxRoomLabelWidth: CGFloat = 250
+    private let textOverlayView = TextOverlayView()
 
     override init(layoutProvider: LayoutProviding) {
         super.init(layoutProvider: layoutProvider)
@@ -43,24 +50,42 @@ final class ARScreenView: TitledScreenView {
 
         let contentHeight = bounds.height + safeAreaInsets.verticalSum
 
+        let fullscreenViewOrigin = CGPoint(x: 0, y: -safeAreaInsets.top)
+
         let sceneViewFrame = CGRect(
-            x: 0,
-            y: -safeAreaInsets.top,
+            origin: fullscreenViewOrigin,
             size: CGSize(width: bounds.width, height: contentHeight)
         )
 
-        return frames + [(arSceneView, sceneViewFrame)]
+        let textOverlayFrame = CGRect(
+            origin: fullscreenViewOrigin,
+            size: textOverlayView.size(constrainedToWidth: bounds.width)
+        )
+
+        return frames + [(arSceneView, sceneViewFrame), (textOverlayView, textOverlayFrame)]
     }
 
     override func setupSubviews() {
         backgroundColor = .black
+
+        addSubviewAboveScreenTitle(textOverlayView)
+    }
+
+    func revealTextOverlay(with content: ARScreenTextOverlayContent) {
+        textOverlayView.reveal(forPeriod: content.period, text: content.text)
+
+        setNeedsLayout()
+    }
+
+    func hideTextOverlay() {
+        textOverlayView.isHidden = true
     }
 
     func makeAndAddRoomLabel(text: String) -> UIView {
         let label = RoomLabelView(text: text)
         label.frame.size = label.size(constrainedToWidth: Self.maxRoomLabelWidth)
         addSubview(label)
-        
+
         return label
     }
 }
@@ -103,3 +128,20 @@ private class RoomLabelView: VerticalFrameBasedView {
 }
 
 extension ARScreenView: ARSceneContainerView { }
+
+private extension ARScreenTextOverlayContent {
+
+    var text: String {
+        switch self {
+        case .aimAtPosterToInitiate:    return "Aim at the QR Poster to initiate the AR experience"
+        case .needToRecapturePoster:    return "The QR Poster needs to be recaptured to continue"
+        }
+    }
+
+    var period: TextOverlayView.VisibilityPeriod {
+        switch self {
+        case .aimAtPosterToInitiate:    return .infinite
+        case .needToRecapturePoster:    return .long
+        }
+    }
+}

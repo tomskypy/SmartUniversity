@@ -10,6 +10,11 @@ import ARKit
 
 final class ARViewController: BaseViewController<ARScreenView> {
 
+    private static let tipPresentationDelay = 2.0
+
+    private var hasCapturedPoster: Bool = false
+    private var tipShowingWorkItem: DispatchWorkItem?
+
     private var roomLabelViews: [SCNNode: UIView] = [:]
 
     private var sceneViewHandler: ARSceneViewHandling
@@ -44,10 +49,37 @@ final class ARViewController: BaseViewController<ARScreenView> {
         sceneViewHandler.handleViewWillAppear(view)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        schedulePosterCaptureTipPresentation()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+        hidePosterCapturingTip()
+
         sceneViewHandler.handleViewWillDisappear(view)
+    }
+
+    private func schedulePosterCaptureTipPresentation() {
+        let tipShowingWorkItem = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+
+            self.screenView?.revealTextOverlay(
+                with: self.hasCapturedPoster ? .needToRecapturePoster: .aimAtPosterToInitiate
+            )
+        }
+        self.tipShowingWorkItem = tipShowingWorkItem
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + Self.tipPresentationDelay, execute: tipShowingWorkItem)
+    }
+
+    private func hidePosterCapturingTip() {
+        tipShowingWorkItem?.cancel()
+
+        screenView?.hideTextOverlay()
     }
 }
 
@@ -58,12 +90,16 @@ extension ARViewController: ARSceneViewHandlerDelegate {
         didDetectReferenceImage imageAnchor: ARImageAnchor,
         onNode node: SCNNode
     ) {
+        hasCapturedPoster = true
+
         let posterNode = sceneObjectProvider.makeNodeFor(
             .poster(physicalSize: imageAnchor.referenceImage.physicalSize)
         )
         node.addChildNode(posterNode)
 
         DispatchQueue.main.async {
+            self.hidePosterCapturingTip()
+
             self.resetRoomLabelViews()
 
             self.roomsData.forEach { roomData in
@@ -108,5 +144,4 @@ extension ARViewController: ARSceneViewHandlerDelegate {
         roomLabelViews.values.forEach { $0.removeFromSuperview() }
         roomLabelViews = [:]
     }
-
 }

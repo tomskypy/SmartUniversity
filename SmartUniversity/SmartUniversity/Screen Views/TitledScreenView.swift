@@ -48,6 +48,10 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
         insertSubview(view, belowSubview: label)
     }
 
+    func addSubviewAboveScreenTitle(_ view: UIView) {
+        super.addSubview(view)
+    }
+
     func setupSubviews() { }
 
     private func configure(withTitleText titleText: String?) {

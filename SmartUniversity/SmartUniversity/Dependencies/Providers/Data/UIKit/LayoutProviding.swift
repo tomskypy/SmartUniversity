@@ -25,7 +25,11 @@ protocol LayoutProviding {
 
     var contentSpacing: CGFloat { get }
 
-    func contentInsets(for view: UIView, respectingSafeAreasOn safeAreaSides: Set<LayoutSide>) -> UIEdgeInsets
+    func contentInsets(
+        for view: UIView,
+        size: SizeClass,
+        respectingSafeAreasOn safeAreaSides: Set<LayoutSide>
+    ) -> UIEdgeInsets
 
     func preferredSize(for button: UIButton) -> CGSize
 
@@ -38,6 +42,14 @@ extension LayoutProviding {
 
     func contentInsets(for view: UIView) -> UIEdgeInsets {
         contentInsets(for: view, respectingSafeAreasOn: [])
+    }
+
+    func contentInsets(for view: UIView, respectingSafeAreasOn safeAreaSides: Set<LayoutSide>) -> UIEdgeInsets {
+        contentInsets(for: view, size: .normal, respectingSafeAreasOn: safeAreaSides)
+    }
+
+    func contentInsets(for view: UIView, size: SizeClass) -> UIEdgeInsets {
+        contentInsets(for: view, size: size, respectingSafeAreasOn: [])
     }
 
     // MARK: - Helpers

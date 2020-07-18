@@ -22,13 +22,13 @@ class QRScannerScreenView: TitledScreenView {
 
     let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
 
-    private let bottomOverlay = InfoOverlayView()
+    private let bottomOverlay = InteractiveOverlayView()
 
-    private var bottomOverlayState: InfoOverlayView.State? {
+    private var bottomOverlayState: InteractiveOverlayView.State? {
         didSet { configureBottomOverlay(for: bottomOverlayState) }
     }
 
-    private var bottomOverlayButtonConfiguration: InfoOverlayView.ButtonConfiguration? {
+    private var bottomOverlayButtonConfiguration: InteractiveOverlayView.ButtonConfiguration? {
         didSet {
             bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration
         }
@@ -107,8 +107,8 @@ class QRScannerScreenView: TitledScreenView {
     // MARK: - Bottom overlay
 
     func configureBottomOverlay(
-        for state: InfoOverlayView.State,
-        buttonConfiguration: InfoOverlayView.ButtonConfiguration? = nil
+        for state: InteractiveOverlayView.State,
+        buttonConfiguration: InteractiveOverlayView.ButtonConfiguration? = nil
     ) {
         bottomOverlayState = state
         bottomOverlayButtonConfiguration = buttonConfiguration
@@ -138,7 +138,7 @@ class QRScannerScreenView: TitledScreenView {
 
     // MARK: - Helpers - Configuration
 
-    private func configureBottomOverlay(for state: InfoOverlayView.State?) {
+    private func configureBottomOverlay(for state: InteractiveOverlayView.State?) {
         guard let state = bottomOverlayState else {
             return bottomOverlay.removeFromSuperview()
         }

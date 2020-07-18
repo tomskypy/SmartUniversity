@@ -92,8 +92,8 @@
 		35706477248872CC00E45B0D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35706435248872CC00E45B0D /* SceneDelegate.swift */; };
 		35706478248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35706436248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift */; };
 		35706479248872CC00E45B0D /* ARSceneContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35706438248872CC00E45B0D /* ARSceneContainerView.swift */; };
-		3570647A248872CC00E45B0D /* InfoOverlayView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643A248872CC00E45B0D /* InfoOverlayView+App.swift */; };
-		3570647B248872CC00E45B0D /* InfoOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643B248872CC00E45B0D /* InfoOverlayView.swift */; };
+		3570647A248872CC00E45B0D /* InteractiveOverlayView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643A248872CC00E45B0D /* InteractiveOverlayView+App.swift */; };
+		3570647B248872CC00E45B0D /* InteractiveOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643B248872CC00E45B0D /* InteractiveOverlayView.swift */; };
 		3570647C248872CC00E45B0D /* FrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643C248872CC00E45B0D /* FrameBasedView.swift */; };
 		3570647D248872CC00E45B0D /* VerticalFrameBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643D248872CC00E45B0D /* VerticalFrameBasedView.swift */; };
 		3570647E248872CC00E45B0D /* ARLocalizedObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3570643F248872CC00E45B0D /* ARLocalizedObjectData.swift */; };
@@ -233,8 +233,8 @@
 		35706435248872CC00E45B0D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		35706436248872CC00E45B0D /* ARSceneViewHandlerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSceneViewHandlerDelegate.swift; sourceTree = "<group>"; };
 		35706438248872CC00E45B0D /* ARSceneContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSceneContainerView.swift; sourceTree = "<group>"; };
-		3570643A248872CC00E45B0D /* InfoOverlayView+App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InfoOverlayView+App.swift"; sourceTree = "<group>"; };
-		3570643B248872CC00E45B0D /* InfoOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoOverlayView.swift; sourceTree = "<group>"; };
+		3570643A248872CC00E45B0D /* InteractiveOverlayView+App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InteractiveOverlayView+App.swift"; sourceTree = "<group>"; };
+		3570643B248872CC00E45B0D /* InteractiveOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveOverlayView.swift; sourceTree = "<group>"; };
 		3570643C248872CC00E45B0D /* FrameBasedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameBasedView.swift; sourceTree = "<group>"; };
 		3570643D248872CC00E45B0D /* VerticalFrameBasedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalFrameBasedView.swift; sourceTree = "<group>"; };
 		3570643F248872CC00E45B0D /* ARLocalizedObjectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARLocalizedObjectData.swift; sourceTree = "<group>"; };
@@ -622,7 +622,7 @@
 				3570643C248872CC00E45B0D /* FrameBasedView.swift */,
 				3570643D248872CC00E45B0D /* VerticalFrameBasedView.swift */,
 				35706438248872CC00E45B0D /* ARSceneContainerView.swift */,
-				3570643B248872CC00E45B0D /* InfoOverlayView.swift */,
+				3570643B248872CC00E45B0D /* InteractiveOverlayView.swift */,
 				350C62B324968084000787C0 /* CornerTapView.swift */,
 				3534009F249EA93100198B5B /* LoadingOverlayView.swift */,
 				356E7A0A24B0AD1B002C1D1C /* GradientView.swift */,
@@ -634,7 +634,7 @@
 		35706439248872CC00E45B0D /* App */ = {
 			isa = PBXGroup;
 			children = (
-				3570643A248872CC00E45B0D /* InfoOverlayView+App.swift */,
+				3570643A248872CC00E45B0D /* InteractiveOverlayView+App.swift */,
 				350C62B52496809F000787C0 /* CornerTapView+App.swift */,
 				358325B824B1673800DADC6A /* SideTapView+App.swift */,
 			);
@@ -943,7 +943,7 @@
 				35D30186249AEE0A0088801B /* LayoutProviding.swift in Sources */,
 				35706475248872CC00E45B0D /* BaseSceneDelegate.swift in Sources */,
 				35706481248872CC00E45B0D /* QRPoint.swift in Sources */,
-				3570647A248872CC00E45B0D /* InfoOverlayView+App.swift in Sources */,
+				3570647A248872CC00E45B0D /* InteractiveOverlayView+App.swift in Sources */,
 				35706483248872CC00E45B0D /* OnboardingScreenView+App.swift in Sources */,
 				3570645C248872CC00E45B0D /* SceneDependencyProviding.swift in Sources */,
 				3570647E248872CC00E45B0D /* ARLocalizedObjectData.swift in Sources */,
@@ -952,7 +952,7 @@
 				35706466248872CC00E45B0D /* RoomsSceneObjectProvider.swift in Sources */,
 				35706482248872CC00E45B0D /* ARScreenView.swift in Sources */,
 				358325B524B1610C00DADC6A /* SideTapView.swift in Sources */,
-				3570647B248872CC00E45B0D /* InfoOverlayView.swift in Sources */,
+				3570647B248872CC00E45B0D /* InteractiveOverlayView.swift in Sources */,
 				35D3019B249AF0C80088801B /* ARSceneViewHandling.swift in Sources */,
 				35706480248872CC00E45B0D /* RemoteJSONDataInfo.swift in Sources */,
 				350C62B62496809F000787C0 /* CornerTapView+App.swift in Sources */,

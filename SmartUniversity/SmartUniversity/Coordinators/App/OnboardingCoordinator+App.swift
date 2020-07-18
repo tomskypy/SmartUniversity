@@ -37,24 +37,29 @@ struct AppOnboardingDependenciesFactory {
             ),
             .init(
                 titleText: "In-\ndoors",
-                bodyText: "The main feature is a indoor localization within MUNI's faculties.\n\nWe cannot utilize the GPS indoors, so we've come up with QR Points."
+                bodyText: "The main feature is a indoor localization within MUNI's faculties.\n\nWe cannot utilize the"
+                    + " GPS indoors, so we've come up with QR Points."
             ),
             .init(
                 titleText: "QR\nScan-\nner",
-                bodyText: "The QR Scanner helps you access any QR Point.\n\nThose are posters with a QR code placed strategically around faculties.",
+                bodyText: "The QR Scanner helps you access any QR Point.\n\nThose are posters with a QR code placed"
+                    + " strategically around faculties.",
                 action: { self.checkCameraPermissionAuthorization(within: $0, completion: $1) }
             ),
             .init(
                 titleText: "muni-\nmap",
-                bodyText: "Powered by the QR Point's data, you'll be localized on the munimap*.\n\n*munimap - handy MUNI's interactive map of all rooms on all floors within any faculty"
+                bodyText: "Powered by the QR Point's data, you'll be localized on the munimap*.\n\n*munimap - handy"
+                    + " MUNI's interactive map of all rooms on all floors within any faculty"
             ),
             .init(
                 titleText: "AR\nView",
-                bodyText: "Last but hopefully not least there's AR View.\n\nLaunch it and aim the AR preview at the QR Point. Then, simply follow the instructions."
+                bodyText: "Lastly, there's AR View.\n\nLaunch it and aim the AR preview at the QR Point. Then, simply"
+                    + " follow the instructions."
             ),
             .init(
-                titleText: "Than-\nks",
-                bodyText: "For going all the way through.\n\nWe'll try to condense this somehow in future versions.",
+                titleText: "Thank\nyou",
+                bodyText: "... for going all the way through, that should be all the info you need.\n\nWe'll try to"
+                    + " condense this somehow in future versions.",
                 isFinal: true
             )
         ]

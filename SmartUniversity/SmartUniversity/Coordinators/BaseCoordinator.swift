@@ -10,6 +10,8 @@ import UIKit
 
 protocol NavigationController: UIViewController {
 
+    var interactivePopGestureRecognizer: UIGestureRecognizer? { get }
+
     func pushViewController(_ viewController: UIViewController)
     func popViewController()
     func popToRootViewController()

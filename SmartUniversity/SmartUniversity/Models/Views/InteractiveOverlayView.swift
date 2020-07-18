@@ -1,5 +1,5 @@
 //
-//  InfoTextOverlayView.swift
+//  InteractiveOverlayView.swift
 //  SmartUniversity
 //
 //  Created by Tomas Skypala on 01/06/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class InfoOverlayView: VerticalFrameBasedView {
+final class InteractiveOverlayView: VerticalFrameBasedView {
 
     enum State {
         case success(text: String)
@@ -134,7 +134,7 @@ final class InfoOverlayView: VerticalFrameBasedView {
     }
 }
 
-private extension InfoOverlayView.State {
+private extension InteractiveOverlayView.State {
 
     var labelText: String? {
         switch self {

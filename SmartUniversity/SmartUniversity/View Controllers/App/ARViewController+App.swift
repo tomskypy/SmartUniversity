@@ -13,11 +13,11 @@ extension ARViewController {
     convenience init(roomsData: [ARLocalizedObjectData]) {
         let arReferenceImages = PosterReferenceImageProvider.shared.referenceImages
         let posterImage = PosterReferenceImageProvider.shared.image
-        
+
         self.init(
             sceneViewHandler: ARSceneViewHandler(referenceImages: arReferenceImages),
             sceneObjectProvider: RoomsSceneObjectProvider(
-                model: .init(posterImage: posterImage, defaultTint: UIColor.systemPink) // FIXME: make a dependency for tint
+                model: .init(posterImage: posterImage, defaultTint: UIColor.green) // FIXME: make a dependency for tint
             ),
             roomsData: roomsData
         )

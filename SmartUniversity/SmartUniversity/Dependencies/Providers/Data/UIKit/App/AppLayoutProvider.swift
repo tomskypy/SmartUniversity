@@ -21,6 +21,7 @@ final class AppLayoutProvider: LayoutProviding {
 
     func contentInsets(
         for view: UIView,
+        size: SizeClass,
         respectingSafeAreasOn safeAreaRespectingSides: Set<LayoutSide>
     ) -> UIEdgeInsets {
         var insets = Self.contentInsets
@@ -44,9 +45,17 @@ final class AppLayoutProvider: LayoutProviding {
 
     func textSize(_ sizeClass: SizeClass) -> CGFloat {
         switch sizeClass {
-        case .small:    return 16
-        case .normal:   return 20
-        case .large:    return 28
+            case .small:    return 16
+            case .normal:   return 20
+            case .large:    return 28
+        }
+    }
+
+    func contentInsetsSize(_ sizeClass: SizeClass) -> CGFloat {
+        switch sizeClass {
+            case .small:    return 8
+            case .normal:   return 16
+            case .large:    return 24
         }
     }
 }

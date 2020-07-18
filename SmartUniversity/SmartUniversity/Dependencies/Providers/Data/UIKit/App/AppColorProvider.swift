@@ -21,10 +21,10 @@ final class AppColorProvider: ColorProviding {
         }
     }
 
-    private static let primaryColorSet = ColorSet(light: UIColor(hex: "#58a5f0")!, dark: UIColor(hex: "#69b6ff")!) // FIXME: get rid of !s
+    private static let primaryColorSet = ColorSet(light: UIColor(hex: "#4f83cc")!, dark: UIColor(hex: "#69b6ff")!) // FIXME: get rid of !s
     private static let primaryDarkColorSet = ColorSet(light: UIColor(hex: "#3c5d8c")!, dark: UIColor(hex: "#000d34")!)
 
-    private static let secondaryColorSet = ColorSet(light: UIColor(hex: "#4a626d")!, dark: UIColor(hex: "#a6bfcc")!)
+    private static let secondaryColorSet = ColorSet(light: UIColor(hex: "#62757f")!, dark: UIColor(hex: "#a6bfcc")!)
 
     private static let neutralColorSet = ColorSet(light: UIColor(hex: "#cfcfcf")!, dark: UIColor(hex: "#707070")!)
     private static let negativeColorSet = ColorSet(light: UIColor(hex: "#ff5131")!, dark: UIColor(hex: "#9b0000")!)

@@ -40,16 +40,12 @@ extension LayoutProviding {
 
     // MARK: - Convenience
 
-    func contentInsets(for view: UIView) -> UIEdgeInsets {
-        contentInsets(for: view, respectingSafeAreasOn: [])
-    }
-
-    func contentInsets(for view: UIView, respectingSafeAreasOn safeAreaSides: Set<LayoutSide>) -> UIEdgeInsets {
+    func contentInsets(
+        for view: UIView,
+        size: SizeClass = .normal,
+        respectingSafeAreasOn safeAreaSides: Set<LayoutSide> = []
+    ) -> UIEdgeInsets {
         contentInsets(for: view, size: .normal, respectingSafeAreasOn: safeAreaSides)
-    }
-
-    func contentInsets(for view: UIView, size: SizeClass) -> UIEdgeInsets {
-        contentInsets(for: view, size: size, respectingSafeAreasOn: [])
     }
 
     // MARK: - Helpers
@@ -64,10 +60,10 @@ extension LayoutProviding {
         safeAreaRespectingSides.forEach { side in
             let additionalInsets: UIEdgeInsets
             switch side {
-                case .top: additionalInsets = .init(top: actualSafeAreaInsets.top)
-                case .left: additionalInsets = .init(left: actualSafeAreaInsets.left)
-                case .bottom: additionalInsets = .init(bottom: actualSafeAreaInsets.bottom)
-                case .right: additionalInsets = .init(right: actualSafeAreaInsets.right)
+                case .top:      additionalInsets = .init(top: actualSafeAreaInsets.top)
+                case .left:     additionalInsets = .init(left: actualSafeAreaInsets.left)
+                case .bottom:   additionalInsets = .init(bottom: actualSafeAreaInsets.bottom)
+                case .right:    additionalInsets = .init(right: actualSafeAreaInsets.right)
             }
             respectedSafeAreaInsets = respectedSafeAreaInsets.merged(with: additionalInsets)
         }

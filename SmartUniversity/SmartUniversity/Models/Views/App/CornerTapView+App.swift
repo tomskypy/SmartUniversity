@@ -8,11 +8,7 @@
 
 extension CornerTapView {
 
-    convenience init(configuration: Configuration) {
-        self.init(
-            configuration: configuration,
-            colorProvider: AppColorProvider.shared,
-            layoutProvider: AppLayoutProvider.shared
-        )
+    convenience init(content: Content) {
+        self.init(content: content, colorProvider: AppColorProvider.shared, layoutProvider: AppLayoutProvider.shared)
     }
 }

@@ -10,16 +10,6 @@ import UIKit
 
 final class CornerTapView: VerticalFrameBasedView {
 
-    struct Configuration {
-        let corner: Corner
-        let content: Content
-    }
-
-    enum Corner {
-        case bottomLeft
-        case bottomRight
-    }
-
     struct Content {
         let icon: UIImage?
 
@@ -31,10 +21,7 @@ final class CornerTapView: VerticalFrameBasedView {
     // MARK: - Property overrides
 
     override var insets: UIEdgeInsets {
-        layoutProvider.contentInsets(
-            for: self,
-            respectingSafeAreasOn: [configuration.corner.respectedSafeAreaLayoutSide]
-        )
+        layoutProvider.contentInsets(for: self, respectingSafeAreasOn: [.bottom])
     }
 
     override var insetAgnosticSubviews: [UIView] { [backgroundView] }
@@ -63,8 +50,8 @@ final class CornerTapView: VerticalFrameBasedView {
 
     // MARK: - Configuration
 
-    var configuration: Configuration {
-        didSet { configure(with: configuration) }
+    var content: Content {
+        didSet { configure(with: content) }
     }
 
     var textColor: UIColor {
@@ -105,20 +92,20 @@ final class CornerTapView: VerticalFrameBasedView {
 
     // MARK: - Inits
 
-    init(configuration: Configuration, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
-        self.configuration = configuration
+    init(content: Content, colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
+        self.content = content
 
         self.colorProvider = colorProvider
         self.layoutProvider = layoutProvider
 
-        label = Self.makeLabel(with: configuration.content, colorProvider: colorProvider)
+        label = Self.makeLabel(with: content, colorProvider: colorProvider)
 
         backgroundConfiguration = Self.makeBackgroundConfiguration(with: colorProvider.overlayColor)
         backgroundView = GradientView(configuration: backgroundConfiguration)
 
         super.init(frame: .zero)
 
-        configure(with: configuration)
+        configure(with: content)
         configureTapDelegate(with: #selector(viewTapped))
 
         addSubviews(backgroundView, label, iconView)
@@ -169,9 +156,9 @@ final class CornerTapView: VerticalFrameBasedView {
 
     // MARK: - Helpers - Configuration
 
-    private func configure(with configuration: Configuration) {
-        label = Self.makeLabel(with: configuration.content, colorProvider: colorProvider)
-        iconView.image = configuration.content.icon
+    private func configure(with content: Content) {
+        label = Self.makeLabel(with: content, colorProvider: colorProvider)
+        iconView.image = content.icon
     }
 
     // MARK: - Helpers - Factories
@@ -189,21 +176,5 @@ final class CornerTapView: VerticalFrameBasedView {
 
     private static func makeBackgroundConfiguration(with overlayColor: UIColor) -> GradientView.Configuration {
         .init(color: overlayColor, axis: .vertical(locations: [0.2, 0.9, 1.0], upToDown: false))
-    }
-}
-
-private extension CornerTapView.Corner {
-
-    var maskedCorner: CACornerMask {
-        switch self {
-            case .bottomLeft:   return .layerMaxXMinYCorner
-            case .bottomRight:  return .layerMinXMinYCorner
-        }
-    }
-
-    var respectedSafeAreaLayoutSide: LayoutSide {
-        switch self {
-            case .bottomLeft, .bottomRight: return .bottom
-        }
     }
 }

@@ -12,29 +12,9 @@ class ARMapPageScreenView: FrameBasedView {
 
     let navigateBackSideTapView = SideTapView(side: .left, text: "◅back◅")
 
-    private(set) lazy var munimapCornerTapView = CornerTapView( // FIXME: refactor
-        configuration: .init(
-            corner: .bottomLeft,
-            content: .init(
-                icon: UIImage(systemName: "map")?.applyingSymbolConfiguration(.init(scale: .medium)),
-                text: "munimap",
-                textSize: layoutProvider.textSize(.large),
-                alignment: .left
-            )
-        )
-    )
+    private(set) lazy var munimapCornerTapView = makeTapView(iconSystemName: "map", text: "munimap")
 
-    private(set) lazy var arViewCornerTapView = CornerTapView(
-        configuration: .init(
-            corner: .bottomLeft,
-            content: .init(
-                icon: UIImage(systemName: "arkit")?.applyingSymbolConfiguration(.init(scale: .medium)),
-                text: "AR view",
-                textSize: layoutProvider.textSize(.large),
-                alignment: .left
-            )
-        )
-    )
+    private(set) lazy var arViewCornerTapView = makeTapView(iconSystemName: "arkit", text: "AR view")
 
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
@@ -117,6 +97,17 @@ class ARMapPageScreenView: FrameBasedView {
         }
 
         return CGRect(x: xOffset, y: yOffset, size: sideViewSize)
+    }
+
+    private func makeTapView(iconSystemName: String, text: String) -> CornerTapView {
+        CornerTapView(
+            content: .init(
+                icon: UIImage(systemName: iconSystemName)?.applyingSymbolConfiguration(.init(scale: .medium)),
+                text: text,
+                textSize: layoutProvider.textSize(.large),
+                alignment: .center
+            )
+        )
     }
 }
 

@@ -40,15 +40,15 @@ private extension UIButton.Style {
 
     var backgroundColor: UIColor {
         switch self {
-        case .solid(let color): return color
-        case .transparent:      return .clear
+            case .solid(let color): return color
+            case .transparent:      return .clear
         }
     }
 
     func titleColor(colorProviding: ColorProviding?) -> UIColor {
         switch self {
-        case .solid:        return colorProviding?.buttonTextColor ?? .white
-        case .transparent:  return colorProviding?.secondaryColor ?? .systemBlue
+            case .solid:        return colorProviding?.buttonTextColor ?? .white
+            case .transparent:  return colorProviding?.secondaryColor ?? .systemBlue
         }
     }
 }

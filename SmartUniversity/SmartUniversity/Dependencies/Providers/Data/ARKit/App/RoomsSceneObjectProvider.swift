@@ -20,8 +20,8 @@ struct RoomsSceneObjectProvider: SceneObjectProviding {
 
     func makeNodeFor(_ objectType: SceneObjectType) -> SCNNode {
         switch objectType {
-        case .poster(let physicalSize): return makePosterNode(posterSize: physicalSize, posterImage: model.posterImage)
-        case .room(let objectData):     return makeRoomNode(objectData: objectData)
+            case .poster(let physicalSize): return makePosterNode(posterSize: physicalSize, posterImage: model.posterImage)
+            case .room(let objectData):     return makeRoomNode(objectData: objectData)
         }
     }
 

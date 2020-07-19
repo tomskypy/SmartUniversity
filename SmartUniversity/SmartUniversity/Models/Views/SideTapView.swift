@@ -90,8 +90,8 @@ private extension SideTapView.Side {
 
     var maskedCorners: CACornerMask {
         switch self {
-        case .right:    return .init(arrayLiteral: [.layerMinXMinYCorner, .layerMinXMaxYCorner])
-        case .left:     return .init(arrayLiteral: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+            case .right:    return .init(arrayLiteral: [.layerMinXMinYCorner, .layerMinXMaxYCorner])
+            case .left:     return .init(arrayLiteral: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
         }
     }
 }

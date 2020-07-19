@@ -99,16 +99,16 @@ final class InteractiveOverlayView: VerticalFrameBasedView {
         textLabel.text = state.labelText
 
         switch state {
-        case .success, .neutral, .fail:
-            if subviews.contains(overlay) == false {
-                addSubview(overlay)
-            }
-            if subviews.contains(textLabel) == false {
-                addSubview(textLabel)
-            }
-        case .empty:
-            overlay.removeFromSuperview()
-            textLabel.removeFromSuperview()
+            case .success, .neutral, .fail:
+                if subviews.contains(overlay) == false {
+                    addSubview(overlay)
+                }
+                if subviews.contains(textLabel) == false {
+                    addSubview(textLabel)
+                }
+            case .empty:
+                overlay.removeFromSuperview()
+                textLabel.removeFromSuperview()
         }
     }
 
@@ -138,19 +138,19 @@ private extension InteractiveOverlayView.State {
 
     var labelText: String? {
         switch self {
-        case .success(let text),
-             .neutral(let text),
-             .fail(let text):   return text
-        case .empty:            return nil
+            case .success(let text),
+                 .neutral(let text),
+                 .fail(let text):   return text
+            case .empty:            return nil
         }
     }
 
     func backgroundColor(colorProvider: ColorProviding) -> UIColor? {
         switch self {
-        case .success:  return colorProvider.primaryDarkColor
-        case .neutral:  return colorProvider.neutralColor
-        case .fail:     return colorProvider.negativeColor
-        case .empty:    return nil
+            case .success:  return colorProvider.primaryDarkColor
+            case .neutral:  return colorProvider.neutralColor
+            case .fail:     return colorProvider.negativeColor
+            case .empty:    return nil
         }
     }
 }

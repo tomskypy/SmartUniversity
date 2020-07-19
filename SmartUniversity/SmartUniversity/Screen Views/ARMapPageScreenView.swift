@@ -59,10 +59,10 @@ class ARMapPageScreenView: FrameBasedView {
         let hitView = super.hitTest(point, with: event)
 
         switch hitView {
-        case navigateBackSideTapView,
-             munimapCornerTapView,
-             arViewCornerTapView: return hitView
-        default:                return nil
+            case navigateBackSideTapView,
+                 munimapCornerTapView,
+                 arViewCornerTapView:   return hitView
+            default:                    return nil
         }
     }
 
@@ -74,13 +74,14 @@ class ARMapPageScreenView: FrameBasedView {
         let inactiveTextColor = UIColor.darkGray
 
         switch tapView {
-        case munimapCornerTapView:
-            munimapCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
-            arViewCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
-        case arViewCornerTapView:
-            munimapCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
-            arViewCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
-        default: return
+            case munimapCornerTapView:
+                munimapCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
+                arViewCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
+            case arViewCornerTapView:
+                munimapCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
+                arViewCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
+            default:
+                return
         }
     }
 
@@ -91,14 +92,14 @@ class ARMapPageScreenView: FrameBasedView {
         let xOffset: CGFloat
         let yOffset: CGFloat
         switch tapView {
-        case munimapCornerTapView:
-            xOffset = 0
-            yOffset = bounds.height - tapViewSize.height
-        case arViewCornerTapView:
-            xOffset = bounds.width - tapViewSize.width
-            yOffset = bounds.height - tapViewSize.height
-        default:
-            return .zero
+            case munimapCornerTapView:
+                xOffset = 0
+                yOffset = bounds.height - tapViewSize.height
+            case arViewCornerTapView:
+                xOffset = bounds.width - tapViewSize.width
+                yOffset = bounds.height - tapViewSize.height
+            default:
+                return .zero
         }
 
         return CGRect(x: xOffset, y: yOffset, size: tapViewSize)
@@ -111,9 +112,8 @@ class ARMapPageScreenView: FrameBasedView {
 
         let xOffset: CGFloat
         switch sideView {
-        case navigateBackSideTapView:
-            xOffset = 0
-        default:                    return .zero
+            case navigateBackSideTapView:   xOffset = 0
+            default:                        return .zero
         }
 
         return CGRect(x: xOffset, y: yOffset, size: sideViewSize)

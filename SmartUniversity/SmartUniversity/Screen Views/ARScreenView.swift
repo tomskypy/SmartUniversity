@@ -133,15 +133,15 @@ private extension ARScreenTextOverlayContent {
 
     var text: String {
         switch self {
-        case .aimAtPosterToInitiate:    return "Aim at the QR Poster to initiate the AR experience"
-        case .needToRecapturePoster:    return "The QR Poster needs to be recaptured to continue"
+            case .aimAtPosterToInitiate:    return "Aim at the QR Poster to initiate the AR experience"
+            case .needToRecapturePoster:    return "The QR Poster needs to be recaptured to continue"
         }
     }
 
     var period: TextOverlayView.VisibilityPeriod {
         switch self {
-        case .aimAtPosterToInitiate:    return .infinite
-        case .needToRecapturePoster:    return .long
+            case .aimAtPosterToInitiate:    return .infinite
+            case .needToRecapturePoster:    return .long
         }
     }
 }

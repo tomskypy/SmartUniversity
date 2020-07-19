@@ -25,12 +25,12 @@ struct AppMainNavigationViewControllerFactory: MainNavigationViewControllerFacto
 
     func makeViewController(for scene: MainNavigationScene) -> UIViewController {
         switch scene {
-        case .qrScanner(let delegate):
-            return QRScannerViewController(delegate: delegate)
-        case .munimap(let focusedPlaceID):
-            return MunimapViewController(focusedPlaceID: focusedPlaceID)
-        case .arView(let roomsData):
-            return ARViewController(roomsData: roomsData)
+            case .qrScanner(let delegate):
+                return QRScannerViewController(delegate: delegate)
+            case .munimap(let focusedPlaceID):
+                return MunimapViewController(focusedPlaceID: focusedPlaceID)
+            case .arView(let roomsData):
+                return ARViewController(roomsData: roomsData)
         }
     }
 }

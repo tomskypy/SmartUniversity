@@ -196,14 +196,14 @@ private extension CornerTapView.Corner {
 
     var maskedCorner: CACornerMask {
         switch self {
-        case .bottomLeft:   return .layerMaxXMinYCorner
-        case .bottomRight:  return .layerMinXMinYCorner
+            case .bottomLeft:   return .layerMaxXMinYCorner
+            case .bottomRight:  return .layerMinXMinYCorner
         }
     }
 
     var respectedSafeAreaLayoutSide: LayoutSide {
         switch self {
-        case .bottomLeft, .bottomRight: return .bottom
+            case .bottomLeft, .bottomRight: return .bottom
         }
     }
 }

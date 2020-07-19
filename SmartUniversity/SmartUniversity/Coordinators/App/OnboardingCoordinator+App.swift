@@ -70,13 +70,13 @@ struct AppOnboardingDependenciesFactory {
         completion: @escaping OnboardingViewController.ActionCompletion
     ) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .notDetermined:        AVCaptureDevice.requestAccess(for: .video) { _ in completion() }
-        case .authorized:           return completion()
-        case .denied, .restricted:  fallthrough
-        @unknown default:           presentAllowCameraAccessInSettingsAlertDialog(
-            on: viewController,
-            completion: completion
-        )
+            case .notDetermined:        AVCaptureDevice.requestAccess(for: .video) { _ in completion() }
+            case .authorized:           return completion()
+            case .denied, .restricted:  fallthrough
+            @unknown default:           presentAllowCameraAccessInSettingsAlertDialog(
+                on: viewController,
+                completion: completion
+            )
         }
     }
 

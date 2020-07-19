@@ -63,29 +63,29 @@ private extension GradientView.Axis {
     var startPoint: CGPoint {
 
         switch self {
-        case .horizontal(_, let leftToRight):  return makeMidpoint(at: leftToRight ? 0.0 : 1.0)
-        case .vertical(_, let upToDown):       return makeMidpoint(at: upToDown ? 1.0 : 0.0)
+            case .horizontal(_, let leftToRight):  return makeMidpoint(at: leftToRight ? 0.0 : 1.0)
+            case .vertical(_, let upToDown):       return makeMidpoint(at: upToDown ? 1.0 : 0.0)
         }
     }
 
     var endPoint: CGPoint {
         switch self {
-        case .horizontal(_, let leftToRight):  return makeMidpoint(at: leftToRight ? 1.0 : 0.0)
-        case .vertical(_, let upToDown):       return makeMidpoint(at: upToDown ? 0.0 : 1.0)
+            case .horizontal(_, let leftToRight):  return makeMidpoint(at: leftToRight ? 1.0 : 0.0)
+            case .vertical(_, let upToDown):       return makeMidpoint(at: upToDown ? 0.0 : 1.0)
         }
     }
 
     var locations: [NSNumber] {
         switch self {
-        case .horizontal(let locations, _):    return locations
-        case .vertical(let locations, _):      return locations
+            case .horizontal(let locations, _):    return locations
+            case .vertical(let locations, _):      return locations
         }
     }
 
     private func makeMidpoint(at value: CGFloat) -> CGPoint {
         switch self {
-        case .horizontal:   return CGPoint(x: value, y: 0.5)
-        case .vertical:     return CGPoint(x: 0.5, y: value)
+            case .horizontal:   return CGPoint(x: value, y: 0.5)
+            case .vertical:     return CGPoint(x: 0.5, y: value)
         }
     }
 }

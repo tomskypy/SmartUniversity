@@ -98,14 +98,14 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         if let captureSessionError = captureSessionError {
 
             switch captureSessionError {
-            case .captureNotAuthorized:
-                handleSessionUnauthorized()
-            case .metadataOutputUnavailable, .videoInputUnavailable:
-                #if DEBUG
-                    handleDebugSession()
-                #else
-                    handleSessionFailed()
-                #endif
+                case .captureNotAuthorized:
+                    handleSessionUnauthorized()
+                case .metadataOutputUnavailable, .videoInputUnavailable:
+                    #if DEBUG
+                        handleDebugSession()
+                    #else
+                        handleSessionFailed()
+                    #endif
             }
         } else {
 

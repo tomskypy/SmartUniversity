@@ -21,13 +21,13 @@ final class AppColorProvider: ColorProviding {
         }
     }
 
-    private static let primaryColorSet = ColorSet(light: UIColor(hex: "#4f83cc")!, dark: UIColor(hex: "#69b6ff")!) // FIXME: get rid of !s
-    private static let primaryDarkColorSet = ColorSet(light: UIColor(hex: "#3c5d8c")!, dark: UIColor(hex: "#000d34")!)
+    private static let primaryColorSet = makeColorSet(lightColorHex: "#4f83cc", darkColorHex: "#69b6ff")
+    private static let primaryDarkColorSet = makeColorSet(lightColorHex: "#3c5d8c", darkColorHex: "#000d34")
 
-    private static let secondaryColorSet = ColorSet(light: UIColor(hex: "#62757f")!, dark: UIColor(hex: "#a6bfcc")!)
+    private static let secondaryColorSet = makeColorSet(lightColorHex: "#62757f", darkColorHex: "#a6bfcc")
 
-    private static let neutralColorSet = ColorSet(light: UIColor(hex: "#cfcfcf")!, dark: UIColor(hex: "#707070")!)
-    private static let negativeColorSet = ColorSet(light: UIColor(hex: "#ff5131")!, dark: UIColor(hex: "#9b0000")!)
+    private static let neutralColorSet = makeColorSet(lightColorHex: "#cfcfcf", darkColorHex: "#707070")
+    private static let negativeColorSet = makeColorSet(lightColorHex: "#ff5131", darkColorHex: "#9b0000")
 
     private static let backgroundColorSet = ColorSet(light: .white, dark: .black)
 
@@ -88,5 +88,13 @@ final class AppColorProvider: ColorProviding {
                 return colorSet.light
             }
         }
+    }
+
+    private static func makeColorSet(lightColorHex: String, darkColorHex: String) -> ColorSet {
+
+        guard let lightColor = UIColor(hex: lightColorHex), let darkColor = UIColor(hex: darkColorHex) else {
+            fatalError("Failed to initiate UIColor from the provided HEX string.")
+        }
+        return ColorSet(light: lightColor, dark: darkColor)
     }
 }

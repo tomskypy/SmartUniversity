@@ -19,12 +19,12 @@ enum IntersperseState {
 extension Sequence {
 
     func intersperse(_ separator: Element) -> AnySequence<Element> {
-        return intersperse({ separator })
+        intersperse({ separator })
     }
 
     func intersperse(_ separatorGenerator: @escaping () -> Element) -> AnySequence<Element> {
 
-        return AnySequence<Element>({ () -> AnyIterator<Element> in
+        AnySequence<Element>({ () -> AnyIterator<Element> in
 
             var iterator = self.makeIterator()
 

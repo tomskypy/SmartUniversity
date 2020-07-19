@@ -17,7 +17,7 @@ extension ARViewController {
         self.init(
             sceneViewHandler: ARSceneViewHandler(referenceImages: arReferenceImages),
             sceneObjectProvider: RoomsSceneObjectProvider(
-                model: .init(posterImage: posterImage, defaultTint: UIColor.green) // FIXME: make a dependency for tint
+                model: .init(posterImage: posterImage, defaultTint: UIColor.green)
             ),
             roomsData: roomsData
         )

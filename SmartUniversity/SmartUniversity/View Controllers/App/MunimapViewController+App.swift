@@ -6,11 +6,15 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension MunimapViewController {
 
     convenience init(focusedPlaceID: String?) {
-        self.init(munimapServerURL: AppURL.munimap(placeID: focusedPlaceID).value, webViewHandler: WebViewHandler())
+        self.init(
+            munimapServerURL: AppURL.munimap(placeID: focusedPlaceID).value,
+            webViewHandler: WebViewHandler(),
+            mapScaleProvider: MunimapScaleProvider(screenScale: UIScreen.main.scale)
+        )
     }
 }

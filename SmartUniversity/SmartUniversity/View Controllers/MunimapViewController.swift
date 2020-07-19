@@ -13,6 +13,8 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
     override var preferredStatusBarStyle: UIStatusBarStyle { .darkContent }
 
     let munimapServerURL: URL
+    let mapScaleProvider: MunimapScaleProviding
+
     var webViewHandler: WebViewHandling
 
     private var isVisible: Bool {
@@ -23,9 +25,11 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
 
     private static let mapSize = CGSize(width: 500, height: 1000)
 
-    init(munimapServerURL: URL, webViewHandler: WebViewHandling) {
+    init(munimapServerURL: URL, webViewHandler: WebViewHandling, mapScaleProvider: MunimapScaleProviding) {
         self.munimapServerURL = munimapServerURL
         self.webViewHandler = webViewHandler
+        self.mapScaleProvider = mapScaleProvider
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,30 +58,12 @@ final class MunimapViewController: BaseViewController<MunimapScreenView> {
         }
     }
 
-    private func hideLoadingAndLockWebViewZoom() { // FIXME: refactor this logic
+    private func hideLoadingAndLockWebViewZoom() {
         guard isVisible else { return }
 
-        let webViewZoomScale = calculateIdealZoomScale(
-            viewFrame: view.frame,
-            screenScale: UIScreen.main.scale,
-            mapSize: Self.mapSize
-        )
+        let webViewZoomScale = mapScaleProvider.mapZoomScale(forViewFrame: view.frame, mapSize: Self.mapSize)
         webViewHandler.lockZoomScaleTo(webViewZoomScale)
 
         screenView?.isLoadingOverlayHidden = true
-    }
-
-    private func calculateIdealZoomScale(
-        viewFrame: CGRect,
-        screenScale: CGFloat,
-        mapSize: CGSize
-    ) -> CGFloat { // TODO move to specific provider
-
-        let xRatio = viewFrame.width * screenScale / mapSize.width
-        let yRatio = viewFrame.height * screenScale / mapSize.height
-
-        let scale = max(xRatio, yRatio) / 2
-
-        return max(scale, 1)
     }
 }

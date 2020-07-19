@@ -46,22 +46,31 @@ class ARMapPageScreenView: FrameBasedView {
         }
     }
 
-    func highlightTapView(_ tapView: CornerTapView) { // FIXME: refactor
-        let activeColor = colorProvider.primaryColor
-        let activeTextColor = colorProvider.buttonTextColor
-
-        let inactiveColor = UIColor.gray
-        let inactiveTextColor = UIColor.darkGray
+    func highlightTapView(_ tapView: CornerTapView) {
 
         switch tapView {
             case munimapCornerTapView:
-                munimapCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
-                arViewCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
+                highlightTapView(munimapCornerTapView, asActive: true)
+                highlightTapView(arViewCornerTapView, asActive: false)
             case arViewCornerTapView:
-                munimapCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
-                arViewCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
+                highlightTapView(munimapCornerTapView, asActive: false)
+                highlightTapView(arViewCornerTapView, asActive: true)
             default:
                 return
+        }
+    }
+
+    private func highlightTapView(_ tapView: CornerTapView, asActive: Bool) {
+        if asActive {
+            let activeColor = colorProvider.primaryColor
+            let activeTextColor = colorProvider.buttonTextColor
+
+            tapView.highlight(withColor: activeColor, textColor: activeTextColor)
+        } else {
+            let inactiveColor = UIColor.gray
+            let inactiveTextColor = UIColor.darkGray
+
+            tapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
         }
     }
 

@@ -16,8 +16,6 @@ final class TextOverlayView: VerticalFrameBasedView {
         case long
     }
 
-    private static let additionalTopInset: CGFloat = 8
-
     override var isHidden: Bool {
         get { super.isHidden }
         set {
@@ -65,7 +63,7 @@ final class TextOverlayView: VerticalFrameBasedView {
 
         let labelFrame = CGRect(
             x: insets.left,
-            y: insets.top + Self.additionalTopInset,
+            y: insets.top,
             width: contentWidth,
             height: label.height(constrainedToWidth: contentWidth)
         )

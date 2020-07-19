@@ -50,15 +50,13 @@ final class ARScreenView: TitledScreenView {
 
         let contentHeight = bounds.height + safeAreaInsets.verticalSum
 
-        let fullscreenViewOrigin = CGPoint(x: 0, y: -safeAreaInsets.top)
-
         let sceneViewFrame = CGRect(
-            origin: fullscreenViewOrigin,
+            origin: .zero,
             size: CGSize(width: bounds.width, height: contentHeight)
         )
 
         let textOverlayFrame = CGRect(
-            origin: fullscreenViewOrigin,
+            origin: .zero,
             size: textOverlayView.size(constrainedToWidth: bounds.width)
         )
 

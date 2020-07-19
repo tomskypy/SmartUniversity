@@ -39,6 +39,8 @@ final class TestableCaptureSessionHandler: CaptureSessionHandling {
 
 final class TestableQRPointScanningHandler: QRPointScanningHandling {
 
+    var hasLoadedQRPoints: Bool = false
+
     var didSetDelegate: Bool?
 
     var viewReceivedInViewDidLoad: UIView?
@@ -85,14 +87,14 @@ final class TestablePresentationHandler: PresentationHandling {
 final class TestableExternalAppLauncher: ExternalAppLaunching {
     var didCallLaunchSettings: Bool?
 
-    func launchSettings(completion: (() -> Void)?) { // TODO add tests
+    func launchSettings(completion: (() -> Void)?) {
         didCallLaunchSettings = true
     }
 }
 
 final class TestableCaptureAuthorizationProvider: CaptureAuthorizationStatusProviding, CaptureAuthorizationRequesting {
 
-    var videoCaptureAuthorizationStatus: AVAuthorizationStatus { // TODO add tests
+    var videoCaptureAuthorizationStatus: AVAuthorizationStatus {
         .authorized
     }
 
@@ -135,15 +137,6 @@ final class QRScannerViewControllerTests: XCTestCase {
     func testQRPointScanningHandlingDelegateIsSetOnInit() {
         XCTAssertTrue(qrPointScanningHandler.didSetDelegate!)
     }
-
-//    func testViewDidLoadCallsScreenViewHideBlurOverlay() { // TODO replace with more meaningful test
-//        let testableScreenView = TestableQRScannerScreenView()
-//        scannerViewController.view = testableScreenView
-//
-//        scannerViewController.viewDidLoad()
-//
-//        XCTAssertTrue(testableScreenView.didCallHideBlurOverlay!)
-//    }
 
     func testViewDidLoadCallsCaptureSessionHandlingWithExpectedView() {
         XCTAssertNil(captureSessionHandler.viewReceivedInViewDidLoad)

@@ -69,45 +69,4 @@ extension QRScannerViewControllerTests {
 
         XCTAssertEqual(expectedScannedObjectBounds, testableScreenView.boundsReceivedInShowBlurOverlay)
     }
-
-//    private enum SessionErrorAlertExpectations { // TODO replace with component
-//
-//        static let title = "Device not supported"
-//        static let message = "Your device does not support code scanning with a camera."
-//        static let preferredStyle = UIAlertController.Style.alert
-//
-//        static let actionCount = 1
-//        static let actionTitle = "OK"
-//        static let actionStyle = UIAlertAction.Style.default
-//    }
-
-//    func testDidTriggerErrorWithVideoInputUnavailablePresentsAlertViewController() {
-//
-//        scannerViewController.captureSessionHandler(captureSessionHandler, didTriggerError: .videoInputUnavailable)
-//
-//        let alertController = presentationHandler.viewControllerReceivedInPresent as! UIAlertController
-//        XCTAssertEqual(SessionErrorAlertExpectations.title, alertController.title)
-//        XCTAssertEqual(SessionErrorAlertExpectations.message, alertController.message)
-//        XCTAssertEqual(SessionErrorAlertExpectations.preferredStyle, alertController.preferredStyle)
-//
-//        XCTAssertEqual(SessionErrorAlertExpectations.actionCount, alertController.actions.count)
-//        let alertAction = alertController.actions[0]
-//        XCTAssertEqual(SessionErrorAlertExpectations.actionTitle, alertAction.title)
-//        XCTAssertEqual(SessionErrorAlertExpectations.actionStyle, alertAction.style)
-//    }
-//
-//    func testDidTriggerErrorWithMetadataOutputUnavailablePresentsAlertViewController() {
-//
-//        scannerViewController.captureSessionHandler(captureSessionHandler, didTriggerError: .metadataOutputUnavailable)
-//
-//        let alertController = presentationHandler.viewControllerReceivedInPresent as! UIAlertController
-//        XCTAssertEqual(SessionErrorAlertExpectations.title, alertController.title)
-//        XCTAssertEqual(SessionErrorAlertExpectations.message, alertController.message)
-//        XCTAssertEqual(SessionErrorAlertExpectations.preferredStyle, alertController.preferredStyle)
-//
-//        XCTAssertEqual(SessionErrorAlertExpectations.actionCount, alertController.actions.count)
-//        let alertAction = alertController.actions[0]
-//        XCTAssertEqual(SessionErrorAlertExpectations.actionTitle, alertAction.title)
-//        XCTAssertEqual(SessionErrorAlertExpectations.actionStyle, alertAction.style)
-//    }
 }

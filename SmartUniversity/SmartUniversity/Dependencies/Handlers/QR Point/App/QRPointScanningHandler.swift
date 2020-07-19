@@ -10,9 +10,13 @@ import UIKit
 
 final class QRPointScanningHandler: QRPointScanningHandling {
 
+    private static let fetchRetryPeriod = 3.0
+
     weak var delegate: QRPointScanningHandlerDelegate?
 
     var qrPoints: [QRPoint] = []
+
+    var hasLoadedQRPoints: Bool = false
 
     private let qrPointsProvider: QRPointsProviding
     private let qrPointIDParser: QRPointIDParsing
@@ -35,16 +39,39 @@ final class QRPointScanningHandler: QRPointScanningHandling {
             return
         }
 
-        if let detectedQRPoint = qrPoints.first(where: { UUID(uuidString: $0.uuidString) == qrPointUUID }) {
-            delegate?.qrPointScanningHandler(self, didFetchQRPoint: detectedQRPoint, forScannedValue: value)
-        } else {
-            delegate?.qrPointScanningHandler(self, couldNotFetchQRPointDataForScannedValue: value)
+        if hasLoadedQRPoints == false {
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 3) { [weak self] in
+                self?.notifyDelegateWithQRPoint(for: qrPointUUID, scannedValue: value)
+            }
+            return
         }
+
+        notifyDelegateWithQRPoint(for: qrPointUUID, scannedValue: value)
+    }
+
+    private func notifyDelegateWithQRPoint(for uuid: UUID, scannedValue: String) {
+        guard let qrPoint = qrPoint(for: uuid) else {
+            delegate?.qrPointScanningHandler(self, couldNotFetchQRPointDataForScannedValue: scannedValue)
+            return
+        }
+
+        delegate?.qrPointScanningHandler(self, didFetchQRPoint: qrPoint, forScannedValue: scannedValue)
+    }
+
+    private func qrPoint(for uuid: UUID) -> QRPoint? {
+        qrPoints.first(where: { UUID(uuidString: $0.uuidString) == uuid })
     }
 
     private func prefetchAllQRPoints() {
-        qrPointsProvider.getAllQRPoints { points, _ in // FIXME: Implement the error handling
-            self.qrPoints = points ?? []
+        qrPointsProvider.getAllQRPoints {[weak self] points, error in
+            if error != nil {
+                return DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + Self.fetchRetryPeriod) {
+                    self?.prefetchAllQRPoints()
+                }
+            }
+
+            self?.hasLoadedQRPoints = true
+            self?.qrPoints = points ?? []
         }
     }
 }

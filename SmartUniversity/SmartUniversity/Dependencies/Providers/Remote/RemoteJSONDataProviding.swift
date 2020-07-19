@@ -12,6 +12,7 @@ enum DataFetchError: Equatable {
     case invalidURLString
     case noData
     case parsingError
+    case networkError
 }
 
 protocol RemoteJSONDataProviding {

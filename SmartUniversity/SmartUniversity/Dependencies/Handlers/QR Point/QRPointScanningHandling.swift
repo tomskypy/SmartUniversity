@@ -12,6 +12,8 @@ protocol QRPointScanningHandling {
 
     var delegate: QRPointScanningHandlerDelegate? { get set }
 
+    var hasLoadedQRPoints: Bool { get }
+
     func handleViewDidLoad(_ view: UIView)
     func qrCodeValueScanned(_ value: String)
 }

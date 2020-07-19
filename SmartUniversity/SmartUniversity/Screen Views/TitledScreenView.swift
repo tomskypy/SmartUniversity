@@ -39,7 +39,7 @@ class TitledScreenView: FrameBasedView, BaseScreenView {
     override open func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
         let contentWidth = bounds.width - insets.horizontalSum
-        let labelHeight = label.height(constrainedToWidth: contentWidth) // FIXME: does not scale well when limited
+        let labelHeight = label.height(constrainedToWidth: contentWidth)
 
         return [(label, CGRect(x: insets.left, y: insets.top, width: contentWidth, height: labelHeight))]
     }

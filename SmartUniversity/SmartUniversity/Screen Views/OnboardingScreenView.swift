@@ -111,7 +111,7 @@ final class OnboardingScreenView: FrameBasedView {
         )
         frames.append((titleLabel, titleLabelFrame))
 
-        let bodyLabelHeight = bodyLabel.height(constrainedToWidth: contentWidth) // FIXME: restrict height
+        let bodyLabelHeight = bodyLabel.height(constrainedToWidth: contentWidth)
         let bodyLabelFrame = CGRect(
             x: insets.left,
             y: max((bounds.height - contentVerticalSpacing) / 2, titleLabelFrame.maxY + contentVerticalSpacing),
@@ -131,7 +131,7 @@ final class OnboardingScreenView: FrameBasedView {
         return frames
     }
 
-    func configure(withTitleText titleText: String, bodyText: String, asFinal: Bool) { // FIXME: refactor
+    func configure(withTitleText titleText: String, bodyText: String, asFinal: Bool) {
         titleLabel.text = titleText
 
         bodyLabel.text = bodyText

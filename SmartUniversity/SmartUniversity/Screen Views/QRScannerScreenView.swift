@@ -194,10 +194,8 @@ class QRScannerScreenView: TitledScreenView {
 
         let xOffset: CGFloat
         switch sideView {
-        case navigateToMunimapSideTapView:
-            xOffset = bounds.width - sideViewSize.width
-        default:
-            return .zero
+            case navigateToMunimapSideTapView:  xOffset = bounds.width - sideViewSize.width
+            default:                            return .zero
         }
 
         return CGRect(x: xOffset, y: yOffset, size: sideViewSize)

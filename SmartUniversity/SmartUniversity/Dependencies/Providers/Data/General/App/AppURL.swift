@@ -13,7 +13,7 @@ enum AppURL {
 
     var value: URL {
         switch self {
-        case .munimap(let placeID): return Self.makeMunimapServerURL(withPlaceID: placeID)
+            case .munimap(let placeID): return Self.makeMunimapServerURL(withPlaceID: placeID)
         }
     }
 }

@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-final class AppCaptureAuthorizationProvider: CaptureAuthorizationStatusProviding {
+final class AppCaptureAuthorizationProvider: CaptureAuthorizationStatusProviding, CaptureAuthorizationRequesting {
 
     static let shared = AppCaptureAuthorizationProvider()
 
@@ -18,4 +18,9 @@ final class AppCaptureAuthorizationProvider: CaptureAuthorizationStatusProviding
         AVCaptureDevice.authorizationStatus(for: .video)
     }
 
+    func requestAccessForVideo(completion: @escaping (Bool) -> Void) {
+        AVCaptureDevice.requestAccess(for: .video) { granted in
+            completion(granted)
+        }
+    }
 }

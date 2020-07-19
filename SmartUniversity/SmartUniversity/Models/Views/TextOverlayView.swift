@@ -96,9 +96,9 @@ private extension TextOverlayView.VisibilityPeriod {
 
     var hideDelaySeconds: Double? {
         switch self {
-        case .infinite: return nil
-        case .long:     return 4.5
-        case .short:    return 2.5
+            case .infinite: return nil
+            case .long:     return 4.5
+            case .short:    return 2.5
         }
     }
 }

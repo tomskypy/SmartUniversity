@@ -118,7 +118,7 @@ extension ARViewController: ARSceneViewHandlerDelegate {
     func arSceneViewHandlerWillUpdate(_ handler: ARSceneViewHandler, sceneView: ARSCNView?) {
         guard let sceneView = sceneView else { return }
 
-        DispatchQueue.main.async { // TODO make a dependency for label transformation
+        DispatchQueue.main.async {
             for (roomNode, roomLabelView) in self.roomLabelViews {
                 let labelScreenCoordinate = sceneView.projectPoint(roomNode.worldPosition)
                 guard labelScreenCoordinate.z < 1 else {

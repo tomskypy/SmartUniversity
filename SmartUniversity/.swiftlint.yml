@@ -1,5 +1,9 @@
+switch_case_alignment: 
+  indented_cases: 
+    true
+
 opt_in_rules:
-    - implicit_return
+  - implicit_return
 
 identifier_name:
   excluded:

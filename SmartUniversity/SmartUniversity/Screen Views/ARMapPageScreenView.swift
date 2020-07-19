@@ -12,29 +12,9 @@ class ARMapPageScreenView: FrameBasedView {
 
     let navigateBackSideTapView = SideTapView(side: .left, text: "◅back◅")
 
-    private(set) lazy var munimapCornerTapView = CornerTapView( // FIXME: refactor
-        configuration: .init(
-            corner: .bottomLeft,
-            content: .init(
-                icon: UIImage(systemName: "map")?.applyingSymbolConfiguration(.init(scale: .medium)),
-                text: "munimap",
-                textSize: layoutProvider.textSize(.large),
-                alignment: .left
-            )
-        )
-    )
+    private(set) lazy var munimapCornerTapView = makeTapView(iconSystemName: "map", text: "munimap")
 
-    private(set) lazy var arViewCornerTapView = CornerTapView(
-        configuration: .init(
-            corner: .bottomLeft,
-            content: .init(
-                icon: UIImage(systemName: "arkit")?.applyingSymbolConfiguration(.init(scale: .medium)),
-                text: "AR view",
-                textSize: layoutProvider.textSize(.large),
-                alignment: .left
-            )
-        )
-    )
+    private(set) lazy var arViewCornerTapView = makeTapView(iconSystemName: "arkit", text: "AR view")
 
     private let colorProvider: ColorProviding
     private let layoutProvider: LayoutProviding
@@ -59,28 +39,38 @@ class ARMapPageScreenView: FrameBasedView {
         let hitView = super.hitTest(point, with: event)
 
         switch hitView {
-        case navigateBackSideTapView,
-             munimapCornerTapView,
-             arViewCornerTapView: return hitView
-        default:                return nil
+            case navigateBackSideTapView,
+                 munimapCornerTapView,
+                 arViewCornerTapView:   return hitView
+            default:                    return nil
         }
     }
 
-    func highlightTapView(_ tapView: CornerTapView) { // FIXME: refactor
-        let activeColor = colorProvider.primaryColor
-        let activeTextColor = colorProvider.buttonTextColor
-
-        let inactiveColor = UIColor.gray
-        let inactiveTextColor = UIColor.darkGray
+    func highlightTapView(_ tapView: CornerTapView) {
 
         switch tapView {
-        case munimapCornerTapView:
-            munimapCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
-            arViewCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
-        case arViewCornerTapView:
-            munimapCornerTapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
-            arViewCornerTapView.highlight(withColor: activeColor, textColor: activeTextColor)
-        default: return
+            case munimapCornerTapView:
+                highlightTapView(munimapCornerTapView, asActive: true)
+                highlightTapView(arViewCornerTapView, asActive: false)
+            case arViewCornerTapView:
+                highlightTapView(munimapCornerTapView, asActive: false)
+                highlightTapView(arViewCornerTapView, asActive: true)
+            default:
+                return
+        }
+    }
+
+    private func highlightTapView(_ tapView: CornerTapView, asActive: Bool) {
+        if asActive {
+            let activeColor = colorProvider.primaryColor
+            let activeTextColor = colorProvider.buttonTextColor
+
+            tapView.highlight(withColor: activeColor, textColor: activeTextColor)
+        } else {
+            let inactiveColor = UIColor.gray
+            let inactiveTextColor = UIColor.darkGray
+
+            tapView.highlight(withColor: inactiveColor, textColor: inactiveTextColor)
         }
     }
 
@@ -91,14 +81,14 @@ class ARMapPageScreenView: FrameBasedView {
         let xOffset: CGFloat
         let yOffset: CGFloat
         switch tapView {
-        case munimapCornerTapView:
-            xOffset = 0
-            yOffset = bounds.height - tapViewSize.height
-        case arViewCornerTapView:
-            xOffset = bounds.width - tapViewSize.width
-            yOffset = bounds.height - tapViewSize.height
-        default:
-            return .zero
+            case munimapCornerTapView:
+                xOffset = 0
+                yOffset = bounds.height - tapViewSize.height
+            case arViewCornerTapView:
+                xOffset = bounds.width - tapViewSize.width
+                yOffset = bounds.height - tapViewSize.height
+            default:
+                return .zero
         }
 
         return CGRect(x: xOffset, y: yOffset, size: tapViewSize)
@@ -111,12 +101,22 @@ class ARMapPageScreenView: FrameBasedView {
 
         let xOffset: CGFloat
         switch sideView {
-        case navigateBackSideTapView:
-            xOffset = 0
-        default:                    return .zero
+            case navigateBackSideTapView:   xOffset = 0
+            default:                        return .zero
         }
 
         return CGRect(x: xOffset, y: yOffset, size: sideViewSize)
+    }
+
+    private func makeTapView(iconSystemName: String, text: String) -> CornerTapView {
+        CornerTapView(
+            content: .init(
+                icon: UIImage(systemName: iconSystemName)?.applyingSymbolConfiguration(.init(scale: .medium)),
+                text: text,
+                textSize: layoutProvider.textSize(.large),
+                alignment: .center
+            )
+        )
     }
 }
 

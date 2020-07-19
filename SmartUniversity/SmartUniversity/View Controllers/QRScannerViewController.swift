@@ -28,6 +28,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
     private let externalAppLauncher: ExternalAppLaunching
     private let authorizationStatusProvider: CaptureAuthorizationStatusProviding
+    private let authorizationRequester: CaptureAuthorizationRequesting
 
     private var captureSessionHandler: CaptureSessionHandling
     private var qrPointScanningHandler: QRPointScanningHandling
@@ -44,13 +45,15 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         qrPointScanningHandler: QRPointScanningHandling,
         presentationHandler: PresentationHandling,
         externalAppLauncher: ExternalAppLaunching,
-        authorizationStatusProvider: CaptureAuthorizationStatusProviding
+        authorizationStatusProvider: CaptureAuthorizationStatusProviding,
+        authorizationRequester: CaptureAuthorizationRequesting
     ) {
         self.captureSessionHandler = captureSessionHandler
         self.qrPointScanningHandler = qrPointScanningHandler
         self.presentationHandler = presentationHandler
         self.externalAppLauncher = externalAppLauncher
         self.authorizationStatusProvider = authorizationStatusProvider
+        self.authorizationRequester = authorizationRequester
         super.init(nibName: nil, bundle: nil)
 
         self.captureSessionHandler.delegate = self
@@ -83,9 +86,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if case .captureNotAuthorized = captureSessionError { // FIXME: consider reworking
-            captureSessionError = nil
-        }
+        resetAuthorizationCaptureSessionError()
 
         captureSessionHandler.handleViewWillDisappear(view)
 
@@ -119,24 +120,13 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         )
     }
 
-    private func handleSessionUnauthorized() { // FIXME: refactor this omgggg
+    private func handleSessionUnauthorized() {
         let buttonText: String
         let buttonTapHandler: () -> Void
         if authorizationStatusProvider.videoCaptureAuthorizationStatus == .notDetermined {
             buttonText = "Allow access"
             buttonTapHandler = { [weak self] in
-                AVCaptureDevice.requestAccess(for: .video) { granted in
-                    DispatchQueue.main.async {
-                        guard let self = self else { return }
-
-                        if granted {
-                            self.captureSessionHandler.handleViewWillAppear(self.view)
-                            self.resetScanningUI()
-                        } else {
-                            self.handleSessionUnauthorized()
-                        }
-                    }
-                }
+                self?.requestVideoAccess()
             }
         } else {
             buttonText = "Open Settings"
@@ -149,6 +139,13 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             for: .neutral(text: "Please allow the app to access camera to enable the QR Scanner."),
             buttonConfiguration: .init(text: buttonText, tapHandler: buttonTapHandler)
         )
+    }
+
+    private func resetAuthorizationCaptureSessionError() {
+
+        if case .captureNotAuthorized = captureSessionError {
+            captureSessionError = nil
+        }
     }
 
     private func resetScanningUI() {
@@ -167,6 +164,21 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
             guard let self = self else { return }
 
             self.delegate?.qrScannerViewController(self, didSelectContinueWith: nil)
+        }
+    }
+
+    private func requestVideoAccess() {
+        authorizationRequester.requestAccessForVideo { granted in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+
+                if granted {
+                    self.captureSessionHandler.handleViewWillAppear(self.view)
+                    self.resetScanningUI()
+                } else {
+                    self.handleSessionUnauthorized()
+                }
+            }
         }
     }
 }

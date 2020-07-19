@@ -201,6 +201,10 @@ extension QRScannerViewController: CaptureSessionHandlerDelegate {
 
         guard scannedValueCodeObjectBounds?.scannedValue != outputString else { return }
 
+        screenView?.configureBottomOverlay(
+            for: .neutral(text: "QR Point scanned, fetching data...")
+        )
+
         scannedValueCodeObjectBounds = (outputString, objectBounds)
         qrPointScanningHandler.qrCodeValueScanned(outputString)
     }

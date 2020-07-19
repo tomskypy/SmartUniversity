@@ -40,7 +40,7 @@ final class QRPointScanningHandler: QRPointScanningHandling {
         }
 
         if hasLoadedQRPoints == false {
-            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 3) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
                 self?.notifyDelegateWithQRPoint(for: qrPointUUID, scannedValue: value)
             }
             return

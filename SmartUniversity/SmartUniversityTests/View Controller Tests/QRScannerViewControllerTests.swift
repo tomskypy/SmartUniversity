@@ -90,10 +90,14 @@ final class TestableExternalAppLauncher: ExternalAppLaunching {
     }
 }
 
-final class TestableCaptureAuthorizationStatusProvider: CaptureAuthorizationStatusProviding {
+final class TestableCaptureAuthorizationProvider: CaptureAuthorizationStatusProviding, CaptureAuthorizationRequesting {
 
     var videoCaptureAuthorizationStatus: AVAuthorizationStatus { // TODO add tests
         .authorized
+    }
+
+    func requestAccessForVideo(completion: @escaping (Bool) -> Void) {
+        
     }
 }
 
@@ -103,7 +107,7 @@ final class QRScannerViewControllerTests: XCTestCase {
     var qrPointScanningHandler: TestableQRPointScanningHandler!
     var presentationHandler: TestablePresentationHandler!
     var externalAppLauncher: TestableExternalAppLauncher!
-    var authorizationStatusProvider: TestableCaptureAuthorizationStatusProvider!
+    var captureAuthorizationProvider: TestableCaptureAuthorizationProvider!
 
     var scannerViewController: QRScannerViewController!
 
@@ -112,14 +116,15 @@ final class QRScannerViewControllerTests: XCTestCase {
         qrPointScanningHandler = .init()
         presentationHandler = .init()
         externalAppLauncher = .init()
-        authorizationStatusProvider = .init()
+        captureAuthorizationProvider = .init()
 
         scannerViewController = .init(
             captureSessionHandler: captureSessionHandler,
             qrPointScanningHandler: qrPointScanningHandler,
             presentationHandler: presentationHandler,
             externalAppLauncher: externalAppLauncher,
-            authorizationStatusProvider: authorizationStatusProvider
+            authorizationStatusProvider: captureAuthorizationProvider,
+            authorizationRequester: captureAuthorizationProvider
         )
     }
 

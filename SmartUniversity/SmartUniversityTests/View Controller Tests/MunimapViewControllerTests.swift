@@ -24,17 +24,31 @@ private final class TestableWebViewHandler: WebViewHandling {
     func lockZoomScaleTo(_ zoomScale: CGFloat) { }
 }
 
+private final class TestableMapScaleProvider: MunimapScaleProviding {
+
+    func mapZoomScale(forViewFrame viewFrame: CGRect, mapSize: CGSize) -> CGFloat { // TODO test
+        return 0
+    }
+}
+
 final class MunimapViewControllerTests: XCTestCase {
 
     private var munimapServerURL: URL!
     private var webViewHandler: TestableWebViewHandler!
+    private var mapScaleProvider: TestableMapScaleProvider!
+
     private var viewController: MunimapViewController!
 
     override func setUp() {
         munimapServerURL = URL(string: "https://www.apple.com")!
         webViewHandler = .init()
+        mapScaleProvider = .init()
 
-        viewController = .init(munimapServerURL: munimapServerURL, webViewHandler: webViewHandler)
+        viewController = .init(
+            munimapServerURL: munimapServerURL,
+            webViewHandler: webViewHandler,
+            mapScaleProvider: mapScaleProvider
+        )
     }
 
     func testViewDidLoadSetsWebViewOnWebViewHandler() {

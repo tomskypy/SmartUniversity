@@ -24,7 +24,7 @@ final class AppLayoutProvider: LayoutProviding {
         size: SizeClass,
         respectingSafeAreasOn safeAreaRespectingSides: Set<LayoutSide>
     ) -> UIEdgeInsets {
-        var insets = Self.contentInsets
+        var insets = UIEdgeInsets(all: contentInsetsSize(size))
 
         let shouldAddSafeAreaInsets = safeAreaRespectingSides.count > 0
         if shouldAddSafeAreaInsets {

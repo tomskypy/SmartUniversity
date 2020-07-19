@@ -18,17 +18,13 @@ final class MainNavigationSceneDependencyProviderTests: XCTestCase {
         provider = .init()
     }
 
-//    func testRootViewControllerIsMainNavigationViewController() { // TODO rework
-//        let rootViewController = provider.makeRootViewController()
-//
-//        XCTAssertTrue(MainNavigationViewController.self == type(of: rootViewController))
-//    }
-//
-//    func testRootTabBarViewControllerHasCorrectTypeOfViewControllers() {
-//        let tabViewControllers = (provider.makeRootViewController() as! UITabBarController).viewControllers!
-//
-//        XCTAssertTrue(MunimapViewController.self == type(of: tabViewControllers[0]))
-//        XCTAssertTrue(QRScannerViewController.self == type(of: tabViewControllers[1]))
-//    }
+    func testRootViewControllerIsMainNavigationViewController() {
+        let expectedController = UINavigationController()
+
+        let provider = MainNavigationSceneDependencyProvider(navigationController: expectedController)
+        let rootViewController = provider.makeRootViewController()
+
+        XCTAssertEqual(expectedController, rootViewController)
+    }
 
 }

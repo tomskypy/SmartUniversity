@@ -38,7 +38,7 @@ final class TextOverlayView: VerticalFrameBasedView {
 
     private lazy var label = UILabel(
         font: .systemFont(ofSize: layoutProvider.textSize(.small)),
-        textColor: colorProvider.textColor,
+        textColor: colorProvider.lightTextColor,
         textAlignment: .center,
         numberOfLines: 0
     )
@@ -52,7 +52,7 @@ final class TextOverlayView: VerticalFrameBasedView {
 
         super.init(frame: .zero)
 
-        backgroundColor = colorProvider.primaryDarkColor.withAlphaComponent(0.45)
+        backgroundColor = colorProvider.primaryDarkColor.withAlphaComponent(0.65)
         isHidden = initiallyHidden
 
         addSubview(label)

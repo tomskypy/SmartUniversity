@@ -26,7 +26,11 @@ final class RemoteDataProvider: RemoteJSONDataProviding {
         guard let url = URL(string: info.jsonURLString) else { return completion(nil, .invalidURLString) }
 
         queue.async {
-            self.urlSessionProvider.dataTask(with: url) { data, _, _ in // FIXME: Implement URLResponse and Error
+            self.urlSessionProvider.dataTask(with: url) { data, _, error in
+                if error != nil {
+                    return completion(nil, .networkError)
+                }
+
                 guard let data = data else {
                     return completion(nil, .noData)
                 }
@@ -47,7 +51,7 @@ extension RemoteDataProvider: QRPointsProviding {
     func getAllQRPoints(completion: @escaping ([QRPoint]?, QRPointsProvidingError?) -> Void) {
 
         fetchJSONData(withDataInfo: SURemoteDataInfo.qrPoints) { (data: QRPointRemoteArray?, error: DataFetchError?) in
-            if let error = error { return completion(data?.points, .fetch(error: error)) }
+            if let error = error { return completion(nil, .fetch(error: error)) }
 
             completion(data?.points, nil)
         }

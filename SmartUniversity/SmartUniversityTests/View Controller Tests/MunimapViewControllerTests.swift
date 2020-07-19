@@ -26,7 +26,7 @@ private final class TestableWebViewHandler: WebViewHandling {
 
 private final class TestableMapScaleProvider: MunimapScaleProviding {
 
-    func mapZoomScale(forViewFrame viewFrame: CGRect, mapSize: CGSize) -> CGFloat { // TODO test
+    func mapZoomScale(forViewFrame viewFrame: CGRect, mapSize: CGSize) -> CGFloat {
         return 0
     }
 }

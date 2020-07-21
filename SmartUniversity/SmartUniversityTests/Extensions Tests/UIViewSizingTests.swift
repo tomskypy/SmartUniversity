@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private final class TestableUIView: UIView {
 
     static let sizeThatFitsHeightReturnValue: CGFloat = 10
@@ -27,7 +29,7 @@ final class UIViewSizingTests: XCTestCase {
     private var uiView: TestableUIView!
 
     override func setUp() {
-        uiView = TestableUIView()
+        uiView = .init()
     }
 
     func testSizeConstrainedToWidthCallsSizeThatFitsWithCorrectCGSizeParameter() {

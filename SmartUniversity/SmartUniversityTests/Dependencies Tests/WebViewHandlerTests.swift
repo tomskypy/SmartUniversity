@@ -9,28 +9,37 @@
 import XCTest
 import WebKit
 
+@testable import SmartUniversity
+
 private final class TestableWebView: WKWebView {
 
-    var urlRequestReceivedInLoad: URLRequest? = nil
+    var urlRequestReceivedInLoad: URLRequest?
 
     override func load(_ request: URLRequest) -> WKNavigation? {
         urlRequestReceivedInLoad = request
 
         return nil
     }
+
+    func triggerWebViewDidFinish() {
+
+        navigationDelegate!.webView!(self, didFinish: nil)
+    }
 }
 
 final class WebViewHandlerTests: XCTestCase {
 
+    private static let testableURL = URL(string: "https://www.apple.com")!
+
     private var webViewHandler: WebViewHandler!
 
     override func setUp() {
-        webViewHandler = WebViewHandler()
+        webViewHandler = .init()
     }
 
     func testLoadURLCallsLoadCorrectlyOnAssignedWebView() {
         let webView = TestableWebView()
-        let expectedURL = URL(string: "https://www.apple.com")!
+        let expectedURL = Self.testableURL
 
         webViewHandler.webView = webView
         webViewHandler.loadURL(expectedURL)
@@ -38,4 +47,17 @@ final class WebViewHandlerTests: XCTestCase {
         XCTAssertEqual(expectedURL, webView.urlRequestReceivedInLoad?.url)
     }
 
+    func testLoadURLTriggersCompletionWhenWebViewDidFinish() {
+        let webView = TestableWebView()
+        var didTriggerCompletion = false
+
+        webViewHandler.webView = webView
+        webViewHandler.loadURL(Self.testableURL, completion: {
+            didTriggerCompletion = true
+        })
+
+        webView.triggerWebViewDidFinish()
+
+        XCTAssertTrue(didTriggerCompletion)
+    }
 }

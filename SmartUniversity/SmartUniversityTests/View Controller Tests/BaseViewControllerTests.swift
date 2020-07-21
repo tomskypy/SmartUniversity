@@ -8,6 +8,8 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 private final class TestableScreenView: UIView, BaseScreenView {
 
     var didReceiveSetupSubviews: Bool = false
@@ -18,16 +20,14 @@ private final class TestableScreenView: UIView, BaseScreenView {
 
 }
 
-private final class TestableBaseViewController: BaseViewController<TestableScreenView> {
-
-}
+private final class TestableBaseViewController: BaseViewController<TestableScreenView> { }
 
 final class BaseViewControllerTests: XCTestCase {
 
     private var baseViewController: TestableBaseViewController!
 
     override func setUp() {
-        baseViewController = TestableBaseViewController()
+        baseViewController = .init()
     }
 
     func testLoadViewInitsScreenViewWithCorrectType() {

@@ -9,29 +9,46 @@
 import XCTest
 import WebKit
 
+@testable import SmartUniversity
+
 private final class TestableWebViewHandler: WebViewHandling {
 
-    var webView: WKWebView? = nil
+    var webView: WKWebView?
 
-    var urlReceivedInLoadURL: URL? = nil
+    var urlReceivedInLoadURL: URL?
 
-    func loadURL(_ url: URL) {
+    func loadURL(_ url: URL, completion: CompletionHandler?) {
         urlReceivedInLoadURL = url
     }
 
+    func lockZoomScaleTo(_ zoomScale: CGFloat) { }
+}
+
+private final class TestableMapScaleProvider: MunimapScaleProviding {
+
+    func mapZoomScale(forViewFrame viewFrame: CGRect, mapSize: CGSize) -> CGFloat {
+        return 0
+    }
 }
 
 final class MunimapViewControllerTests: XCTestCase {
 
     private var munimapServerURL: URL!
     private var webViewHandler: TestableWebViewHandler!
+    private var mapScaleProvider: TestableMapScaleProvider!
+
     private var viewController: MunimapViewController!
 
     override func setUp() {
         munimapServerURL = URL(string: "https://www.apple.com")!
-        webViewHandler = TestableWebViewHandler()
+        webViewHandler = .init()
+        mapScaleProvider = .init()
 
-        viewController = MunimapViewController(munimapServerURL: munimapServerURL, webViewHandler: webViewHandler)
+        viewController = .init(
+            munimapServerURL: munimapServerURL,
+            webViewHandler: webViewHandler,
+            mapScaleProvider: mapScaleProvider
+        )
     }
 
     func testViewDidLoadSetsWebViewOnWebViewHandler() {

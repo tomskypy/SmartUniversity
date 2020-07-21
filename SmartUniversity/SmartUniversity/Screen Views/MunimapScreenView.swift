@@ -6,26 +6,55 @@
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
-import UIKit
 import WebKit
 
-class MunimapScreenView: FrameBasedScreenView {
+final class MunimapScreenView: TitledScreenView {
 
-    let webView: WKWebView = WKWebView()
+    var isLoadingOverlayHidden: Bool = true {
+        didSet {
+            if isLoadingOverlayHidden {
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                    self.loadingOverlay.alpha = 0.0
+                }, completion: { _ in
+                    self.loadingOverlay.removeFromSuperview()
+                })
+            } else {
+                loadingOverlay.alpha = 1.0
+                addSubview(loadingOverlay)
+            }
+        }
+    }
+
+    let webView = WKWebView()
+
+    private lazy var loadingOverlay = LoadingOverlayView(
+        loadingText: "loading map",
+        colorProvider: colorProvider,
+        layoutProvider: layoutProvider
+    )
+
+    private let colorProvider: ColorProviding
+
+    init(colorProvider: ColorProviding, layoutProvider: LayoutProviding) {
+        self.colorProvider = colorProvider
+        super.init(layoutProvider: layoutProvider)
+
+        titleText = "munimap"
+        titleColor = .black
+    }
+
+    required init?(coder: NSCoder) { nil }
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
-        let webViewFrame = CGRect(
-            origin: CGPoint(x: 0, y: -safeAreaInsets.top),
-            size: .init(width: bounds.width, height: bounds.height + safeAreaInsets.top + safeAreaInsets.bottom))
+        let contentHeight = bounds.height + safeAreaInsets.verticalSum
 
-        return [(view: webView, frame: webViewFrame)]
+        let fullScreenFrame =  CGRect(x: 0, y: -safeAreaInsets.top, width: bounds.width, height: contentHeight)
+
+        return super.frames(forBounds: bounds) + [(webView, fullScreenFrame), (loadingOverlay, fullScreenFrame)]
     }
-}
 
-extension MunimapScreenView: BaseScreenView {
-
-    func setupSubviews() {
-        self.addSubview(webView)
+    override func setupSubviews() {
+        addSubview(webView)
     }
 }

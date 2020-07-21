@@ -8,25 +8,23 @@
 
 import XCTest
 
+@testable import SmartUniversity
+
 final class MainNavigationSceneDependencyProviderTests: XCTestCase {
 
     private var provider: MainNavigationSceneDependencyProvider!
 
     override func setUp() {
-        provider = MainNavigationSceneDependencyProvider()
+        provider = .init()
     }
 
     func testRootViewControllerIsMainNavigationViewController() {
+        let expectedController = UINavigationController()
+
+        let provider = MainNavigationSceneDependencyProvider(navigationController: expectedController)
         let rootViewController = provider.makeRootViewController()
 
-        XCTAssertTrue(MainNavigationViewController.self == type(of: rootViewController))
-    }
-
-    func testRootTabBarViewControllerHasCorrectTypeOfViewControllers() {
-        let tabViewControllers = (provider.makeRootViewController() as! UITabBarController).viewControllers!
-
-        XCTAssertTrue(MunimapViewController.self == type(of: tabViewControllers[0]))
-        XCTAssertTrue(ARViewController.self == type(of: tabViewControllers[1]))
+        XCTAssertEqual(expectedController, rootViewController)
     }
 
 }

@@ -1,12 +1,13 @@
 //
 //  AppDelegate.swift
-//  SmartUniversity
+//  BareCameraTest
 //
-//  Created by Tomas Skypala on 01/03/2020.
+//  Created by Tomas Skypala on 01/08/2020.
 //  Copyright © 2020 Tomas Skypala. All rights reserved.
 //
 
 import UIKit
+import BaseAppCoordination
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,21 +30,5 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
         SceneConfiguration<MainNavigationSceneDependencyProvider>(sceneSession: connectingSceneSession)
-    }
-
-}
-
-private final class SceneConfiguration<DependencyProvider: SceneDependencyProviding>: UISceneConfiguration {
-
-    init(sceneSession: UISceneSession) {
-        super.init(name: nil, sessionRole: sceneSession.role)
-
-        self.delegateClass = SceneDelegate<DependencyProvider>.self
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-
-        self.delegateClass = SceneDelegate<DependencyProvider>.self
     }
 }

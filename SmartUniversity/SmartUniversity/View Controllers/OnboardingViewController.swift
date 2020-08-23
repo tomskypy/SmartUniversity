@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BaseAppCoordination
 
 protocol OnboardingViewControllerDelegate: AnyObject {
 

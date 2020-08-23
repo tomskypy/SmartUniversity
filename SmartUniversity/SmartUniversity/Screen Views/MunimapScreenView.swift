@@ -7,6 +7,7 @@
 //
 
 import WebKit
+import BaseAppCoordination
 
 final class MunimapScreenView: TitledScreenView {
 

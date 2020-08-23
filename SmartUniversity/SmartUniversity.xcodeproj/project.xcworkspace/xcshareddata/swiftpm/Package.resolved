@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BaseAppCoordination",
+        "repositoryURL": "git@github.com:TeeSky/BaseAppCoordination.git",
+        "state": {
+          "branch": "master",
+          "revision": "fd9f6702d448b252aebb908f374e2de203590082",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

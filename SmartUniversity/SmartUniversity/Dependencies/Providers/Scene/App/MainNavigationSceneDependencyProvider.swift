@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BaseAppCoordination
 
 final class MainNavigationSceneDependencyProvider: SceneDependencyProviding {
 

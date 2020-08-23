@@ -8,6 +8,7 @@
 
 import AVFoundation
 import UIKit
+import BaseAppCoordination
 
 protocol QRScannerViewControllerDelegate: AnyObject {
 

@@ -131,6 +131,8 @@
 		476113F0261DAA490028A98C /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113EF261DAA490028A98C /* Faculty.swift */; };
 		476113F6261DADF50028A98C /* RoomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113F5261DADF50028A98C /* RoomDetailView.swift */; };
 		476113FA261DAF680028A98C /* ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */; };
+		47611454261DC5D10028A98C /* FacultyRemoteDataArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611453261DC5D10028A98C /* FacultyRemoteDataArray.swift */; };
+		47611458261DC62F0028A98C /* FacultyRemoteDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +273,8 @@
 		476113EF261DAA490028A98C /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
 		476113F5261DADF50028A98C /* RoomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailView.swift; sourceTree = "<group>"; };
 		476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
+		47611453261DC5D10028A98C /* FacultyRemoteDataArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyRemoteDataArray.swift; sourceTree = "<group>"; };
+		47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyRemoteDataProviding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -672,6 +676,7 @@
 				35706442248872CC00E45B0D /* QRPoint.swift */,
 				35D301A1249AF2380088801B /* QRPointRemoteArray.swift */,
 				476113EF261DAA490028A98C /* Faculty.swift */,
+				47611453261DC5D10028A98C /* FacultyRemoteDataArray.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -809,6 +814,7 @@
 			children = (
 				35D301A0249AF20C0088801B /* App */,
 				3570641D248872CC00E45B0D /* QRPointsProviding.swift */,
+				47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */,
 				353400A1249EB08A00198B5B /* UserDefaultsProviding.swift */,
 				353F7A8F24B39B620094A289 /* ExternalAppLaunching.swift */,
 			);
@@ -957,6 +963,7 @@
 				3515269A24C3E2C9000929A8 /* MunimapScaleProvider.swift in Sources */,
 				3545E4E924AFC677000EE4BD /* TitledScreenView+App.swift in Sources */,
 				35706460248872CC00E45B0D /* AppColorProvider.swift in Sources */,
+				47611458261DC62F0028A98C /* FacultyRemoteDataProviding.swift in Sources */,
 				35AEAA60249AE17B0036A544 /* AppURL.swift in Sources */,
 				3570645B248872CC00E45B0D /* CaptureDeviceProvider.swift in Sources */,
 				3570647D248872CC00E45B0D /* VerticalFrameBasedView.swift in Sources */,
@@ -1005,6 +1012,7 @@
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,
 				3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */,
+				47611454261DC5D10028A98C /* FacultyRemoteDataArray.swift in Sources */,
 				3549587E24F332210066A934 /* AppDelegate.swift in Sources */,
 				3515269324C33295000929A8 /* TextOverlayView.swift in Sources */,
 				358325B924B1673800DADC6A /* SideTapView+App.swift in Sources */,

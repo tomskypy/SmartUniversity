@@ -7,14 +7,14 @@
 //
 
 struct Faculty: Decodable {
-    let id: String
+    let id: Int
     let name: String
     let rooms: [Room]
 }
 
 struct Room: Decodable {
 
-    let id: String
+    let id: Int
 
     let capacity: Int
     let isLocked: Bool

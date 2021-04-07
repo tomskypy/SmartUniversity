@@ -57,3 +57,17 @@ extension RemoteDataProvider: QRPointsProviding {
         }
     }
 }
+
+extension RemoteDataProvider: FacultyRemoteDataProviding {
+
+    func getAllFaculties(completion: @escaping ([Faculty]?, FacultyDataProvidingError?) -> Void) {
+
+        fetchJSONData(
+            withDataInfo: SURemoteDataInfo.faculties
+        ) { (data: FacultyRemoteDataArray?, error: DataFetchError?) in
+            if let error = error { return completion(nil, .fetch(error: error)) }
+
+            completion(data?.faculties, nil)
+        }
+    }
+}

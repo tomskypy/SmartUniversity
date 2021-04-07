@@ -28,6 +28,7 @@ class QRScannerScreenView: TitledScreenView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
+    private lazy var showRoomsScreenButton = UIButton(titleText: "Rooms", colorProviding: colorProvider)
     private let bottomOverlay = InteractiveOverlayView()
 
     // MARK: - Dependencies
@@ -62,12 +63,13 @@ class QRScannerScreenView: TitledScreenView {
         return frames + [
             (blurredOverlayView, blurredOverlayFrame),
             (navigateToMunimapSideTapView, makeSideViewFrame(for: navigateToMunimapSideTapView, bounds: bounds)),
+            (showRoomsScreenButton, makeRoomsButtonFrame(bounds: bounds)),
             (bottomOverlay, bottomOverlayFrame)
         ]
     }
 
     override func setupSubviews() {
-        addSubviews(blurredOverlayView, navigateToMunimapSideTapView)
+        addSubviews(blurredOverlayView, navigateToMunimapSideTapView, showRoomsScreenButton)
     }
 
     // MARK: - Reset
@@ -197,5 +199,15 @@ class QRScannerScreenView: TitledScreenView {
         }
 
         return CGRect(x: xOffset, y: yOffset, size: sideViewSize)
+    }
+
+    private func makeRoomsButtonFrame(bounds: CGRect) -> CGRect {
+        let buttonSize = showRoomsScreenButton.sizeThatFits(bounds.size)
+
+        return CGRect(
+            x: 0,
+            y: (bounds.height - buttonSize.height) / 2,
+            size: buttonSize
+        )
     }
 }

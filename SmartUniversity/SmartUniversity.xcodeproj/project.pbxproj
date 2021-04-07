@@ -128,11 +128,14 @@
 		35D301A2249AF2380088801B /* QRPointRemoteArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D301A1249AF2380088801B /* QRPointRemoteArray.swift */; };
 		35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */; };
 		35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */; };
+		476113E0261DA30A0028A98C /* RoomsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113DF261DA3090028A98C /* RoomsListViewController.swift */; };
+		476113E4261DA3480028A98C /* RoomsListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113E3261DA3480028A98C /* RoomsListScreenView.swift */; };
 		476113F0261DAA490028A98C /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113EF261DAA490028A98C /* Faculty.swift */; };
 		476113F6261DADF50028A98C /* RoomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113F5261DADF50028A98C /* RoomDetailView.swift */; };
 		476113FA261DAF680028A98C /* ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */; };
 		47611454261DC5D10028A98C /* FacultyRemoteDataArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611453261DC5D10028A98C /* FacultyRemoteDataArray.swift */; };
 		47611458261DC62F0028A98C /* FacultyRemoteDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */; };
+		4761145E261DCAA30028A98C /* RoomsListViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,11 +273,14 @@
 		35D301A1249AF2380088801B /* QRPointRemoteArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointRemoteArray.swift; sourceTree = "<group>"; };
 		35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURemoteDataInfoTests.swift; sourceTree = "<group>"; };
 		35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProviderTests.swift; sourceTree = "<group>"; };
+		476113DF261DA3090028A98C /* RoomsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsListViewController.swift; sourceTree = "<group>"; };
+		476113E3261DA3480028A98C /* RoomsListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsListScreenView.swift; sourceTree = "<group>"; };
 		476113EF261DAA490028A98C /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
 		476113F5261DADF50028A98C /* RoomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailView.swift; sourceTree = "<group>"; };
 		476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 		47611453261DC5D10028A98C /* FacultyRemoteDataArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyRemoteDataArray.swift; sourceTree = "<group>"; };
 		47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyRemoteDataProviding.swift; sourceTree = "<group>"; };
+		4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomsListViewController+App.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,6 +458,7 @@
 				35AEAA58249ADF830036A544 /* App */,
 				357063F9248872CC00E45B0D /* OnboardingViewController.swift */,
 				357063FA248872CC00E45B0D /* QRScannerViewController.swift */,
+				476113DF261DA3090028A98C /* RoomsListViewController.swift */,
 				357063F8248872CC00E45B0D /* MunimapViewController.swift */,
 				357063FB248872CC00E45B0D /* ARViewController.swift */,
 				35162542249551A20069E22C /* ARMapPageViewController.swift */,
@@ -686,11 +693,12 @@
 			children = (
 				35706445248872CC00E45B0D /* App */,
 				3545E4E024AFAC6B000EE4BD /* TitledScreenView.swift */,
-				35706444248872CC00E45B0D /* ARScreenView.swift */,
 				35706447248872CC00E45B0D /* QRScannerScreenView.swift */,
-				35706448248872CC00E45B0D /* OnboardingScreenView.swift */,
+				476113E3261DA3480028A98C /* RoomsListScreenView.swift */,
 				3570644A248872CC00E45B0D /* MunimapScreenView.swift */,
+				35706444248872CC00E45B0D /* ARScreenView.swift */,
 				3516254424957D1F0069E22C /* ARMapPageScreenView.swift */,
+				35706448248872CC00E45B0D /* OnboardingScreenView.swift */,
 			);
 			path = "Screen Views";
 			sourceTree = "<group>";
@@ -714,6 +722,7 @@
 				35AEAA5B249ADFE90036A544 /* QRScannerViewController+App.swift */,
 				35AEAA5D249AE0C70036A544 /* MunimapViewController+App.swift */,
 				35AEAA59249ADF9D0036A544 /* ARViewController+App.swift */,
+				4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -966,6 +975,7 @@
 				47611458261DC62F0028A98C /* FacultyRemoteDataProviding.swift in Sources */,
 				35AEAA60249AE17B0036A544 /* AppURL.swift in Sources */,
 				3570645B248872CC00E45B0D /* CaptureDeviceProvider.swift in Sources */,
+				4761145E261DCAA30028A98C /* RoomsListViewController+App.swift in Sources */,
 				3570647D248872CC00E45B0D /* VerticalFrameBasedView.swift in Sources */,
 				35706453248872CC00E45B0D /* UIEdgeInsets+Init.swift in Sources */,
 				35706470248872CC00E45B0D /* ARSceneViewHandler.swift in Sources */,
@@ -1003,6 +1013,7 @@
 				35D3018F249AEF4D0088801B /* CaptureDeviceProviding.swift in Sources */,
 				35706471248872CC00E45B0D /* OnboardingCoordinator.swift in Sources */,
 				476113F6261DADF50028A98C /* RoomDetailView.swift in Sources */,
+				476113E4261DA3480028A98C /* RoomsListScreenView.swift in Sources */,
 				35706458248872CC00E45B0D /* UIEdgeInsets+Sum.swift in Sources */,
 				353F7A9224B39B890094A289 /* ExternalAppLauncher.swift in Sources */,
 				476113FA261DAF680028A98C /* ContainerCollectionViewCell.swift in Sources */,
@@ -1031,6 +1042,7 @@
 				350DDB9824B393AE00B6F362 /* AppCaptureAuthorizationProvider.swift in Sources */,
 				3515269724C3DB6F000929A8 /* CaptureAuthorizationRequesting.swift in Sources */,
 				3515269C24C3E2E5000929A8 /* MunimapScaleProviding.swift in Sources */,
+				476113E0261DA30A0028A98C /* RoomsListViewController.swift in Sources */,
 				35706452248872CC00E45B0D /* UIColor+HexString.swift in Sources */,
 				35D3019E249AF1A80088801B /* CaptureSessionHandling.swift in Sources */,
 				3570646E248872CC00E45B0D /* CaptureSessionHandler.swift in Sources */,

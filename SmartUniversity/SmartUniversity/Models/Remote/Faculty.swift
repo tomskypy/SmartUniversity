@@ -35,3 +35,14 @@ struct Room: Decodable {
         case description
     }
 }
+
+extension Faculty: Hashable {
+
+    static func == (lhs: Faculty, rhs: Faculty) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

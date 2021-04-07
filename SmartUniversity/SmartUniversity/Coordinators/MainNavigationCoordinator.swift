@@ -94,7 +94,7 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
         navigationController.pushViewController(postScanningViewController)
     }
 
-    func qrScannerViewControllerDidSelectShowRooms(_ qrScannerViewController: QRScannerViewController) {
+    func qrScannerViewControllerDidSelectRooms(_ qrScannerViewController: QRScannerViewController) {
         let roomsListViewController = RoomsListViewController()
         roomsListViewController.didFinishHandler = { [weak self] in
             self?.navigationController.popToRootViewController()

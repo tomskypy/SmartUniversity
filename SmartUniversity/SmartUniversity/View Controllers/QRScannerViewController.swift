@@ -17,7 +17,7 @@ protocol QRScannerViewControllerDelegate: AnyObject {
         didSelectContinueWith qrPoint: QRPoint?
     )
 
-    func qrScannerViewControllerDidSelectShowRooms(_ qrScannerViewController: QRScannerViewController)
+    func qrScannerViewControllerDidSelectRooms(_ qrScannerViewController: QRScannerViewController)
 }
 
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
@@ -163,17 +163,9 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     private func setupNavigationButtonHandlers() {
         guard let screenView = screenView else { return }
 
-        screenView.navigateToMunimapSideTapView.tapHandler = { [weak self] in
-            guard let self = self else { return }
+        screenView.munimapButton.addTarget(self, action: #selector(munimapButtonTapped(sender:)), for: .touchUpInside)
 
-            self.delegate?.qrScannerViewController(self, didSelectContinueWith: nil)
-        }
-
-        screenView.showRoomsScreenButton.addTarget(
-            self,
-            action: #selector(showRoomsButtonTapped(sender:)),
-            for: .touchUpInside
-        )
+        screenView.roomsButton.addTarget(self, action: #selector(roomsButtonTapped(sender:)), for: .touchUpInside)
     }
 
     private func requestVideoAccess() {
@@ -192,8 +184,13 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     }
 
     @objc
-    private func showRoomsButtonTapped(sender: UIResponder) {
-        delegate?.qrScannerViewControllerDidSelectShowRooms(self)
+    private func munimapButtonTapped(sender: UIResponder) {
+        delegate?.qrScannerViewController(self, didSelectContinueWith: nil)
+    }
+
+    @objc
+    private func roomsButtonTapped(sender: UIResponder) {
+        delegate?.qrScannerViewControllerDidSelectRooms(self)
     }
 }
 
@@ -240,7 +237,6 @@ extension QRScannerViewController: QRPointScanningHandlerDelegate {
             value == scannedValueCodeObjectBounds.scannedValue
         else { return }
 
-        screenView?.hideMunimapSideTapView()
         screenView?.configureBottomOverlay(
             for: .success(text: "QR Point data scanned! Tap the button bellow when ready..."),
             buttonConfiguration: .init(
@@ -311,7 +307,6 @@ private extension QRScannerViewController {
             )
         }
 
-        screenView?.hideMunimapSideTapView()
         screenView?.configureBottomOverlay(
             for: .success(text: "Debug session, eh? Enjoy..."),
             buttonConfiguration: .init(text: "Proceed", tapHandler: continueTapHandler)

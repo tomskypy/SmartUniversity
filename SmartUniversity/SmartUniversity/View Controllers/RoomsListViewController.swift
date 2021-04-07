@@ -23,7 +23,8 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
 
     private let facultyRemoteDataProvider: FacultyRemoteDataProviding
 
-    private static let roomCellIdentifier = "RoomListCell"
+    private static let facultyHeaderReuseIdentifier = "FacultyHeaderCell"
+    private static let roomCellReuseIdentifier = "RoomDetailCell"
 
     init(facultyRemoteDataProvider: FacultyRemoteDataProviding) {
         self.facultyRemoteDataProvider = facultyRemoteDataProvider
@@ -48,14 +49,19 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
 
         roomsCollectionView.register(
             ContainerCollectionViewCell<RoomDetailView>.self,
-            forCellWithReuseIdentifier: Self.roomCellIdentifier
+            forCellWithReuseIdentifier: Self.roomCellReuseIdentifier
+        )
+        roomsCollectionView.register(
+            FacultyNameView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: Self.facultyHeaderReuseIdentifier
         )
 
         dataSource = DataSource(
             collectionView: roomsCollectionView,
             cellProvider: { collectionView, indexPath, room in
                 let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: Self.roomCellIdentifier,
+                    withReuseIdentifier: Self.roomCellReuseIdentifier,
                     for: indexPath
                 )
 
@@ -71,6 +77,21 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
                 return cell
             }
         )
+        dataSource?.supplementaryViewProvider = { (collectionView, elementKind, path) -> UICollectionReusableView? in
+
+            guard
+                elementKind == UICollectionView.elementKindSectionHeader,
+                let facultyNameView = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: UICollectionView.elementKindSectionHeader,
+                    withReuseIdentifier: Self.facultyHeaderReuseIdentifier,
+                    for: path
+                ) as? FacultyNameView
+            else {
+                return nil
+            }
+            facultyNameView.label.text = "Faculty" // TODO use fetched data
+            return facultyNameView
+        }
 
         if let flowLayout = roomsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize

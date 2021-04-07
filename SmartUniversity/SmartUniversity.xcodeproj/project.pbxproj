@@ -137,6 +137,7 @@
 		47611458261DC62F0028A98C /* FacultyRemoteDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */; };
 		4761145E261DCAA30028A98C /* RoomsListViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */; };
 		47611468261DF4280028A98C /* RoomsListScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611467261DF4280028A98C /* RoomsListScreenView+App.swift */; };
+		4761146E261E0B100028A98C /* FacultyNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4761146D261E0B100028A98C /* FacultyNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +284,7 @@
 		47611457261DC62F0028A98C /* FacultyRemoteDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyRemoteDataProviding.swift; sourceTree = "<group>"; };
 		4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomsListViewController+App.swift"; sourceTree = "<group>"; };
 		47611467261DF4280028A98C /* RoomsListScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomsListScreenView+App.swift"; sourceTree = "<group>"; };
+		4761146D261E0B100028A98C /* FacultyNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,6 +663,7 @@
 				358325B424B1610C00DADC6A /* SideTapView.swift */,
 				476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */,
 				476113F5261DADF50028A98C /* RoomDetailView.swift */,
+				4761146D261E0B100028A98C /* FacultyNameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				353400A0249EA93100198B5B /* LoadingOverlayView.swift in Sources */,
 				3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */,
 				476113F0261DAA490028A98C /* Faculty.swift in Sources */,
+				4761146E261E0B100028A98C /* FacultyNameView.swift in Sources */,
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,
 				3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */,

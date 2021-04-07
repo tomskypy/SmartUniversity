@@ -92,11 +92,6 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
             facultyNameView.label.text = "Faculty" // TODO use fetched data
             return facultyNameView
         }
-
-        if let flowLayout = roomsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-        roomsCollectionView.delegate = self
     }
 
     private func refreshRoomsCollection(animated: Bool) {
@@ -112,16 +107,5 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
 
             dataSource.apply(snapshot, animatingDifferences: animated)
         }
-    }
-}
-
-extension RoomsListViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        .init(width: collectionView.frame.width - 10, height: 0)
     }
 }

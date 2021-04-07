@@ -11,7 +11,7 @@ import BaseAppCoordination
 
 final class RoomsListScreenView: FrameBasedView {
 
-    let roomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let roomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: makeCollectionViewLayout())
 
     private let titleLabel = UILabel(
         text: "Rooms",
@@ -54,6 +54,24 @@ final class RoomsListScreenView: FrameBasedView {
         let roomsCollectionFrame = CGRect(x: 0, y: roomsCollectionYOffset, size: roomsCollectionSize)
 
         return super.frames(forBounds: bounds) + [(titleLabel, titleFrame), (roomsCollectionView, roomsCollectionFrame)]
+    }
+
+    private static func makeCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+        let cellSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let section = NSCollectionLayoutSection(
+            group: .horizontal(layoutSize: cellSize, subitem: .init(layoutSize: cellSize), count: 1)
+        )
+        section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.interGroupSpacing = 10
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [sectionHeader]
+
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }
 

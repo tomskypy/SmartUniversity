@@ -27,7 +27,7 @@ final class RoomDetailView: VerticalFrameBasedView {
         }
     }
 
-    private let nameLabel = UILabel(font: UIFont(), textColor: .black, textAlignment: .center)
+    private let nameLabel = UILabel(font: UIFont.systemFont(ofSize: 20, weight: .medium), textColor: .black)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

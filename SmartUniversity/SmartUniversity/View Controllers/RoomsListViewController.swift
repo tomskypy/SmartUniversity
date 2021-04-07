@@ -38,12 +38,7 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
         super.viewDidLoad()
 
         setupRoomsCollectionView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        refreshRoomsCollection(animated: false)
+        refreshRoomsCollection(animated: false) // TODO handle loading
     }
 
     private func setupRoomsCollectionView() {
@@ -72,6 +67,11 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
                 return cell
             }
         )
+
+        if let flowLayout = roomsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+        roomsCollectionView.delegate = self
     }
 
     private func refreshRoomsCollection(animated: Bool) {
@@ -86,5 +86,13 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
             self.dataSource?.apply(snapshot, animatingDifferences: animated)
         }
 
+extension RoomsListViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        .init(width: collectionView.frame.width - 10, height: 0)
     }
 }

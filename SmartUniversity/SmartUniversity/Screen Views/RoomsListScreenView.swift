@@ -11,9 +11,7 @@ import BaseAppCoordination
 
 final class RoomsListScreenView: FrameBasedView {
 
-    let roomsCollectionView = UICollectionView(
-        frame: .init(origin: .zero, size: CGSize(width: 300, height: 200)), // TODO fix collection view sizing/layout
-        collectionViewLayout: .init()
+    let roomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     )
 
     override init(frame: CGRect) {

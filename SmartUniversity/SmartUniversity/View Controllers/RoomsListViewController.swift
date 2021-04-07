@@ -70,7 +70,10 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
                 }
 
                 roomDetailView.model = .init(
+                    capacity: room.capacity,
+                    isLocked: room.isLocked,
                     roomTypeText: room.roomTypeName,
+                    buildingNameText: room.buildingName,
                     nameText: room.name,
                     descriptionText: room.description
                 )

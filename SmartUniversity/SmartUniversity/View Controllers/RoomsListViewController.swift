@@ -10,8 +10,8 @@ import UIKit
 import BaseAppCoordination
 
 final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
-    private typealias DataSource = UICollectionViewDiffableDataSource<Section, Faculty>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Faculty>
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, Room>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Room>
 
     enum Section {
         case faculty
@@ -53,7 +53,7 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
 
         dataSource = DataSource(
             collectionView: roomsCollectionView,
-            cellProvider: { collectionView, indexPath, faculty in
+            cellProvider: { collectionView, indexPath, room in
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: Self.roomCellIdentifier,
                     for: indexPath
@@ -63,7 +63,11 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
                     return nil
                 }
 
-                roomDetailView.model = .init(nameText: "configured name") // TODO use faculty data
+                roomDetailView.model = .init(
+                    roomTypeText: room.roomTypeName,
+                    nameText: room.name,
+                    descriptionText: room.description
+                )
                 return cell
             }
         )
@@ -77,14 +81,18 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
     private func refreshRoomsCollection(animated: Bool) {
         facultyRemoteDataProvider.getAllFaculties { [weak self] faculties, _ in
 
-            guard let self = self, let faculties = faculties else { return }
+            guard let dataSource = self?.dataSource, let faculties = faculties else { return }
 
             var snapshot = Snapshot()
             snapshot.appendSections([.faculty])
-            snapshot.appendItems(faculties)
+            faculties.map(\.rooms).forEach { roomCollection in
+                snapshot.appendItems(roomCollection)
+            }
 
-            self.dataSource?.apply(snapshot, animatingDifferences: animated)
+            dataSource.apply(snapshot, animatingDifferences: animated)
         }
+    }
+}
 
 extension RoomsListViewController: UICollectionViewDelegateFlowLayout {
 

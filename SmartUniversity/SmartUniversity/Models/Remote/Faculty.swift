@@ -46,3 +46,14 @@ extension Faculty: Hashable {
         hasher.combine(id)
     }
 }
+
+extension Room: Hashable {
+
+    static func == (lhs: Room, rhs: Room) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

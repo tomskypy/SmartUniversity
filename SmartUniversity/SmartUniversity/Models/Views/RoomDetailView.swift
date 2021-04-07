@@ -11,7 +11,13 @@ import UIKit
 final class RoomDetailView: VerticalFrameBasedView {
 
     struct Model {
+        let roomTypeText: String
         let nameText: String
+        let descriptionText: String
+    }
+
+    override var insets: UIEdgeInsets {
+        .init(all: 10)
     }
 
     var model: Model? {
@@ -21,18 +27,29 @@ final class RoomDetailView: VerticalFrameBasedView {
                 return
             }
 
+            roomTypeLabel.text = model.roomTypeText
             nameLabel.text = model.nameText
+            descriptionLabel.text = model.descriptionText
 
             setNeedsLayout()
         }
     }
 
+    private let roomTypeLabel = UILabel(font: UIFont.systemFont(ofSize: 10, weight: .semibold), textColor: .darkGray)
     private let nameLabel = UILabel(font: UIFont.systemFont(ofSize: 20, weight: .medium), textColor: .black)
+    private let descriptionLabel = UILabel(
+        font: UIFont.systemFont(ofSize: 12),
+        textColor: .black,
+        numberOfLines: 0
+    )
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        addSubview(nameLabel)
+        layer.cornerRadius = 6
+        backgroundColor = UIColor(red: 155/255, green: 231/255, blue: 255/255, alpha: 1)
+
+        addSubviews(roomTypeLabel, nameLabel, descriptionLabel)
     }
 
     required init?(coder: NSCoder) {
@@ -42,9 +59,28 @@ final class RoomDetailView: VerticalFrameBasedView {
     override func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
 
         let contentWidth = width - insets.horizontalSum
-        let nameLabelSize = nameLabel.size(constrainedToWidth: contentWidth)
+        let verticalSpacing: CGFloat = 4
 
-        return super.frames(forWidth: width) + [(nameLabel, CGRect(x: insets.left, y: insets.top, size: nameLabelSize))]
+        let roomTypeFrame = CGRect(
+            x: insets.left,
+            y: insets.top,
+            size: roomTypeLabel.size(constrainedToWidth: contentWidth)
+        )
+
+        let nameFrame = CGRect(
+            x: insets.left,
+            y: roomTypeFrame.maxY + verticalSpacing,
+            size: nameLabel.size(constrainedToWidth: contentWidth)
+        )
+
+        let descriptionFrame = CGRect(
+            x: insets.left,
+            y: nameFrame.maxY + verticalSpacing,
+            size: descriptionLabel.size(constrainedToWidth: contentWidth)
+        )
+
+        return super.frames(forWidth: width)
+            + [(roomTypeLabel, roomTypeFrame), (nameLabel, nameFrame), (descriptionLabel, descriptionFrame)]
     }
 }
 

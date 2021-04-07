@@ -28,7 +28,7 @@ class QRScannerScreenView: TitledScreenView {
 
     let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
-    private lazy var showRoomsScreenButton = UIButton(titleText: "Rooms", colorProviding: colorProvider)
+    private(set) lazy var showRoomsScreenButton = UIButton(titleText: "Rooms", colorProviding: colorProvider)
     private let bottomOverlay = InteractiveOverlayView()
 
     // MARK: - Dependencies

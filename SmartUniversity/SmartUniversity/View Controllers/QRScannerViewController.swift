@@ -16,6 +16,8 @@ protocol QRScannerViewControllerDelegate: AnyObject {
         _ qrScannerViewController: QRScannerViewController,
         didSelectContinueWith qrPoint: QRPoint?
     )
+
+    func qrScannerViewControllerDidSelectShowRooms(_ qrScannerViewController: QRScannerViewController)
 }
 
 class QRScannerViewController: BaseViewController<QRScannerScreenView> {
@@ -66,7 +68,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupSideTapViewHandler()
+        setupNavigationButtonHandlers()
 
         captureSessionHandler.handleViewDidLoad(view)
         qrPointScanningHandler.handleViewDidLoad(view)
@@ -158,7 +160,7 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
         )
     }
 
-    private func setupSideTapViewHandler() {
+    private func setupNavigationButtonHandlers() {
         guard let screenView = screenView else { return }
 
         screenView.navigateToMunimapSideTapView.tapHandler = { [weak self] in
@@ -166,6 +168,12 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
 
             self.delegate?.qrScannerViewController(self, didSelectContinueWith: nil)
         }
+
+        screenView.showRoomsScreenButton.addTarget(
+            self,
+            action: #selector(showRoomsButtonTapped(sender:)),
+            for: .touchUpInside
+        )
     }
 
     private func requestVideoAccess() {
@@ -181,6 +189,11 @@ class QRScannerViewController: BaseViewController<QRScannerScreenView> {
                 }
             }
         }
+    }
+
+    @objc
+    private func showRoomsButtonTapped(sender: UIResponder) {
+        delegate?.qrScannerViewControllerDidSelectShowRooms(self)
     }
 }
 

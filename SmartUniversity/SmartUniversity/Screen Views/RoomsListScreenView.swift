@@ -12,12 +12,21 @@ import BaseAppCoordination
 final class RoomsListScreenView: FrameBasedView {
 
     let roomsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+    private let titleLabel = UILabel(
+        text: "Rooms",
+        font: UIFont.systemFont(ofSize: 30, weight: .bold),
+        textColor: .black
     )
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private let layoutProvider: LayoutProviding
 
-        self.backgroundColor = .yellow
+    init(layoutProvider: LayoutProviding) {
+        self.layoutProvider = layoutProvider
+        super.init(frame: .zero)
+
+        backgroundColor = .white
+        roomsCollectionView.backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
@@ -26,20 +35,31 @@ final class RoomsListScreenView: FrameBasedView {
 
     override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
 
-        let collectionViewTopSpacing: CGFloat = 100
-        let roomsCollectionSize = roomsCollectionView.sizeThatFits(
-            .init(width: bounds.width, height: bounds.height - collectionViewTopSpacing)
+        let safeAreaInsets = layoutProvider.contentInsets(for: self, respectingSafeAreasOn: .all())
+
+        let titleInsets = UIEdgeInsets(horizontal: 15, vertical: 20)
+
+        let titleFrame = CGRect(
+            x: safeAreaInsets.left + titleInsets.left,
+            y: safeAreaInsets.top + titleInsets.top,
+            size: titleLabel.size(
+                constrainedToWidth: bounds.width - (safeAreaInsets.horizontalSum + titleInsets.horizontalSum)
+            )
         )
+        let roomsCollectionYOffset = titleFrame.maxY + titleInsets.bottom
+        let roomsCollectionSize = CGSize(
+            width: bounds.width,
+            height: bounds.height - roomsCollectionYOffset
+        )
+        let roomsCollectionFrame = CGRect(x: 0, y: roomsCollectionYOffset, size: roomsCollectionSize)
 
-        let roomsCollectionFrame = CGRect(x: 0, y: collectionViewTopSpacing, size: roomsCollectionSize)
-
-        return super.frames(forBounds: bounds) + [(roomsCollectionView, roomsCollectionFrame)]
+        return super.frames(forBounds: bounds) + [(titleLabel, titleFrame), (roomsCollectionView, roomsCollectionFrame)]
     }
 }
 
 extension RoomsListScreenView: BaseScreenView {
 
     func setupSubviews() {
-        addSubview(roomsCollectionView)
+        addSubviews(titleLabel, roomsCollectionView)
     }
 }

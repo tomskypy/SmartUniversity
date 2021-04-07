@@ -13,8 +13,8 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, Room>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Room>
 
-    enum Section {
-        case faculty
+    enum Section: Hashable {
+        case faculty(id: Int)
     }
 
     var didFinishHandler: (() -> Void)? // TODO add return navigation UI
@@ -84,9 +84,9 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
             guard let dataSource = self?.dataSource, let faculties = faculties else { return }
 
             var snapshot = Snapshot()
-            snapshot.appendSections([.faculty])
-            faculties.map(\.rooms).forEach { roomCollection in
-                snapshot.appendItems(roomCollection)
+            snapshot.appendSections(faculties.map({ Section.faculty(id: $0.id) }))
+            faculties.forEach { faculty in
+                snapshot.appendItems(faculty.rooms, toSection: .faculty(id: faculty.id))
             }
 
             dataSource.apply(snapshot, animatingDifferences: animated)

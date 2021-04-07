@@ -128,6 +128,7 @@
 		35D301A2249AF2380088801B /* QRPointRemoteArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D301A1249AF2380088801B /* QRPointRemoteArray.swift */; };
 		35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */; };
 		35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */; };
+		476113F0261DAA490028A98C /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113EF261DAA490028A98C /* Faculty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +266,7 @@
 		35D301A1249AF2380088801B /* QRPointRemoteArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPointRemoteArray.swift; sourceTree = "<group>"; };
 		35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURemoteDataInfoTests.swift; sourceTree = "<group>"; };
 		35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProviderTests.swift; sourceTree = "<group>"; };
+		476113EF261DAA490028A98C /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -663,6 +665,7 @@
 				35706441248872CC00E45B0D /* RemoteJSONDataInfo.swift */,
 				35706442248872CC00E45B0D /* QRPoint.swift */,
 				35D301A1249AF2380088801B /* QRPointRemoteArray.swift */,
+				476113EF261DAA490028A98C /* Faculty.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				353F7A9224B39B890094A289 /* ExternalAppLauncher.swift in Sources */,
 				353400A0249EA93100198B5B /* LoadingOverlayView.swift in Sources */,
 				3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */,
+				476113F0261DAA490028A98C /* Faculty.swift in Sources */,
 				35706473248872CC00E45B0D /* CaptureSessionHandlerDelegate.swift in Sources */,
 				3570645E248872CC00E45B0D /* CaptureSessionProvider.swift in Sources */,
 				3570644D248872CC00E45B0D /* OnboardingViewController.swift in Sources */,

@@ -13,10 +13,16 @@ protocol RemoteJSONDataInfo {
 
 enum SURemoteDataInfo: CaseIterable, RemoteJSONDataInfo {
     case qrPoints
+    case faculties
 
     var jsonURLString: String {
+        let queryString: String
         switch self {
-            case .qrPoints: return "https://smart-uni-be.herokuapp.com/get/qrpoints"
+            case .qrPoints:     queryString = "get/qrpoints"
+            case .faculties:    queryString = "get/faculties"
         }
+        return Self.baseURLString + queryString
     }
+
+    private static let baseURLString = "https://smart-uni-be.herokuapp.com/"
 }

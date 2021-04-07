@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BaseAppCoordination
 
 class TitledScreenView: FrameBasedView, BaseScreenView {
 

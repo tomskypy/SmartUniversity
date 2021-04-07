@@ -16,25 +16,32 @@ class QRScannerScreenView: TitledScreenView {
         didSet { configurePreviewSublayer(with: scannerPreviewLayer) }
     }
 
-    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    var munimapButton: UIButton {
+        sideButtonsView.munimapButton
+    }
 
-    private let colorProvider: ColorProviding
-
-    let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
-
-    private let bottomOverlay = InteractiveOverlayView()
-
-    private var bottomOverlayState: InteractiveOverlayView.State? {
-        didSet { configureBottomOverlay(for: bottomOverlayState) }
+    var roomsButton: UIButton {
+        sideButtonsView.roomsButton
     }
 
     private var bottomOverlayButtonConfiguration: InteractiveOverlayView.ButtonConfiguration? {
-        didSet {
-            bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration
-        }
+        didSet { bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration }
     }
-
+    private var bottomOverlayState: InteractiveOverlayView.State? {
+        didSet { configureBottomOverlay(for: bottomOverlayState) }
+    }
     private var lastOverlayHideAnimationWorkItem: DispatchWorkItem?
+
+    // MARK: - Views
+
+    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+
+    private let sideButtonsView = SideButtonsView()
+    private let bottomOverlay = InteractiveOverlayView()
+
+    // MARK: - Dependencies
+
+    private let colorProvider: ColorProviding
 
     // MARK: - Inits
 
@@ -54,6 +61,13 @@ class QRScannerScreenView: TitledScreenView {
 
         let blurredOverlayFrame = CGRect(origin: .zero, size: bounds.size)
 
+        let sideButtonsSize = sideButtonsView.size(constrainedToWidth: bounds.width)
+        let sideButtonsFrame = CGRect(
+            x: bounds.width - sideButtonsSize.width,
+            y: (bounds.height - sideButtonsSize.height) / 2,
+            size: sideButtonsSize
+        )
+
         let bottomOverlayFrameSize = bottomOverlay.size(constrainedToWidth: bounds.width)
         let bottomOverlayFrame = CGRect(
             x: 0,
@@ -63,13 +77,13 @@ class QRScannerScreenView: TitledScreenView {
 
         return frames + [
             (blurredOverlayView, blurredOverlayFrame),
-            (navigateToMunimapSideTapView, makeSideViewFrame(for: navigateToMunimapSideTapView, bounds: bounds)),
+            (sideButtonsView, sideButtonsFrame),
             (bottomOverlay, bottomOverlayFrame)
         ]
     }
 
     override func setupSubviews() {
-        addSubviews(blurredOverlayView, navigateToMunimapSideTapView)
+        addSubviews(blurredOverlayView, sideButtonsView)
     }
 
     // MARK: - Reset
@@ -77,14 +91,6 @@ class QRScannerScreenView: TitledScreenView {
     func reset() {
         hideBlurOverlay()
         hideBottomOverlay()
-
-        navigateToMunimapSideTapView.isHidden = false
-    }
-
-    // MARK: - munimap tap view
-
-    func hideMunimapSideTapView() {
-        navigateToMunimapSideTapView.isHidden = true
     }
 
     // MARK: - Blur square overlay
@@ -186,18 +192,63 @@ class QRScannerScreenView: TitledScreenView {
 
         return maskLayer
     }
+}
 
-    private func makeSideViewFrame(for sideView: SideTapView, bounds: CGRect) -> CGRect {
-        let sideViewSize = sideView.size(constrainedToWidth: bounds.width / 2)
+private final class SideButtonsView: FrameBasedView {
 
-        let yOffset = (bounds.height - sideViewSize.height) / 2
+    let munimapButton = UIButton(titleText: "munimap")
 
-        let xOffset: CGFloat
-        switch sideView {
-            case navigateToMunimapSideTapView:  xOffset = bounds.width - sideViewSize.width
-            default:                            return .zero
-        }
+    let roomsButton = UIButton(titleText: "Rooms")
 
-        return CGRect(x: xOffset, y: yOffset, size: sideViewSize)
+    private let insets = UIEdgeInsets(all: 5)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        backgroundColor = UIColor.white.withAlphaComponent(0.55)
+
+        layer.cornerRadius = 16
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+
+        addSubviews(munimapButton, roomsButton)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let currentFrames = frames(forWidth: size.width)
+        let bottomMostFrame = currentFrames.max(by: { $0.frame.maxY < $1.frame.maxY })?.frame ?? .zero
+        let rightMostFrame = currentFrames.max(by: { $0.frame.maxX < $1.frame.maxX })?.frame ?? .zero
+        return CGSize(width: rightMostFrame.maxX + insets.right, height: bottomMostFrame.maxY + insets.bottom)
+    }
+
+    override func frames(forBounds bounds: CGRect) -> [(view: UIView, frame: CGRect)] {
+        frames(forWidth: bounds.width)
+    }
+
+    private func frames(forWidth width: CGFloat) -> [(view: UIView, frame: CGRect)] {
+
+        let maxWidth = width - insets.horizontalSum
+        let verticalSpacing: CGFloat = 4
+
+        let munimapButtonSize = munimapButton.size(constrainedToWidth: maxWidth)
+        let roomsButtonSize = roomsButton.size(constrainedToWidth: maxWidth)
+        let contentWidth = max(munimapButtonSize.width, roomsButtonSize.width)
+
+        let munimapButtonFrame = CGRect(
+            x: insets.left + (contentWidth - munimapButtonSize.width) / 2,
+            y: insets.top,
+            size: munimapButtonSize
+        )
+
+        let roomsButtonFrame = CGRect(
+            x: insets.left + (contentWidth - roomsButtonSize.width) / 2,
+            y: munimapButtonFrame.maxY + verticalSpacing,
+            size: roomsButtonSize
+        )
+
+        return [(munimapButton, munimapButtonFrame), (roomsButton, roomsButtonFrame)]
     }
 }

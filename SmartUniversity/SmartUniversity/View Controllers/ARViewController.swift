@@ -7,6 +7,7 @@
 //
 
 import ARKit
+import BaseAppCoordination
 
 final class ARViewController: BaseViewController<ARScreenView> {
 

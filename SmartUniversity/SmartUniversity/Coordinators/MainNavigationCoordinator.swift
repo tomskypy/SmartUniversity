@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BaseAppCoordination
 
 final class MainNavigationCoordinator: NSObject, BaseCoordinator {
 
@@ -91,6 +92,14 @@ extension MainNavigationCoordinator: QRScannerViewControllerDelegate {
             self?.navigationController.popToRootViewController()
         }
         navigationController.pushViewController(postScanningViewController)
+    }
+
+    func qrScannerViewControllerDidSelectRooms(_ qrScannerViewController: QRScannerViewController) {
+        let roomsListViewController = RoomsListViewController()
+        roomsListViewController.didFinishHandler = { [weak self] in
+            self?.navigationController.popToRootViewController()
+        }
+        navigationController.pushViewController(roomsListViewController)
     }
 
     private func makeArViewController(for qrPoint: QRPoint?) -> UIViewController? {

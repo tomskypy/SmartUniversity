@@ -129,6 +129,8 @@
 		35E746D224317220003BDA00 /* SURemoteDataInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */; };
 		35E746DB2431770F003BDA00 /* RemoteDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */; };
 		476113F0261DAA490028A98C /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113EF261DAA490028A98C /* Faculty.swift */; };
+		476113F6261DADF50028A98C /* RoomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113F5261DADF50028A98C /* RoomDetailView.swift */; };
+		476113FA261DAF680028A98C /* ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,6 +269,8 @@
 		35E746D124317220003BDA00 /* SURemoteDataInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURemoteDataInfoTests.swift; sourceTree = "<group>"; };
 		35E746DA2431770F003BDA00 /* RemoteDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataProviderTests.swift; sourceTree = "<group>"; };
 		476113EF261DAA490028A98C /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
+		476113F5261DADF50028A98C /* RoomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailView.swift; sourceTree = "<group>"; };
+		476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -642,6 +646,8 @@
 				3534009F249EA93100198B5B /* LoadingOverlayView.swift */,
 				356E7A0A24B0AD1B002C1D1C /* GradientView.swift */,
 				358325B424B1610C00DADC6A /* SideTapView.swift */,
+				476113F9261DAF680028A98C /* ContainerCollectionViewCell.swift */,
+				476113F5261DADF50028A98C /* RoomDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -989,8 +995,10 @@
 				353400A2249EB08A00198B5B /* UserDefaultsProviding.swift in Sources */,
 				35D3018F249AEF4D0088801B /* CaptureDeviceProviding.swift in Sources */,
 				35706471248872CC00E45B0D /* OnboardingCoordinator.swift in Sources */,
+				476113F6261DADF50028A98C /* RoomDetailView.swift in Sources */,
 				35706458248872CC00E45B0D /* UIEdgeInsets+Sum.swift in Sources */,
 				353F7A9224B39B890094A289 /* ExternalAppLauncher.swift in Sources */,
+				476113FA261DAF680028A98C /* ContainerCollectionViewCell.swift in Sources */,
 				353400A0249EA93100198B5B /* LoadingOverlayView.swift in Sources */,
 				3570644C248872CC00E45B0D /* MunimapViewController.swift in Sources */,
 				476113F0261DAA490028A98C /* Faculty.swift in Sources */,

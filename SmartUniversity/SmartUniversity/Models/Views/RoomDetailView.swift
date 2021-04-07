@@ -158,15 +158,13 @@ private final class RoomAttributeDetailView: FrameBasedView {
 
     private let lockImageView = UIImageView()
 
-    private let capacityImageView = UIImageView(image: UIImage(systemName: "person"))
+    private let capacityImageView = UIImageView(imageSystemName: "person", tint: .black)
     private let capacityLabel = UILabel(font: UIFont.systemFont(ofSize: 12), textColor: .black)
 
     // MARK: - Inits
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        capacityImageView.tintColor = .black
 
         addSubviews(lockImageView, capacityImageView, capacityLabel)
     }

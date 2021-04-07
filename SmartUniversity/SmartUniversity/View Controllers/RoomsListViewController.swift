@@ -17,9 +17,15 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
         case faculty(id: Int)
     }
 
-    var didFinishHandler: (() -> Void)? // TODO add return navigation UI
+    var didFinishHandler: (() -> Void)?
 
     private var dataSource: DataSource?
+
+    private var faculties: [Faculty] = [] {
+        didSet {
+            updateDataSource()
+        }
+    }
 
     private let facultyRemoteDataProvider: FacultyRemoteDataProviding
 
@@ -29,6 +35,8 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
     init(facultyRemoteDataProvider: FacultyRemoteDataProviding) {
         self.facultyRemoteDataProvider = facultyRemoteDataProvider
         super.init(nibName: nil, bundle: nil)
+
+        refreshFacultiesData()
     }
 
     required init?(coder: NSCoder) {
@@ -38,8 +46,20 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        screenView?.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        screenView?.refreshControl.addTarget(self, action: #selector(refreshFacultiesData), for: .valueChanged)
+
         setupRoomsCollectionView()
-        refreshRoomsCollection(animated: false) // TODO handle loading
+        if faculties.isEmpty {
+            screenView?.refreshControl.beginRefreshing()
+        } else {
+            updateDataSource()
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
 
     private func setupRoomsCollectionView() {
@@ -69,18 +89,13 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
                     return nil
                 }
 
-                roomDetailView.model = .init(
-                    capacity: room.capacity,
-                    isLocked: room.isLocked,
-                    roomTypeText: room.roomTypeName,
-                    buildingNameText: room.buildingName,
-                    nameText: room.name,
-                    descriptionText: room.description
-                )
+                roomDetailView.model = .init(room: room)
                 return cell
             }
         )
-        dataSource?.supplementaryViewProvider = { (collectionView, elementKind, path) -> UICollectionReusableView? in
+
+        dataSource?.supplementaryViewProvider = { [unowned self]
+            (collectionView, elementKind, path) -> UICollectionReusableView? in
 
             guard
                 elementKind == UICollectionView.elementKindSectionHeader,
@@ -92,23 +107,93 @@ final class RoomsListViewController: BaseViewController<RoomsListScreenView> {
             else {
                 return nil
             }
-            facultyNameView.label.text = "Faculty" // TODO use fetched data
+            facultyNameView.label.text = self.faculties[safe: path.section]?.name
+
             return facultyNameView
         }
     }
 
-    private func refreshRoomsCollection(animated: Bool) {
-        facultyRemoteDataProvider.getAllFaculties { [weak self] faculties, _ in
+    @objc
+    private func refreshFacultiesData() {
+        facultyRemoteDataProvider.getAllFaculties { [weak self] faculties, error in
 
-            guard let dataSource = self?.dataSource, let faculties = faculties else { return }
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.screenView?.refreshControl.endRefreshing()
 
-            var snapshot = Snapshot()
-            snapshot.appendSections(faculties.map({ Section.faculty(id: $0.id) }))
-            faculties.forEach { faculty in
-                snapshot.appendItems(faculty.rooms, toSection: .faculty(id: faculty.id))
+                if let error = error {
+                    switch error {
+                        case .fetch(let error): self.handleFetchError(error: error)
+                    }
+                } else if let faculties = faculties {
+                    self.faculties = faculties
+                }
             }
-
-            dataSource.apply(snapshot, animatingDifferences: animated)
         }
+    }
+
+    @objc
+    private func backButtonTapped() {
+        self.didFinishHandler?()
+    }
+
+    private func updateDataSource() {
+        guard let dataSource = dataSource else { return }
+
+        var snapshot = Snapshot()
+        snapshot.appendSections(faculties.map({ Section.faculty(id: $0.id) }))
+        faculties.forEach { faculty in
+            snapshot.appendItems(faculty.rooms, toSection: .faculty(id: faculty.id))
+        }
+
+        let isViewVisible = viewIfLoaded?.window != nil
+        dataSource.apply(snapshot, animatingDifferences: isViewVisible)
+    }
+
+    private func handleFetchError(error: DataFetchError) {
+        let alertTitle: String
+        let alertMessage: String
+
+        switch error {
+            case .networkError:
+                alertTitle = "Offline"
+                alertMessage = "The internet connection is required to display rooms."
+            case .invalidURLString, .parsingError:
+                alertTitle = "Something Went Wrong"
+                alertMessage = "Unexpected application error occured, press Ok to go back."
+            case .noData:
+                alertTitle = "No Data"
+                alertMessage = "There is no rooms data available, press Ok to go back."
+        }
+
+        presentCriticalErrorAlertDialog(titleText: alertTitle, messageText: alertMessage)
+    }
+
+    private func presentCriticalErrorAlertDialog(titleText: String, messageText: String) {
+        let alert = UIAlertController(
+            title: titleText,
+            message: messageText,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { [unowned self] _ in
+            self.didFinishHandler?()
+        })
+
+        present(alert, animated: true)
+    }
+}
+
+private extension RoomDetailView.Model {
+
+    init(room: Room) {
+        self.init(
+            capacity: room.capacity,
+            isLocked: room.isLocked,
+            roomTypeText: room.roomTypeName,
+            buildingNameText: room.buildingName,
+            nameText: room.name,
+            descriptionText: room.description
+        )
     }
 }

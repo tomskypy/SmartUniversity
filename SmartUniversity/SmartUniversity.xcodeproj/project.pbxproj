@@ -138,6 +138,7 @@
 		4761145E261DCAA30028A98C /* RoomsListViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */; };
 		47611468261DF4280028A98C /* RoomsListScreenView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47611467261DF4280028A98C /* RoomsListScreenView+App.swift */; };
 		4761146E261E0B100028A98C /* FacultyNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4761146D261E0B100028A98C /* FacultyNameView.swift */; };
+		47D321DD261E384C004124F3 /* UIImageView+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D321DC261E384C004124F3 /* UIImageView+Init.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +286,7 @@
 		4761145D261DCAA30028A98C /* RoomsListViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomsListViewController+App.swift"; sourceTree = "<group>"; };
 		47611467261DF4280028A98C /* RoomsListScreenView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomsListScreenView+App.swift"; sourceTree = "<group>"; };
 		4761146D261E0B100028A98C /* FacultyNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyNameView.swift; sourceTree = "<group>"; };
+		47D321DC261E384C004124F3 /* UIImageView+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -503,6 +505,7 @@
 				35706406248872CC00E45B0D /* UIView+Sizing.swift */,
 				35706405248872CC00E45B0D /* UILabel+Init.swift */,
 				35706403248872CC00E45B0D /* UIButton+Init.swift */,
+				47D321DC261E384C004124F3 /* UIImageView+Init.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 				3545E4E524AFC3BE000EE4BD /* ARScreenView+App.swift in Sources */,
 				350C5544248BBEA400902F52 /* MainNavigationCoordinator+App.swift in Sources */,
 				35706467248872CC00E45B0D /* QRPointsProviding.swift in Sources */,
+				47D321DD261E384C004124F3 /* UIImageView+Init.swift in Sources */,
 				353400A4249ED1B000198B5B /* String+RegexMatches.swift in Sources */,
 				35706463248872CC00E45B0D /* MeshObjectProvider.swift in Sources */,
 			);

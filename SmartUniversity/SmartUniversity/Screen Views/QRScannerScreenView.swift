@@ -16,25 +16,23 @@ class QRScannerScreenView: TitledScreenView {
         didSet { configurePreviewSublayer(with: scannerPreviewLayer) }
     }
 
-    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-
-    private let colorProvider: ColorProviding
-
-    let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
-
-    private let bottomOverlay = InteractiveOverlayView()
-
+    private var bottomOverlayButtonConfiguration: InteractiveOverlayView.ButtonConfiguration? {
+        didSet { bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration }
+    }
     private var bottomOverlayState: InteractiveOverlayView.State? {
         didSet { configureBottomOverlay(for: bottomOverlayState) }
     }
-
-    private var bottomOverlayButtonConfiguration: InteractiveOverlayView.ButtonConfiguration? {
-        didSet {
-            bottomOverlay.buttonConfiguration = bottomOverlayButtonConfiguration
-        }
-    }
-
     private var lastOverlayHideAnimationWorkItem: DispatchWorkItem?
+
+    // MARK: - Views
+
+    let blurredOverlayView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    let navigateToMunimapSideTapView = SideTapView(side: .right, text: "▻munimap▻")
+    private let bottomOverlay = InteractiveOverlayView()
+
+    // MARK: - Dependencies
+
+    private let colorProvider: ColorProviding
 
     // MARK: - Inits
 
